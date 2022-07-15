@@ -2,12 +2,15 @@ import { Button } from "@mui/joy";
 import Container from "@mui/joy/Container";
 import Typography from "@mui/joy/Typography";
 import Input from "@mui/joy/Input";
+import JoyLink from "@mui/joy/Link";
 import Box from "@mui/joy/Box";
 import Image from "next/image";
 import PersonAddAltRounded from "@mui/icons-material/PersonAddAltRounded";
 import { useState } from "react";
 import { supabase } from "common/utils/supabaseClient";
 import DoneRounded from "@mui/icons-material/DoneRounded";
+import NextLink from "next/link";
+import router from "next/router";
 
 export default function SignUpPage() {
   const [email, setEmail] = useState<string>("");
@@ -53,6 +56,7 @@ export default function SignUpPage() {
       if (error) throw error;
       setLoading(false);
       setSuccess(true);
+      router.push("/signin")
     } catch (error: any) {
       console.error(error.error_description || error.message);
     } finally {
@@ -107,7 +111,7 @@ export default function SignUpPage() {
           type="email"
           onChange={handleEmailChange}
           value={email}
-        ></Input>
+        />
         <Input
           required
           variant="soft"
@@ -116,7 +120,7 @@ export default function SignUpPage() {
           type="password"
           onChange={handlePasswordChange}
           value={password}
-        ></Input>
+        />
         <Input
           required
           variant="soft"
@@ -125,7 +129,7 @@ export default function SignUpPage() {
           type="text"
           onChange={handleFirstNameChange}
           value={firstName}
-        ></Input>
+        />
         <Input
           required
           variant="soft"
@@ -134,7 +138,7 @@ export default function SignUpPage() {
           type="text"
           onChange={handleLastNameChange}
           value={lastName}
-        ></Input>
+        />
 
         <Button
           color={success ? "success" : "primary"}
@@ -151,9 +155,11 @@ export default function SignUpPage() {
 
       <Typography mt={8}>Already have an account? </Typography>
 
-      <Button variant="plain" size="sm" sx={{ mt: 2 }}>
-        Sign in
-      </Button>
+      <NextLink href="/signin" passHref>
+        <JoyLink variant="plain" sx={{ mt: 2 }}>
+          Sign in
+        </JoyLink>
+      </NextLink>
     </Container>
   );
 }

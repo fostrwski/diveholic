@@ -2,6 +2,7 @@ import { Button } from "@mui/joy";
 import Container from "@mui/joy/Container";
 import Typography from "@mui/joy/Typography";
 import Input from "@mui/joy/Input";
+import JoyLink from "@mui/joy/Link";
 import Box from "@mui/joy/Box";
 import Image from "next/image";
 import LoginRounded from "@mui/icons-material/LoginRounded";
@@ -9,6 +10,7 @@ import { useState } from "react";
 import { supabase } from "common/utils/supabaseClient";
 import DoneRounded from "@mui/icons-material/DoneRounded";
 import router from "next/router";
+import NextLink from "next/link";
 
 export default function SignInPage() {
   const [email, setEmail] = useState<string>("");
@@ -83,7 +85,7 @@ export default function SignInPage() {
           type="email"
           onChange={handleEmailChange}
           value={email}
-        ></Input>
+        />
         <Input
           required
           variant="soft"
@@ -92,7 +94,7 @@ export default function SignInPage() {
           type="password"
           onChange={handlePasswordChange}
           value={password}
-        ></Input>
+        />
 
         <Button
           type="submit"
@@ -109,9 +111,11 @@ export default function SignInPage() {
 
       <Typography mt={8}>Don't have an account?</Typography>
 
-      <Button variant="plain" size="sm" sx={{ mt: 2 }}>
-        Sign up
-      </Button>
+      <NextLink href="/signup" passHref>
+        <JoyLink variant="plain" sx={{ mt: 2 }}>
+          Sign up
+        </JoyLink>
+      </NextLink>
     </Container>
   );
 }
