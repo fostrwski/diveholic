@@ -1,20 +1,13 @@
 import React from "react";
 import Typography from "@mui/joy/Typography";
 import Grid from "@mui/joy/Grid";
-import Box from "@mui/joy/Box";
 import Button from "@mui/joy/Button";
-import List from "@mui/joy/List";
-import ListItem from "@mui/joy/ListItem";
-import ListItemDecorator from "@mui/joy/ListItemDecorator";
-import DownloadRounded from "@mui/icons-material/DownloadRounded";
 import AddRounded from "@mui/icons-material/AddRounded";
-import Checkbox from "@mui/joy/Checkbox";
 import LatestDives from "./LatestDives";
-import TimelapseRounded from "@mui/icons-material/TimelapseRounded";
+import Statistics from "./Statistics";
+import Checklist from "./Checklist";
 
 const Home: React.FC = () => {
-  const gear = ["BP/w", "Regulators", "Fins", "Mask", "Wetsuit"];
-
   return (
     <>
       <Typography level="h4" component="div">
@@ -35,68 +28,16 @@ const Home: React.FC = () => {
       </Button>
 
       <Grid container gap={6}>
-        <Grid item xs={12}>
+        <Grid xs={12}>
           <LatestDives />
         </Grid>
 
-        <Grid item xs={12}>
-          <Typography level="h4" component="div">
-            Statistics
-          </Typography>
-
-          <List
-            size="lg"
-            sx={{
-              mt: 2,
-              "--List-item-paddingX": "0px",
-              "--List-item-minHeight": "6px",
-            }}
-            variant="pklain"
-          >
-            <ListItem>
-              <ListItemDecorator>
-                <TimelapseRounded />
-              </ListItemDecorator>
-              Total 574min
-            </ListItem>
-            <ListItem>
-              <ListItemDecorator>
-                <DownloadRounded />
-              </ListItemDecorator>
-              Max 32.2m
-            </ListItem>
-          </List>
+        <Grid xs={12}>
+          <Statistics />
         </Grid>
 
-        <Grid item xs={12}>
-          <Box display="flex" alignItems="center" justifyContent="space-between" gap={2}>
-            <Typography level="h4" component="div" gutterBottom>
-              Checklist
-            </Typography>
-            <Button
-              color="danger"
-              variant="plain"
-            >
-              Reset
-            </Button>
-          </Box>
-
-          <Typography level="h6" textColor="neutral.400" component="p">
-            Make sure you took everything for your next dive!
-          </Typography>
-
-          <Grid container spacing={2} sx={{ mt: 2 }}>
-            {gear.map((item) => (
-              <Grid item xs={6} key={item}>
-                <Checkbox
-                  label={item}
-                  size="lg"
-                  variant="soft"
-                  color="neutral"
-                />
-              </Grid>
-            ))}
-          </Grid>
+        <Grid xs={12}>
+          <Checklist />
         </Grid>
       </Grid>
     </>
