@@ -5,14 +5,17 @@ import Input from "@mui/joy/Input";
 import Box from "@mui/joy/Box";
 import type { NextPage } from "next";
 import Image from "next/image";
-import LoginRoundedIcon from "@mui/icons-material/LoginRounded";
+import LoginRounded from "@mui/icons-material/LoginRounded";
 import { useState } from "react";
 import { supabase } from "common/utils/supabaseClient"
+import DoneRounded from "@mui/icons-material/DoneRounded";
 
 const SignInPage: NextPage = () => {
 
   const [email, setEmail] = useState<string>("")
   const [password, setPassword] = useState<string>("")
+  const [loading, setLoading] = useState<boolean>(false)
+  const [success, setSuccess] = useState<boolean | null>(null)
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value)
@@ -23,11 +26,14 @@ const SignInPage: NextPage = () => {
   }
 
   const handleLogin = async (email: string, password: string) => {
+    setLoading(true)
     try {
       const { error } = await supabase.auth.signIn({ email, password })
       if (error) throw error
-      alert('Done')
+      setLoading(false)
+      setSuccess(true)
     } catch (error: any) {
+      setLoading(false)
       console.error(error.error_description || error.message)
     }
   }
@@ -56,23 +62,28 @@ const SignInPage: NextPage = () => {
         Dive log built for the modern age
       </Typography>
 
-      <Box component="form" display="flex" flexDirection="column" mt={4} gap={2}>
-        <Input variant="soft" size="lg" placeholder="Email" type="email" onChange={handleEmailChange} value={email}></Input>
-        <Input variant="soft" size="lg" placeholder="Password" type="password" onChange={handlePasswordChange} value={password}></Input>
-      </Box>
-
-      <Button
-        variant="soft"
-        size="lg"
-        sx={{ mt: 4, width: "100%" }}
-        startIcon={<LoginRoundedIcon />}
-        onClick={(e) => {
+      <Box component="form" display="flex" flexDirection="column" mt={4} gap={2} onSubmit={
+        (e: React.FormEvent<HTMLFormElement>) => {
           e.preventDefault()
           handleLogin(email, password)
-        }}
-      >
-        Sign in
-      </Button>
+
+        }
+      }>
+        <Input required variant="soft" size="lg" placeholder="Email" type="email" onChange={handleEmailChange} value={email}></Input>
+        <Input required variant="soft" size="lg" placeholder="Password" type="password" onChange={handlePasswordChange} value={password}></Input>
+
+        <Button
+          type="submit"
+          color={success ? "success" : "primary"}
+          variant="soft"
+          size="lg"
+          sx={{ mt: 4, width: "100%" }}
+          startIcon={success ? <DoneRounded /> : <LoginRounded />}
+          disabled={loading}
+        >
+          Sign in
+        </Button>
+      </Box>
 
       <Typography mt={8}>Don't have an account?</Typography>
 

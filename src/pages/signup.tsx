@@ -56,23 +56,25 @@ const SignUpPage: NextPage = () => {
 
       <Typography level="h5" component="p" mt={4}>Create account</Typography>
 
-      <Box component="form" display="flex" flexDirection="column" mt={2} gap={2}>
-        <Input variant="soft" size="lg" placeholder="Email" type="email" onChange={handleEmailChange} value={email}></Input>
-        <Input variant="soft" size="lg" placeholder="Password" type="password" onChange={handlePasswordChange} value={password}></Input>
-      </Box>
-
-      <Button
-        variant="soft"
-        size="lg"
-        sx={{ mt: 4, width: "100%" }}
-        startIcon={<PersonAddAltRounded />}
-        onClick={(e) => {
+      <Box component="form" display="flex" flexDirection="column" mt={2} gap={2}
+        onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
           e.preventDefault()
           handleSignup(email, password)
         }}
       >
-        Create account
-      </Button>
+        <Input variant="soft" size="lg" placeholder="Email" type="email" onChange={handleEmailChange} value={email}></Input>
+        <Input variant="soft" size="lg" placeholder="Password" type="password" onChange={handlePasswordChange} value={password}></Input>
+
+        <Button
+          type="submit"
+          variant="soft"
+          size="lg"
+          sx={{ mt: 4, width: "100%" }}
+          startIcon={<PersonAddAltRounded />}
+        >
+          Create account
+        </Button>
+      </Box>
 
     </Container >
   );
