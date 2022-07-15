@@ -16,7 +16,7 @@ const Checklist: React.FC = () => {
         justifyContent="space-between"
         gap={2}
       >
-        <Typography level="h4" component="div" gutterBottom>
+        <Typography level="h4" component="div" >
           Checklist
         </Typography>
         <Button color="danger" variant="plain">
