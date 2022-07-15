@@ -156,5 +156,4 @@ export default function SignUpPage() {
       </Button>
     </Container>
   );
-};
-
+}

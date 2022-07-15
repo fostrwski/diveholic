@@ -1,17 +1,29 @@
 import Box from "@mui/joy/Box";
 import Container from "@mui/joy/Container";
 import Typography from "@mui/joy/Typography";
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Avatar from "@mui/joy/Avatar";
 import { useEffect } from "react";
 import { useColorScheme } from "@mui/joy";
+import { useUser } from "@supabase/supabase-auth-helpers/react";
+import generateInitials from "common/utils/generateInitials";
 
 interface DefaultLayoutProps {
   children: React.ReactNode;
 }
 
 const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
+  const { user } = useUser();
+  const [initials, setInitials] = useState<string>("");
+
+  useEffect(() => {
+    if (user) {
+      const { first_name: firstName, last_name: lastName } = user.user_metadata;
+      setInitials(generateInitials(firstName, lastName));
+    }
+  }, [user]);
+
   const { mode, setMode } = useColorScheme();
 
   useEffect(() => {
@@ -41,7 +53,7 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
           </Typography>
         </Box>
 
-        <Avatar sx={{ fontWeight: "lg" }}>FO</Avatar>
+        <Avatar sx={{ fontWeight: "lg" }}>{initials}</Avatar>
       </Box>
 
       <Box component="main" sx={{ minHeight: "100vh" }}>

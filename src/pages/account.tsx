@@ -1,15 +1,15 @@
 import DefaultLayout from "common/layouts/Default";
 import React from "react";
-import { User, withAuthRequired } from "@supabase/supabase-auth-helpers/nextjs"
+import { User, withAuthRequired } from "@supabase/supabase-auth-helpers/nextjs";
 import Avatar from "@mui/joy/Avatar";
 import generateInitials from "common/utils/generateInitials";
 import Typography from "@mui/joy/Typography";
 import Box from "@mui/joy/Box";
 
-export const getServerSideProps = withAuthRequired({ redirectTo: "/signin" })
+export const getServerSideProps = withAuthRequired({ redirectTo: "/signin" });
 
 export default function AccountPage({ user }: { user: User }) {
-  const { first_name: firstName, last_name: lastName } = user.user_metadata
+  const { first_name: firstName, last_name: lastName } = user.user_metadata;
 
   return (
     <DefaultLayout>
@@ -20,7 +20,8 @@ export default function AccountPage({ user }: { user: User }) {
           </Typography>
         </Avatar>
 
-        <Typography level="h4" component="div" fontWeight="md">First name
+        <Typography level="h4" component="div" fontWeight="md">
+          First name
           <Typography component="span" fontWeight="lg" textColor="neutral.400">
             {" " + firstName}
           </Typography>
@@ -35,5 +36,4 @@ export default function AccountPage({ user }: { user: User }) {
       </Box>
     </DefaultLayout>
   );
-};
-
+}
