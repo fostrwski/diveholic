@@ -6,12 +6,18 @@ import AddRounded from "@mui/icons-material/AddRounded";
 import LatestDives from "./LatestDives";
 import Statistics from "./Statistics";
 import Checklist from "./Checklist";
+import { User } from "@supabase/supabase-auth-helpers/nextjs";
 
-const Home: React.FC = () => {
+interface HomeProps {
+  user: User
+}
+
+const Home: React.FC<HomeProps> = ({ user }) => {
+
   return (
     <>
       <Typography level="h4" component="div">
-        Hi Franek 🤿
+        Hi {user?.user_metadata.first_name} 🤿
       </Typography>
 
       <Typography level="h6" textColor="neutral.400">
