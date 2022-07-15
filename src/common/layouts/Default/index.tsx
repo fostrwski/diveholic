@@ -4,10 +4,13 @@ import Typography from "@mui/joy/Typography";
 import React, { useState } from "react";
 import Image from "next/image";
 import Avatar from "@mui/joy/Avatar";
+import Button from "@mui/joy/Button";
 import { useEffect } from "react";
 import { useColorScheme } from "@mui/joy";
 import { useUser } from "@supabase/supabase-auth-helpers/react";
 import generateInitials from "common/utils/generateInitials";
+import { supabase } from "common/utils/supabaseClient";
+import router from "next/router";
 
 interface DefaultLayoutProps {
   children: React.ReactNode;
@@ -29,6 +32,11 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
   useEffect(() => {
     setMode("light");
   }, []);
+
+  const handleSignOut = () => {
+    supabase.auth.signOut()
+    router.push("/signin")
+  }
 
   return (
     <Container>
@@ -60,10 +68,11 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
         {children}
       </Box>
 
-      <Box component="footer" mt={6} py={4}>
+      <Box component="footer" mt={6} py={4} display="flex" alignItems="center" justifyContent="space-between" gap={2}>
         <Typography textColor="neutral.400">
           &copy; {new Date().getFullYear()} Diveholic
         </Typography>
+        <Button color="neutral" variant="plain" size="sm" onClick={handleSignOut}>Sign out</Button>
       </Box>
     </Container>
   );
