@@ -3,40 +3,42 @@ import Container from "@mui/joy/Container";
 import Typography from "@mui/joy/Typography";
 import Input from "@mui/joy/Input";
 import Box from "@mui/joy/Box";
-import type { NextPage } from "next";
 import Image from "next/image";
 import LoginRounded from "@mui/icons-material/LoginRounded";
 import { useState } from "react";
-import { supabase } from "common/utils/supabaseClient"
+import { supabase } from "common/utils/supabaseClient";
 import DoneRounded from "@mui/icons-material/DoneRounded";
+import router from "next/router";
 
-const SignInPage: NextPage = () => {
-
-  const [email, setEmail] = useState<string>("")
-  const [password, setPassword] = useState<string>("")
-  const [loading, setLoading] = useState<boolean>(false)
-  const [success, setSuccess] = useState<boolean | null>(null)
+export default function SignInPage() {
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(e.target.value)
-  }
+    setEmail(e.target.value);
+  };
 
   const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setPassword(e.target.value)
-  }
+    setPassword(e.target.value);
+  };
 
-  const handleLogin = async (email: string, password: string) => {
-    setLoading(true)
+  const [loading, setLoading] = useState<boolean>(false);
+  const [success, setSuccess] = useState<boolean | null>(null);
+
+  const handleSignIn = async (email: string, password: string) => {
+    setLoading(true);
     try {
-      const { error } = await supabase.auth.signIn({ email, password })
-      if (error) throw error
-      setLoading(false)
-      setSuccess(true)
+      const { error } = await supabase.auth.signIn({ email, password });
+      if (error) throw error;
+      setLoading(false);
+      setSuccess(true);
+      router.push("/");
     } catch (error: any) {
-      setLoading(false)
-      console.error(error.error_description || error.message)
+      console.error(error.error_description || error.message);
+    } finally {
+      setLoading(false);
     }
-  }
+  };
 
   return (
     <Container
@@ -62,15 +64,35 @@ const SignInPage: NextPage = () => {
         Dive log built for the modern age
       </Typography>
 
-      <Box component="form" display="flex" flexDirection="column" mt={4} gap={2} onSubmit={
-        (e: React.FormEvent<HTMLFormElement>) => {
-          e.preventDefault()
-          handleLogin(email, password)
-
-        }
-      }>
-        <Input required variant="soft" size="lg" placeholder="Email" type="email" onChange={handleEmailChange} value={email}></Input>
-        <Input required variant="soft" size="lg" placeholder="Password" type="password" onChange={handlePasswordChange} value={password}></Input>
+      <Box
+        component="form"
+        display="flex"
+        flexDirection="column"
+        mt={4}
+        gap={2}
+        onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
+          e.preventDefault();
+          handleSignIn(email, password);
+        }}
+      >
+        <Input
+          required
+          variant="soft"
+          size="lg"
+          placeholder="Email"
+          type="email"
+          onChange={handleEmailChange}
+          value={email}
+        ></Input>
+        <Input
+          required
+          variant="soft"
+          size="lg"
+          placeholder="Password"
+          type="password"
+          onChange={handlePasswordChange}
+          value={password}
+        ></Input>
 
         <Button
           type="submit"
@@ -90,8 +112,6 @@ const SignInPage: NextPage = () => {
       <Button variant="plain" size="sm" sx={{ mt: 2 }}>
         Sign up
       </Button>
-    </Container >
+    </Container>
   );
 };
-
-export default SignInPage;
