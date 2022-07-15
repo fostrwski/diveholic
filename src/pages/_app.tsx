@@ -1,12 +1,15 @@
 import { CssVarsProvider } from "@mui/joy/styles";
+import { UserProvider } from "@supabase/supabase-auth-helpers/react"
+import { supabase } from "common/utils/supabaseClient";
 import type { AppProps } from "next/app";
 
-function MyApp({ Component, pageProps }: AppProps) {
+export default function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <CssVarsProvider>
-      <Component {...pageProps} />
-    </CssVarsProvider>
+    <UserProvider supabaseClient={supabase}>
+      <CssVarsProvider>
+        <Component {...pageProps} />
+      </CssVarsProvider>
+    </UserProvider>
   );
 }
 
-export default MyApp;
