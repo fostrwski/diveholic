@@ -33,17 +33,17 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
     setMode("light");
   }, []);
 
-  const router = useRouter()
+  const router = useRouter();
 
   const handleSignOut = async () => {
     try {
-      const { error } = await supabase.auth.signOut()
-      if (error) throw error
-      router.push("/signin")
+      const { error } = await supabase.auth.signOut();
+      if (error) throw error;
+      router.push("/signin");
     } catch (error) {
-      alert(error)
+      alert(error);
     }
-  }
+  };
 
   return (
     <Container>
@@ -75,11 +75,26 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
         {children}
       </Box>
 
-      <Box component="footer" mt={6} py={4} display="flex" alignItems="center" justifyContent="space-between" gap={2}>
+      <Box
+        component="footer"
+        mt={6}
+        py={4}
+        display="flex"
+        alignItems="center"
+        justifyContent="space-between"
+        gap={2}
+      >
         <Typography textColor="neutral.400">
           &copy; {new Date().getFullYear()} Diveholic
         </Typography>
-        <Button color="neutral" variant="plain" size="sm" onClick={handleSignOut}>Sign out</Button>
+        <Button
+          color="neutral"
+          variant="plain"
+          size="sm"
+          onClick={handleSignOut}
+        >
+          Sign out
+        </Button>
       </Box>
     </Container>
   );

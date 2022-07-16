@@ -27,11 +27,13 @@ export default function AccountPage({ user }: { user: User }) {
 
         <List sx={{ width: "100%" }} size="lg">
           <ListItem>
-            <ListItemDecorator><EditRounded /></ListItemDecorator>
-            <ListItemContent sx={{ display: "flex", justifyContent: "space-between", gap: 2 }}>
-              <Typography>
-                First name
-              </Typography>
+            <ListItemDecorator>
+              <EditRounded />
+            </ListItemDecorator>
+            <ListItemContent
+              sx={{ display: "flex", justifyContent: "space-between", gap: 2 }}
+            >
+              <Typography>First name</Typography>
               <Typography fontWeight="md" textColor="neutral.400">
                 {" " + firstName}
               </Typography>
@@ -39,11 +41,13 @@ export default function AccountPage({ user }: { user: User }) {
           </ListItem>
 
           <ListItem>
-            <ListItemDecorator><EditRounded /></ListItemDecorator>
-            <ListItemContent sx={{ display: "flex", justifyContent: "space-between", gap: 2 }}>
-              <Typography>
-                Last name
-              </Typography>
+            <ListItemDecorator>
+              <EditRounded />
+            </ListItemDecorator>
+            <ListItemContent
+              sx={{ display: "flex", justifyContent: "space-between", gap: 2 }}
+            >
+              <Typography>Last name</Typography>
               <Typography fontWeight="md" textColor="neutral.400">
                 {" " + lastName}
               </Typography>
@@ -51,6 +55,6 @@ export default function AccountPage({ user }: { user: User }) {
           </ListItem>
         </List>
       </Box>
-    </DefaultLayout >
+    </DefaultLayout>
   );
 }

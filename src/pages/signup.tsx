@@ -34,7 +34,7 @@ export default function SignUpPage() {
     setLastName(e.target.value);
   };
 
-  const router = useRouter()
+  const router = useRouter();
   const [loading, setLoading] = useState<boolean>(false);
   const [success, setSuccess] = useState<boolean | null>(null);
 
@@ -57,7 +57,7 @@ export default function SignUpPage() {
       if (error) throw error;
       setLoading(false);
       setSuccess(true);
-      router.push("/signin")
+      router.push("/signin");
     } catch (error: any) {
       console.error(error.error_description || error.message);
     } finally {

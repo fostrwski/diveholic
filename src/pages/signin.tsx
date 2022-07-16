@@ -11,16 +11,16 @@ import { supabase } from "common/utils/supabaseClient";
 import DoneRounded from "@mui/icons-material/DoneRounded";
 import { useRouter } from "next/router";
 import NextLink from "next/link";
-import MailRounded from "@mui/icons-material/MailRounded"
+import MailRounded from "@mui/icons-material/MailRounded";
 import KeyRounded from "@mui/icons-material/KeyRounded";
 import { useUser } from "@supabase/supabase-auth-helpers/react";
 
 export default function SignInPage() {
-  const router = useRouter()
-  const { user } = useUser()
+  const router = useRouter();
+  const { user } = useUser();
 
   if (user) {
-    router.push("/")
+    router.push("/");
   }
 
   const [email, setEmail] = useState<string>("");
@@ -52,7 +52,15 @@ export default function SignInPage() {
 
   return (
     <Container
-      sx={{ py: 12, textAlign: "center", display: "flex", flexDirection: "column", justifyContent: "space-between", gap: 4, height: "100vh" }}
+      sx={{
+        py: 12,
+        textAlign: "center",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+        gap: 4,
+        height: "100vh",
+      }}
       maxWidth="sm"
     >
       <div>

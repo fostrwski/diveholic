@@ -9,11 +9,10 @@ import Checklist from "./Checklist";
 import { User } from "@supabase/supabase-auth-helpers/nextjs";
 
 interface HomeProps {
-  user: User
+  user: User;
 }
 
 const Home: React.FC<HomeProps> = ({ user }) => {
-
   return (
     <>
       <Typography level="h4" component="div">
