@@ -10,7 +10,7 @@ import { useState } from "react";
 import { supabase } from "common/utils/supabaseClient";
 import DoneRounded from "@mui/icons-material/DoneRounded";
 import NextLink from "next/link";
-import router from "next/router";
+import { useRouter } from "next/router";
 
 export default function SignUpPage() {
   const [email, setEmail] = useState<string>("");
@@ -34,6 +34,7 @@ export default function SignUpPage() {
     setLastName(e.target.value);
   };
 
+  const router = useRouter()
   const [loading, setLoading] = useState<boolean>(false);
   const [success, setSuccess] = useState<boolean | null>(null);
 

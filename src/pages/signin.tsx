@@ -9,12 +9,20 @@ import LoginRounded from "@mui/icons-material/LoginRounded";
 import { useState } from "react";
 import { supabase } from "common/utils/supabaseClient";
 import DoneRounded from "@mui/icons-material/DoneRounded";
-import router from "next/router";
+import { useRouter } from "next/router";
 import NextLink from "next/link";
 import MailRounded from "@mui/icons-material/MailRounded"
 import KeyRounded from "@mui/icons-material/KeyRounded";
+import { useUser } from "@supabase/supabase-auth-helpers/react";
 
 export default function SignInPage() {
+  const router = useRouter()
+  const { user } = useUser()
+
+  if (user) {
+    router.push("/")
+  }
+
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
@@ -30,13 +38,11 @@ export default function SignInPage() {
   const [success, setSuccess] = useState<boolean | null>(null);
 
   const handleSignIn = async (email: string, password: string) => {
-    setLoading(true);
     try {
+      setLoading(true);
       const { error } = await supabase.auth.signIn({ email, password });
       if (error) throw error;
-      setLoading(false);
       setSuccess(true);
-      router.push("/");
     } catch (error: any) {
       console.error(error.error_description || error.message);
     } finally {
@@ -46,7 +52,7 @@ export default function SignInPage() {
 
   return (
     <Container
-      sx={{ py: 12, textAlign: "center", display: "flex", flexDirection: "column", justifyContent: "space-between", gap:4 , height: "100vh" }}
+      sx={{ py: 12, textAlign: "center", display: "flex", flexDirection: "column", justifyContent: "space-between", gap: 4, height: "100vh" }}
       maxWidth="sm"
     >
       <div>
@@ -116,7 +122,7 @@ export default function SignInPage() {
         </Box>
       </div>
 
-      <Box>
+      <div>
         <Typography>Don't have an account?</Typography>
 
         <NextLink href="/signup" passHref>
@@ -124,7 +130,7 @@ export default function SignInPage() {
             Sign up
           </JoyLink>
         </NextLink>
-      </Box>
+      </div>
     </Container>
   );
 }
