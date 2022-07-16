@@ -46,7 +46,7 @@ export default function SignInPage() {
 
   return (
     <Container
-      sx={{ py: 12, textAlign: "center", display: "flex", flexDirection: "column", justifyContent: "space-between", minHeight: "100vh" }}
+      sx={{ py: 12, textAlign: "center", display: "flex", flexDirection: "column", justifyContent: "space-between", gap:4 , height: "100vh" }}
       maxWidth="sm"
     >
       <div>
