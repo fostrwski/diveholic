@@ -10,7 +10,7 @@ import { useColorScheme } from "@mui/joy";
 import { useUser } from "@supabase/supabase-auth-helpers/react";
 import generateInitials from "common/utils/generateInitials";
 import { supabase } from "common/utils/supabaseClient";
-import router from "next/router";
+import { useRouter } from "next/router";
 
 interface DefaultLayoutProps {
   children: React.ReactNode;
@@ -33,9 +33,16 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
     setMode("light");
   }, []);
 
-  const handleSignOut = () => {
-    supabase.auth.signOut()
-    router.push("/signin")
+  const router = useRouter()
+
+  const handleSignOut = async () => {
+    try {
+      const { error } = await supabase.auth.signOut()
+      if (error) throw error
+      router.push("/signin")
+    } catch (error) {
+      alert(error)
+    }
   }
 
   return (
