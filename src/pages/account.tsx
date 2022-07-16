@@ -5,6 +5,11 @@ import Avatar from "@mui/joy/Avatar";
 import generateInitials from "common/utils/generateInitials";
 import Typography from "@mui/joy/Typography";
 import Box from "@mui/joy/Box";
+import ListItem from "@mui/joy/ListItem";
+import List from "@mui/joy/List";
+import ListItemDecorator from "@mui/joy/ListItemDecorator";
+import ListItemContent from "@mui/joy/ListItemContent";
+import EditRounded from "@mui/icons-material/EditRounded";
 
 export const getServerSideProps = withAuthRequired({ redirectTo: "/signin" });
 
@@ -20,20 +25,32 @@ export default function AccountPage({ user }: { user: User }) {
           </Typography>
         </Avatar>
 
-        <Typography level="h4" component="div" fontWeight="md">
-          First name
-          <Typography component="span" fontWeight="lg" textColor="neutral.400">
-            {" " + firstName}
-          </Typography>
-        </Typography>
+        <List sx={{ width: "100%" }} size="lg">
+          <ListItem>
+            <ListItemDecorator><EditRounded /></ListItemDecorator>
+            <ListItemContent sx={{ display: "flex", justifyContent: "space-between", gap: 2 }}>
+              <Typography>
+                First name
+              </Typography>
+              <Typography fontWeight="md" textColor="neutral.400">
+                {" " + firstName}
+              </Typography>
+            </ListItemContent>
+          </ListItem>
 
-        <Typography level="h4" component="div" fontWeight="md">
-          Last name
-          <Typography component="span" fontWeight="lg" textColor="neutral.400">
-            {" " + lastName}
-          </Typography>
-        </Typography>
+          <ListItem>
+            <ListItemDecorator><EditRounded /></ListItemDecorator>
+            <ListItemContent sx={{ display: "flex", justifyContent: "space-between", gap: 2 }}>
+              <Typography>
+                Last name
+              </Typography>
+              <Typography fontWeight="md" textColor="neutral.400">
+                {" " + lastName}
+              </Typography>
+            </ListItemContent>
+          </ListItem>
+        </List>
       </Box>
-    </DefaultLayout>
+    </DefaultLayout >
   );
 }
