@@ -17,7 +17,6 @@ const Statistics: React.FC = () => {
         size="lg"
         sx={{
           mt: 2,
-          "--List-item-paddingX": "0px",
           "--List-item-minHeight": "6px",
         }}
       >

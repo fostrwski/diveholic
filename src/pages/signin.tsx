@@ -1,8 +1,6 @@
-import SignIn from "modules/SignIn"
-import React from "react"
+import SignIn from "modules/SignIn";
+import React from "react";
 
 export default function SignInPage() {
-  return (
-    <SignIn />
-  )
+  return <SignIn />;
 }

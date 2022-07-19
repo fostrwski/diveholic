@@ -31,7 +31,7 @@ const Checklist: React.FC = () => {
       <Grid container spacing={2} sx={{ mt: 2 }}>
         {gear.map((item: any) => (
           <Grid xs={6} key={item}>
-            <Checkbox label={item} size="lg" variant="soft" color="neutral" />
+            <Checkbox label={item} size="lg" />
           </Grid>
         ))}
       </Grid>

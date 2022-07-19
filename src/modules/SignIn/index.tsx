@@ -73,7 +73,7 @@ const SignIn: React.FC = () => {
             layout="fixed"
             alt="Diver down flag"
           />
-          <Typography level="h2" component="div">
+          <Typography level="h2" component="p">
             Diveholic
           </Typography>
         </Box>
@@ -94,9 +94,6 @@ const SignIn: React.FC = () => {
           }}
         >
           <Input
-            required
-            variant="outlined"
-            size="lg"
             placeholder="Email"
             startDecorator={<MailRounded />}
             type="email"
@@ -105,9 +102,6 @@ const SignIn: React.FC = () => {
             sx={{ "--Input-radius": "14px" }}
           />
           <Input
-            required
-            variant="outlined"
-            size="lg"
             placeholder="Password"
             startDecorator={<KeyRounded />}
             type="password"
@@ -119,9 +113,8 @@ const SignIn: React.FC = () => {
           <Button
             type="submit"
             color={success ? "success" : "primary"}
-            variant="soft"
             size="lg"
-            sx={{ mt: 2, "--Button-radius": "14px" }}
+            sx={{ mt: 2 }}
             startIcon={success ? <DoneRounded /> : <LoginRounded />}
             disabled={loading}
           >
@@ -131,16 +124,14 @@ const SignIn: React.FC = () => {
       </div>
 
       <div>
-        <Typography>Don't have an account?</Typography>
+        <Typography component="p">Don't have an account?</Typography>
 
         <NextLink href="/signup" passHref>
-          <JoyLink variant="plain" sx={{ mt: 2 }}>
-            Sign up
-          </JoyLink>
+          <JoyLink sx={{ mt: 2 }}>Sign up</JoyLink>
         </NextLink>
       </div>
     </Container>
   );
-}
+};
 
-export default SignIn
+export default SignIn;

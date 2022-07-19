@@ -23,12 +23,7 @@ const Home: React.FC<HomeProps> = ({ user }) => {
         You've logged 2 dives so far
       </Typography>
 
-      <Button
-        size="lg"
-        variant="soft"
-        startIcon={<AddRounded />}
-        sx={{ mt: 2, mb: 6 }}
-      >
+      <Button size="lg" startIcon={<AddRounded />} sx={{ mt: 2, mb: 6 }}>
         Log dive
       </Button>
 
