@@ -5,7 +5,7 @@ import LocationOnRounded from "@mui/icons-material/LocationOnRounded";
 import ScubaDivingRounded from "@mui/icons-material/ScubaDivingRounded";
 import Avatar from "@mui/joy/Avatar";
 import Box from "@mui/joy/Box";
-import Button from "@mui/joy/Button";
+import JoyLink from "@mui/joy/Link";
 import Card from "@mui/joy/Card";
 import CardContent from "@mui/joy/CardContent";
 import Chip from "@mui/joy/Chip";
@@ -28,7 +28,7 @@ const LatestDives: React.FC = () => {
         <Typography level="h4" component="div">
           Your dives
         </Typography>
-        <Button variant="plain">See all</Button>
+        <JoyLink>See all</JoyLink>
       </Box>
 
       <Grid container gap={2}>
