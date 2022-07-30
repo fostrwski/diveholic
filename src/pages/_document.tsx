@@ -7,7 +7,7 @@ export default class MyDocument extends Document {
       <Html>
         <Head></Head>
         <body>
-          {getInitColorSchemeScript()}
+          {getInitColorSchemeScript({ enableSystem: true })}
           <Main />
           <NextScript />
         </body>
