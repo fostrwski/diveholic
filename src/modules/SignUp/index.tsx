@@ -71,81 +71,93 @@ const SignUp: React.FC = () => {
   return (
     <Container
       component="main"
-      sx={{ my: 12, textAlign: "center" }}
+      sx={{
+        py: 12,
+        display: "flex",
+        textAlign: "center",
+        flexDirection: "column",
+        justifyContent: "space-between",
+        gap: 4,
+        height: "100vh",
+      }}
       maxWidth="sm"
     >
-      <Box display="flex" justifyContent="center" alignItems="center" gap={2}>
-        <Image
-          src="/diver_down_flag.svg"
-          style={{ borderRadius: 4 }}
-          width={54}
-          height={36}
-          layout="fixed"
-          alt="Diver down flag"
-        />
-        <Typography level="h2" component="p">
-          Diveholic
+      <div>
+        <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", gap: 2 }}>
+          <Image
+            src="/diver_down_flag.svg"
+            style={{ borderRadius: 4 }}
+            width={54}
+            height={36}
+            layout="fixed"
+            alt="Diver down flag"
+          />
+          <Typography level="h2" component="p">
+            Diveholic
+          </Typography>
+        </Box>
+
+        <Typography textColor="neutral.400" level="h6" component="p" mt={2}>
+          Dive log built for the modern age
         </Typography>
-      </Box>
 
-      <Typography textColor="neutral.400" level="h6" component="p" mt={2}>
-        Dive log built for the modern age
-      </Typography>
-
-      <Typography level="h5" component="p" mt={4}>
-        Create account
-      </Typography>
-
-      <Box
-        component="form"
-        display="flex"
-        flexDirection="column"
-        mt={2}
-        gap={2}
-        onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
-          e.preventDefault();
-          handleSignUp(email, password);
-        }}
-      >
-        <Input
-          placeholder="Email"
-          type="email"
-          startDecorator={<MailRounded />}
-          onChange={handleEmailChange}
-          value={email}
-        />
-        <Input
-          placeholder="Password"
-          type="password"
-          startDecorator={<KeyRounded />}
-          onChange={handlePasswordChange}
-          value={password}
-        />
-        <Input
-          placeholder="First name"
-          type="text"
-          startDecorator={<PersonRounded />}
-          onChange={handleFirstNameChange}
-          value={firstName}
-        />
-
-        <Button
-          color={success ? "success" : "primary"}
-          type="submit"
-          size="lg"
-          sx={{ mt: 2, width: "100%" }}
-          startIcon={success ? <DoneRounded /> : <PersonAddAltRounded />}
-          disabled={loading}
-        >
+        <Typography level="h5" component="p" mt={4}>
           Create account
-        </Button>
-      </Box>
+        </Typography>
 
-      <Typography mt={8}>Already have an account? </Typography>
+        <Box
+          component="form"
+          display="flex"
+          flexDirection="column"
+          mt={2}
+          gap={2}
+          onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
+            e.preventDefault();
+            handleSignUp(email, password);
+          }}
+        >
+          <Input
+            placeholder="Email"
+            type="email"
+            startDecorator={<MailRounded />}
+            onChange={handleEmailChange}
+            value={email}
+          />
+          <Input
+            placeholder="Password"
+            type="password"
+            startDecorator={<KeyRounded />}
+            onChange={handlePasswordChange}
+            value={password}
+          />
+          <Input
+            placeholder="First name"
+            type="text"
+            startDecorator={<PersonRounded />}
+            onChange={handleFirstNameChange}
+            value={firstName}
+          />
 
-      <NextLink href="/signin" passHref>
-        <JoyLink sx={{ mt: 2 }}>Sign in</JoyLink>
-      </NextLink>
+          <Button
+            color={success ? "success" : "primary"}
+            type="submit"
+            size="lg"
+            sx={{ mt: 2, width: "100%" }}
+            startIcon={success ? <DoneRounded /> : <PersonAddAltRounded />}
+            disabled={loading}
+          >
+            Create account
+          </Button>
+        </Box>
+      </div>
+
+      <div>
+        <Typography component="p">Already have an account? </Typography>
+
+        <NextLink href="/signin" passHref>
+          <JoyLink mt={2}>Sign in</JoyLink>
+        </NextLink>
+      </div>
     </Container>
   );
 }

@@ -6,7 +6,6 @@ import Image from "next/image";
 import Avatar from "@mui/joy/Avatar";
 import Button from "@mui/joy/Button";
 import { useEffect } from "react";
-import { useColorScheme } from "@mui/joy";
 import { useUser } from "@supabase/supabase-auth-helpers/react";
 import generateInitials from "common/utils/generateInitials";
 import { supabase } from "common/utils/supabaseClient";
@@ -26,12 +25,6 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
       setInitials(generateInitials(firstName, lastName));
     }
   }, [user]);
-
-  const { mode, setMode } = useColorScheme();
-
-  useEffect(() => {
-    setMode("light");
-  }, []);
 
   const router = useRouter();
 

@@ -13,6 +13,7 @@ import { useRouter } from "next/router";
 import NextLink from "next/link";
 import MailRounded from "@mui/icons-material/MailRounded";
 import KeyRounded from "@mui/icons-material/KeyRounded";
+import FormHelperText from "@mui/joy/FormHelperText"
 import { useUser } from "@supabase/supabase-auth-helpers/react";
 
 const SignIn: React.FC = () => {
@@ -36,12 +37,13 @@ const SignIn: React.FC = () => {
 
   const [loading, setLoading] = useState<boolean>(false);
   const [success, setSuccess] = useState<boolean | null>(null);
+  const [error, setError] = useState<boolean>(false);
 
   const handleSignIn = async (email: string, password: string) => {
     try {
       setLoading(true);
       const { error } = await supabase.auth.signIn({ email, password });
-      if (error) throw error;
+      if (error) return setError(true)
       setSuccess(true);
     } catch (error: any) {
       console.error(error.error_description || error.message);
@@ -99,7 +101,6 @@ const SignIn: React.FC = () => {
             type="email"
             onChange={handleEmailChange}
             value={email}
-            sx={{ "--Input-radius": "14px" }}
           />
           <Input
             placeholder="Password"
@@ -107,7 +108,6 @@ const SignIn: React.FC = () => {
             type="password"
             onChange={handlePasswordChange}
             value={password}
-            sx={{ "--Input-radius": "14px" }}
           />
 
           <Button
@@ -127,7 +127,7 @@ const SignIn: React.FC = () => {
         <Typography component="p">Don't have an account?</Typography>
 
         <NextLink href="/signup" passHref>
-          <JoyLink sx={{ mt: 2 }}>Sign up</JoyLink>
+          <JoyLink mt={2}>Sign up</JoyLink>
         </NextLink>
       </div>
     </Container>
