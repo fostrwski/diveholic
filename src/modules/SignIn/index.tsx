@@ -13,7 +13,6 @@ import { useRouter } from "next/router";
 import NextLink from "next/link";
 import MailRounded from "@mui/icons-material/MailRounded";
 import KeyRounded from "@mui/icons-material/KeyRounded";
-import FormHelperText from "@mui/joy/FormHelperText"
 import { useUser } from "@supabase/supabase-auth-helpers/react";
 
 const SignIn: React.FC = () => {
@@ -101,6 +100,7 @@ const SignIn: React.FC = () => {
             type="email"
             onChange={handleEmailChange}
             value={email}
+            size="lg"
           />
           <Input
             placeholder="Password"
@@ -108,6 +108,7 @@ const SignIn: React.FC = () => {
             type="password"
             onChange={handlePasswordChange}
             value={password}
+            size="lg"
           />
 
           <Button

@@ -37,7 +37,6 @@ const theme = extendTheme({
       defaultProps: {
         variant: "outlined",
         required: true,
-        size: "lg",
       },
     },
     JoyMenu: {
@@ -54,6 +53,11 @@ const theme = extendTheme({
           padding: "0 0.6rem",
           borderRadius: "var(--joy-radius-xs)"
         }
+      }
+    },
+    JoyRadio: {
+      defaultProps: {
+        color: "neutral"
       }
     }
   },

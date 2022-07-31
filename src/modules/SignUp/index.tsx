@@ -122,6 +122,7 @@ const SignUp: React.FC = () => {
             startDecorator={<MailRounded />}
             onChange={handleEmailChange}
             value={email}
+            size="lg"
           />
           <Input
             placeholder="Password"
@@ -129,6 +130,7 @@ const SignUp: React.FC = () => {
             startDecorator={<KeyRounded />}
             onChange={handlePasswordChange}
             value={password}
+            size="lg"
           />
           <Input
             placeholder="First name"
@@ -136,6 +138,7 @@ const SignUp: React.FC = () => {
             startDecorator={<PersonRounded />}
             onChange={handleFirstNameChange}
             value={firstName}
+            size="lg"
           />
 
           <Button
