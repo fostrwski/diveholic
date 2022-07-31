@@ -18,7 +18,7 @@ interface AccountProps {
 }
 
 const Account: React.FC<AccountProps> = ({ user }) => {
-  const { email, password } = user
+  const { email } = user
   const { first_name: firstName } = user.user_metadata;
   const { mode, setMode } = useColorScheme();
   const [mounted, setMounted] = useState<boolean>(false);
@@ -53,14 +53,6 @@ const Account: React.FC<AccountProps> = ({ user }) => {
           variant="soft"
           value={email}
           type="email"
-        />
-
-        <Typography gutterBottom mt={2}>Password</Typography>
-        <Input
-          startDecorator={<EditRounded />}
-          variant="soft"
-          value={password}
-          type="password"
         />
 
         <Typography gutterBottom mt={2}>First name</Typography>
