@@ -14,12 +14,12 @@ import { useRouter } from "next/router";
 import { PersonRounded } from "@mui/icons-material";
 import KeyRounded from "@mui/icons-material/KeyRounded";
 import MailRounded from "@mui/icons-material/MailRounded";
+import { useUser } from "@supabase/supabase-auth-helpers/react";
 
 const SignUp: React.FC = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [firstName, setFirstName] = useState<string>("");
-  const [lastName, setLastName] = useState<string>("");
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
@@ -33,34 +33,33 @@ const SignUp: React.FC = () => {
     setFirstName(e.target.value);
   };
 
-  const handleLastNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setLastName(e.target.value);
-  };
-
   const router = useRouter();
+  const { user } = useUser()
+
+  if (user) {
+    router.push("/")
+  }
+
   const [loading, setLoading] = useState<boolean>(false);
   const [success, setSuccess] = useState<boolean | null>(null);
+  const [error, setError] = useState<boolean>(false);
 
   const handleSignUp = async (email: string, password: string) => {
-    setLoading(true);
-
-    if (!email || !password || !firstName || !lastName)
-      return setLoading(false);
-
     try {
+      setLoading(true);
+      if (!email || !password || !firstName)
+        return setLoading(false);
+
       const { error } = await supabase.auth.signUp(
         { email, password },
         {
           data: {
             first_name: firstName,
-            last_name: lastName,
           },
         }
       );
-      if (error) throw error;
-      setLoading(false);
+      if (error) return setError(true);
       setSuccess(true);
-      router.push("/signin");
     } catch (error: any) {
       console.error(error.error_description || error.message);
     } finally {

@@ -22,8 +22,8 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
 
   useEffect(() => {
     if (user) {
-      const { first_name: firstName, last_name: lastName } = user.user_metadata;
-      setInitials(generateInitials(firstName, lastName));
+      const { first_name: firstName } = user.user_metadata;
+      setInitials(generateInitials(firstName, firstName));
     }
   }, [user]);
 

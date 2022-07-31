@@ -18,7 +18,8 @@ interface AccountProps {
 }
 
 const Account: React.FC<AccountProps> = ({ user }) => {
-  const { first_name: firstName, last_name: lastName } = user.user_metadata;
+  const { email, password } = user
+  const { first_name: firstName } = user.user_metadata;
   const { mode, setMode } = useColorScheme();
   const [mounted, setMounted] = useState<boolean>(false);
 
@@ -36,7 +37,7 @@ const Account: React.FC<AccountProps> = ({ user }) => {
       <Box display="flex" alignItems="center" flexDirection="column">
         <Avatar sx={{ width: 140, height: 140 }} size="lg">
           <Typography level="display2">
-            {generateInitials(firstName, lastName)}
+            {generateInitials(firstName, firstName)}
           </Typography>
         </Avatar>
       </Box>
@@ -46,21 +47,28 @@ const Account: React.FC<AccountProps> = ({ user }) => {
           Account
         </Typography>
 
-        <Typography gutterBottom>First name</Typography>
+        <Typography gutterBottom mt={2}>Email</Typography>
+        <Input
+          startDecorator={<EditRounded />}
+          variant="soft"
+          value={email}
+          type="email"
+        />
+
+        <Typography gutterBottom mt={2}>Password</Typography>
+        <Input
+          startDecorator={<EditRounded />}
+          variant="soft"
+          value={password}
+          type="password"
+        />
+
+        <Typography gutterBottom mt={2}>First name</Typography>
         <Input
           startDecorator={<EditRounded />}
           variant="soft"
           value={firstName}
-        ></Input>
-
-        <Typography gutterBottom mt={2}>
-          Last name
-        </Typography>
-        <Input
-          startDecorator={<EditRounded />}
-          variant="soft"
-          value={lastName}
-        ></Input>
+        />
 
         <Box textAlign="right">
           <Button color="success" sx={{ mt: 4 }}>
