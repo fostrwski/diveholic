@@ -42,7 +42,7 @@ const SignIn: React.FC = () => {
     try {
       setLoading(true);
       const { error } = await supabase.auth.signIn({ email, password });
-      if (error) return setError(true)
+      if (error) return setError(true);
       setSuccess(true);
     } catch (error: any) {
       console.error(error.error_description || error.message);

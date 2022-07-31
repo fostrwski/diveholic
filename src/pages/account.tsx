@@ -5,8 +5,5 @@ import React from "react";
 export const getServerSideProps = withAuthRequired({ redirectTo: "/signin" });
 
 export default function AccountPage({ user }: { user: User }) {
-
-  return (
-    <Account user={user} />
-  );
+  return <Account user={user} />;
 }

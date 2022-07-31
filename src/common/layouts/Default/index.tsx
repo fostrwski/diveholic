@@ -68,13 +68,13 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
             sx={{
               fontWeight: "lg",
               "&:hover": {
-                cursor: "pointer"
-              }
+                cursor: "pointer",
+              },
             }}
-
-          >{initials}</Avatar>
+          >
+            {initials}
+          </Avatar>
         </NextLink>
-
       </Box>
 
       <Box component="main" sx={{ minHeight: "100vh" }}>
@@ -102,7 +102,7 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
           Sign out
         </Button>
       </Box>
-    </Container >
+    </Container>
   );
 };
 

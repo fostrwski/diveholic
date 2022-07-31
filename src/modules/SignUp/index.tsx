@@ -83,7 +83,14 @@ const SignUp: React.FC = () => {
       maxWidth="sm"
     >
       <div>
-        <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", gap: 2 }}>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            gap: 2,
+          }}
+        >
           <Image
             src="/diver_down_flag.svg"
             style={{ borderRadius: 4 }}
@@ -163,6 +170,6 @@ const SignUp: React.FC = () => {
       </div>
     </Container>
   );
-}
+};
 
-export default SignUp
+export default SignUp;

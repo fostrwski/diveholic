@@ -40,26 +40,25 @@ const theme = extendTheme({
       },
     },
     JoyMenu: {
-      styleOverrides:
-      {
+      styleOverrides: {
         root: {
-          padding: "0.4rem"
-        }
-      }
+          padding: "0.4rem",
+        },
+      },
     },
     JoyMenuItem: {
       styleOverrides: {
         root: {
           padding: "0 0.6rem",
-          borderRadius: "var(--joy-radius-xs)"
-        }
-      }
+          borderRadius: "var(--joy-radius-xs)",
+        },
+      },
     },
     JoyRadio: {
       defaultProps: {
-        color: "neutral"
-      }
-    }
+        color: "neutral",
+      },
+    },
   },
 });
 

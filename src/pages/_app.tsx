@@ -7,7 +7,11 @@ import type { AppProps } from "next/app";
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <UserProvider supabaseClient={supabase}>
-      <CssVarsProvider theme={theme} defaultMode="system" disableTransitionOnChange>
+      <CssVarsProvider
+        theme={theme}
+        defaultMode="system"
+        disableTransitionOnChange
+      >
         <Component {...pageProps} />
       </CssVarsProvider>
     </UserProvider>
