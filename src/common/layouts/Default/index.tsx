@@ -5,11 +5,16 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Avatar from "@mui/joy/Avatar";
 import Button from "@mui/joy/Button";
+import Menu from "@mui/joy/Menu"
+import MenuItem from "@mui/joy/MenuItem"
 import { useEffect } from "react";
 import { useUser } from "@supabase/supabase-auth-helpers/react";
 import generateInitials from "common/utils/generateInitials";
 import { supabase } from "common/utils/supabaseClient";
 import { useRouter } from "next/router";
+import { DarkModeRounded, LightModeRounded, SettingsRounded } from "@mui/icons-material";
+import ListItemDecorator from "@mui/joy/ListItemDecorator";
+import { useColorScheme } from "@mui/joy";
 
 interface DefaultLayoutProps {
   children: React.ReactNode;
@@ -38,6 +43,23 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
     }
   };
 
+
+  // Menu state
+  const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
+  const isOpen = Boolean(anchorEl);
+
+  const handleAvatarClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (isOpen) return setAnchorEl(null)
+    return setAnchorEl(e.currentTarget)
+  }
+
+  const handleMenuClose = () => {
+    setAnchorEl(null)
+  }
+
+  // Dark mode
+  const { mode, setMode } = useColorScheme()
+
   return (
     <Container>
       <Box
@@ -61,7 +83,31 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
           </Typography>
         </Box>
 
-        <Avatar sx={{ fontWeight: "lg" }}>{initials}</Avatar>
+        {/* @ts-ignore */}
+        <Avatar
+          sx={{
+            fontWeight: "lg",
+            "&:hover": {
+              cursor: "pointer"
+            }
+          }}
+          onClick={handleAvatarClick}
+        >{initials}</Avatar>
+
+        {/* @ts-ignore */}
+        <Menu open={isOpen} anchorEl={anchorEl} close={handleMenuClose}>
+          <MenuItem onClick={() => setMode(mode === "dark" ? "light" : "dark")}>
+            <ListItemDecorator>
+              {mode === "dark" ? <LightModeRounded /> : <DarkModeRounded />}
+            </ListItemDecorator>
+            {mode === "dark" ? "Light mode" : "Dark mode"}
+          </MenuItem>
+          <MenuItem>
+            <ListItemDecorator>
+              <SettingsRounded />
+            </ListItemDecorator>
+            Preferences</MenuItem>
+        </Menu>
       </Box>
 
       <Box component="main" sx={{ minHeight: "100vh" }}>

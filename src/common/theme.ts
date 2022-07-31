@@ -40,6 +40,22 @@ const theme = extendTheme({
         size: "lg",
       },
     },
+    JoyMenu: {
+      styleOverrides:
+      {
+        root: {
+          padding: "0.4rem"
+        }
+      }
+    },
+    JoyMenuItem: {
+      styleOverrides: {
+        root: {
+          padding: "0 0.6rem",
+          borderRadius: "var(--joy-radius-xs)"
+        }
+      }
+    }
   },
 });
 
