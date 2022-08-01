@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { User } from "@supabase/supabase-auth-helpers/nextjs";
+import { User } from "@supabase/auth-helpers-nextjs";
 import Avatar from "@mui/joy/Avatar";
 import generateInitials from "common/utils/generateInitials";
 import Typography from "@mui/joy/Typography";
@@ -18,7 +18,7 @@ interface AccountProps {
 
 const Account: React.FC<AccountProps> = ({ user }) => {
   const { email } = user
-  const { first_name: firstName } = user.user_metadata;
+  const firstName = user.user_metadata.first_name;
   const { mode, setMode } = useColorScheme();
   const [mounted, setMounted] = useState<boolean>(false);
 

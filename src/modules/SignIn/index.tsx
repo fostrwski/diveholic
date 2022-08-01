@@ -13,7 +13,7 @@ import { useRouter } from "next/router";
 import NextLink from "next/link";
 import MailRounded from "@mui/icons-material/MailRounded";
 import KeyRounded from "@mui/icons-material/KeyRounded";
-import { useUser } from "@supabase/supabase-auth-helpers/react";
+import { useUser } from "@supabase/auth-helpers-react";
 
 const SignIn: React.FC = () => {
   const router = useRouter();

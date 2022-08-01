@@ -6,7 +6,7 @@ import Image from "next/image";
 import Avatar from "@mui/joy/Avatar";
 import Button from "@mui/joy/Button";
 import { useEffect } from "react";
-import { useUser } from "@supabase/supabase-auth-helpers/react";
+import { useUser } from "@supabase/auth-helpers-react";
 import generateInitials from "common/utils/generateInitials";
 import { supabase } from "common/utils/supabaseClient";
 import { useRouter } from "next/router";

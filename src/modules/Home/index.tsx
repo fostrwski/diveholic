@@ -6,7 +6,7 @@ import AddRounded from "@mui/icons-material/AddRounded";
 import LatestDives from "./LatestDives";
 import Statistics from "./Statistics";
 import Checklist from "./Checklist";
-import { User } from "@supabase/supabase-auth-helpers/nextjs";
+import { User } from "@supabase/auth-helpers-nextjs";
 
 interface HomeProps {
   user: User;

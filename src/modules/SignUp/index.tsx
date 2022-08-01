@@ -14,7 +14,7 @@ import { useRouter } from "next/router";
 import { PersonRounded } from "@mui/icons-material";
 import KeyRounded from "@mui/icons-material/KeyRounded";
 import MailRounded from "@mui/icons-material/MailRounded";
-import { useUser } from "@supabase/supabase-auth-helpers/react";
+import { useUser } from "@supabase/auth-helpers-react";
 
 const SignUp: React.FC = () => {
   const [email, setEmail] = useState<string>("");
