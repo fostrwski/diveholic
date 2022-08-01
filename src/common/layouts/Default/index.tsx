@@ -18,6 +18,12 @@ interface DefaultLayoutProps {
 
 const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
   const { user } = useUser();
+  const router = useRouter();
+
+  if (!user) {
+    router.push("/signin")
+  }
+
   const [initials, setInitials] = useState<string>("");
 
   useEffect(() => {
@@ -27,13 +33,10 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
     }
   }, [user]);
 
-  const router = useRouter();
-
   const handleSignOut = async () => {
     try {
       const { error } = await supabase.auth.signOut();
       if (error) throw error;
-      router.push("/signin");
     } catch (error) {
       alert(error);
     }
