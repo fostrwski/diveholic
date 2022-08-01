@@ -16,7 +16,7 @@ const Home: React.FC<HomeProps> = ({ user }) => {
   return (
     <>
       <Typography level="h4" component="div">
-        Hi {user?.user_metadata.first_name} 🤿
+        Hi {user.user_metadata.first_name} 🤿
       </Typography>
 
       <Typography level="h6" textColor="neutral.400">
