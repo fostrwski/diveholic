@@ -48,8 +48,8 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
         display="flex"
         justifyContent="space-between"
       >
-        <NextLink href="/">
-          <Box display="flex" justifyContent="center" alignItems="center" gap={2}>
+        <NextLink href="/" passHref>
+          <Box component="a" display="flex" justifyContent="center" alignItems="center" gap={2} sx={{ textDecoration: "none" }}>
             <Image
               src="/diver_down_flag.svg"
               style={{ borderRadius: 4 }}
