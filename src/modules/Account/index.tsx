@@ -8,9 +8,10 @@ import Input from "@mui/joy/Input";
 import EditRounded from "@mui/icons-material/EditRounded";
 import Radio from "@mui/joy/Radio";
 import RadioGroup from "@mui/joy/RadioGroup";
-import { PersonRounded, TuneRounded } from "@mui/icons-material";
+import { EmailRounded, PersonRounded, TuneRounded } from "@mui/icons-material";
 import { useColorScheme } from "@mui/joy/styles";
 import Button from "@mui/joy/Button";
+import DoneRounded from "@mui/icons-material/DoneRounded";
 
 interface AccountProps {
   user: User;
@@ -48,23 +49,25 @@ const Account: React.FC<AccountProps> = ({ user }) => {
           Account
         </Typography>
 
-        <Typography gutterBottom mt={2}>Email</Typography>
+        <Typography textColor="neutral.600" fontWeight="md" gutterBottom mt={2}>Email</Typography>
         <Input
-          startDecorator={<EditRounded />}
+          startDecorator={<EmailRounded />}
+          endDecorator={<EditRounded />}
           variant="soft"
           value={newEmail}
           type="email"
         />
 
-        <Typography gutterBottom mt={2}>First name</Typography>
+        <Typography textColor="neutral.600" fontWeight="md" gutterBottom mt={2}>First name</Typography>
         <Input
-          startDecorator={<EditRounded />}
+          startDecorator={<PersonRounded />}
+          endDecorator={<EditRounded />}
           variant="soft"
           value={newFirstName}
         />
 
         <Box textAlign="right">
-          <Button color="success" sx={{ mt: 4 }}>
+          <Button startIcon={<DoneRounded />} color="success" sx={{ mt: 4 }}>
             Save
           </Button>
         </Box>
