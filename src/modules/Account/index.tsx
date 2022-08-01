@@ -18,7 +18,9 @@ interface AccountProps {
 
 const Account: React.FC<AccountProps> = ({ user }) => {
   const { email } = user
-  const firstName = user.user_metadata.first_name;
+  const { first_name: firstName } = user.user_metadata;
+  const [newFirstName, _setNewFirstName] = useState<string>(firstName)
+  const [newEmail, _setNewEmail] = useState<string>(email!)
   const { mode, setMode } = useColorScheme();
   const [mounted, setMounted] = useState<boolean>(false);
 
@@ -50,7 +52,7 @@ const Account: React.FC<AccountProps> = ({ user }) => {
         <Input
           startDecorator={<EditRounded />}
           variant="soft"
-          value={email}
+          value={newEmail}
           type="email"
         />
 
@@ -58,7 +60,7 @@ const Account: React.FC<AccountProps> = ({ user }) => {
         <Input
           startDecorator={<EditRounded />}
           variant="soft"
-          value={firstName}
+          value={newFirstName}
         />
 
         <Box textAlign="right">
