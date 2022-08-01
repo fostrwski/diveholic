@@ -9,7 +9,6 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     <UserProvider supabaseClient={supabase}>
       <CssVarsProvider
         theme={theme}
-        defaultMode="system"
         disableTransitionOnChange
       >
         <Component {...pageProps} />
