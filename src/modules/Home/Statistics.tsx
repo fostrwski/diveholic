@@ -1,3 +1,4 @@
+import { BarChartRounded } from "@mui/icons-material";
 import DownloadRounded from "@mui/icons-material/DownloadRounded";
 import TimelapseRounded from "@mui/icons-material/TimelapseRounded";
 import List from "@mui/joy/List";
@@ -9,7 +10,7 @@ import React from "react";
 const Statistics: React.FC = () => {
   return (
     <>
-      <Typography level="h4" component="div">
+      <Typography startDecorator={<BarChartRounded />} level="h4" component="div">
         Statistics
       </Typography>
 
