@@ -48,19 +48,21 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
         display="flex"
         justifyContent="space-between"
       >
-        <Box display="flex" justifyContent="center" alignItems="center" gap={2}>
-          <Image
-            src="/diver_down_flag.svg"
-            style={{ borderRadius: 4 }}
-            width={50}
-            height={32}
-            layout="fixed"
-            alt="Diver down flag"
-          />
-          <Typography level="h3" component="div" fontWeight="lg">
-            Diveholic
-          </Typography>
-        </Box>
+        <NextLink href="/">
+          <Box display="flex" justifyContent="center" alignItems="center" gap={2}>
+            <Image
+              src="/diver_down_flag.svg"
+              style={{ borderRadius: 4 }}
+              width={50}
+              height={32}
+              layout="fixed"
+              alt="Diver down flag"
+            />
+            <Typography level="h3" component="div" fontWeight="lg">
+              Diveholic
+            </Typography>
+          </Box>
+        </NextLink>
 
         <NextLink href="/account">
           <Avatar
