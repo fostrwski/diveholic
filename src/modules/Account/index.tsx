@@ -1,4 +1,3 @@
-import DefaultLayout from "common/layouts/Default";
 import React, { useEffect, useState } from "react";
 import { User } from "@supabase/supabase-auth-helpers/nextjs";
 import Avatar from "@mui/joy/Avatar";
@@ -33,7 +32,7 @@ const Account: React.FC<AccountProps> = ({ user }) => {
   };
 
   return (
-    <DefaultLayout>
+    <>
       <Box display="flex" alignItems="center" flexDirection="column">
         <Avatar sx={{ width: 140, height: 140 }} size="lg">
           <Typography level="display2">
@@ -85,7 +84,7 @@ const Account: React.FC<AccountProps> = ({ user }) => {
           </RadioGroup>
         </>
       )}
-    </DefaultLayout>
+    </>
   );
 };
 

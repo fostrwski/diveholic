@@ -62,7 +62,7 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
           </Typography>
         </Box>
 
-        <NextLink href="/account" passHref>
+        <NextLink href="/account">
           <Avatar
             sx={{
               fontWeight: "lg",
