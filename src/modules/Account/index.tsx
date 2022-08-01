@@ -1,5 +1,5 @@
 import DefaultLayout from "common/layouts/Default";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { User } from "@supabase/supabase-auth-helpers/nextjs";
 import Avatar from "@mui/joy/Avatar";
 import generateInitials from "common/utils/generateInitials";
@@ -21,11 +21,6 @@ const Account: React.FC<AccountProps> = ({ user }) => {
   const { email } = user
   const { first_name: firstName } = user.user_metadata;
   const { mode, setMode } = useColorScheme();
-  const [mounted, setMounted] = useState<boolean>(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   const handleRadioChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     // @ts-ignore
@@ -73,18 +68,14 @@ const Account: React.FC<AccountProps> = ({ user }) => {
         Preferences
       </Typography>
 
-      {mounted && (
-        <>
-          <Typography level="h5" my={2}>
-            Mode
-          </Typography>
-          <RadioGroup row value={mode} onChange={handleRadioChange}>
-            <Radio value="system" label="System" />
-            <Radio value="light" label="Light" />
-            <Radio value="dark" label="Dark" />
-          </RadioGroup>
-        </>
-      )}
+      <Typography level="h5" my={2}>
+        Mode
+      </Typography>
+      <RadioGroup row value={mode} onChange={handleRadioChange}>
+        <Radio value="system" label="System" />
+        <Radio value="light" label="Light" />
+        <Radio value="dark" label="Dark" />
+      </RadioGroup>
 
       <Typography level="h5" mt={4} mb={2}>
         Units
