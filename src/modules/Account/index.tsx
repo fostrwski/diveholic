@@ -20,8 +20,10 @@ interface AccountProps {
 const Account: React.FC<AccountProps> = ({ user }) => {
   const { email } = user
   const { first_name: firstName } = user.user_metadata;
+
   const [newFirstName, _setNewFirstName] = useState<string>(firstName)
   const [newEmail, _setNewEmail] = useState<string>(email!)
+
   const { mode, setMode } = useColorScheme();
   const [mounted, setMounted] = useState<boolean>(false);
 
@@ -36,13 +38,11 @@ const Account: React.FC<AccountProps> = ({ user }) => {
 
   return (
     <>
-      <Box display="flex" alignItems="center" flexDirection="column">
-        <Avatar sx={{ width: 140, height: 140 }} size="lg">
-          <Typography level="display2">
-            {generateInitials(firstName, firstName)}
-          </Typography>
-        </Avatar>
-      </Box>
+      <Avatar sx={{ width: 140, height: 140, mx: "auto" }} size="lg">
+        <Typography level="display2">
+          {generateInitials(firstName)}
+        </Typography>
+      </Avatar>
 
       <Box mb={4} width="100%">
         <Typography startDecorator={<PersonRounded />} level="h4" mt={4} mb={2}>
@@ -67,7 +67,7 @@ const Account: React.FC<AccountProps> = ({ user }) => {
         />
 
         <Box textAlign="right">
-          <Button startIcon={<DoneRounded />} color="success" sx={{ mt: 4 }}>
+          <Button startIcon={<DoneRounded />} color="success" sx={{ mt: 4 }} disabled>
             Save
           </Button>
         </Box>
@@ -77,18 +77,20 @@ const Account: React.FC<AccountProps> = ({ user }) => {
         Preferences
       </Typography>
 
-      {mounted && (
-        <>
-          <Typography level="h5" my={2}>
-            Mode
-          </Typography>
-          <RadioGroup row value={mode} onChange={handleRadioChange}>
-            <Radio value="system" label="System" />
-            <Radio value="light" label="Light" />
-            <Radio value="dark" label="Dark" />
-          </RadioGroup>
-        </>
-      )}
+      {
+        mounted && (
+          <>
+            <Typography level="h5" my={2}>
+              Mode
+            </Typography>
+            <RadioGroup row value={mode} onChange={handleRadioChange}>
+              <Radio value="system" label="System" />
+              <Radio value="light" label="Light" />
+              <Radio value="dark" label="Dark" />
+            </RadioGroup>
+          </>
+        )
+      }
     </>
   );
 };
