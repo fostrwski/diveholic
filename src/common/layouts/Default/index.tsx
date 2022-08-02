@@ -18,18 +18,20 @@ interface DefaultLayoutProps {
 
 const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
   const { user } = useUser();
+  const [mounted, setMounted] = useState<boolean>(false)
   const router = useRouter();
 
-  if (!user) {
+  if (!user && mounted) {
     router.push("/signin")
   }
 
   const [initials, setInitials] = useState<string>("");
 
   useEffect(() => {
+    setMounted(true)
     if (user) {
       const { first_name: firstName } = user.user_metadata;
-      setInitials(generateInitials(firstName, firstName));
+      setInitials(generateInitials(firstName));
     }
   }, [user]);
 
