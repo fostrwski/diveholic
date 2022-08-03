@@ -1,22 +1,21 @@
+import DashboardRounded from "@mui/icons-material/DashboardRounded";
+import LogoutRounded from "@mui/icons-material/LogoutRounded";
+import SettingsRounded from "@mui/icons-material/SettingsRounded";
 import Box from "@mui/joy/Box";
 import Container from "@mui/joy/Container";
-import Typography from "@mui/joy/Typography";
-import React, { useState } from "react";
-import Image from "next/image";
-import Button from "@mui/joy/Button";
 import IconButton from "@mui/joy/IconButton";
-import { useEffect } from "react";
+import ListItemDecorator from "@mui/joy/ListItemDecorator";
+import Menu from "@mui/joy/Menu";
+import MenuItem from "@mui/joy/MenuItem";
+import Typography from "@mui/joy/Typography";
 import { useUser } from "@supabase/auth-helpers-react";
 import generateInitials from "common/utils/generateInitials";
 import { supabase } from "common/utils/supabaseClient";
-import { useRouter } from "next/router";
+import Image from "next/image";
 import NextLink from "next/link";
-import Menu from "@mui/joy/Menu";
-import MenuItem from "@mui/joy/MenuItem";
-import ListItemDecorator from "@mui/joy/ListItemDecorator";
-import SettingsRounded from "@mui/icons-material/SettingsRounded";
-import LogoutRounded from "@mui/icons-material/LogoutRounded";
-import DashboardRounded from "@mui/icons-material/DashboardRounded";
+import { useRouter } from "next/router";
+import React, { useState } from "react";
+import { useEffect } from "react";
 
 interface DefaultLayoutProps {
   children: React.ReactNode;

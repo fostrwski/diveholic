@@ -3,18 +3,18 @@ import DeviceThermostatRounded from "@mui/icons-material/DeviceThermostatRounded
 import DownloadRounded from "@mui/icons-material/DownloadRounded";
 import LocationOnRounded from "@mui/icons-material/LocationOnRounded";
 import ScubaDivingRounded from "@mui/icons-material/ScubaDivingRounded";
+import TimelapseRounded from "@mui/icons-material/TimelapseRounded";
 import Avatar from "@mui/joy/Avatar";
 import Box from "@mui/joy/Box";
-import JoyLink from "@mui/joy/Link";
-import NextLink from "next/link";
 import Card from "@mui/joy/Card";
 import CardContent from "@mui/joy/CardContent";
 import Chip from "@mui/joy/Chip";
 import Grid from "@mui/joy/Grid";
+import JoyLink from "@mui/joy/Link";
 import Typography from "@mui/joy/Typography";
-import React from "react";
 import dives from "common/utils/dives";
-import TimelapseRounded from "@mui/icons-material/TimelapseRounded";
+import NextLink from "next/link";
+import React from "react";
 
 const LatestDives: React.FC = () => {
   return (

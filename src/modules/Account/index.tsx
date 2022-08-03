@@ -1,21 +1,21 @@
-import React, { useEffect, useState } from "react";
-import { User } from "@supabase/auth-helpers-nextjs";
-import Avatar from "@mui/joy/Avatar";
-import generateInitials from "common/utils/generateInitials";
-import Typography from "@mui/joy/Typography";
-import Box from "@mui/joy/Box";
-import TextField from "@mui/joy/TextField";
-import EditRounded from "@mui/icons-material/EditRounded";
-import Radio from "@mui/joy/Radio";
-import RadioGroup from "@mui/joy/RadioGroup";
 import {
   AlternateEmailRounded,
   PersonRounded,
   TuneRounded,
 } from "@mui/icons-material";
-import { useColorScheme } from "@mui/joy/styles";
-import Button from "@mui/joy/Button";
 import DoneRounded from "@mui/icons-material/DoneRounded";
+import EditRounded from "@mui/icons-material/EditRounded";
+import Avatar from "@mui/joy/Avatar";
+import Box from "@mui/joy/Box";
+import Button from "@mui/joy/Button";
+import Radio from "@mui/joy/Radio";
+import RadioGroup from "@mui/joy/RadioGroup";
+import TextField from "@mui/joy/TextField";
+import Typography from "@mui/joy/Typography";
+import { useColorScheme } from "@mui/joy/styles";
+import { User } from "@supabase/auth-helpers-nextjs";
+import generateInitials from "common/utils/generateInitials";
+import React, { useEffect, useState } from "react";
 
 interface AccountProps {
   user: User;

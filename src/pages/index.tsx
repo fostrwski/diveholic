@@ -1,7 +1,7 @@
-import React from "react";
+import { User, withPageAuth } from "@supabase/auth-helpers-nextjs";
 import DefaultLayout from "common/layouts/Default";
 import Home from "modules/Home";
-import { User, withPageAuth } from "@supabase/auth-helpers-nextjs";
+import React from "react";
 
 export const getServerSideProps = withPageAuth({ redirectTo: "/signin" });
 

@@ -1,12 +1,13 @@
-import React from "react";
-import Typography from "@mui/joy/Typography";
-import Grid from "@mui/joy/Grid";
-import Button from "@mui/joy/Button";
 import AddRounded from "@mui/icons-material/AddRounded";
+import Button from "@mui/joy/Button";
+import Grid from "@mui/joy/Grid";
+import Typography from "@mui/joy/Typography";
+import { User } from "@supabase/auth-helpers-nextjs";
+import React from "react";
+
+import Checklist from "./Checklist";
 import LatestDives from "./LatestDives";
 import Statistics from "./Statistics";
-import Checklist from "./Checklist";
-import { User } from "@supabase/auth-helpers-nextjs";
 
 interface HomeProps {
   user: User;
