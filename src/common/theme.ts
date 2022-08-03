@@ -33,9 +33,8 @@ const theme = extendTheme({
         },
       },
     },
-    JoyInput: {
+    JoyTextField: {
       defaultProps: {
-        variant: "outlined",
         required: true,
       },
     },

@@ -1,7 +1,7 @@
 import { Button } from "@mui/joy";
 import Container from "@mui/joy/Container";
 import Typography from "@mui/joy/Typography";
-import Input from "@mui/joy/Input";
+import TextField from "@mui/joy/TextField";
 import JoyLink from "@mui/joy/Link";
 import Box from "@mui/joy/Box";
 import Image from "next/image";
@@ -13,7 +13,10 @@ import { useRouter } from "next/router";
 import NextLink from "next/link";
 import MailRounded from "@mui/icons-material/MailRounded";
 import KeyRounded from "@mui/icons-material/KeyRounded";
+import ErrorOutlineRounded from "@mui/icons-material/ErrorOutlineRounded";
 import { useUser } from "@supabase/auth-helpers-react";
+import IconButton from "@mui/joy/IconButton/IconButton";
+import VisibilityRounded from "@mui/icons-material/VisibilityRounded";
 
 const SignIn: React.FC = () => {
   const router = useRouter();
@@ -36,13 +39,14 @@ const SignIn: React.FC = () => {
 
   const [loading, setLoading] = useState<boolean>(false);
   const [success, setSuccess] = useState<boolean | null>(null);
-  const [error, setError] = useState<boolean>(false);
+  const [error, setError] = useState<string>("");
 
   const handleSignIn = async (email: string, password: string) => {
     try {
       setLoading(true);
+      setError("")
       const { error } = await supabase.auth.signIn({ email, password });
-      if (error) return setError(true);
+      if (error) return setError(error.message);
       setSuccess(true);
     } catch (error: any) {
       console.error(error.error_description || error.message);
@@ -50,6 +54,12 @@ const SignIn: React.FC = () => {
       setLoading(false);
     }
   };
+
+  const [showPassword, setShowPassword] = useState<boolean>(false);
+
+  const handleShowPassword = () => {
+    setShowPassword(!showPassword)
+  }
 
   return (
     <Container
@@ -59,7 +69,7 @@ const SignIn: React.FC = () => {
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
-        gap: 4,
+        gap: 6,
         height: "100vh",
       }}
       maxWidth="sm"
@@ -79,7 +89,7 @@ const SignIn: React.FC = () => {
           </Typography>
         </Box>
 
-        <Typography textColor="neutral.400" level="h6" component="p" mt={2}>
+        <Typography textColor="neutral.400" level="h6" component="h1" mt={2}>
           Dive log built for the modern age
         </Typography>
 
@@ -94,7 +104,7 @@ const SignIn: React.FC = () => {
             handleSignIn(email, password);
           }}
         >
-          <Input
+          <TextField
             placeholder="Email"
             startDecorator={<MailRounded />}
             type="email"
@@ -102,14 +112,20 @@ const SignIn: React.FC = () => {
             value={email}
             size="lg"
           />
-          <Input
+          <TextField
             placeholder="Password"
             startDecorator={<KeyRounded />}
-            type="password"
+            type={showPassword ? "text" : "password"}
             onChange={handlePasswordChange}
             value={password}
             size="lg"
+            endDecorator={<IconButton color="neutral" variant="plain" onClick={handleShowPassword}><VisibilityRounded /></IconButton>}
           />
+
+          {error && (
+            <Typography color="danger" textAlign="left" startDecorator={<ErrorOutlineRounded />}>{error}</Typography>
+          )
+          }
 
           <Button
             type="submit"
