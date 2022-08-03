@@ -11,7 +11,7 @@ import { supabase } from "common/utils/supabaseClient";
 import DoneRounded from "@mui/icons-material/DoneRounded";
 import { useRouter } from "next/router";
 import NextLink from "next/link";
-import MailRounded from "@mui/icons-material/MailRounded";
+import AlternateEmailRounded from "@mui/icons-material/AlternateEmailRounded";
 import KeyRounded from "@mui/icons-material/KeyRounded";
 import ErrorOutlineRounded from "@mui/icons-material/ErrorOutlineRounded";
 import { useUser } from "@supabase/auth-helpers-react";
@@ -66,7 +66,7 @@ const SignIn: React.FC = () => {
   return (
     <Container
       sx={{
-        py: 12,
+        py: 10,
         textAlign: "center",
         display: "flex",
         flexDirection: "column",
@@ -108,7 +108,7 @@ const SignIn: React.FC = () => {
         >
           <TextField
             placeholder="Email"
-            startDecorator={<MailRounded />}
+            startDecorator={<AlternateEmailRounded />}
             type="email"
             onChange={handleEmailChange}
             value={email}

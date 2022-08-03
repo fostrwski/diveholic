@@ -14,7 +14,7 @@ import { useRouter } from "next/router";
 import PersonRounded from "@mui/icons-material/PersonRounded";
 import PersonAddRounded from "@mui/icons-material/PersonAddRounded";
 import KeyRounded from "@mui/icons-material/KeyRounded";
-import MailRounded from "@mui/icons-material/MailRounded";
+import AlternateEmailRounded from "@mui/icons-material/AlternateEmailRounded";
 import { useUser } from "@supabase/auth-helpers-react";
 import ErrorOutlineRounded from "@mui/icons-material/ErrorOutlineRounded";
 import SendRounded from "@mui/icons-material/SendRounded";
@@ -83,7 +83,7 @@ const SignUp: React.FC = () => {
     <Container
       component="main"
       sx={{
-        py: 12,
+        py: 10,
         display: "flex",
         textAlign: "center",
         flexDirection: "column",
@@ -142,7 +142,7 @@ const SignUp: React.FC = () => {
           <TextField
             placeholder="Email"
             type="email"
-            startDecorator={<MailRounded />}
+            startDecorator={<AlternateEmailRounded />}
             onChange={handleEmailChange}
             value={email}
             size="lg"
