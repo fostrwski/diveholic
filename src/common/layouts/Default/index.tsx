@@ -3,14 +3,20 @@ import Container from "@mui/joy/Container";
 import Typography from "@mui/joy/Typography";
 import React, { useState } from "react";
 import Image from "next/image";
-import Avatar from "@mui/joy/Avatar";
 import Button from "@mui/joy/Button";
+import IconButton from "@mui/joy/IconButton";
 import { useEffect } from "react";
 import { useUser } from "@supabase/auth-helpers-react";
 import generateInitials from "common/utils/generateInitials";
 import { supabase } from "common/utils/supabaseClient";
 import { useRouter } from "next/router";
 import NextLink from "next/link";
+import Menu from "@mui/joy/Menu";
+import MenuItem from "@mui/joy/MenuItem";
+import ListItemDecorator from "@mui/joy/ListItemDecorator";
+import SettingsRounded from "@mui/icons-material/SettingsRounded";
+import LogoutRounded from "@mui/icons-material/LogoutRounded";
+import DashboardRounded from "@mui/icons-material/DashboardRounded";
 
 interface DefaultLayoutProps {
   children: React.ReactNode;
@@ -18,17 +24,17 @@ interface DefaultLayoutProps {
 
 const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
   const { user } = useUser();
-  const [mounted, setMounted] = useState<boolean>(false)
+  const [mounted, setMounted] = useState<boolean>(false);
   const router = useRouter();
 
   if (!user && mounted) {
-    router.push("/signin")
+    router.push("/signin");
   }
 
   const [initials, setInitials] = useState<string>("");
 
   useEffect(() => {
-    setMounted(true)
+    setMounted(true);
     if (user) {
       const { first_name: firstName } = user.user_metadata;
       setInitials(generateInitials(firstName));
@@ -44,6 +50,17 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
     }
   };
 
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+
+  const handleCloseMenu = () => {
+    setAnchorEl(null);
+  };
+
+  const handleOpenMenu = (e: any) => {
+    setAnchorEl(e.currentTarget);
+  };
+
   return (
     <Container>
       <Box
@@ -54,7 +71,14 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
         justifyContent="space-between"
       >
         <NextLink href="/" passHref>
-          <Box component="a" display="flex" justifyContent="center" alignItems="center" gap={2} sx={{ textDecoration: "none" }}>
+          <Box
+            component="a"
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            gap={2}
+            sx={{ textDecoration: "none" }}
+          >
             <Image
               src="/diver_down_flag.svg"
               style={{ borderRadius: 4 }}
@@ -69,18 +93,46 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
           </Box>
         </NextLink>
 
-        <NextLink href="/account">
-          <Avatar
-            sx={{
-              fontWeight: "lg",
-              "&:hover": {
-                cursor: "pointer",
-              },
-            }}
-          >
-            {initials}
-          </Avatar>
-        </NextLink>
+        <IconButton
+          onClick={handleOpenMenu}
+          sx={{ borderRadius: "100%" }}
+          color="neutral"
+        >
+          {initials}
+        </IconButton>
+
+        <Menu
+          anchorEl={anchorEl}
+          open={open}
+          onClose={handleCloseMenu}
+          variant="outlined"
+          placement="bottom-end"
+        >
+          <NextLink href="/">
+            <MenuItem>
+              <ListItemDecorator>
+                <DashboardRounded />
+              </ListItemDecorator>
+              Dashboard
+            </MenuItem>
+          </NextLink>
+
+          <NextLink href="/account">
+            <MenuItem>
+              <ListItemDecorator>
+                <SettingsRounded />
+              </ListItemDecorator>
+              Settings
+            </MenuItem>
+          </NextLink>
+
+          <MenuItem onClick={handleSignOut}>
+            <ListItemDecorator>
+              <LogoutRounded />
+            </ListItemDecorator>
+            Sign out
+          </MenuItem>
+        </Menu>
       </Box>
 
       <Box component="main" sx={{ minHeight: "100vh" }}>
@@ -99,14 +151,6 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
         <Typography textColor="neutral.400">
           &copy; {new Date().getFullYear()} Diveholic
         </Typography>
-        <Button
-          color="neutral"
-          variant="plain"
-          size="sm"
-          onClick={handleSignOut}
-        >
-          Sign out
-        </Button>
       </Box>
     </Container>
   );
