@@ -33,11 +33,6 @@ const theme = extendTheme({
         },
       },
     },
-    JoyTextField: {
-      defaultProps: {
-        required: true,
-      },
-    },
     JoyMenu: {
       styleOverrides: {
         root: {

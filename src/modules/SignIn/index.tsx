@@ -113,6 +113,7 @@ const SignIn: React.FC = () => {
             onChange={handleEmailChange}
             value={email}
             size="lg"
+            required
           />
           <TextField
             placeholder="Password"
@@ -121,6 +122,7 @@ const SignIn: React.FC = () => {
             onChange={handlePasswordChange}
             value={password}
             size="lg"
+            required
             endDecorator={
               <IconButton
                 color="neutral"

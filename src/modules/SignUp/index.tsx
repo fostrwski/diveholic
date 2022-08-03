@@ -146,6 +146,7 @@ const SignUp: React.FC = () => {
             onChange={handleEmailChange}
             value={email}
             size="lg"
+            required
           />
           <TextField
             placeholder="Password"
@@ -154,6 +155,7 @@ const SignUp: React.FC = () => {
             onChange={handlePasswordChange}
             value={password}
             size="lg"
+            required
             endDecorator={
               <IconButton
                 color="neutral"
@@ -175,6 +177,7 @@ const SignUp: React.FC = () => {
             onChange={handleFirstNameChange}
             value={firstName}
             size="lg"
+            required
           />
 
           {success && (
