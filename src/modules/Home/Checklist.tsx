@@ -1,3 +1,5 @@
+import CheckBoxRounded from "@mui/icons-material/CheckBoxRounded";
+import ClearRounded from "@mui/icons-material/ClearRounded";
 import Box from "@mui/joy/Box";
 import Button from "@mui/joy/Button";
 import Checkbox from "@mui/joy/Checkbox";
@@ -10,19 +12,14 @@ const Checklist: React.FC = () => {
 
   return (
     <>
-      <Box
-        display="flex"
-        alignItems="center"
-        justifyContent="space-between"
-        gap={2}
+      <Typography
+        level="h4"
+        component="div"
+        startDecorator={<CheckBoxRounded />}
+        gutterBottom
       >
-        <Typography level="h4" component="div">
-          Checklist
-        </Typography>
-        <Button color="danger" variant="plain">
-          Reset
-        </Button>
-      </Box>
+        Checklist
+      </Typography>
 
       <Typography level="h6" textColor="neutral.400" component="p">
         Make sure you took everything for your next dive!
@@ -35,6 +32,12 @@ const Checklist: React.FC = () => {
           </Grid>
         ))}
       </Grid>
+
+      <Box textAlign="right" mt={2}>
+        <Button color="danger" startIcon={<ClearRounded />} disabled>
+          Clear
+        </Button>
+      </Box>
     </>
   );
 };
