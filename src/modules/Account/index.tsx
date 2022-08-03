@@ -8,7 +8,11 @@ import TextField from "@mui/joy/TextField";
 import EditRounded from "@mui/icons-material/EditRounded";
 import Radio from "@mui/joy/Radio";
 import RadioGroup from "@mui/joy/RadioGroup";
-import { EmailRounded, PersonRounded, TuneRounded } from "@mui/icons-material";
+import {
+  AlternateEmailRounded,
+  PersonRounded,
+  TuneRounded,
+} from "@mui/icons-material";
 import { useColorScheme } from "@mui/joy/styles";
 import Button from "@mui/joy/Button";
 import DoneRounded from "@mui/icons-material/DoneRounded";
@@ -49,7 +53,7 @@ const Account: React.FC<AccountProps> = ({ user }) => {
 
         <TextField
           label="Email"
-          startDecorator={<EmailRounded />}
+          startDecorator={<AlternateEmailRounded />}
           endDecorator={<EditRounded />}
           variant="soft"
           value={newEmail}
