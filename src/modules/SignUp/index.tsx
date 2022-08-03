@@ -1,5 +1,5 @@
-import { Button } from "@mui/joy";
 import Container from "@mui/joy/Container";
+import Button from "@mui/joy/Button";
 import Typography from "@mui/joy/Typography";
 import TextField from "@mui/joy/TextField";
 import JoyLink from "@mui/joy/Link";
@@ -18,7 +18,8 @@ import MailRounded from "@mui/icons-material/MailRounded";
 import { useUser } from "@supabase/auth-helpers-react";
 import ErrorOutlineRounded from "@mui/icons-material/ErrorOutlineRounded";
 import SendRounded from "@mui/icons-material/SendRounded";
-import VisibilityRounded from '@mui/icons-material/VisibilityRounded';
+import VisibilityRounded from "@mui/icons-material/VisibilityRounded";
+import VisibilityOffRounded from "@mui/icons-material/VisibilityOffRounded";
 
 const SignUp: React.FC = () => {
   const [email, setEmail] = useState<string>("");
@@ -38,10 +39,10 @@ const SignUp: React.FC = () => {
   };
 
   const router = useRouter();
-  const { user } = useUser()
+  const { user } = useUser();
 
   if (user) {
-    router.push("/")
+    router.push("/");
   }
 
   const [loading, setLoading] = useState<boolean>(false);
@@ -51,9 +52,9 @@ const SignUp: React.FC = () => {
   const handleSignUp = async (email: string, password: string) => {
     try {
       setLoading(true);
-      setError("")
-      if (!email || !password || !firstName)
-        return setLoading(false);
+      setSuccess(false);
+      setError("");
+      if (!email || !password || !firstName) return setLoading(false);
 
       const { error } = await supabase.auth.signUp(
         { email, password },
@@ -75,8 +76,8 @@ const SignUp: React.FC = () => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
   const handleShowPassword = () => {
-    setShowPassword(!showPassword)
-  }
+    setShowPassword(!showPassword);
+  };
 
   return (
     <Container
@@ -118,7 +119,12 @@ const SignUp: React.FC = () => {
           Dive log built for the modern age
         </Typography>
 
-        <Typography level="h5" component="h2" mt={4} startDecorator={<PersonAddRounded />}>
+        <Typography
+          level="h5"
+          component="h2"
+          mt={4}
+          startDecorator={<PersonAddRounded />}
+        >
           Create account
         </Typography>
 
@@ -148,7 +154,19 @@ const SignUp: React.FC = () => {
             onChange={handlePasswordChange}
             value={password}
             size="lg"
-            endDecorator={<IconButton color="neutral" variant="plain" onClick={handleShowPassword}><VisibilityRounded /></IconButton>}
+            endDecorator={
+              <IconButton
+                color="neutral"
+                variant="plain"
+                onClick={handleShowPassword}
+              >
+                {showPassword ? (
+                  <VisibilityOffRounded />
+                ) : (
+                  <VisibilityRounded />
+                )}
+              </IconButton>
+            }
           />
           <TextField
             placeholder="First name"
@@ -160,14 +178,24 @@ const SignUp: React.FC = () => {
           />
 
           {success && (
-            <Typography color="success" textAlign="left" startDecorator={<SendRounded />}>Confirmation link was sent to your email</Typography>
-          )
-          }
+            <Typography
+              color="success"
+              textAlign="left"
+              startDecorator={<SendRounded />}
+            >
+              Confirmation link was sent to your email
+            </Typography>
+          )}
 
           {error && (
-            <Typography color="danger" textAlign="left" startDecorator={<ErrorOutlineRounded />}>{error}</Typography>
-          )
-          }
+            <Typography
+              color="danger"
+              textAlign="left"
+              startDecorator={<ErrorOutlineRounded />}
+            >
+              {error}
+            </Typography>
+          )}
 
           <Button
             color={success ? "success" : "primary"}

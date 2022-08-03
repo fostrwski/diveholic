@@ -15,8 +15,9 @@ import MailRounded from "@mui/icons-material/MailRounded";
 import KeyRounded from "@mui/icons-material/KeyRounded";
 import ErrorOutlineRounded from "@mui/icons-material/ErrorOutlineRounded";
 import { useUser } from "@supabase/auth-helpers-react";
-import IconButton from "@mui/joy/IconButton/IconButton";
+import IconButton from "@mui/joy/IconButton";
 import VisibilityRounded from "@mui/icons-material/VisibilityRounded";
+import VisibilityOffRounded from "@mui/icons-material/VisibilityOffRounded";
 
 const SignIn: React.FC = () => {
   const router = useRouter();
@@ -44,7 +45,8 @@ const SignIn: React.FC = () => {
   const handleSignIn = async (email: string, password: string) => {
     try {
       setLoading(true);
-      setError("")
+      setSuccess(false);
+      setError("");
       const { error } = await supabase.auth.signIn({ email, password });
       if (error) return setError(error.message);
       setSuccess(true);
@@ -58,8 +60,8 @@ const SignIn: React.FC = () => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
   const handleShowPassword = () => {
-    setShowPassword(!showPassword)
-  }
+    setShowPassword(!showPassword);
+  };
 
   return (
     <Container
@@ -119,13 +121,30 @@ const SignIn: React.FC = () => {
             onChange={handlePasswordChange}
             value={password}
             size="lg"
-            endDecorator={<IconButton color="neutral" variant="plain" onClick={handleShowPassword}><VisibilityRounded /></IconButton>}
+            endDecorator={
+              <IconButton
+                color="neutral"
+                variant="plain"
+                onClick={handleShowPassword}
+              >
+                {showPassword ? (
+                  <VisibilityOffRounded />
+                ) : (
+                  <VisibilityRounded />
+                )}
+              </IconButton>
+            }
           />
 
           {error && (
-            <Typography color="danger" textAlign="left" startDecorator={<ErrorOutlineRounded />}>{error}</Typography>
-          )
-          }
+            <Typography
+              color="danger"
+              textAlign="left"
+              startDecorator={<ErrorOutlineRounded />}
+            >
+              {error}
+            </Typography>
+          )}
 
           <Button
             type="submit"
