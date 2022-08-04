@@ -37,7 +37,13 @@ const LatestDives: React.FC = () => {
       <Grid container gap={2}>
         {dives.map((dive) => (
           <Grid xs={12} key={dive.id}>
-            <Card sx={{ display: "flex", gap: 2, flexDirection: "row" }}>
+            <Card
+              sx={{
+                display: "flex",
+                gap: 2,
+                flexDirection: "row",
+              }}
+            >
               <Avatar color="primary" size="lg">
                 <ScubaDivingRounded />
               </Avatar>

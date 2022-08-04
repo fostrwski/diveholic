@@ -3,6 +3,8 @@ import Button from "@mui/joy/Button";
 import Grid from "@mui/joy/Grid";
 import Typography from "@mui/joy/Typography";
 import { User } from "@supabase/auth-helpers-nextjs";
+import NextLink from "next/link";
+import { useRouter } from "next/router";
 import React from "react";
 
 import Checklist from "./Checklist";
@@ -14,6 +16,8 @@ interface HomeProps {
 }
 
 const Home: React.FC<HomeProps> = ({ user }) => {
+const router = useRouter()
+
   return (
     <>
       <Typography level="h4" component="div">
@@ -24,9 +28,14 @@ const Home: React.FC<HomeProps> = ({ user }) => {
         You've logged 2 dives so far
       </Typography>
 
-      <Button size="lg" startIcon={<AddRounded />} sx={{ mt: 2, mb: 6 }}>
-        Log dive
-      </Button>
+        <Button
+          size="lg"
+          startIcon={<AddRounded />}
+          sx={{ mt: 2, mb: 6 }}
+          onClick={() => router.push("/dives/new")}
+        >
+          Log dive
+        </Button>
 
       <Grid container gap={6}>
         <Grid xs={12}>
