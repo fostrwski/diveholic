@@ -23,17 +23,11 @@ interface DefaultLayoutProps {
 
 const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
   const { user } = useUser();
-  const [mounted, setMounted] = useState<boolean>(false);
   const router = useRouter();
-
-  if (!user && mounted) {
-    router.push("/signin");
-  }
 
   const [initials, setInitials] = useState<string>("");
 
   useEffect(() => {
-    setMounted(true);
     if (user) {
       const { first_name: firstName } = user.user_metadata;
       setInitials(generateInitials(firstName));
@@ -44,6 +38,7 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
     try {
       const { error } = await supabase.auth.signOut();
       if (error) throw error;
+      router.push("/signin");
     } catch (error) {
       alert(error);
     }
