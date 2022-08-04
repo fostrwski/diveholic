@@ -52,6 +52,11 @@ const theme = extendTheme({
         color: "neutral",
       },
     },
+    JoyTextField: {
+      defaultProps: {
+        variant: "soft",
+      },
+    },
   },
 });
 
