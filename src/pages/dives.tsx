@@ -4,7 +4,7 @@ import React from "react";
 
 export const getServerSideProps = withPageAuth({ redirectTo: "/signin" });
 
-export default function Dives({ user }: { user: User }) {
+export default function DivesPage({ user }: { user: User }) {
   return (
     <DefaultLayout>
       <>{console.log(user)} Dives</>
