@@ -147,6 +147,7 @@ const SignUp: React.FC = () => {
             value={email}
             size="lg"
             required
+            label="Email"
           />
           <TextField
             placeholder="Password"
@@ -156,6 +157,7 @@ const SignUp: React.FC = () => {
             value={password}
             size="lg"
             required
+            label="Password"
             endDecorator={
               <IconButton
                 color="neutral"
@@ -178,6 +180,7 @@ const SignUp: React.FC = () => {
             value={firstName}
             size="lg"
             required
+            label="First name"
           />
 
           {success && (

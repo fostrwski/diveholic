@@ -113,6 +113,7 @@ const SignIn: React.FC = () => {
             onChange={handleEmailChange}
             value={email}
             size="lg"
+            label="Email"
             required
           />
           <TextField
@@ -123,6 +124,7 @@ const SignIn: React.FC = () => {
             value={password}
             size="lg"
             required
+            label="Password"
             endDecorator={
               <IconButton
                 color="neutral"
@@ -147,6 +149,10 @@ const SignIn: React.FC = () => {
               {error}
             </Typography>
           )}
+
+          <div>
+            <JoyLink sx={{ float: "right" }}>Forgot password?</JoyLink>
+          </div>
 
           <Button
             type="submit"
