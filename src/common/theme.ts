@@ -57,13 +57,6 @@ const theme = extendTheme({
         variant: "soft",
       },
     },
-    JoyIconButton: {
-      styleOverrides: {
-        root: {
-          borderRadius: "100%",
-        },
-      },
-    },
   },
 });
 
