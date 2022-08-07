@@ -160,6 +160,7 @@ const SignUp: React.FC = () => {
             label="Password"
             endDecorator={
               <IconButton
+                aria-label="Toggle password visibility"
                 color="neutral"
                 variant="plain"
                 onClick={handleShowPassword}
