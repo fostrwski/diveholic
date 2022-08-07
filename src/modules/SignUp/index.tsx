@@ -73,6 +73,11 @@ const SignUp: React.FC = () => {
     }
   };
 
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    handleSignUp(email, password)
+  }
+
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
   const handleShowPassword = () => {
@@ -134,10 +139,7 @@ const SignUp: React.FC = () => {
           flexDirection="column"
           mt={2}
           gap={2}
-          onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
-            e.preventDefault();
-            handleSignUp(email, password);
-          }}
+          onSubmit={handleSubmit}
         >
           <TextField
             placeholder="Email"

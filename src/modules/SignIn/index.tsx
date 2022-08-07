@@ -27,6 +27,7 @@ const SignIn: React.FC = () => {
     router.push("/");
   }
 
+  // TODO: Single state
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
@@ -55,6 +56,11 @@ const SignIn: React.FC = () => {
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    handleSignIn(email, password);
   };
 
   const [showPassword, setShowPassword] = useState<boolean>(false);
@@ -101,10 +107,7 @@ const SignIn: React.FC = () => {
           flexDirection="column"
           mt={4}
           gap={2}
-          onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
-            e.preventDefault();
-            handleSignIn(email, password);
-          }}
+          onSubmit={handleSubmit}
         >
           <TextField
             placeholder="Email"
