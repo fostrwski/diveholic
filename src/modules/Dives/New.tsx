@@ -1,17 +1,14 @@
-import {
-  CalendarTodayRounded,
-  CloseRounded,
-  FlagRounded,
-  LineWeightRounded,
-  NumbersRounded,
-  PublicRounded,
-  ScaleRounded,
-  ScheduleRounded,
-  StarBorderRounded,
-} from "@mui/icons-material";
 import AddRounded from "@mui/icons-material/AddRounded";
+import CalendarTodayRounded from "@mui/icons-material/CalendarTodayRounded";
+import CloseRounded from "@mui/icons-material/CloseRounded";
 import DoneRounded from "@mui/icons-material/DoneRounded";
 import DownloadRounded from "@mui/icons-material/DownloadRounded";
+import FlagRounded from "@mui/icons-material/FlagRounded";
+import LineWeightRounded from "@mui/icons-material/LineWeightRounded";
+import NumbersRounded from "@mui/icons-material/NumbersRounded";
+import PublicRounded from "@mui/icons-material/PublicRounded";
+import ScaleRounded from "@mui/icons-material/ScaleRounded";
+import ScheduleRounded from "@mui/icons-material/ScheduleRounded";
 import TimelapseRounded from "@mui/icons-material/TimelapseRounded";
 import { Button } from "@mui/joy";
 import Box from "@mui/joy/Box";
@@ -20,11 +17,42 @@ import Grid from "@mui/joy/Grid";
 import IconButton from "@mui/joy/IconButton";
 import TextField from "@mui/joy/TextField";
 import Typography from "@mui/joy/Typography";
+import { User } from "@supabase/auth-helpers-nextjs";
+import type { Dive } from "common/types";
 import { useRouter } from "next/router";
-import React from "react";
+import React, { useState } from "react";
 
-const New: React.FC = () => {
+interface NewProps {
+  user: User;
+}
+
+const New: React.FC<NewProps> = ({ user }) => {
   const router = useRouter();
+
+  const [dive, setDive] = useState<Dive>({
+    date: "",
+    time: "",
+  });
+
+  const handleTextFieldChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    prop: string
+  ) => {
+    setDive({
+      ...dive,
+      [prop]: e.target.value,
+    });
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    fetch("/api/dives", {
+      method: "POST",
+      body: JSON.stringify({ ...dive, user_id: user.id }),
+    })
+      .then((res) => res.json())
+      .then((res) => console.log(res));
+  };
 
   return (
     <>
@@ -51,6 +79,7 @@ const New: React.FC = () => {
         component="form"
         mt={4}
         sx={{ display: "flex", gap: 2, flexDirection: "column" }}
+        onSubmit={handleSubmit}
       >
         <Typography level="h4" component="p">
           Basic information
@@ -63,6 +92,7 @@ const New: React.FC = () => {
             fullWidth
             startDecorator={<CalendarTodayRounded />}
             required
+            onChange={(e) => handleTextFieldChange(e, "date")}
           />
           <TextField
             type="time"
@@ -70,6 +100,7 @@ const New: React.FC = () => {
             fullWidth
             startDecorator={<ScheduleRounded />}
             required
+            onChange={(e) => handleTextFieldChange(e, "time")}
           />
         </Box>
 
@@ -79,11 +110,10 @@ const New: React.FC = () => {
               type="text"
               label="Country"
               startDecorator={<PublicRounded />}
-              required
             />
           </Grid>
           <Grid xs={6}>
-            <TextField type="text" label="City" required />
+            <TextField type="text" label="City" />
           </Grid>
           <Grid xs={12}>
             <TextField
