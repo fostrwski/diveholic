@@ -46,9 +46,11 @@ const SignUp: React.FC = () => {
   }
 
   const [loading, setLoading] = useState<boolean>(false);
+  // TODO: Remove null
   const [success, setSuccess] = useState<boolean | null>(null);
   const [error, setError] = useState<string>("");
 
+  // TODO: Custom hook
   const handleSignUp = async (email: string, password: string) => {
     try {
       setLoading(true);
@@ -74,9 +76,9 @@ const SignUp: React.FC = () => {
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    handleSignUp(email, password)
-  }
+    e.preventDefault();
+    handleSignUp(email, password);
+  };
 
   const [showPassword, setShowPassword] = useState<boolean>(false);
 

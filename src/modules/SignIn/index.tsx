@@ -27,7 +27,6 @@ const SignIn: React.FC = () => {
     router.push("/");
   }
 
-  // TODO: Single state
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
@@ -43,6 +42,7 @@ const SignIn: React.FC = () => {
   const [success, setSuccess] = useState<boolean | null>(null);
   const [error, setError] = useState<string>("");
 
+  // TODO: Custom hook
   const handleSignIn = async (email: string, password: string) => {
     try {
       setLoading(true);
