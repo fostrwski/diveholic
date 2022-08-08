@@ -1,12 +1,12 @@
-import { User } from "@supabase/auth-helpers-nextjs";
 import React from "react";
 
-import useGetAllDives from "./hooks/useGetAllDives";
+interface Dives {
+  data: any;
+}
 
-const Dives: React.FC = () => {
-  const data = useGetAllDives();
-
-  return <>{console.log(data)}</>;
+const Dives: React.FC<Dives> = (data) => {
+  const { data: dives } = data;
+  return <>{console.log(dives)}</>;
 };
 
 export default Dives;
