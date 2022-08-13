@@ -70,6 +70,7 @@ const SignIn: React.FC = () => {
 
   return (
     <Container
+      component="main"
       sx={{
         py: 10,
         textAlign: "center",
