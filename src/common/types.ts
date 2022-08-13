@@ -1,5 +1,5 @@
 export type Dive = {
-  // id: number;
+  id: number;
   date: string;
   time: string;
   // length: number;
