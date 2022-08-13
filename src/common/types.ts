@@ -1,14 +1,14 @@
 export type Dive = {
-  id: number;
+  id?: number;
   date: string;
   time: string;
   // length: number;
   // maxDepth: number;
-  // location: {
-  //   country: string;
-  //   city: string;
-  //   diveCenter: string;
-  // };
+  location: {
+    country: string;
+    city: string;
+    diveCenter: string;
+  };
   // temperature: {
   //   air: number;
   //   water: {
