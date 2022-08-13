@@ -39,10 +39,9 @@ const SignIn: React.FC = () => {
   };
 
   const [loading, setLoading] = useState<boolean>(false);
-  const [success, setSuccess] = useState<boolean | null>(null);
+  const [success, setSuccess] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
 
-  // TODO: Custom hook
   const handleSignIn = async (email: string, password: string) => {
     try {
       setLoading(true);

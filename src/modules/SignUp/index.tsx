@@ -46,11 +46,9 @@ const SignUp: React.FC = () => {
   }
 
   const [loading, setLoading] = useState<boolean>(false);
-  // TODO: Remove null
-  const [success, setSuccess] = useState<boolean | null>(null);
+  const [success, setSuccess] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
 
-  // TODO: Custom hook
   const handleSignUp = async (email: string, password: string) => {
     try {
       setLoading(true);
