@@ -1,17 +1,8 @@
-import AccessTimeRounded from "@mui/icons-material/AccessTimeRounded";
-import DeviceThermostatRounded from "@mui/icons-material/DeviceThermostatRounded";
-import DownloadRounded from "@mui/icons-material/DownloadRounded";
-import LocationOnRounded from "@mui/icons-material/LocationOnRounded";
-import ScubaDivingRounded from "@mui/icons-material/ScubaDivingRounded";
-import TimelapseRounded from "@mui/icons-material/TimelapseRounded";
-import Avatar from "@mui/joy/Avatar";
 import Box from "@mui/joy/Box";
-import Card from "@mui/joy/Card";
-import CardContent from "@mui/joy/CardContent";
-import Chip from "@mui/joy/Chip";
 import Grid from "@mui/joy/Grid";
 import JoyLink from "@mui/joy/Link";
 import Typography from "@mui/joy/Typography";
+import DiveCard from "common/components/DiveCard";
 import dives from "common/utils/dives";
 import NextLink from "next/link";
 import React from "react";
@@ -37,66 +28,7 @@ const LatestDives: React.FC = () => {
       <Grid container gap={2}>
         {dives.map((dive) => (
           <Grid xs={12} key={dive.id}>
-            <Card
-              sx={{
-                display: "flex",
-                gap: 2,
-                flexDirection: "row",
-              }}
-            >
-              <Avatar color="primary" size="lg">
-                <ScubaDivingRounded />
-              </Avatar>
-              <CardContent>
-                <Typography component="p" textColor="neutral.600">
-                  {dive.date}
-                </Typography>
-
-                <Box my={1}>
-                  <Grid container spacing={2}>
-                    <Grid xs={6}>
-                      <Typography
-                        component="p"
-                        startDecorator={<AccessTimeRounded />}
-                      >
-                        {dive.time}
-                      </Typography>
-                      <Typography
-                        component="p"
-                        startDecorator={<TimelapseRounded />}
-                      >
-                        {dive.length}min
-                      </Typography>
-                    </Grid>
-                    <Grid xs={6}>
-                      <Typography
-                        component="p"
-                        startDecorator={<DownloadRounded />}
-                      >
-                        {dive.maxDepth}m
-                      </Typography>
-                      <Typography
-                        component="p"
-                        startDecorator={<DeviceThermostatRounded />}
-                      >
-                        {dive.temperature.water.average}°C
-                      </Typography>
-                    </Grid>
-                  </Grid>
-                </Box>
-
-                <Box alignSelf="end">
-                  <Chip
-                    color="neutral"
-                    variant="soft"
-                    startDecorator={<LocationOnRounded />}
-                    sx={{ mt: 2 }}
-                  >
-                    {dive.location.city}, {dive.location.country}
-                  </Chip>
-                </Box>
-              </CardContent>
-            </Card>
+            <DiveCard dive={dive} />
           </Grid>
         ))}
       </Grid>
