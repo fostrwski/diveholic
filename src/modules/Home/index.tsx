@@ -12,9 +12,10 @@ import Statistics from "./Statistics";
 
 interface HomeProps {
   user: User;
+  dives: any;
 }
 
-const Home: React.FC<HomeProps> = ({ user }) => {
+const Home: React.FC<HomeProps> = ({ user, dives }) => {
   const router = useRouter();
 
   return (
@@ -24,7 +25,7 @@ const Home: React.FC<HomeProps> = ({ user }) => {
       </Typography>
 
       <Typography level="h6" textColor="neutral.400">
-        You've logged 2 dives so far
+        You've logged {dives?.length} dives so far
       </Typography>
 
       <Button
