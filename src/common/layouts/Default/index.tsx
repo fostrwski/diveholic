@@ -36,7 +36,7 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
 
   const handleSignOut = async () => {
     try {
-      const { error } = await supabase.auth.signOut();
+      const { error } = await supabase.auth.signOut()
       if (error) throw error;
       router.push("/signin");
     } catch (error) {

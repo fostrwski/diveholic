@@ -17,15 +17,17 @@ import { supabase } from "common/utils/supabaseClient";
 import Image from "next/image";
 import NextLink from "next/link";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const SignIn: React.FC = () => {
   const router = useRouter();
   const { user } = useUser();
 
-  if (user) {
-    router.push("/");
-  }
+  useEffect(() => {
+    if (user) {
+      router.push("/");
+    }
+  }, []);
 
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
