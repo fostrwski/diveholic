@@ -30,6 +30,7 @@ const Home: React.FC<HomeProps> = ({ user, dives }) => {
 
       <Button
         size="lg"
+        color="info"
         startIcon={<AddRounded />}
         sx={{ mt: 2, mb: 6 }}
         onClick={() => router.push("/dives/new")}
