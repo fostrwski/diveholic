@@ -20,7 +20,7 @@ const LatestDives: React.FC = () => {
         <Typography level="h4" component="div">
           Your dives
         </Typography>
-        <NextLink href="/dives">
+        <NextLink href="/dives" passHref>
           <JoyLink>See all</JoyLink>
         </NextLink>
       </Box>
