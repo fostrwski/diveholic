@@ -88,12 +88,7 @@ const SignUp: React.FC = () => {
     <Container
       component="main"
       sx={{
-        py: 10,
-        display: "flex",
-        textAlign: "center",
-        flexDirection: "column",
-        justifyContent: "space-between",
-        gap: 6,
+        py: 4,
         height: "100vh",
       }}
       maxWidth="sm"
@@ -102,7 +97,6 @@ const SignUp: React.FC = () => {
         <Box
           sx={{
             display: "flex",
-            justifyContent: "center",
             alignItems: "center",
             gap: 2,
           }}
@@ -110,17 +104,17 @@ const SignUp: React.FC = () => {
           <Image
             src="/diver_down_flag.svg"
             style={{ borderRadius: 4 }}
-            width={54}
-            height={36}
+            width={48}
+            height={30}
             layout="fixed"
             alt="Diver down flag"
           />
-          <Typography level="h2" component="p">
+          <Typography level="h3" component="p">
             Diveholic
           </Typography>
         </Box>
 
-        <Typography textColor="neutral.400" level="h6" component="h1" mt={2}>
+        <Typography textColor="neutral.400" level="h6" component="h1" mt={1}>
           Dive log built for the modern age
         </Typography>
 
@@ -219,13 +213,13 @@ const SignUp: React.FC = () => {
         </Box>
       </div>
 
-      <div>
+      <Box mt={8} sx={{ display: "flex", justifyContent: "center", gap: 1 }}>
         <Typography component="p">Already have an account? </Typography>
 
         <NextLink href="/signin" passHref>
-          <JoyLink mt={2}>Sign in</JoyLink>
+          <JoyLink>Sign in</JoyLink>
         </NextLink>
-      </div>
+      </Box>
     </Container>
   );
 };
