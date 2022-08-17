@@ -14,13 +14,15 @@ import { Button } from "@mui/joy";
 import Box from "@mui/joy/Box";
 import Chip from "@mui/joy/Chip";
 import Grid from "@mui/joy/Grid";
-import IconButton from "@mui/joy/IconButton";
 import TextField from "@mui/joy/TextField";
 import Typography from "@mui/joy/Typography";
 import { User } from "@supabase/auth-helpers-nextjs";
 import type { Dive } from "common/types";
+import { supabase } from "common/utils/supabaseClient";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
+
+import diveInitialState from "./diveInitialState";
 
 interface NewProps {
   user: User;
@@ -29,51 +31,64 @@ interface NewProps {
 const New: React.FC<NewProps> = ({ user }) => {
   const router = useRouter();
 
-  const [dive, setDive] = useState<Dive>({
-    date: "",
-    time: "",
-  });
+  const [dive, setDive] = useState<Dive>(diveInitialState);
 
   const handleTextFieldChange = (
     e: React.ChangeEvent<HTMLInputElement>,
     prop: string
   ) => {
-    setDive({
+    setDive((dive: Dive) => ({
       ...dive,
       [prop]: e.target.value,
-    });
+    }));
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleLocationTextFieldChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    prop: string
+  ) => {
+    // Ignore stewpid error :)
+    // @ts-ignore
+    setDive((dive: Dive) => ({
+      ...dive,
+      location: {
+        ...dive.location,
+        [prop]: e.target.value,
+      },
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    fetch("/api/dives", {
-      method: "POST",
-      body: JSON.stringify({ ...dive, user_id: user.id }),
-    })
-      .then((res) => res.json())
-      .then((res) => console.log(res));
+    const { data, error } = await supabase
+      .from("dives")
+      .insert({ user_id: user.id, ...dive });
+    if (error) console.error(error);
+    console.log(data);
   };
 
   return (
     <>
       <Box display="flex" justifyContent="space-between" alignItems="center">
-        <Chip startDecorator={<AddRounded />} variant="soft" size="lg">
+        <Chip
+          startDecorator={<AddRounded />}
+          variant="soft"
+          color="info"
+          size="lg"
+        >
           New dive
         </Chip>
 
-        <IconButton
-          aria-label="Cancel adding new dive"
-          variant="plain"
+        <Button
           color="danger"
+          size="sm"
+          variant="plain"
           onClick={() => router.push("/")}
+          endIcon={<CloseRounded />}
         >
-          <CloseRounded />
-        </IconButton>
+          Cancel
+        </Button>
       </Box>
-
-      <Typography level="h6" component="p" textColor="neutral.400" mt={2}>
-        Fill in information about your dive 🤿
-      </Typography>
 
       <Box
         component="form"
@@ -110,16 +125,22 @@ const New: React.FC<NewProps> = ({ user }) => {
               type="text"
               label="Country"
               startDecorator={<PublicRounded />}
+              onChange={(e) => handleLocationTextFieldChange(e, "country")}
             />
           </Grid>
           <Grid xs={6}>
-            <TextField type="text" label="City" />
+            <TextField
+              type="text"
+              label="City"
+              onChange={(e) => handleLocationTextFieldChange(e, "city")}
+            />
           </Grid>
           <Grid xs={12}>
             <TextField
               type="text"
               label="Dive center"
               startDecorator={<FlagRounded />}
+              onChange={(e) => handleLocationTextFieldChange(e, "diveCenter")}
             />
           </Grid>
         </Grid>
@@ -143,6 +164,7 @@ const New: React.FC<NewProps> = ({ user }) => {
               label="Length"
               endDecorator="min"
               startDecorator={<TimelapseRounded />}
+              onChange={(e) => handleTextFieldChange(e, "length")}
             />
           </Grid>
           <Grid xs={6}>
@@ -151,6 +173,7 @@ const New: React.FC<NewProps> = ({ user }) => {
               label="Max depth"
               endDecorator="m"
               startDecorator={<DownloadRounded />}
+              onChange={(e) => handleTextFieldChange(e, "maxDepth")}
             />
           </Grid>
           <Grid xs={6}>
@@ -159,10 +182,15 @@ const New: React.FC<NewProps> = ({ user }) => {
               label="Weights"
               endDecorator="kg"
               startDecorator={<ScaleRounded />}
+              onChange={(e) => handleTextFieldChange(e, "weights")}
             />
           </Grid>
           <Grid xs={6}>
-            <TextField type="text" label="Water" />
+            <TextField
+              type="text"
+              label="Water"
+              onChange={(e) => handleTextFieldChange(e, "water")}
+            />
           </Grid>
         </Grid>
 
@@ -188,18 +216,15 @@ const New: React.FC<NewProps> = ({ user }) => {
         </Typography>
 
         <Grid container spacing={2} justifyContent="space-between">
-          <Grid xs={4}>
+          <Grid xs={6}>
             <TextField
               type="number"
               label="Count"
               startDecorator={<NumbersRounded />}
             />
           </Grid>
-          <Grid xs={4}>
+          <Grid xs={6}>
             <TextField type="text" label="Type" />
-          </Grid>
-          <Grid xs={4}>
-            <TextField type="number" label="Capacity" />
           </Grid>
         </Grid>
 
