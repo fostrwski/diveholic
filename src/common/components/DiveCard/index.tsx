@@ -1,7 +1,6 @@
 import AccessTimeRounded from "@mui/icons-material/AccessTimeRounded";
 import DeviceThermostatRounded from "@mui/icons-material/DeviceThermostatRounded";
 import DownloadRounded from "@mui/icons-material/DownloadRounded";
-import LocationOnRounded from "@mui/icons-material/LocationOnRounded";
 import ScubaDivingRounded from "@mui/icons-material/ScubaDivingRounded";
 import TimelapseRounded from "@mui/icons-material/TimelapseRounded";
 import Avatar from "@mui/joy/Avatar";
@@ -27,7 +26,7 @@ const DiveCard: React.FC<DiveCard> = ({ dive }) => {
         flexDirection: "row",
       }}
     >
-      <Avatar color="primary" size="lg">
+      <Avatar color="neutral" size="lg">
         <ScubaDivingRounded />
       </Avatar>
       <CardContent>
@@ -63,7 +62,7 @@ const DiveCard: React.FC<DiveCard> = ({ dive }) => {
           <Chip
             color="neutral"
             variant="soft"
-            startDecorator={<LocationOnRounded />}
+            startDecorator="🇭🇷"
             sx={{ mt: 2 }}
           >
             {dive.location.city}, {dive.location.country}
