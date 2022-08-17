@@ -22,12 +22,14 @@ const dives = [
       type: "aluminum",
       capacity: 12,
     },
-    exposureProtection: {
-      type: "wetsuit",
-      thickness: 7,
-    },
     water: "salt",
     weights: 6,
+    gear: {
+      exposureProtection: {
+        type: "wetsuit",
+        thickness: 7,
+      },
+    },
   },
   {
     id: 2,
@@ -52,12 +54,14 @@ const dives = [
       type: "aluminum",
       capacity: 12,
     },
-    exposureProtection: {
-      type: "wetsuit",
-      thickness: 7,
-    },
     water: "salt",
     weights: 6,
+    gear: {
+      exposureProtection: {
+        type: "wetsuit",
+        thickness: 7,
+      },
+    },
   },
 ];
 

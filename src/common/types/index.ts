@@ -1,4 +1,4 @@
-import Gear from "./gear";
+import type Gear from "./gear";
 
 export type Dive = {
   id?: number;
