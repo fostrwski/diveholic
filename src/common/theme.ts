@@ -22,7 +22,12 @@ const theme = extendTheme({
     },
     JoyCard: {
       defaultProps: {
-        variant: "outlined",
+        variant: "plain",
+      },
+      styleOverrides: {
+        root: {
+          boxShadow: "none",
+        },
       },
     },
     JoyList: {
