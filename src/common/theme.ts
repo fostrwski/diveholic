@@ -62,6 +62,13 @@ const theme = extendTheme({
         variant: "soft",
       },
     },
+    JoyListDivider: {
+      styleOverrides: {
+        root: {
+          borderRadius: "2px"
+        }
+      }
+    }
   },
 });
 
