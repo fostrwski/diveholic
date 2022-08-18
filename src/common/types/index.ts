@@ -20,9 +20,5 @@ export type Dive = {
       minimum: number | null;
     };
   };
-  tanks: {
-    count: number;
-    type: string;
-  };
   gear: Gear;
 };

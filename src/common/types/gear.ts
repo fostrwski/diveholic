@@ -3,6 +3,10 @@ type Gear = {
     type: string;
     thickness: number | null;
   };
+  tanks: {
+    count: number;
+    type: string;
+  };
 };
 
 export default Gear;
