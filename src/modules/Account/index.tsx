@@ -42,9 +42,9 @@ const Account: React.FC<AccountProps> = ({ user }) => {
 
   return (
     <>
-      <Avatar sx={{ width: 140, height: 140, mx: "auto" }} size="lg">
-        <Typography level="display2">{generateInitials(firstName)}</Typography>
-      </Avatar>
+      {/* <Avatar sx={{ width: 140, height: 140, mx: "auto" }} size="lg"> */}
+      {/*   <Typography level="display2">{generateInitials(firstName)}</Typography> */}
+      {/* </Avatar> */}
 
       <Box mb={4} width="100%">
         <Typography startDecorator={<PersonRounded />} level="h4" mt={4} mb={2}>
