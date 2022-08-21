@@ -3,6 +3,7 @@ import DeviceThermostatRounded from "@mui/icons-material/DeviceThermostatRounded
 import DownloadRounded from "@mui/icons-material/DownloadRounded";
 import ScubaDivingRounded from "@mui/icons-material/ScubaDivingRounded";
 import TimelapseRounded from "@mui/icons-material/TimelapseRounded";
+import { ListDivider } from "@mui/joy";
 import Avatar from "@mui/joy/Avatar";
 import Box from "@mui/joy/Box";
 import Card from "@mui/joy/Card";
@@ -58,13 +59,16 @@ const DiveCard: React.FC<DiveCard> = ({ dive }) => {
           </Grid>
         </Box>
 
-        <Box alignSelf="end">
-          <Chip
-            color="neutral"
-            variant="soft"
-            startDecorator="🇭🇷"
-            sx={{ mt: 2 }}
-          >
+        <Box
+          mt={2}
+          display="flex"
+          gap={2}
+          justifyContent="space-between"
+          alignItems="center"
+        >
+          <ListDivider sx={{ width: "100%", height: "2px" }} />
+
+          <Chip color="neutral" variant="soft" startDecorator="🇭🇷">
             {dive.location.city}, {dive.location.country}
           </Chip>
         </Box>
