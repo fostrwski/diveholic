@@ -99,7 +99,7 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
           anchorEl={anchorEl}
           open={open}
           onClose={handleCloseMenu}
-          variant="outlined"
+          variant="soft"
           placement="bottom-end"
         >
           <NextLink href="/">
