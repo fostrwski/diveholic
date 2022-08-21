@@ -17,14 +17,14 @@ const diveInitialState = {
       minimum: null,
     },
   },
-  tanks: {
-    count: 1,
-    type: "",
-  },
   gear: {
     exposureProtection: {
       type: "",
       thickness: null,
+    },
+    tanks: {
+      count: 1,
+      type: "",
     },
   },
 };
