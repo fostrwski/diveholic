@@ -29,6 +29,7 @@ const DiveCard: React.FC<DiveCard> = ({ dive }) => {
 
     const dateF = new Date(date);
 
+    // @ts-ignore
     return dateF.toLocaleDateString(undefined, options);
   };
 
