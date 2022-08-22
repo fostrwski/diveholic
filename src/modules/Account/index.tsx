@@ -47,7 +47,12 @@ const Account: React.FC<AccountProps> = ({ user }) => {
       {/* </Avatar> */}
 
       <Box mb={4} width="100%">
-        <Typography startDecorator={<PersonRounded />} level="h4" mb={2}>
+        <Typography
+          startDecorator={<PersonRounded />}
+          level="h4"
+          component="div"
+          mb={2}
+        >
           Account
         </Typography>
 
