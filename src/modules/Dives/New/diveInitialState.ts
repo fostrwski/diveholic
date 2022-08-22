@@ -1,32 +1,22 @@
-const diveInitialState = {
+import { DiveFlattened } from "common/types";
+
+const diveInitialState: DiveFlattened = {
   date: "",
   time: "",
-  location: {
-    country: "",
-    city: "",
-    diveCenter: "",
-  },
+  locationCountry: "",
+  locationCity: "",
+  locationDiveCenter: "",
   length: null,
   maxDepth: null,
   weights: null,
   water: "",
-  temperature: {
-    air: null,
-    water: {
-      average: null,
-      minimum: null,
-    },
-  },
-  gear: {
-    exposureProtection: {
-      type: "",
-      thickness: null,
-    },
-    tanks: {
-      count: 1,
-      type: "",
-    },
-  },
+  temperatureAir: null,
+  temperatureWaterAverage: null,
+  temperatureWaterMinimum: null,
+  gearExposureProtectionType: "",
+  gearExposureProtectionThickness: null,
+  gearTanksCount: 1,
+  gearTanksType: "",
 };
 
 export default diveInitialState;

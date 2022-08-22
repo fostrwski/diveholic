@@ -10,17 +10,17 @@ import PublicRounded from "@mui/icons-material/PublicRounded";
 import ScaleRounded from "@mui/icons-material/ScaleRounded";
 import ScheduleRounded from "@mui/icons-material/ScheduleRounded";
 import TimelapseRounded from "@mui/icons-material/TimelapseRounded";
-import { Button } from "@mui/joy";
+import { Button, ListDivider } from "@mui/joy";
 import Box from "@mui/joy/Box";
 import Chip from "@mui/joy/Chip";
 import Grid from "@mui/joy/Grid";
 import TextField from "@mui/joy/TextField";
 import Typography from "@mui/joy/Typography";
 import { User } from "@supabase/auth-helpers-nextjs";
-import type { Dive } from "common/types";
+import type { DiveFlattened } from "common/types";
 import { supabase } from "common/utils/supabaseClient";
 import { useRouter } from "next/router";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import diveInitialState from "./diveInitialState";
 
@@ -31,30 +31,19 @@ interface NewProps {
 const New: React.FC<NewProps> = ({ user }) => {
   const router = useRouter();
 
-  const [dive, setDive] = useState<Dive>(diveInitialState);
+  const [dive, setDive] = useState<DiveFlattened>(diveInitialState);
+
+  useEffect(() => {
+    console.log(dive);
+  }, [dive]);
 
   const handleTextFieldChange = (
     e: React.ChangeEvent<HTMLInputElement>,
     prop: string
   ) => {
-    setDive((dive: Dive) => ({
-      ...dive,
+    setDive((prevState: DiveFlattened) => ({
+      ...prevState,
       [prop]: e.target.value,
-    }));
-  };
-
-  const handleLocationTextFieldChange = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    prop: string
-  ) => {
-    // Ignore stewpid error :)
-    // @ts-ignore
-    setDive((dive: Dive) => ({
-      ...dive,
-      location: {
-        ...dive.location,
-        [prop]: e.target.value,
-      },
     }));
   };
 
@@ -125,14 +114,14 @@ const New: React.FC<NewProps> = ({ user }) => {
               type="text"
               label="Country"
               startDecorator={<PublicRounded />}
-              onChange={(e) => handleLocationTextFieldChange(e, "country")}
+              onChange={(e) => handleTextFieldChange(e, "locationCountry")}
             />
           </Grid>
           <Grid xs={6}>
             <TextField
               type="text"
               label="City"
-              onChange={(e) => handleLocationTextFieldChange(e, "city")}
+              onChange={(e) => handleTextFieldChange(e, "locationCity")}
             />
           </Grid>
           <Grid xs={12}>
@@ -140,18 +129,12 @@ const New: React.FC<NewProps> = ({ user }) => {
               type="text"
               label="Dive center"
               startDecorator={<FlagRounded />}
-              onChange={(e) => handleLocationTextFieldChange(e, "diveCenter")}
+              onChange={(e) => handleTextFieldChange(e, "locationDiveCenter")}
             />
           </Grid>
         </Grid>
 
-        <Box
-          width="15%"
-          bgcolor="neutral.400"
-          height="2px"
-          mx="auto"
-          borderRadius="4px"
-        />
+        <ListDivider sx={{ width: "15%", mx: "auto", height: "2px" }} />
 
         <Typography level="h4" component="p" mt={2}>
           Dive details
@@ -200,13 +183,22 @@ const New: React.FC<NewProps> = ({ user }) => {
 
         <Grid container spacing={2} justifyContent="space-between">
           <Grid xs={6}>
-            <TextField type="text" label="Type" />
+            <TextField
+              type="text"
+              label="Type"
+              onChange={(e) =>
+                handleTextFieldChange(e, "gearExposureProtectionType")
+              }
+            />
           </Grid>
           <Grid xs={6}>
             <TextField
               type="text"
               label="Thickness"
               startDecorator={<LineWeightRounded />}
+              onChange={(e) =>
+                handleTextFieldChange(e, "gearExposureProtectionThickness")
+              }
             />
           </Grid>
         </Grid>
@@ -221,10 +213,15 @@ const New: React.FC<NewProps> = ({ user }) => {
               type="number"
               label="Count"
               startDecorator={<NumbersRounded />}
+              onChange={(e) => handleTextFieldChange(e, "gearTanksCount")}
             />
           </Grid>
           <Grid xs={6}>
-            <TextField type="text" label="Type" />
+            <TextField
+              type="text"
+              label="Type"
+              onChange={(e) => handleTextFieldChange(e, "gearTanksType")}
+            />
           </Grid>
         </Grid>
 
@@ -234,7 +231,13 @@ const New: React.FC<NewProps> = ({ user }) => {
 
         <Grid container spacing={2} justifyContent="space-between">
           <Grid xs={4}>
-            <TextField type="number" label="Air" fullWidth endDecorator="°C" />
+            <TextField
+              type="number"
+              label="Air"
+              fullWidth
+              endDecorator="°C"
+              onChange={(e) => handleTextFieldChange(e, "temperatureAir")}
+            />
           </Grid>
           <Grid xs={4}>
             <TextField
@@ -242,6 +245,9 @@ const New: React.FC<NewProps> = ({ user }) => {
               label="Water avg."
               fullWidth
               endDecorator="°C"
+              onChange={(e) =>
+                handleTextFieldChange(e, "temperatureWaterAverage")
+              }
             />
           </Grid>
           <Grid xs={4}>
@@ -250,6 +256,9 @@ const New: React.FC<NewProps> = ({ user }) => {
               label="Water min."
               fullWidth
               endDecorator="°C"
+              onChange={(e) =>
+                handleTextFieldChange(e, "temperatureWaterMinimum")
+              }
             />
           </Grid>
         </Grid>
