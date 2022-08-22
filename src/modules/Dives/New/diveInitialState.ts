@@ -3,7 +3,9 @@ import { DiveFlattened } from "common/types";
 const diveInitialState: DiveFlattened = {
   date: "",
   time: "",
-  locationCountry: "",
+  locationCountryName: "",
+  locationCountryCode: "",
+  locationCountryFlagEmoji: "",
   locationCity: "",
   locationDiveCenter: "",
   length: null,

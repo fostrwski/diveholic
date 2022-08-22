@@ -18,6 +18,8 @@ import TextField from "@mui/joy/TextField";
 import Typography from "@mui/joy/Typography";
 import { User } from "@supabase/auth-helpers-nextjs";
 import type { Dive, DiveFlattened } from "common/types";
+import getCountryCode from "common/utils/getCountryCode";
+import getFlagEmoji from "common/utils/getFlagEmoji";
 import { supabase } from "common/utils/supabaseClient";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
@@ -32,6 +34,19 @@ const New: React.FC<NewProps> = ({ user }) => {
   const router = useRouter();
 
   const [dive, setDive] = useState<DiveFlattened>(diveInitialState);
+
+  useEffect(() => {
+    const countryCode = getCountryCode(dive.locationCountryName);
+    let flagEmoji = "";
+    if (countryCode) flagEmoji = getFlagEmoji(countryCode);
+    setDive((prevState: DiveFlattened) => ({
+      ...prevState,
+      locationCountryCode: countryCode,
+      locationCountryFlagEmoji: flagEmoji,
+    }));
+
+    console.log(dive);
+  }, [dive.locationCountryName]);
 
   const handleTextFieldChange = (
     e: React.ChangeEvent<HTMLInputElement>,
@@ -49,7 +64,11 @@ const New: React.FC<NewProps> = ({ user }) => {
       date: dive.date,
       time: dive.time,
       location: {
-        country: dive.locationCountry,
+        country: {
+          name: dive.locationCountryName,
+          code: dive.locationCountryCode,
+          flagEmoji: dive.locationCountryFlagEmoji,
+        },
         city: dive.locationCity,
         diveCenter: dive.locationDiveCenter,
       },
@@ -140,7 +159,7 @@ const New: React.FC<NewProps> = ({ user }) => {
               type="text"
               label="Country"
               startDecorator={<PublicRounded />}
-              onChange={(e) => handleTextFieldChange(e, "locationCountry")}
+              onChange={(e) => handleTextFieldChange(e, "locationCountryName")}
             />
           </Grid>
           <Grid xs={6}>

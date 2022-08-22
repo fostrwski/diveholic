@@ -5,7 +5,11 @@ export type Dive = {
   date: string;
   time: string;
   location: {
-    country: string;
+    country: {
+      name: string;
+      code: string;
+      flagEmoji: string;
+    };
     city: string;
     diveCenter: string;
   };
@@ -28,7 +32,9 @@ export type DiveFlattened = {
   id?: number;
   date: string;
   time: string;
-  locationCountry: string;
+  locationCountryName: string;
+  locationCountryCode: string;
+  locationCountryFlagEmoji: string;
   locationCity: string;
   locationDiveCenter: string;
   length: number | null;
