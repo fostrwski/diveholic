@@ -1,4 +1,6 @@
-const dives = [
+import { Dive } from "common/types";
+
+const dives: Array<Dive> = [
   {
     id: 1,
     date: "July 11, 2022",
@@ -6,7 +8,11 @@ const dives = [
     length: 43,
     maxDepth: 32.2,
     location: {
-      country: "Croatia",
+      country: {
+        code: "HR",
+        name: "Croatia",
+        flagEmoji: "🇭🇷",
+      },
       city: "Trogir",
       diveCenter: "Trogir Dive Center",
     },
@@ -17,17 +23,16 @@ const dives = [
         minimum: 16,
       },
     },
-    tanks: {
-      count: 1,
-      type: "aluminum",
-      capacity: 12,
-    },
     water: "salt",
     weights: 6,
     gear: {
       exposureProtection: {
         type: "wetsuit",
         thickness: 7,
+      },
+      tanks: {
+        count: 1,
+        type: "aluminum",
       },
     },
   },
@@ -38,9 +43,13 @@ const dives = [
     length: 38,
     maxDepth: 26.7,
     location: {
-      country: "Croatia",
-      city: "Trogir",
-      diveCenter: "Trogir Dive Center",
+      country: {
+        name: "Italy",
+        code: "IT",
+        flagEmoji: "🇮🇹",
+      },
+      city: "Rome",
+      diveCenter: "Rome diving center",
     },
     temperature: {
       air: 25,
@@ -49,17 +58,16 @@ const dives = [
         minimum: 18,
       },
     },
-    tanks: {
-      count: 1,
-      type: "aluminum",
-      capacity: 12,
-    },
     water: "salt",
     weights: 6,
     gear: {
       exposureProtection: {
         type: "wetsuit",
         thickness: 7,
+      },
+      tanks: {
+        count: 1,
+        type: "aluminum",
       },
     },
   },
