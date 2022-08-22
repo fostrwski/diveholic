@@ -6,5 +6,7 @@ export default function getCountryCode(country: string) {
     (key: string) => listOfCountries[key] === country
   );
 
+  if (countryCodes.length === 0) return "";
+
   return countryCodes[0];
 }
