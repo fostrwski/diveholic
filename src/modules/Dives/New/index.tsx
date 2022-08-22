@@ -17,7 +17,7 @@ import Grid from "@mui/joy/Grid";
 import TextField from "@mui/joy/TextField";
 import Typography from "@mui/joy/Typography";
 import { User } from "@supabase/auth-helpers-nextjs";
-import type { DiveFlattened } from "common/types";
+import type { Dive, DiveFlattened } from "common/types";
 import { supabase } from "common/utils/supabaseClient";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
@@ -33,10 +33,6 @@ const New: React.FC<NewProps> = ({ user }) => {
 
   const [dive, setDive] = useState<DiveFlattened>(diveInitialState);
 
-  useEffect(() => {
-    console.log(dive);
-  }, [dive]);
-
   const handleTextFieldChange = (
     e: React.ChangeEvent<HTMLInputElement>,
     prop: string
@@ -49,9 +45,39 @@ const New: React.FC<NewProps> = ({ user }) => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const newDive: Dive = {
+      date: dive.date,
+      time: dive.time,
+      location: {
+        country: dive.locationCountry,
+        city: dive.locationCity,
+        diveCenter: dive.locationDiveCenter,
+      },
+      length: dive.length,
+      maxDepth: dive.maxDepth,
+      weights: dive.weights,
+      water: dive.water,
+      temperature: {
+        air: dive.temperatureAir,
+        water: {
+          average: dive.temperatureWaterAverage,
+          minimum: dive.temperatureWaterMinimum,
+        },
+      },
+      gear: {
+        exposureProtection: {
+          type: dive.gearExposureProtectionType,
+          thickness: dive.gearExposureProtectionThickness,
+        },
+        tanks: {
+          count: dive.gearTanksCount,
+          type: dive.gearTanksType,
+        },
+      },
+    };
     const { data, error } = await supabase
       .from("dives")
-      .insert({ user_id: user.id, ...dive });
+      .insert({ user_id: user.id, ...newDive });
     if (error) console.error(error);
     console.log(data);
   };
