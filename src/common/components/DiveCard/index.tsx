@@ -19,6 +19,19 @@ interface DiveCard {
 }
 
 const DiveCard: React.FC<DiveCard> = ({ dive }) => {
+  const formatDateString = (date: string) => {
+    const options = {
+      weekday: "short",
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+    };
+
+    const dateF = new Date(date);
+
+    return dateF.toLocaleDateString(undefined, options);
+  };
+
   return (
     <Card
       sx={{
@@ -32,7 +45,7 @@ const DiveCard: React.FC<DiveCard> = ({ dive }) => {
       </Avatar>
       <CardContent>
         <Typography component="p" textColor="neutral.600">
-          {dive.date}
+          {formatDateString(dive.date)}
         </Typography>
 
         <Box my={1}>
