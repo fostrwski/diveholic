@@ -44,8 +44,6 @@ const New: React.FC<NewProps> = ({ user }) => {
       locationCountryCode: countryCode,
       locationCountryFlagEmoji: flagEmoji,
     }));
-
-    console.log(dive);
   }, [dive.locationCountryName]);
 
   const handleTextFieldChange = (
@@ -158,8 +156,14 @@ const New: React.FC<NewProps> = ({ user }) => {
             <TextField
               type="text"
               label="Country"
-              startDecorator={<PublicRounded />}
-              onChange={(e) => handleTextFieldChange(e, "locationCountryName")}
+              onChange={(e) => handleTextFieldChange(e, "locationCountry")}
+              startDecorator={
+                dive.locationCountryFlagEmoji ? (
+                  dive.locationCountryFlagEmoji
+                ) : (
+                  <PublicRounded />
+                )
+              }
             />
           </Grid>
           <Grid xs={6}>
@@ -308,6 +312,7 @@ const New: React.FC<NewProps> = ({ user }) => {
           </Grid>
         </Grid>
 
+        <TextField type="text" label="Dive buddy" sx={{ mt: 2 }} />
         <TextField type="text" label="Notes" sx={{ mt: 2 }} />
 
         <Button
