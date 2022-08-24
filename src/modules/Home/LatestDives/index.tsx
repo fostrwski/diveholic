@@ -3,13 +3,14 @@ import Grid from "@mui/joy/Grid";
 import JoyLink from "@mui/joy/Link";
 import Typography from "@mui/joy/Typography";
 import { useUser } from "@supabase/auth-helpers-react";
-import DiveCardSkeletonLoader from "common/components/DiveCard/SkeletonLoader";
 import { Dive } from "common/types";
 import { supabase } from "common/utils/supabaseClient";
 import NextLink from "next/link";
 import React, { useEffect, useState } from "react";
 
 import DiveCards from "./DiveCards";
+import DivesLoading from "./DivesLoading";
+import DivesNotFound from "./DivesNotFound";
 
 const LatestDives: React.FC = () => {
   const { user } = useUser();
@@ -24,14 +25,20 @@ const LatestDives: React.FC = () => {
       if (error) console.error(error);
 
       if (data) setDives(data);
+
       setLoading(false);
     };
 
     if (user) getDives();
   }, [user]);
 
-  if (user && dives.length === 0 && !loading)
-    return <>You haven't added any dives yet</>;
+  const determineView = () => {
+    if (user && !loading && dives.length === 0) return <DivesNotFound />;
+
+    if (user && loading) return <DivesLoading />;
+
+    return <DiveCards dives={dives} />;
+  };
 
   return (
     <>
@@ -51,14 +58,7 @@ const LatestDives: React.FC = () => {
       </Box>
 
       <Grid container gap={2}>
-        {user && loading ? (
-          <>
-            <DiveCardSkeletonLoader />
-            <DiveCardSkeletonLoader />
-          </>
-        ) : (
-          <DiveCards dives={dives} />
-        )}
+        {determineView()}
       </Grid>
     </>
   );
