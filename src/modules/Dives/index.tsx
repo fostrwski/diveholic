@@ -4,7 +4,7 @@ import type { Dive } from "common/types";
 import React from "react";
 
 interface Dives {
-  data: any;
+  data: Array<Dive>;
 }
 
 const Dives: React.FC<Dives> = ({ data }) => {
