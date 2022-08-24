@@ -10,7 +10,10 @@ import React from "react";
 export const getServerSideProps = withPageAuth({
   redirectTo: "/signin",
   async getServerSideProps(ctx) {
-    const { data } = await supabaseServerClient(ctx).from("dives").select("*");
+    // @TODO: handle  empty array
+    const { data } = await supabaseServerClient(ctx)
+      .from<Dive>("dives")
+      .select("*");
     return { props: { data } };
   },
 });
