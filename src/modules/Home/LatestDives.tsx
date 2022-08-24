@@ -11,7 +11,7 @@ import React, { useEffect, useState } from "react";
 
 const LatestDives: React.FC = () => {
   const { user } = useUser();
-  const [dives, setDives] = useState<Array<Dive> | null>([]);
+  const [dives, setDives] = useState<Array<Dive>>([]);
 
   useEffect(() => {
     const getDives = async () => {
@@ -19,7 +19,7 @@ const LatestDives: React.FC = () => {
 
       if (error) console.error(error);
 
-      setDives(data);
+      if (data) setDives(data);
     };
 
     if (user) getDives();
