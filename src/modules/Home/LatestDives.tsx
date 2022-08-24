@@ -2,12 +2,28 @@ import Box from "@mui/joy/Box";
 import Grid from "@mui/joy/Grid";
 import JoyLink from "@mui/joy/Link";
 import Typography from "@mui/joy/Typography";
+import { useUser } from "@supabase/auth-helpers-react";
 import DiveCard from "common/components/DiveCard";
-import dives from "common/utils/dives";
+import { Dive } from "common/types";
+import { supabase } from "common/utils/supabaseClient";
 import NextLink from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const LatestDives: React.FC = () => {
+  const { user } = useUser();
+  const [dives, setDives] = useState<Array<Dive> | null>([]);
+
+  useEffect(() => {
+    const getDives = async () => {
+      const { data, error } = await supabase.from("dives").select("*");
+
+      if (error) console.error(error);
+
+      setDives(data);
+    };
+
+    if (user) getDives();
+  }, [user]);
   return (
     <>
       <Box
