@@ -8,3 +8,5 @@ describe("empty spec", () => {
     cy.log("Hello");
   });
 });
+
+export {};
