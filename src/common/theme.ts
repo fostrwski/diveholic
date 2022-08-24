@@ -69,6 +69,12 @@ const theme = extendTheme({
         },
       },
     },
+    JoyChip: {
+      defaultProps: {
+        color: "neutral",
+        variant: "soft",
+      },
+    },
   },
 });
 
