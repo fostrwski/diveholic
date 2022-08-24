@@ -52,7 +52,10 @@ const LatestDives: React.FC = () => {
 
       <Grid container gap={2}>
         {user && loading ? (
-          <DiveCardSkeletonLoader />
+          <>
+            <DiveCardSkeletonLoader />
+            <DiveCardSkeletonLoader />
+          </>
         ) : (
           <DiveCards dives={dives} />
         )}

@@ -45,7 +45,7 @@ const DiveCardSkeletonLoader: React.FC = () => {
         >
           <ListDivider sx={{ width: "100%", height: "2px" }} />
 
-          <Chip size="sm" sx={{ width: "100%" }} />
+          <Chip sx={{ width: "100%" }} />
         </Box>
       </CardContent>
     </Card>

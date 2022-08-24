@@ -12,6 +12,7 @@ import Chip from "@mui/joy/Chip";
 import Grid from "@mui/joy/Grid";
 import Typography from "@mui/joy/Typography";
 import type { Dive } from "common/types";
+import formatDateString from "common/utils/formatDateString";
 import React from "react";
 
 interface DiveCard {
@@ -19,20 +20,6 @@ interface DiveCard {
 }
 
 const DiveCard: React.FC<DiveCard> = ({ dive }) => {
-  const formatDateString = (date: string) => {
-    const options = {
-      weekday: "short",
-      year: "numeric",
-      month: "short",
-      day: "numeric",
-    };
-
-    const dateF = new Date(date);
-
-    // @ts-ignore
-    return dateF.toLocaleDateString(undefined, options);
-  };
-
   return (
     <Card
       sx={{
@@ -55,7 +42,11 @@ const DiveCard: React.FC<DiveCard> = ({ dive }) => {
               <Typography component="p" startDecorator={<AccessTimeRounded />}>
                 {dive.time}
               </Typography>
-              <Typography component="p" startDecorator={<TimelapseRounded />}>
+              <Typography
+                component="p"
+                startDecorator={<TimelapseRounded />}
+                sx={{ mt: 0.6 }}
+              >
                 {dive.length}min
               </Typography>
             </Grid>
@@ -66,6 +57,7 @@ const DiveCard: React.FC<DiveCard> = ({ dive }) => {
               <Typography
                 component="p"
                 startDecorator={<DeviceThermostatRounded />}
+                sx={{ mt: 0.6 }}
               >
                 {dive.temperature.water.average}°C
               </Typography>
