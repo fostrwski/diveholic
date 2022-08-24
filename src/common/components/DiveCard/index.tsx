@@ -82,8 +82,12 @@ const DiveCard: React.FC<DiveCard> = ({ dive }) => {
         >
           <ListDivider sx={{ width: "100%", height: "2px" }} />
 
-          <Chip color="neutral" variant="soft" startDecorator="🇭🇷">
-            {dive.location.city}, {dive.location.country}
+          <Chip
+            color="neutral"
+            variant="soft"
+            startDecorator={dive.location.country.flagEmoji}
+          >
+            {dive.location.city}, {dive.location.country.name}
           </Chip>
         </Box>
       </CardContent>
