@@ -135,6 +135,7 @@ const New: React.FC<NewProps> = ({ user }) => {
         <Box display="flex" justifyContent="space-between" gap={2}>
           <TextField
             type="date"
+            name="date"
             label="Date"
             fullWidth
             startDecorator={<CalendarTodayRounded />}
@@ -143,6 +144,7 @@ const New: React.FC<NewProps> = ({ user }) => {
           />
           <TextField
             type="time"
+            name="time"
             label="Time"
             fullWidth
             startDecorator={<ScheduleRounded />}
@@ -155,6 +157,7 @@ const New: React.FC<NewProps> = ({ user }) => {
           <Grid xs={6}>
             <TextField
               type="text"
+              name="locationCountry"
               label="Country"
               onChange={(e) => handleTextFieldChange(e, "locationCountry")}
               startDecorator={
@@ -169,6 +172,7 @@ const New: React.FC<NewProps> = ({ user }) => {
           <Grid xs={6}>
             <TextField
               type="text"
+              name="locationCity"
               label="City"
               onChange={(e) => handleTextFieldChange(e, "locationCity")}
             />
@@ -176,6 +180,7 @@ const New: React.FC<NewProps> = ({ user }) => {
           <Grid xs={12}>
             <TextField
               type="text"
+              name="locationDiveCenter"
               label="Dive center"
               startDecorator={<FlagRounded />}
               onChange={(e) => handleTextFieldChange(e, "locationDiveCenter")}
@@ -193,6 +198,7 @@ const New: React.FC<NewProps> = ({ user }) => {
           <Grid xs={6}>
             <TextField
               type="number"
+              name="length"
               label="Length"
               endDecorator="min"
               startDecorator={<TimelapseRounded />}
@@ -202,6 +208,7 @@ const New: React.FC<NewProps> = ({ user }) => {
           <Grid xs={6}>
             <TextField
               type="number"
+              name="maxDepth"
               label="Max depth"
               endDecorator="m"
               startDecorator={<DownloadRounded />}
@@ -211,6 +218,7 @@ const New: React.FC<NewProps> = ({ user }) => {
           <Grid xs={6}>
             <TextField
               type="number"
+              name="weights"
               label="Weights"
               endDecorator="kg"
               startDecorator={<ScaleRounded />}
@@ -220,6 +228,7 @@ const New: React.FC<NewProps> = ({ user }) => {
           <Grid xs={6}>
             <TextField
               type="text"
+              name="water"
               label="Water"
               onChange={(e) => handleTextFieldChange(e, "water")}
             />
@@ -234,6 +243,7 @@ const New: React.FC<NewProps> = ({ user }) => {
           <Grid xs={6}>
             <TextField
               type="text"
+              name="exposureProtectionType"
               label="Type"
               onChange={(e) =>
                 handleTextFieldChange(e, "gearExposureProtectionType")
@@ -243,6 +253,7 @@ const New: React.FC<NewProps> = ({ user }) => {
           <Grid xs={6}>
             <TextField
               type="text"
+              name="exposureProtectionThickness"
               label="Thickness"
               startDecorator={<LineWeightRounded />}
               onChange={(e) =>
@@ -260,6 +271,7 @@ const New: React.FC<NewProps> = ({ user }) => {
           <Grid xs={6}>
             <TextField
               type="number"
+              name="count"
               label="Count"
               startDecorator={<NumbersRounded />}
               onChange={(e) => handleTextFieldChange(e, "gearTanksCount")}
@@ -268,6 +280,7 @@ const New: React.FC<NewProps> = ({ user }) => {
           <Grid xs={6}>
             <TextField
               type="text"
+              name="tankType"
               label="Type"
               onChange={(e) => handleTextFieldChange(e, "gearTanksType")}
             />
@@ -282,6 +295,7 @@ const New: React.FC<NewProps> = ({ user }) => {
           <Grid xs={4}>
             <TextField
               type="number"
+              name="temperatureAir"
               label="Air"
               fullWidth
               endDecorator="°C"
@@ -291,6 +305,7 @@ const New: React.FC<NewProps> = ({ user }) => {
           <Grid xs={4}>
             <TextField
               type="number"
+              name="temperatureWaterAverage"
               label="Water avg."
               fullWidth
               endDecorator="°C"
@@ -302,6 +317,7 @@ const New: React.FC<NewProps> = ({ user }) => {
           <Grid xs={4}>
             <TextField
               type="number"
+              name="temperatureWaterAverage"
               label="Water min."
               fullWidth
               endDecorator="°C"
@@ -312,8 +328,13 @@ const New: React.FC<NewProps> = ({ user }) => {
           </Grid>
         </Grid>
 
-        <TextField type="text" label="Dive buddy" sx={{ mt: 2 }} />
-        <TextField type="text" label="Notes" sx={{ mt: 2 }} />
+        <TextField
+          type="text"
+          name="diveBuddy"
+          label="Dive buddy"
+          sx={{ mt: 2 }}
+        />
+        <TextField type="text" name="notes" label="Notes" sx={{ mt: 2 }} />
 
         <Button
           type="submit"
