@@ -3,27 +3,36 @@ import Grid from "@mui/joy/Grid";
 import JoyLink from "@mui/joy/Link";
 import Typography from "@mui/joy/Typography";
 import { useUser } from "@supabase/auth-helpers-react";
-import DiveCard from "common/components/DiveCard";
+import DiveCardSkeletonLoader from "common/components/DiveCard/SkeletonLoader";
 import { Dive } from "common/types";
 import { supabase } from "common/utils/supabaseClient";
 import NextLink from "next/link";
 import React, { useEffect, useState } from "react";
 
+import DiveCards from "./DiveCards";
+
 const LatestDives: React.FC = () => {
   const { user } = useUser();
   const [dives, setDives] = useState<Array<Dive>>([]);
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     const getDives = async () => {
+      setLoading(true);
       const { data, error } = await supabase.from<Dive>("dives").select("*");
 
       if (error) console.error(error);
 
       if (data) setDives(data);
+      setLoading(false);
     };
 
     if (user) getDives();
   }, [user]);
+
+  if (user && dives.length === 0 && !loading)
+    return <>You haven't added any dives yet</>;
+
   return (
     <>
       <Box
@@ -42,11 +51,11 @@ const LatestDives: React.FC = () => {
       </Box>
 
       <Grid container gap={2}>
-        {dives.map((dive) => (
-          <Grid xs={12} key={dive.id}>
-            <DiveCard dive={dive} />
-          </Grid>
-        ))}
+        {user && loading ? (
+          <DiveCardSkeletonLoader />
+        ) : (
+          <DiveCards dives={dives} />
+        )}
       </Grid>
     </>
   );
