@@ -13,6 +13,7 @@ import Grid from "@mui/joy/Grid";
 import Typography from "@mui/joy/Typography";
 import type { Dive } from "common/types";
 import formatDate from "common/utils/formatDate";
+import NextLink from "next/link";
 import React from "react";
 
 interface DiveCard {
@@ -21,69 +22,74 @@ interface DiveCard {
 
 const DiveCard: React.FC<DiveCard> = ({ dive }) => {
   return (
-    <Card
-      sx={{
-        display: "flex",
-        gap: 2,
-        flexDirection: "row",
-      }}
-    >
-      <Avatar color="neutral" size="lg">
-        <ScubaDivingRounded />
-      </Avatar>
-      <CardContent>
-        <Typography component="p" textColor="neutral.600">
-          {formatDate(dive.date)}
-        </Typography>
+    <NextLink href={`/dives/${dive.id}`}>
+      <Card
+        sx={{
+          display: "flex",
+          gap: 2,
+          flexDirection: "row",
+        }}
+      >
+        <Avatar color="neutral" size="lg">
+          <ScubaDivingRounded />
+        </Avatar>
+        <CardContent>
+          <Typography component="p" textColor="neutral.600">
+            {formatDate(dive.date)}
+          </Typography>
 
-        <Box my={1}>
-          <Grid container spacing={2}>
-            <Grid xs={6}>
-              <Typography component="p" startDecorator={<AccessTimeRounded />}>
-                {dive.time}
-              </Typography>
-              <Typography
-                component="p"
-                startDecorator={<TimelapseRounded />}
-                sx={{ mt: 0.6 }}
-              >
-                {dive.length}min
-              </Typography>
+          <Box my={1}>
+            <Grid container spacing={2}>
+              <Grid xs={6}>
+                <Typography
+                  component="p"
+                  startDecorator={<AccessTimeRounded />}
+                >
+                  {dive.time}
+                </Typography>
+                <Typography
+                  component="p"
+                  startDecorator={<TimelapseRounded />}
+                  sx={{ mt: 0.6 }}
+                >
+                  {dive.length}min
+                </Typography>
+              </Grid>
+              <Grid xs={6}>
+                <Typography component="p" startDecorator={<DownloadRounded />}>
+                  {dive.maxDepth}m
+                </Typography>
+                <Typography
+                  component="p"
+                  startDecorator={<DeviceThermostatRounded />}
+                  sx={{ mt: 0.6 }}
+                >
+                  {dive.temperature.water.average}°C
+                </Typography>
+              </Grid>
             </Grid>
-            <Grid xs={6}>
-              <Typography component="p" startDecorator={<DownloadRounded />}>
-                {dive.maxDepth}m
-              </Typography>
-              <Typography
-                component="p"
-                startDecorator={<DeviceThermostatRounded />}
-                sx={{ mt: 0.6 }}
-              >
-                {dive.temperature.water.average}°C
-              </Typography>
-            </Grid>
-          </Grid>
-        </Box>
+          </Box>
 
-        <Box
-          mt={2}
-          display="flex"
-          gap={2}
-          justifyContent="space-between"
-          alignItems="center"
-        >
-          <ListDivider sx={{ width: "100%", height: "2px" }} />
-
-          <Chip
-            color="neutral"
-            variant="soft"
-            startDecorator={dive.location.country.flagEmoji}
+          <Box
+            mt={2}
+            display="flex"
+            gap={2}
+            justifyContent="space-between"
+            alignItems="center"
           >
-            {dive.location.city}, {dive.location.country.name}
-          </Chip>
-        </Box>
-      </CardContent>
-    </Card>
+            <ListDivider sx={{ width: "100%", height: "2px" }} />
+
+            <Chip
+              color="neutral"
+              variant="soft"
+              startDecorator={dive.location.country.flagEmoji}
+            >
+              {dive.location.city}, {dive.location.country.name}
+            </Chip>
+          </Box>
+        </CardContent>
+      </Card>
+    </NextLink>
   );
 };
 
