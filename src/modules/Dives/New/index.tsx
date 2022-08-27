@@ -7,6 +7,7 @@ import FlagRounded from "@mui/icons-material/FlagRounded";
 import LineWeightRounded from "@mui/icons-material/LineWeightRounded";
 import NumbersRounded from "@mui/icons-material/NumbersRounded";
 import PublicRounded from "@mui/icons-material/PublicRounded";
+import SaveRounded from "@mui/icons-material/SaveRounded";
 import ScaleRounded from "@mui/icons-material/ScaleRounded";
 import ScheduleRounded from "@mui/icons-material/ScheduleRounded";
 import TimelapseRounded from "@mui/icons-material/TimelapseRounded";
@@ -56,6 +57,17 @@ const New: React.FC<NewProps> = ({ user }) => {
     }));
   };
 
+  const handleDateTextFieldChange = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const date = new Date(e.target.value);
+
+    setDive((prevState: DiveFlattened) => ({
+      ...prevState,
+      date: date,
+    }));
+  };
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const newDive: Dive = {
@@ -96,7 +108,6 @@ const New: React.FC<NewProps> = ({ user }) => {
       .from("dives")
       .insert({ user_id: user.id, ...newDive });
     if (error) console.error(error);
-    console.log(data);
   };
 
   return (
@@ -132,26 +143,28 @@ const New: React.FC<NewProps> = ({ user }) => {
           Basic information
         </Typography>
 
-        <Box display="flex" justifyContent="space-between" gap={2}>
-          <TextField
-            type="date"
-            name="date"
-            label="Date"
-            fullWidth
-            startDecorator={<CalendarTodayRounded />}
-            required
-            onChange={(e) => handleTextFieldChange(e, "date")}
-          />
-          <TextField
-            type="time"
-            name="time"
-            label="Time"
-            fullWidth
-            startDecorator={<ScheduleRounded />}
-            required
-            onChange={(e) => handleTextFieldChange(e, "time")}
-          />
-        </Box>
+        <Grid container spacing={2}>
+          <Grid xs={6}>
+            <TextField
+              type="date"
+              name="date"
+              label="Date"
+              startDecorator={<CalendarTodayRounded />}
+              required
+              onChange={(e) => handleDateTextFieldChange(e)}
+            />
+          </Grid>
+          <Grid xs={6}>
+            <TextField
+              type="time"
+              name="time"
+              label="Time"
+              startDecorator={<ScheduleRounded />}
+              required
+              onChange={(e) => handleTextFieldChange(e, "time")}
+            />
+          </Grid>
+        </Grid>
 
         <Grid mt={2} spacing={2} container>
           <Grid xs={6}>
@@ -159,7 +172,7 @@ const New: React.FC<NewProps> = ({ user }) => {
               type="text"
               name="locationCountry"
               label="Country"
-              onChange={(e) => handleTextFieldChange(e, "locationCountry")}
+              onChange={(e) => handleTextFieldChange(e, "locationCountryName")}
               startDecorator={
                 dive.locationCountryFlagEmoji ? (
                   dive.locationCountryFlagEmoji
@@ -340,7 +353,7 @@ const New: React.FC<NewProps> = ({ user }) => {
           type="submit"
           color="success"
           size="lg"
-          startIcon={<DoneRounded />}
+          startIcon={<SaveRounded />}
           sx={{ mt: 4 }}
         >
           Save

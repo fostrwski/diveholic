@@ -12,7 +12,7 @@ import Chip from "@mui/joy/Chip";
 import Grid from "@mui/joy/Grid";
 import Typography from "@mui/joy/Typography";
 import type { Dive } from "common/types";
-import formatDateString from "common/utils/formatDateString";
+import formatDate from "common/utils/formatDate";
 import React from "react";
 
 interface DiveCard {
@@ -33,7 +33,7 @@ const DiveCard: React.FC<DiveCard> = ({ dive }) => {
       </Avatar>
       <CardContent>
         <Typography component="p" textColor="neutral.600">
-          {formatDateString(dive.date)}
+          {formatDate(dive.date)}
         </Typography>
 
         <Box my={1}>

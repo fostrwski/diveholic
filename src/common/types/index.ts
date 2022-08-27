@@ -2,7 +2,7 @@ import type Gear from "./gear";
 
 export type Dive = {
   id?: number;
-  date: string;
+  date: Date;
   time: string;
   location: {
     country: {
@@ -30,7 +30,7 @@ export type Dive = {
 // Copy of the Dive type for easier use in react state
 export type DiveFlattened = {
   id?: number;
-  date: string;
+  date: Date;
   time: string;
   locationCountryName: string;
   locationCountryCode: string;

@@ -4,7 +4,7 @@ import Chip from "@mui/joy/Chip";
 import Typography from "@mui/joy/Typography";
 import { useUser } from "@supabase/auth-helpers-react";
 import type { Dive as DiveType } from "common/types";
-import formatDateString from "common/utils/formatDateString";
+import formatDate from "common/utils/formatDate";
 import { supabase } from "common/utils/supabaseClient";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
@@ -59,7 +59,7 @@ const Dive: React.FC = () => {
           }}
         >
           <Typography component="p" textColor="neutral.600">
-            {formatDateString(dive.date)}
+            {formatDate(dive.date)}
           </Typography>
           <Chip
             variant="outlined"
