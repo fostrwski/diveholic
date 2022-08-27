@@ -13,7 +13,8 @@ export const getServerSideProps = withPageAuth({
     // @TODO: handle  empty array
     const { data } = await supabaseServerClient(ctx)
       .from<Dive>("dives")
-      .select("*");
+      .select("*")
+      .order("date", { ascending: false });
     return { props: { data } };
   },
 });
