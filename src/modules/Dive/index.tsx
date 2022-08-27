@@ -25,8 +25,7 @@ const Dive: React.FC = () => {
         .from<DiveType>("dives")
         .select("*")
         // @ts-ignore
-        .eq("id", parseInt(diveId))
-        .limit(1);
+        .eq("id", parseInt(diveId));
 
       if (error) console.error(error);
 
@@ -42,7 +41,7 @@ const Dive: React.FC = () => {
     if (user) getDives();
   }, [user]);
 
-  if (loading) return <>Loading</>;
+  if (user && loading) return <>Loading</>;
 
   if (user && diveNotFound) {
     return <>Dive not found</>;
