@@ -23,7 +23,7 @@ const LatestDives: React.FC = () => {
       const { data, error } = await supabase
         .from<Dive>("dives")
         .select("*")
-        .order("date", { ascending: true })
+        .order("date", { ascending: false })
         .limit(2);
 
       if (error) console.error(error);
