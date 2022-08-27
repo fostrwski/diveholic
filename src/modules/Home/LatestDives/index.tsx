@@ -20,7 +20,11 @@ const LatestDives: React.FC = () => {
   useEffect(() => {
     const getDives = async () => {
       setLoading(true);
-      const { data, error } = await supabase.from<Dive>("dives").select("*");
+      const { data, error } = await supabase
+        .from<Dive>("dives")
+        .select("*")
+        .order("date", { ascending: true })
+        .limit(2);
 
       if (error) console.error(error);
 
