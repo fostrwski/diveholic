@@ -79,10 +79,7 @@ const theme = extendTheme({
       styleOverrides: {
         root: ({ theme }) => ({
           padding: `${theme.spacing(2)} ${theme.spacing(3)}`,
-          borderTopLeftRadius: "var(--joy-radius-xs)",
-          borderBottomLeftRadius: "var(--joy-radius-xs)",
-          borderTopRightRadius: "var(--joy-radius-md)",
-          borderBottomRightRadius: "var(--joy-radius-md)",
+          borderRadius: theme.vars.radius.xs,
         }),
       },
     },
