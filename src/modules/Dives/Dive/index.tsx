@@ -1,7 +1,10 @@
+import CalendarTodayRounded from "@mui/icons-material/CalendarTodayRounded";
+import EditRounded from "@mui/icons-material/EditRounded";
+import FlagRounded from "@mui/icons-material/FlagRounded";
 import PublicRounded from "@mui/icons-material/PublicRounded";
 import Box from "@mui/joy/Box";
+import Button from "@mui/joy/Button";
 import Chip from "@mui/joy/Chip";
-import Typography from "@mui/joy/Typography";
 import { useUser } from "@supabase/auth-helpers-react";
 import type { Dive as DiveType } from "common/types";
 import formatDate from "common/utils/formatDate";
@@ -9,6 +12,9 @@ import { supabase } from "common/utils/supabaseClient";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { useEffect } from "react";
+
+import BasicInformation from "./BasicInformation";
+import Details from "./Details";
 
 const Dive: React.FC = () => {
   const { user } = useUser();
@@ -50,31 +56,43 @@ const Dive: React.FC = () => {
   if (dive) {
     return (
       <>
-        <Box
-          sx={{
-            display: "flex",
-            gap: 2,
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
-          <Typography component="p" textColor="neutral.600">
-            {formatDate(dive.date)}
-          </Typography>
-          <Chip
-            variant="outlined"
-            color="neutral"
-            startDecorator={
-              dive.location.country.flagEmoji ? (
-                dive.location.country.flagEmoji
-              ) : (
-                <PublicRounded />
-              )
-            }
-          >
-            {dive.location.city}, {dive.location.country.name}
-          </Chip>
+        <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+          <div>
+            <Chip
+              component="span"
+              size="lg"
+              startDecorator={
+                dive.location.country.flagEmoji ? (
+                  dive.location.country.flagEmoji
+                ) : (
+                  <PublicRounded />
+                )
+              }
+            >
+              {dive.location.city}, {dive.location.country.name}
+            </Chip>
+          </div>
+
+          <div>
+            <Chip size="lg" component="span" startDecorator={<FlagRounded />}>
+              {dive.location.diveCenter}
+            </Chip>
+          </div>
+
+          <div>
+            <Chip
+              startDecorator={<CalendarTodayRounded />}
+              component="span"
+              variant="outlined"
+            >
+              {formatDate(dive.date)} at {dive.time}
+            </Chip>
+          </div>
         </Box>
+
+        <BasicInformation dive={dive} />
+
+        <Details dive={dive} />
       </>
     );
   }
