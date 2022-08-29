@@ -31,22 +31,26 @@ const BasicInformation: React.FC<BasicInformationProps> = ({ dive }) => {
         })}
       >
         <Grid container spacing={1}>
-          <Grid xs={12}>
-            <Info
-              title="Length"
-              value={dive.length}
-              unit="min"
-              icon={<TimelapseRounded />}
-            />
-          </Grid>
-          <Grid xs={12}>
-            <Info
-              title="Max depth"
-              value={dive.maxDepth}
-              unit="m"
-              icon={<DownloadRounded />}
-            />
-          </Grid>
+          {dive.length && (
+            <Grid xs={12}>
+              <Info
+                title="Length"
+                value={dive.length}
+                unit="min"
+                icon={<TimelapseRounded />}
+              />
+            </Grid>
+          )}
+          {dive.maxDepth && (
+            <Grid xs={12}>
+              <Info
+                title="Max depth"
+                value={dive.maxDepth}
+                unit="m"
+                icon={<DownloadRounded />}
+              />
+            </Grid>
+          )}
         </Grid>
       </Sheet>
     </Box>
