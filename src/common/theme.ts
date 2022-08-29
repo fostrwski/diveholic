@@ -39,9 +39,9 @@ const theme = extendTheme({
     },
     JoyMenu: {
       styleOverrides: {
-        root: {
-          padding: "0.4rem",
-        },
+        root: ({ theme }) => ({
+          padding: theme.spacing(1),
+        }),
       },
     },
     JoyMenuItem: {
@@ -73,6 +73,17 @@ const theme = extendTheme({
       defaultProps: {
         color: "neutral",
         variant: "soft",
+      },
+    },
+    JoySheet: {
+      styleOverrides: {
+        root: ({ theme }) => ({
+          padding: `${theme.spacing(2)} ${theme.spacing(3)}`,
+          borderTopLeftRadius: "var(--joy-radius-xs)",
+          borderBottomLeftRadius: "var(--joy-radius-xs)",
+          borderTopRightRadius: "var(--joy-radius-md)",
+          borderBottomRightRadius: "var(--joy-radius-md)",
+        }),
       },
     },
   },
