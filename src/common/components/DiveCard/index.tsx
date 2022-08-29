@@ -3,7 +3,6 @@ import DeviceThermostatRounded from "@mui/icons-material/DeviceThermostatRounded
 import DownloadRounded from "@mui/icons-material/DownloadRounded";
 import ScubaDivingRounded from "@mui/icons-material/ScubaDivingRounded";
 import TimelapseRounded from "@mui/icons-material/TimelapseRounded";
-import { ListDivider } from "@mui/joy";
 import Avatar from "@mui/joy/Avatar";
 import Box from "@mui/joy/Box";
 import Card from "@mui/joy/Card";
@@ -11,6 +10,7 @@ import CardContent from "@mui/joy/CardContent";
 import Chip from "@mui/joy/Chip";
 import Grid from "@mui/joy/Grid";
 import Typography from "@mui/joy/Typography";
+import Separator from "common/components/Separator";
 import type { Dive } from "common/types";
 import formatDate from "common/utils/formatDate";
 import NextLink from "next/link";
@@ -34,7 +34,7 @@ const DiveCard: React.FC<DiveCard> = ({ dive }) => {
           <ScubaDivingRounded />
         </Avatar>
         <CardContent>
-          <Typography component="p" textColor="neutral.600">
+          <Typography component="p" textColor="GrayText">
             {formatDate(dive.date)}
           </Typography>
 
@@ -77,7 +77,7 @@ const DiveCard: React.FC<DiveCard> = ({ dive }) => {
             justifyContent="space-between"
             alignItems="center"
           >
-            <ListDivider sx={{ width: "100%", height: "2px" }} />
+            <Separator />
 
             <Chip
               color="neutral"
