@@ -79,7 +79,11 @@ const theme = extendTheme({
       styleOverrides: {
         root: ({ theme }) => ({
           padding: `${theme.spacing(2)} ${theme.spacing(3)}`,
-          borderRadius: theme.vars.radius.xs,
+          borderRadius: theme.vars.radius.md,
+
+          [theme.getColorSchemeSelector("light")]: {
+            backgroundColor: theme.palette.neutral[50],
+          },
         }),
       },
     },
