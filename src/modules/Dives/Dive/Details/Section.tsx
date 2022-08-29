@@ -26,6 +26,7 @@ const Section: React.FC<SectionProps> = ({ title, details }) => {
               title={detail.title}
               content={detail.content}
               icon={detail?.icon}
+              unit={detail?.unit}
             />
           </Grid>
         ))}

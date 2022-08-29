@@ -3,6 +3,8 @@ import NumbersRounded from "@mui/icons-material/NumbersRounded";
 import ScaleRounded from "@mui/icons-material/ScaleRounded";
 import WaterRounded from "@mui/icons-material/WaterRounded";
 import Box from "@mui/joy/Box";
+import Typography from "@mui/joy/Typography";
+import Separator from "common/components/Separator";
 import type { Dive } from "common/types";
 import React from "react";
 
@@ -26,6 +28,20 @@ const Details: React.FC<DetailsProps> = ({ dive }) => {
           },
         ]}
       />
+
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          gap: 6,
+          mt: 6,
+        }}
+      >
+        <Typography level="h4" component="p">
+          Gear
+        </Typography>
+        <Separator />
+      </Box>
 
       <Section
         title="Exposure protection"
