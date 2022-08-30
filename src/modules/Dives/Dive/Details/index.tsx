@@ -33,7 +33,7 @@ const Details: React.FC<DetailsProps> = ({ dive }) => {
         sx={{
           display: "flex",
           alignItems: "center",
-          gap: 6,
+          gap: 4,
           mt: 6,
         }}
       >
