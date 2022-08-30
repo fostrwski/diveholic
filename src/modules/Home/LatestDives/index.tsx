@@ -21,8 +21,8 @@ const LatestDives: React.FC = () => {
 
   useEffect(() => {
     const getDives = async () => {
-      setLoading(true);
       setError(false);
+      setLoading(true);
       const { data, error } = await supabase
         .from<Dive>("dives")
         .select("*")

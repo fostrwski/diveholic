@@ -15,16 +15,19 @@ import { useEffect } from "react";
 
 import BasicInformation from "./BasicInformation";
 import Details from "./Details";
+import Error from "./Error";
 
 const Dive: React.FC = () => {
   const { user } = useUser();
   const router = useRouter();
   const [dive, setDive] = useState<DiveType | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<any>(null);
   const [diveNotFound, setDiveNotFound] = useState<boolean>(false);
 
   useEffect(() => {
     const getDives = async () => {
+      setError(null);
       setLoading(true);
       const { id: diveId } = router.query;
       const { data, error } = await supabase
@@ -33,7 +36,11 @@ const Dive: React.FC = () => {
         // @ts-ignore
         .eq("id", parseInt(diveId));
 
-      if (error) console.error(error);
+      if (error) {
+        setError(error);
+        console.error(error);
+        return setLoading(false);
+      }
 
       if (data && data.length > 0) {
         setDive(data![0]);
@@ -47,57 +54,61 @@ const Dive: React.FC = () => {
     if (user) getDives();
   }, [user]);
 
-  if (user && loading) return <>Loading</>;
+  const determineView = () => {
+    if (error) return <Error error={error} />;
 
-  if (user && diveNotFound) {
-    return <>Dive not found</>;
-  }
+    if (user && loading) return <>Loading</>;
 
-  if (dive) {
-    return (
-      <>
-        <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
-          <div>
-            <Chip
-              component="span"
-              size="lg"
-              startDecorator={
-                dive.location.country.flagEmoji ? (
-                  dive.location.country.flagEmoji
-                ) : (
-                  <PublicRounded />
-                )
-              }
-            >
-              {dive.location.city}, {dive.location.country.name}
-            </Chip>
-          </div>
+    if (user && diveNotFound) {
+      return <>Dive not found</>;
+    }
 
-          <div>
-            <Chip size="lg" component="span" startDecorator={<FlagRounded />}>
-              {dive.location.diveCenter}
-            </Chip>
-          </div>
+    if (dive) {
+      return (
+        <>
+          <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+            <div>
+              <Chip
+                component="span"
+                size="lg"
+                startDecorator={
+                  dive.location.country.flagEmoji ? (
+                    dive.location.country.flagEmoji
+                  ) : (
+                    <PublicRounded />
+                  )
+                }
+              >
+                {dive.location.city}, {dive.location.country.name}
+              </Chip>
+            </div>
 
-          <div>
-            <Chip
-              startDecorator={<CalendarTodayRounded />}
-              component="span"
-              variant="outlined"
-            >
-              {formatDate(dive.date)} at {dive.time}
-            </Chip>
-          </div>
-        </Box>
+            <div>
+              <Chip size="lg" component="span" startDecorator={<FlagRounded />}>
+                {dive.location.diveCenter}
+              </Chip>
+            </div>
 
-        <BasicInformation dive={dive} />
+            <div>
+              <Chip
+                startDecorator={<CalendarTodayRounded />}
+                component="span"
+                variant="outlined"
+              >
+                {formatDate(dive.date)} at {dive.time}
+              </Chip>
+            </div>
+          </Box>
 
-        <Details dive={dive} />
-      </>
-    );
-  }
+          <BasicInformation dive={dive} />
 
-  return <></>;
+          <Details dive={dive} />
+        </>
+      );
+    }
+  };
+
+  return determineView();
 };
 
 export default Dive;

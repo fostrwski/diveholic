@@ -4,16 +4,14 @@ import React from "react";
 
 const Error: React.FC = () => {
   return (
-    <>
-      <Typography
-        component="p"
-        startDecorator={<ErrorOutlineRounded />}
-        color="danger"
-        level="h6"
-      >
-        Something went wrong
-      </Typography>
-    </>
+    <Typography
+      component="p"
+      startDecorator={<ErrorOutlineRounded />}
+      color="danger"
+      level="h6"
+    >
+      Something went wrong
+    </Typography>
   );
 };
 
