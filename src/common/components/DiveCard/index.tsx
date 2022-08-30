@@ -49,15 +49,15 @@ const DiveCard: React.FC<DiveCard> = ({ dive }) => {
                 </Typography>
                 <Typography
                   component="p"
-                  startDecorator={<TimelapseRounded />}
+                  startDecorator={<DownloadRounded />}
                   sx={{ mt: 0.6 }}
                 >
-                  {dive.length}min
+                  {dive.maxDepth}m
                 </Typography>
               </Grid>
               <Grid xs={6}>
-                <Typography component="p" startDecorator={<DownloadRounded />}>
-                  {dive.maxDepth}m
+                <Typography component="p" startDecorator={<TimelapseRounded />}>
+                  {dive.length}min
                 </Typography>
                 <Typography
                   component="p"
