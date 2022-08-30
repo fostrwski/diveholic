@@ -1,7 +1,4 @@
-import AddRounded from "@mui/icons-material/AddRounded";
 import CalendarTodayRounded from "@mui/icons-material/CalendarTodayRounded";
-import CloseRounded from "@mui/icons-material/CloseRounded";
-import DoneRounded from "@mui/icons-material/DoneRounded";
 import DownloadRounded from "@mui/icons-material/DownloadRounded";
 import FlagRounded from "@mui/icons-material/FlagRounded";
 import LineWeightRounded from "@mui/icons-material/LineWeightRounded";
@@ -11,20 +8,20 @@ import SaveRounded from "@mui/icons-material/SaveRounded";
 import ScaleRounded from "@mui/icons-material/ScaleRounded";
 import ScheduleRounded from "@mui/icons-material/ScheduleRounded";
 import TimelapseRounded from "@mui/icons-material/TimelapseRounded";
-import { Button, ListDivider } from "@mui/joy";
 import Box from "@mui/joy/Box";
-import Chip from "@mui/joy/Chip";
+import Button from "@mui/joy/Button";
 import Grid from "@mui/joy/Grid";
 import TextField from "@mui/joy/TextField";
 import Typography from "@mui/joy/Typography";
 import { User } from "@supabase/auth-helpers-nextjs";
+import Separator from "common/components/Separator";
 import type { Dive, DiveFlattened } from "common/types";
 import getCountryCode from "common/utils/getCountryCode";
 import getFlagEmoji from "common/utils/getFlagEmoji";
 import { supabase } from "common/utils/supabaseClient";
-import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 
+import Header from "./Header";
 import diveInitialState from "./diveInitialState";
 
 interface NewProps {
@@ -32,8 +29,6 @@ interface NewProps {
 }
 
 const New: React.FC<NewProps> = ({ user }) => {
-  const router = useRouter();
-
   const [dive, setDive] = useState<DiveFlattened>(diveInitialState);
 
   useEffect(() => {
@@ -112,26 +107,7 @@ const New: React.FC<NewProps> = ({ user }) => {
 
   return (
     <>
-      <Box display="flex" justifyContent="space-between" alignItems="center">
-        <Chip
-          startDecorator={<AddRounded />}
-          variant="soft"
-          color="info"
-          size="lg"
-        >
-          New dive
-        </Chip>
-
-        <Button
-          color="danger"
-          size="sm"
-          variant="plain"
-          onClick={() => router.push("/")}
-          endIcon={<CloseRounded />}
-        >
-          Cancel
-        </Button>
-      </Box>
+      <Header />
 
       <Box
         component="form"
@@ -201,7 +177,7 @@ const New: React.FC<NewProps> = ({ user }) => {
           </Grid>
         </Grid>
 
-        <ListDivider sx={{ width: "15%", mx: "auto", height: "2px" }} />
+        <Separator sx={{ width: "15%", mx: "auto" }} />
 
         <Typography level="h4" component="p" mt={2}>
           Dive details
