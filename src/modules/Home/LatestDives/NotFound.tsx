@@ -4,7 +4,7 @@ import Typography from "@mui/joy/Typography";
 import NextLink from "next/link";
 import React from "react";
 
-const DivesNotFound: React.FC = () => {
+const NotFound: React.FC = () => {
   return (
     <Box textAlign="center">
       <Typography component="p" textColor="neutral.400">
@@ -20,4 +20,4 @@ const DivesNotFound: React.FC = () => {
   );
 };
 
-export default DivesNotFound;
+export default NotFound;

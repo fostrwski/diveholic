@@ -9,9 +9,9 @@ import NextLink from "next/link";
 import React, { useEffect, useState } from "react";
 
 import DiveCards from "./DiveCards";
-import DivesLoading from "./DivesLoading";
-import DivesNotFound from "./DivesNotFound";
 import Error from "./Error";
+import Loading from "./Loading";
+import NotFound from "./NotFound";
 
 const LatestDives: React.FC = () => {
   const { user } = useUser();
@@ -46,9 +46,9 @@ const LatestDives: React.FC = () => {
   const determineView = () => {
     if (error) return <Error />;
 
-    if (user && !loading && dives.length === 0) return <DivesNotFound />;
+    if (user && !loading && dives.length === 0) return <NotFound />;
 
-    if (user && loading) return <DivesLoading />;
+    if (user && loading) return <Loading />;
 
     return <DiveCards dives={dives} />;
   };
