@@ -90,7 +90,7 @@ const Dive: React.FC = () => {
             </div>
 
             <div>
-              <Chip size="lg" component="span" startDecorator={<FlagRounded />}>
+              <Chip component="span" startDecorator={<FlagRounded />}>
                 {dive.location.diveCenter}
               </Chip>
             </div>
