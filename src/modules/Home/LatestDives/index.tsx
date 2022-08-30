@@ -44,6 +44,8 @@ const LatestDives: React.FC = () => {
   }, [user]);
 
   const determineView = () => {
+    if (error) return <Error />;
+
     if (user && !loading && dives.length === 0) return <NotFound />;
 
     if (user && loading) return <Loading />;

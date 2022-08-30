@@ -6,9 +6,11 @@ import React from "react";
 
 interface ErrorProps {
   error: any;
+  customMessage?: string;
+  tip?: string;
 }
 
-const Error: React.FC<ErrorProps> = ({ error }) => {
+const Error: React.FC<ErrorProps> = ({ error, customMessage, tip }) => {
   return (
     <Box>
       {/* @ts-ignore  */}
@@ -16,13 +18,15 @@ const Error: React.FC<ErrorProps> = ({ error }) => {
       <Typography component="p" level="h4" color="danger" gutterBottom>
         Something went wrong
       </Typography>
-      <Typography component="p" fontWeight="md">
-        {error?.message}
+      <Typography component="p" fontWeight="lg">
+        {customMessage ? customMessage : error?.message}
       </Typography>
 
-      <Typography component="p" mt={4}>
-        Check your internet connection and try reloading the page.
-      </Typography>
+      {tip && (
+        <Typography component="p" mt={4}>
+          {tip}
+        </Typography>
+      )}
 
       <Typography component="p" level="body2" mt={6}>
         Need more help?

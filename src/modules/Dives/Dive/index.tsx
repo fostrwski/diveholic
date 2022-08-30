@@ -55,12 +55,18 @@ const Dive: React.FC = () => {
   }, [user]);
 
   const determineView = () => {
-    if (error) return <Error error={error} />;
+    if (error)
+      return (
+        <Error
+          error={error}
+          tip="Make sure you're connected to the internet and try reloading the page."
+        />
+      );
 
     if (user && loading) return <>Loading</>;
 
     if (user && diveNotFound) {
-      return <>Dive not found</>;
+      return <Error error={error} customMessage="This dive does not exist" />;
     }
 
     if (dive) {

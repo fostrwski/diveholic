@@ -6,7 +6,7 @@ import React from "react";
 const NotFound: React.FC = () => {
   return (
     <>
-      <Typography component="p" textColor="GrayText">
+      <Typography component="p" fontWeight="md" textColor="GrayText">
         It looks like you haven't logged any dives yet 🤭
       </Typography>
 
