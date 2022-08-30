@@ -23,7 +23,7 @@ const BasicInformation: React.FC<BasicInformationProps> = ({ dive }) => {
       <Sheet
         variant="plain"
         sx={(theme) => ({
-          borderLeftWidth: theme.spacing(0.6),
+          borderLeftWidth: theme.spacing(0.4),
           borderLeftStyle: "solid",
           borderColor: "GrayText",
           borderTopLeftRadius: theme.vars.radius.xs,
