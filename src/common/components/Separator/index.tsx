@@ -1,8 +1,15 @@
 import ListDivider from "@mui/joy/ListDivider";
+import { SxProps } from "@mui/system";
 import React from "react";
 
-const Separator: React.FC = () => {
-  return <ListDivider component="hr" sx={{ width: "100%", height: "2px" }} />;
+interface SeparatorProps {
+  sx?: SxProps;
+}
+
+const Separator: React.FC<SeparatorProps> = ({ sx }) => {
+  return (
+    <ListDivider component="hr" sx={{ width: "100%", height: "2px", ...sx }} />
+  );
 };
 
 export default Separator;
