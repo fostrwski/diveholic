@@ -20,11 +20,11 @@ const Home: React.FC<HomeProps> = ({ user, dives }) => {
 
   return (
     <>
-      <Typography level="h4" component="div">
+      <Typography level="h4" component="h1">
         Hi {user.user_metadata.first_name} 🤿
       </Typography>
 
-      <Typography level="h6" textColor="neutral.400">
+      <Typography level="h6" textColor="GrayText" component="p">
         You've logged {dives?.length} dives so far
       </Typography>
 
