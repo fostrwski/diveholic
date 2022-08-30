@@ -11,22 +11,29 @@ import React, { useEffect, useState } from "react";
 import DiveCards from "./DiveCards";
 import DivesLoading from "./DivesLoading";
 import DivesNotFound from "./DivesNotFound";
+import Error from "./Error";
 
 const LatestDives: React.FC = () => {
   const { user } = useUser();
   const [dives, setDives] = useState<Array<Dive>>([]);
+  const [error, setError] = useState<boolean>();
   const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     const getDives = async () => {
       setLoading(true);
+      setError(false);
       const { data, error } = await supabase
         .from<Dive>("dives")
         .select("*")
         .order("date", { ascending: false })
         .limit(2);
 
-      if (error) console.error(error);
+      if (error) {
+        setError(true);
+        console.error(error);
+        return setLoading(false);
+      }
 
       if (data) setDives(data);
 
@@ -37,6 +44,8 @@ const LatestDives: React.FC = () => {
   }, [user]);
 
   const determineView = () => {
+    if (error) return <Error />;
+
     if (user && !loading && dives.length === 0) return <DivesNotFound />;
 
     if (user && loading) return <DivesLoading />;
