@@ -1,5 +1,5 @@
 import ListDivider from "@mui/joy/ListDivider";
-import { SxProps } from "@mui/system";
+import type { SxProps } from "@mui/system";
 import React from "react";
 
 interface SeparatorProps {
