@@ -13,13 +13,17 @@ export interface DetailProps {
 const Detail: React.FC<DetailProps> = ({ title, content, unit, icon }) => {
   return (
     <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
-      {icon && <Avatar size="lg">{icon}</Avatar>}
+      {icon && (
+        <Avatar size="lg" sx={{ alignSelf: "start" }}>
+          {icon}
+        </Avatar>
+      )}
 
       <Box>
         <Typography component="p" textColor="GrayText">
           {title}
         </Typography>
-        <Typography component="p" level="h6">
+        <Typography component="p" fontWeight="md">
           {content}
           {unit}
         </Typography>
