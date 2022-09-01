@@ -3,6 +3,7 @@ import NumbersRounded from "@mui/icons-material/NumbersRounded";
 import ScaleRounded from "@mui/icons-material/ScaleRounded";
 import WaterRounded from "@mui/icons-material/WaterRounded";
 import Box from "@mui/joy/Box";
+import Button from "@mui/joy/Button";
 import Typography from "@mui/joy/Typography";
 import Separator from "common/components/Separator";
 import type { Dive } from "common/types";
@@ -33,7 +34,7 @@ const Details: React.FC<DetailsProps> = ({ dive }) => {
         sx={{
           display: "flex",
           alignItems: "center",
-          gap: 4,
+          gap: 6,
           mt: 6,
         }}
       >
@@ -67,6 +68,25 @@ const Details: React.FC<DetailsProps> = ({ dive }) => {
           { title: "Type", content: dive.gear.tanks.type },
         ]}
       />
+
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          gap: 6,
+          mt: 6,
+        }}
+      >
+        <Separator />
+        <Button
+          variant="plain"
+          size="sm"
+          color="neutral"
+          sx={{ whiteSpace: "nowrap" }}
+        >
+          See more
+        </Button>
+      </Box>
     </Box>
   );
 };
