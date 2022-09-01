@@ -119,9 +119,13 @@ const Dive: React.FC = () => {
             </div>
           </Box>
 
-          <BasicInformation dive={dive} />
+          <Box mt={6}>
+            <BasicInformation dive={dive} />
+          </Box>
 
-          <Details dive={dive} />
+          <Box mt={4}>
+            <Details dive={dive} />
+          </Box>
 
           <Button
             sx={{ mt: 6 }}

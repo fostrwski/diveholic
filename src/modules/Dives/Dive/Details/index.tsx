@@ -18,7 +18,7 @@ interface DetailsProps {
 
 const Details: React.FC<DetailsProps> = ({ dive }) => {
   return (
-    <Box mt={4}>
+    <>
       <Section
         details={[
           { title: "Water", content: dive.water, icon: <WaterRounded /> },
@@ -75,7 +75,7 @@ const Details: React.FC<DetailsProps> = ({ dive }) => {
           See more
         </Button>
       </Box>
-    </Box>
+    </>
   );
 };
 

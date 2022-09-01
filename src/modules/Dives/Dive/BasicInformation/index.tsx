@@ -1,6 +1,5 @@
 import DownloadRounded from "@mui/icons-material/DownloadRounded";
 import TimelapseRounded from "@mui/icons-material/TimelapseRounded";
-import Box from "@mui/joy/Box";
 import Grid from "@mui/joy/Grid";
 import Sheet from "@mui/joy/Sheet";
 import Typography from "@mui/joy/Typography";
@@ -15,7 +14,7 @@ interface BasicInformationProps {
 
 const BasicInformation: React.FC<BasicInformationProps> = ({ dive }) => {
   return (
-    <Box mt={6}>
+    <>
       <Typography component="p" mb={2} textColor="GrayText" fontWeight="md">
         Basic information
       </Typography>
@@ -53,7 +52,7 @@ const BasicInformation: React.FC<BasicInformationProps> = ({ dive }) => {
           )}
         </Grid>
       </Sheet>
-    </Box>
+    </>
   );
 };
 
