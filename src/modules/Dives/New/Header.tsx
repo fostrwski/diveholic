@@ -14,8 +14,8 @@ const Header: React.FC = () => {
       <Chip
         startDecorator={<AddRounded />}
         variant="soft"
-        color="info"
         size="lg"
+        color="primary"
       >
         New dive
       </Chip>
