@@ -6,6 +6,7 @@ import Box from "@mui/joy/Box";
 import Button from "@mui/joy/Button";
 import Typography from "@mui/joy/Typography";
 import Separator from "common/components/Separator";
+import TextSeparator from "common/components/TextSeparator";
 import type { Dive } from "common/types";
 import React from "react";
 
@@ -30,20 +31,7 @@ const Details: React.FC<DetailsProps> = ({ dive }) => {
         ]}
       />
 
-      <Box
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          gap: 6,
-          mt: 6,
-        }}
-      >
-        <Typography level="h4" component="p">
-          Gear
-        </Typography>
-        <Separator />
-      </Box>
-
+      <TextSeparator sx={{ mt: 8 }}>Gear</TextSeparator>
       <Section
         title="Exposure protection"
         details={[

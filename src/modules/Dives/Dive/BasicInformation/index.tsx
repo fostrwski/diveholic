@@ -15,7 +15,7 @@ interface BasicInformationProps {
 
 const BasicInformation: React.FC<BasicInformationProps> = ({ dive }) => {
   return (
-    <Box mt={4}>
+    <Box mt={6}>
       <Typography component="p" mb={2} textColor="GrayText" fontWeight="md">
         Basic information
       </Typography>
