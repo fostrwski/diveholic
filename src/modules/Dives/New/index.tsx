@@ -1,3 +1,4 @@
+import { TitleRounded } from "@mui/icons-material";
 import CalendarTodayRounded from "@mui/icons-material/CalendarTodayRounded";
 import DownloadRounded from "@mui/icons-material/DownloadRounded";
 import FlagRounded from "@mui/icons-material/FlagRounded";
@@ -11,10 +12,12 @@ import TimelapseRounded from "@mui/icons-material/TimelapseRounded";
 import Box from "@mui/joy/Box";
 import Button from "@mui/joy/Button";
 import Grid from "@mui/joy/Grid";
+import Radio from "@mui/joy/Radio";
+import RadioGroup from "@mui/joy/RadioGroup";
 import TextField from "@mui/joy/TextField";
 import Typography from "@mui/joy/Typography";
 import { User } from "@supabase/auth-helpers-nextjs";
-import Separator from "common/components/Separator";
+import TextSeparator from "common/components/TextSeparator";
 import type { Dive, DiveFlattened } from "common/types";
 import getCountryCode from "common/utils/getCountryCode";
 import getFlagEmoji from "common/utils/getFlagEmoji";
@@ -99,6 +102,7 @@ const New: React.FC<NewProps> = ({ user }) => {
         },
       },
     };
+
     const { data, error } = await supabase
       .from("dives")
       .insert({ user_id: user.id, ...newDive });
@@ -109,16 +113,7 @@ const New: React.FC<NewProps> = ({ user }) => {
     <>
       <Header />
 
-      <Box
-        component="form"
-        mt={4}
-        sx={{ display: "flex", gap: 2, flexDirection: "column" }}
-        onSubmit={handleSubmit}
-      >
-        <Typography level="h4" component="p">
-          Basic information
-        </Typography>
-
+      <Box component="form" mt={4} onSubmit={handleSubmit}>
         <Grid container spacing={2}>
           <Grid xs={6}>
             <TextField
@@ -142,7 +137,16 @@ const New: React.FC<NewProps> = ({ user }) => {
           </Grid>
         </Grid>
 
-        <Grid mt={2} spacing={2} container>
+        <Typography
+          mt={6}
+          mb={2}
+          component="p"
+          textColor="GrayText"
+          fontWeight="md"
+        >
+          Location
+        </Typography>
+        <Grid spacing={2} container>
           <Grid xs={6}>
             <TextField
               type="text"
@@ -177,13 +181,15 @@ const New: React.FC<NewProps> = ({ user }) => {
           </Grid>
         </Grid>
 
-        <Separator sx={{ width: "15%", mx: "auto" }} />
-
-        <Typography level="h4" component="p" mt={2}>
-          Dive details
-        </Typography>
-
-        <Grid container spacing={2}>
+        <Grid container spacing={2} mt={6}>
+          <Grid xs={6}>
+            <TextField
+              type="text"
+              name="diveType"
+              label="Dive type"
+              startDecorator={<TitleRounded />}
+            />
+          </Grid>
           <Grid xs={6}>
             <TextField
               type="number"
@@ -193,7 +199,7 @@ const New: React.FC<NewProps> = ({ user }) => {
               startDecorator={<TimelapseRounded />}
               onChange={(e) => handleTextFieldChange(e, "length")}
             />
-          </Grid>
+          </Grid>{" "}
           <Grid xs={6}>
             <TextField
               type="number"
@@ -207,27 +213,51 @@ const New: React.FC<NewProps> = ({ user }) => {
           <Grid xs={6}>
             <TextField
               type="number"
-              name="weights"
-              label="Weights"
-              endDecorator="kg"
-              startDecorator={<ScaleRounded />}
-              onChange={(e) => handleTextFieldChange(e, "weights")}
-            />
-          </Grid>
-          <Grid xs={6}>
-            <TextField
-              type="text"
-              name="water"
-              label="Water"
-              onChange={(e) => handleTextFieldChange(e, "water")}
+              name="averageDepth"
+              label="Average depth"
+              endDecorator="m"
             />
           </Grid>
         </Grid>
 
-        <Typography level="h5" component="p" mt={2}>
+        <Box mt={6}>
+          <TextField
+            type="text"
+            name="water"
+            label="Water"
+            onChange={(e) => handleTextFieldChange(e, "water")}
+          />
+          <TextField
+            type="number"
+            name="weights"
+            label="Weights"
+            endDecorator="kg"
+            startDecorator={<ScaleRounded />}
+            onChange={(e) => handleTextFieldChange(e, "weights")}
+            sx={{ mt: 2 }}
+          />
+          <RadioGroup
+            defaultValue="perfect"
+            name="radio-buttons-group"
+            row
+            sx={{ mt: 4 }}
+          >
+            <Radio value="perfect" label="Perfect" />
+            <Radio value="tooLittle" label="Too little" />
+            <Radio value="tooMuch" label="Too much" />
+          </RadioGroup>
+        </Box>
+
+        <TextSeparator sx={{ mt: 8 }}>Gear</TextSeparator>
+        <Typography
+          mb={2}
+          component="p"
+          textColor="GrayText"
+          fontWeight="md"
+          mt={4}
+        >
           Exposure protection
         </Typography>
-
         <Grid container spacing={2} justifyContent="space-between">
           <Grid xs={6}>
             <TextField
@@ -252,10 +282,15 @@ const New: React.FC<NewProps> = ({ user }) => {
           </Grid>
         </Grid>
 
-        <Typography level="h5" component="p" mt={2}>
+        <Typography
+          mb={2}
+          mt={4}
+          component="p"
+          textColor="GrayText"
+          fontWeight="md"
+        >
           Tanks
         </Typography>
-
         <Grid container spacing={2} justifyContent="space-between">
           <Grid xs={6}>
             <TextField
@@ -276,10 +311,16 @@ const New: React.FC<NewProps> = ({ user }) => {
           </Grid>
         </Grid>
 
-        <Typography level="h5" component="p" mt={2}>
+        <TextSeparator sx={{ mt: 8 }}>Weather</TextSeparator>
+        <Typography
+          mb={2}
+          mt={4}
+          component="p"
+          textColor="GrayText"
+          fontWeight="md"
+        >
           Temperature
         </Typography>
-
         <Grid container spacing={2} justifyContent="space-between">
           <Grid xs={4}>
             <TextField
@@ -321,7 +362,7 @@ const New: React.FC<NewProps> = ({ user }) => {
           type="text"
           name="diveBuddy"
           label="Dive buddy"
-          sx={{ mt: 2 }}
+          sx={{ mt: 6 }}
         />
         <TextField type="text" name="notes" label="Notes" sx={{ mt: 2 }} />
 
@@ -330,7 +371,8 @@ const New: React.FC<NewProps> = ({ user }) => {
           color="success"
           size="lg"
           startIcon={<SaveRounded />}
-          sx={{ mt: 4 }}
+          sx={{ mt: 6 }}
+          fullWidth
         >
           Save
         </Button>
