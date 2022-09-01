@@ -23,7 +23,7 @@ const Detail: React.FC<DetailProps> = ({ title, content, unit, icon }) => {
         <Typography component="p" textColor="GrayText">
           {title}
         </Typography>
-        <Typography component="p" fontWeight="md">
+        <Typography component="p">
           {content}
           {unit}
         </Typography>

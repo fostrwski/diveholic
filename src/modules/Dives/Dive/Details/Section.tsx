@@ -15,7 +15,7 @@ const Section: React.FC<SectionProps> = ({ title, details }) => {
   return (
     <Box mt={4}>
       {title && (
-        <Typography mb={2} component="p" textColor="GrayText">
+        <Typography mb={2} component="p" textColor="GrayText" fontWeight="md">
           {title}
         </Typography>
       )}
