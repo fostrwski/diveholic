@@ -1,4 +1,5 @@
 import CalendarTodayRounded from "@mui/icons-material/CalendarTodayRounded";
+import DeleteRounded from "@mui/icons-material/DeleteRounded";
 import EditRounded from "@mui/icons-material/EditRounded";
 import FlagRounded from "@mui/icons-material/FlagRounded";
 import PublicRounded from "@mui/icons-material/PublicRounded";
@@ -24,17 +25,29 @@ const Dive: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<any>(null);
   const [diveNotFound, setDiveNotFound] = useState<boolean>(false);
+  const { id: diveId } = router.query;
+
+  const handleDiveDelete = async () => {
+    const { error } = await supabase
+      .from<DiveType>("dives")
+      .delete()
+      // @ts-ignore
+      .match({ id: parseInt(diveId) });
+
+    if (error) console.error(error);
+
+    router.push("/");
+  };
 
   useEffect(() => {
     const getDives = async () => {
       setError(null);
       setLoading(true);
-      const { id: diveId } = router.query;
       const { data, error } = await supabase
         .from<DiveType>("dives")
         .select("*")
         // @ts-ignore
-        .eq("id", parseInt(diveId));
+        .match({ id: parseInt(diveId) });
 
       if (error) {
         setError(error);
@@ -109,6 +122,24 @@ const Dive: React.FC = () => {
           <BasicInformation dive={dive} />
 
           <Details dive={dive} />
+
+          <Button
+            sx={{ mt: 6 }}
+            color="warning"
+            fullWidth
+            startIcon={<EditRounded />}
+          >
+            Edit
+          </Button>
+          <Button
+            sx={{ mt: 2 }}
+            color="danger"
+            fullWidth
+            startIcon={<DeleteRounded />}
+            onClick={handleDiveDelete}
+          >
+            Delete
+          </Button>
         </>
       );
     }
