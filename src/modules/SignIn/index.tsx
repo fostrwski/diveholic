@@ -94,7 +94,7 @@ const SignIn: React.FC = () => {
           </Typography>
         </Box>
 
-        <Typography textColor="neutral.400" level="h6" component="h1" mt={1}>
+        <Typography textColor="GrayText" level="h6" component="h1" mt={1}>
           Dive log built for the modern age
         </Typography>
 
