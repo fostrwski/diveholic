@@ -31,13 +31,13 @@ const Home: React.FC<HomeProps> = ({ user, dives }) => {
       <Button
         size="lg"
         startIcon={<AddRounded />}
-        sx={{ mt: 2, mb: 6 }}
+        sx={{ mt: 2 }}
         onClick={() => router.push("/dives/new")}
       >
         Log dive
       </Button>
 
-      <Grid container gap={6}>
+      <Grid container gap={6} mt={6}>
         <Grid xs={12}>
           <LatestDives />
         </Grid>
