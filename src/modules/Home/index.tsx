@@ -42,13 +42,13 @@ const Home: React.FC<HomeProps> = ({ user, dives }) => {
           <LatestDives />
         </Grid>
 
-        <Grid xs={12}>
-          <Statistics />
-        </Grid>
+        {/* <Grid xs={12}> */}
+        {/*   <Statistics /> */}
+        {/* </Grid> */}
 
-        <Grid xs={12}>
-          <Checklist />
-        </Grid>
+        {/* <Grid xs={12}> */}
+        {/*   <Checklist /> */}
+        {/* </Grid> */}
       </Grid>
     </>
   );
