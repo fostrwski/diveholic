@@ -11,7 +11,7 @@ const NotFound: React.FC = () => {
       </Typography>
 
       <NextLink href="/dives/new">
-        <Button component="a" size="sm" variant="plain" sx={{ mx: "auto" }}>
+        <Button component="a" variant="plain" size="sm" sx={{ mx: "auto" }}>
           Add your first dive
         </Button>
       </NextLink>
