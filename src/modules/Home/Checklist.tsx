@@ -14,7 +14,7 @@ const Checklist: React.FC = () => {
     <>
       <Typography
         level="h4"
-        component="div"
+        component="p"
         startDecorator={<CheckBoxRounded />}
         gutterBottom
       >

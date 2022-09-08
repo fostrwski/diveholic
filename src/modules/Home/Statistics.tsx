@@ -10,11 +10,7 @@ import React from "react";
 const Statistics: React.FC = () => {
   return (
     <>
-      <Typography
-        startDecorator={<BarChartRounded />}
-        level="h4"
-        component="div"
-      >
+      <Typography startDecorator={<BarChartRounded />} level="h4" component="p">
         Statistics
       </Typography>
 

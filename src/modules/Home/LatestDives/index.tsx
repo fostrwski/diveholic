@@ -62,7 +62,7 @@ const LatestDives: React.FC = () => {
         gap={2}
         mb={2}
       >
-        <Typography level="h4" component="div">
+        <Typography level="h4" component="p">
           Your dives
         </Typography>
         <NextLink href="/dives" passHref>
