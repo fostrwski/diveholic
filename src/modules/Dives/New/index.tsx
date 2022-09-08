@@ -80,15 +80,26 @@ const New: React.FC<NewProps> = ({ user }) => {
         city: dive.locationCity,
         diveCenter: dive.locationDiveCenter,
       },
+      diveType: dive.diveType,
       length: dive.length,
-      maxDepth: dive.maxDepth,
-      weights: dive.weights,
+      depth: {
+        average: dive.depthAverage,
+        max: dive.depthMax,
+      },
+      weights: {
+        taken: dive.weightsTaken,
+        nextTime: {
+          takeLess: dive.weightsNextTimeTakeLess,
+          takeMore: dive.weightsNextTimeTakeMore,
+          weightDifference: dive.weightsNextTimeWeightDifference,
+        },
+      },
       water: dive.water,
       temperature: {
         air: dive.temperatureAir,
         water: {
-          average: dive.temperatureWaterAverage,
-          minimum: dive.temperatureWaterMinimum,
+          surface: dive.temperatureWaterSurface,
+          bottom: dive.temperatureWaterBottom,
         },
       },
       gear: {
@@ -111,6 +122,7 @@ const New: React.FC<NewProps> = ({ user }) => {
 
   return (
     <>
+      {console.log(dive)}
       <Header />
 
       <Box component="form" mt={4} onSubmit={handleSubmit}>
@@ -188,6 +200,7 @@ const New: React.FC<NewProps> = ({ user }) => {
               name="diveType"
               label="Dive type"
               startDecorator={<TitleRounded />}
+              onChange={(e) => handleTextFieldChange(e, "diveType")}
             />
           </Grid>
           <Grid xs={6}>
@@ -207,7 +220,7 @@ const New: React.FC<NewProps> = ({ user }) => {
               label="Max depth"
               endDecorator="m"
               startDecorator={<DownloadRounded />}
-              onChange={(e) => handleTextFieldChange(e, "maxDepth")}
+              onChange={(e) => handleTextFieldChange(e, "depthMax")}
             />
           </Grid>
           <Grid xs={6}>
@@ -216,6 +229,7 @@ const New: React.FC<NewProps> = ({ user }) => {
               name="averageDepth"
               label="Average depth"
               endDecorator="m"
+              onChange={(e) => handleTextFieldChange(e, "depthAverage")}
             />
           </Grid>
         </Grid>
@@ -233,7 +247,7 @@ const New: React.FC<NewProps> = ({ user }) => {
             label="Weights"
             endDecorator="kg"
             startDecorator={<ScaleRounded />}
-            onChange={(e) => handleTextFieldChange(e, "weights")}
+            onChange={(e) => handleTextFieldChange(e, "weightsTaken")}
             sx={{ mt: 2 }}
           />
           <RadioGroup
@@ -335,24 +349,24 @@ const New: React.FC<NewProps> = ({ user }) => {
           <Grid xs={4}>
             <TextField
               type="number"
-              name="temperatureWaterAverage"
-              label="Water avg."
+              name="temperatureWaterSurface"
+              label="Water surface"
               fullWidth
               endDecorator="°C"
               onChange={(e) =>
-                handleTextFieldChange(e, "temperatureWaterAverage")
+                handleTextFieldChange(e, "temperatureWaterSurface")
               }
             />
           </Grid>
           <Grid xs={4}>
             <TextField
               type="number"
-              name="temperatureWaterAverage"
-              label="Water min."
+              name="temperatureWaterBottom"
+              label="Water bottom"
               fullWidth
               endDecorator="°C"
               onChange={(e) =>
-                handleTextFieldChange(e, "temperatureWaterMinimum")
+                handleTextFieldChange(e, "temperatureWaterBottom")
               }
             />
           </Grid>

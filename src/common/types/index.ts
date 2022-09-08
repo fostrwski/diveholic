@@ -13,15 +13,26 @@ export type Dive = {
     city: string;
     diveCenter: string;
   };
+  diveType: string;
   length: number | null;
-  maxDepth: number | null;
-  weights: number | null;
+  depth: {
+    max: number | null;
+    average: number | null;
+  };
+  weights: {
+    taken: number | null;
+    nextTime: {
+      takeLess: boolean | null;
+      takeMore: boolean | null;
+      weightDifference: number | null;
+    };
+  };
   water: string;
   temperature: {
     air: number | null;
     water: {
-      average: number | null;
-      minimum: number | null;
+      surface: number | null;
+      bottom: number | null;
     };
   };
   gear: Gear;
@@ -37,13 +48,18 @@ export type DiveFlattened = {
   locationCountryFlagEmoji: string;
   locationCity: string;
   locationDiveCenter: string;
+  diveType: string;
   length: number | null;
-  maxDepth: number | null;
-  weights: number | null;
+  depthMax: number | null;
+  depthAverage: number | null;
+  weightsTaken: number | null;
+  weightsNextTimeTakeLess: boolean | null;
+  weightsNextTimeTakeMore: boolean | null;
+  weightsNextTimeWeightDifference: number | null;
   water: string;
   temperatureAir: number | null;
-  temperatureWaterAverage: number | null;
-  temperatureWaterMinimum: number | null;
+  temperatureWaterSurface: number | null;
+  temperatureWaterBottom: number | null;
   gearExposureProtectionType: string;
   gearExposureProtectionThickness: number | null;
   gearTanksCount: number;
