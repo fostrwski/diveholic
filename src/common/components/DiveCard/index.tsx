@@ -13,6 +13,7 @@ import Typography from "@mui/joy/Typography";
 import Separator from "common/components/Separator";
 import type { Dive } from "common/types";
 import formatDate from "common/utils/formatDate";
+import formatTime from "common/utils/formatTime";
 import NextLink from "next/link";
 import React from "react";
 
@@ -45,26 +46,32 @@ const DiveCard: React.FC<DiveCard> = ({ dive }) => {
                   component="p"
                   startDecorator={<AccessTimeRounded />}
                 >
-                  {dive.time}
+                  {formatTime(dive.time)}
                 </Typography>
                 <Typography
                   component="p"
                   startDecorator={<DownloadRounded />}
+                  endDecorator="m"
                   sx={{ mt: 0.6 }}
                 >
-                  {dive.maxDepth}m
+                  {dive.depth.max}
                 </Typography>
               </Grid>
               <Grid xs={6}>
-                <Typography component="p" startDecorator={<TimelapseRounded />}>
-                  {dive.length}min
+                <Typography
+                  component="p"
+                  startDecorator={<TimelapseRounded />}
+                  endDecorator="min"
+                >
+                  {dive.length}
                 </Typography>
                 <Typography
                   component="p"
                   startDecorator={<DeviceThermostatRounded />}
+                  endDecorator="°C"
                   sx={{ mt: 0.6 }}
                 >
-                  {dive.temperature.water.average}°C
+                  {dive.temperature.water.bottom}
                 </Typography>
               </Grid>
             </Grid>
