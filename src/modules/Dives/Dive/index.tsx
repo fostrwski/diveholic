@@ -9,6 +9,7 @@ import Chip from "@mui/joy/Chip";
 import { useUser } from "@supabase/auth-helpers-react";
 import type { Dive as DiveType } from "common/types";
 import formatDate from "common/utils/formatDate";
+import formatTime from "common/utils/formatTime";
 import { supabase } from "common/utils/supabaseClient";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
@@ -114,7 +115,7 @@ const Dive: React.FC = () => {
                 component="span"
                 variant="outlined"
               >
-                {formatDate(dive.date)} at {dive.time}
+                {formatDate(dive.date)} at {formatTime(dive.time)}
               </Chip>
             </div>
           </Box>

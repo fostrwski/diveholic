@@ -40,11 +40,11 @@ const BasicInformation: React.FC<BasicInformationProps> = ({ dive }) => {
               />
             </Grid>
           )}
-          {dive.maxDepth && (
+          {dive.depth.max && (
             <Grid xs={12}>
               <Info
                 title="Max depth"
-                value={dive.maxDepth}
+                value={dive.depth.max}
                 unit="m"
                 icon={<DownloadRounded />}
               />

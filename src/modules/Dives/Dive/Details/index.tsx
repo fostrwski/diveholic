@@ -4,7 +4,6 @@ import ScaleRounded from "@mui/icons-material/ScaleRounded";
 import WaterRounded from "@mui/icons-material/WaterRounded";
 import Box from "@mui/joy/Box";
 import Button from "@mui/joy/Button";
-import Typography from "@mui/joy/Typography";
 import Separator from "common/components/Separator";
 import TextSeparator from "common/components/TextSeparator";
 import type { Dive } from "common/types";
@@ -24,7 +23,7 @@ const Details: React.FC<DetailsProps> = ({ dive }) => {
           { title: "Water", content: dive.water, icon: <WaterRounded /> },
           {
             title: "Weights",
-            content: dive.weights,
+            content: dive.weights.taken,
             unit: "kg",
             icon: <ScaleRounded />,
           },
