@@ -21,9 +21,9 @@ const DiveCardSkeletonLoader: React.FC = () => {
         <ScubaDivingRounded />
       </Avatar>
       <CardContent>
-        <Chip size="sm" sx={{ width: "50%" }} />
+        <Chip size="sm" />
 
-        <Box my={1}>
+        <Box my={2}>
           <Grid container spacing={2}>
             <Grid xs={6}>
               <Chip size="sm" sx={{ width: "64px" }} />

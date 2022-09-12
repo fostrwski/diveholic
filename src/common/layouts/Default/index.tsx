@@ -142,7 +142,7 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
         justifyContent="space-between"
         gap={2}
       >
-        <Typography textColor="GrayText" fontWeight="md">
+        <Typography level="subtitle1" component="p">
           &copy; {new Date().getFullYear()} Diveholic
         </Typography>
       </Box>

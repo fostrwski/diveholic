@@ -35,11 +35,11 @@ const DiveCard: React.FC<DiveCard> = ({ dive }) => {
           <ScubaDivingRounded />
         </Avatar>
         <CardContent>
-          <Typography component="p" textColor="GrayText">
+          <Typography component="p" level="subtitle1">
             {formatDate(dive.date)} &bull; {formatTime(dive.time)}
           </Typography>
 
-          <Box my={1}>
+          <Box my={2}>
             <Grid container spacing={2}>
               <Grid xs={6}>
                 <Typography component="p" startDecorator={<TitleRounded />}>
