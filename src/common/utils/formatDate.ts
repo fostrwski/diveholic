@@ -1,6 +1,6 @@
-export default function formatDate(date: Date) {
+export default function formatDate(date: Date, weekday: boolean = false) {
   const options = {
-    weekday: "short",
+    weekday: weekday ? "short" : undefined,
     year: "numeric",
     month: "short",
     day: "numeric",

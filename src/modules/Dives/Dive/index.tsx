@@ -115,7 +115,7 @@ const Dive: React.FC = () => {
                 component="span"
                 variant="outlined"
               >
-                {formatDate(dive.date)} at {formatTime(dive.time)}
+                {formatDate(dive.date, true)} at {formatTime(dive.time)}
               </Chip>
             </div>
           </Box>
