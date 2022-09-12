@@ -1,8 +1,8 @@
-import AccessTimeRounded from "@mui/icons-material/AccessTimeRounded";
 import DeviceThermostatRounded from "@mui/icons-material/DeviceThermostatRounded";
 import DownloadRounded from "@mui/icons-material/DownloadRounded";
 import ScubaDivingRounded from "@mui/icons-material/ScubaDivingRounded";
 import TimelapseRounded from "@mui/icons-material/TimelapseRounded";
+import TitleRounded from "@mui/icons-material/TitleRounded";
 import Avatar from "@mui/joy/Avatar";
 import Box from "@mui/joy/Box";
 import Card from "@mui/joy/Card";
@@ -31,22 +31,19 @@ const DiveCard: React.FC<DiveCard> = ({ dive }) => {
           flexDirection: "row",
         }}
       >
-        <Avatar color="neutral" size="lg">
+        <Avatar color="neutral">
           <ScubaDivingRounded />
         </Avatar>
         <CardContent>
           <Typography component="p" textColor="GrayText">
-            {formatDate(dive.date)}
+            {formatDate(dive.date)} &bull; {formatTime(dive.time)}
           </Typography>
 
           <Box my={1}>
             <Grid container spacing={2}>
               <Grid xs={6}>
-                <Typography
-                  component="p"
-                  startDecorator={<AccessTimeRounded />}
-                >
-                  {formatTime(dive.time)}
+                <Typography component="p" startDecorator={<TitleRounded />}>
+                  {dive.diveType}
                 </Typography>
                 <Typography
                   component="p"

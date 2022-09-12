@@ -17,7 +17,7 @@ const DiveCardSkeletonLoader: React.FC = () => {
         flexDirection: "row",
       }}
     >
-      <Avatar color="neutral" size="lg">
+      <Avatar color="neutral">
         <ScubaDivingRounded />
       </Avatar>
       <CardContent>
