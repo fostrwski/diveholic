@@ -15,7 +15,7 @@ interface BasicInformationProps {
 const BasicInformation: React.FC<BasicInformationProps> = ({ dive }) => {
   return (
     <>
-      <Typography component="p" mb={2} textColor="GrayText" fontWeight="md">
+      <Typography component="p" mb={2} level="subtitle1">
         Basic information
       </Typography>
 

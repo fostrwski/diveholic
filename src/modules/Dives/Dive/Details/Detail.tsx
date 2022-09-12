@@ -20,12 +20,11 @@ const Detail: React.FC<DetailProps> = ({ title, content, unit, icon }) => {
       )}
 
       <Box>
-        <Typography component="p" textColor="GrayText">
+        <Typography component="p" level="subtitle2">
           {title}
         </Typography>
         <Typography component="p">
-          {content}
-          {unit}
+          {content} {unit}
         </Typography>
       </Box>
     </Box>
