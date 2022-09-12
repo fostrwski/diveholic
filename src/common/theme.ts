@@ -88,6 +88,15 @@ const theme = extendTheme({
       },
     },
   },
+  typography: {
+    subtitle1: {
+      fontWeight: "var(--joy-fontWeight-md)",
+      color: "GrayText",
+    },
+    subtitle2: {
+      color: "GrayText",
+    },
+  },
 });
 
 export default theme;
