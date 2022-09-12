@@ -65,7 +65,7 @@ const theme = extendTheme({
     JoyListDivider: {
       styleOverrides: {
         root: {
-          borderRadius: "2px",
+          borderRadius: "var(--joy-radius-md)",
         },
       },
     },
