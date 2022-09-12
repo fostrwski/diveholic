@@ -31,7 +31,7 @@ const DiveCard: React.FC<DiveCard> = ({ dive }) => {
           flexDirection: "row",
         }}
       >
-        <Avatar color="neutral">
+        <Avatar color="neutral" size="lg">
           <ScubaDivingRounded />
         </Avatar>
         <CardContent>
