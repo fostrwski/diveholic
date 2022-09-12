@@ -1,11 +1,11 @@
 import ScubaDivingRounded from "@mui/icons-material/ScubaDivingRounded";
-import { ListDivider } from "@mui/joy";
 import Avatar from "@mui/joy/Avatar";
 import Box from "@mui/joy/Box";
 import Card from "@mui/joy/Card";
 import CardContent from "@mui/joy/CardContent";
 import Chip from "@mui/joy/Chip";
 import Grid from "@mui/joy/Grid";
+import Separator from "common/components/Separator";
 import React from "react";
 
 const DiveCardSkeletonLoader: React.FC = () => {
@@ -43,7 +43,7 @@ const DiveCardSkeletonLoader: React.FC = () => {
           justifyContent="space-between"
           alignItems="center"
         >
-          <ListDivider sx={{ width: "100%", height: "2px" }} />
+          <Separator />
 
           <Chip sx={{ width: "100%" }} />
         </Box>
