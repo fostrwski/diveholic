@@ -9,7 +9,7 @@ const diveInitialState: DiveFlattened = {
   locationCity: "",
   locationDiveCenter: "",
   length: 0,
-  diveType: "",
+  type: "",
   depthMax: null,
   depthAverage: null,
   weightsTaken: null,

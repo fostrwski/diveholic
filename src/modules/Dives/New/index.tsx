@@ -87,7 +87,7 @@ const New: React.FC<NewProps> = ({ user }) => {
         city: dive.locationCity,
         diveCenter: dive.locationDiveCenter,
       },
-      diveType: dive.diveType,
+      type: dive.type,
       length: dive.length,
       depth: {
         average: dive.depthAverage,
@@ -256,7 +256,7 @@ const New: React.FC<NewProps> = ({ user }) => {
                   name="diveType"
                   label="Dive type"
                   startDecorator={<TitleRounded />}
-                  onChange={(e) => handleTextFieldChange(e, "diveType")}
+                  onChange={(e) => handleTextFieldChange(e, "type")}
                 />
               </Grid>
               <Grid xs={6}>

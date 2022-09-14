@@ -43,7 +43,7 @@ const DiveCard: React.FC<DiveCard> = ({ dive }) => {
             <Grid container spacing={2}>
               <Grid xs={6}>
                 <Typography component="p" startDecorator={<TitleRounded />}>
-                  {dive.diveType}
+                  {dive.type}
                 </Typography>
                 <Typography
                   component="p"
