@@ -7,6 +7,7 @@ export default function formatTime(time: string) {
 
   const [h, m, s] = time.split(":").map(Number);
 
+  // @ts-ignore
   time = new Date(0, 0, 0, h, m, s).toLocaleTimeString(undefined, options);
 
   return time;
