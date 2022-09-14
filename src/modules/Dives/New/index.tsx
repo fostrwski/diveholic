@@ -1,6 +1,7 @@
 import { TitleRounded } from "@mui/icons-material";
 import CalendarTodayRounded from "@mui/icons-material/CalendarTodayRounded";
 import DownloadRounded from "@mui/icons-material/DownloadRounded";
+import EditRounded from "@mui/icons-material/EditRounded";
 import FlagRounded from "@mui/icons-material/FlagRounded";
 import LineWeightRounded from "@mui/icons-material/LineWeightRounded";
 import NumbersRounded from "@mui/icons-material/NumbersRounded";
@@ -9,6 +10,7 @@ import SaveRounded from "@mui/icons-material/SaveRounded";
 import ScaleRounded from "@mui/icons-material/ScaleRounded";
 import ScheduleRounded from "@mui/icons-material/ScheduleRounded";
 import TimelapseRounded from "@mui/icons-material/TimelapseRounded";
+import { FormLabel, IconButton } from "@mui/joy";
 import Avatar from "@mui/joy/Avatar";
 import Box from "@mui/joy/Box";
 import Button from "@mui/joy/Button";
@@ -27,7 +29,7 @@ import type { Dive, DiveFlattened } from "common/types";
 import getCountryCode from "common/utils/getCountryCode";
 import getFlagEmoji from "common/utils/getFlagEmoji";
 import { supabase } from "common/utils/supabaseClient";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import Header from "./Header";
 import diveInitialState from "./diveInitialState";
@@ -119,6 +121,9 @@ const New: React.FC<NewProps> = ({ user }) => {
       },
     };
 
+    const dateInputRef = useRef();
+    const timeInputRef = useRef();
+
     const { data, error } = await supabase
       .from("dives")
       .insert({ user_id: user.id, ...newDive });
@@ -130,39 +135,67 @@ const New: React.FC<NewProps> = ({ user }) => {
       <Header />
 
       <Box component="form" mt={4} onSubmit={handleSubmit}>
-        <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
-          <Avatar sx={{ borderRadius: "md", "--Avatar-size": "58px" }}>
-            <CalendarTodayRounded sx={{ fontSize: "24px" }} />
-          </Avatar>
-          <TextField
-            type="date"
-            name="date"
-            label="Date"
-            required
-            variant="plain"
-            onChange={(e) => handleDateTextFieldChange(e)}
-          />
-        </Box>
+        <Typography
+          sx={{
+            display: "flex",
+            gap: 2,
+            justifyContent: "space-between",
+            alignItems: "center",
+            mt: 2,
+            width: "100%",
+          }}
+        >
+          <Box sx={{ display: "flex", gap: 2, alignItems: "center" }}>
+            <Avatar sx={{ "--Avatar-size": "52px" }}>
+              <CalendarTodayRounded sx={{ fontSize: "24px" }} />
+            </Avatar>
+            <div>
+              <FormLabel sx={{ color: "GrayText" }}>Date</FormLabel>
+              <Typography level="h6" component="p">
+                08/09/2022
+              </Typography>
+            </div>
+          </Box>
+          <div>
+            <IconButton color="warning" size="sm">
+              <EditRounded />
+            </IconButton>
+          </div>
+        </Typography>
 
-        <Box sx={{ display: "flex", alignItems: "center", gap: 2, mt: 2 }}>
-          <Avatar sx={{ borderRadius: "md", "--Avatar-size": "58px" }}>
-            <ScheduleRounded sx={{ fontSize: "24px" }} />
-          </Avatar>
-          <TextField
-            type="time"
-            name="time"
-            label="Time"
-            required
-            variant="plain"
-            onChange={(e) => handleTextFieldChange(e, "time")}
-          />
-        </Box>
+        <Typography
+          sx={{
+            display: "flex",
+            gap: 2,
+            justifyContent: "space-between",
+            alignItems: "center",
+            mt: 2,
+            width: "100%",
+          }}
+        >
+          <Box sx={{ display: "flex", gap: 2, alignItems: "center" }}>
+            <Avatar sx={{ "--Avatar-size": "52px" }}>
+              <ScheduleRounded sx={{ fontSize: "24px" }} />
+            </Avatar>
+            <div>
+              <FormLabel sx={{ color: "GrayText" }}>Time</FormLabel>
+              <Typography level="h6" component="p">
+                16:34
+              </Typography>
+            </div>
+          </Box>
+          <div>
+            <IconButton color="warning" size="sm">
+              <EditRounded />
+            </IconButton>
+          </div>
+        </Typography>
 
         <Tabs
           defaultValue={0}
           sx={{
             backgroundColor: "transparent",
-            px: 2,
+            px: 0,
             mt: 6,
           }}
         >
@@ -400,7 +433,7 @@ const New: React.FC<NewProps> = ({ user }) => {
           type="text"
           name="diveBuddy"
           label="Dive buddy"
-          sx={{ mt: 6 }}
+          sx={{ mt: 10 }}
         />
         <TextField type="text" name="notes" label="Notes" sx={{ mt: 2 }} />
 
