@@ -13,7 +13,7 @@ export type Dive = {
     city: string;
     diveCenter: string;
   };
-  diveType: string;
+  type: string;
   length: number | null;
   depth: {
     max: number | null;
@@ -48,7 +48,7 @@ export type DiveFlattened = {
   locationCountryFlagEmoji: string;
   locationCity: string;
   locationDiveCenter: string;
-  diveType: string;
+  type: string;
   length: number | null;
   depthMax: number | null;
   depthAverage: number | null;
