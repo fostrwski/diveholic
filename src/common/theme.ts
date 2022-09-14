@@ -7,6 +7,11 @@ const theme = extendTheme({
       defaultProps: {
         variant: "soft",
       },
+      styleOverrides: {
+        root: {
+          borderRadius: "var(--joy-radius-xl)",
+        },
+      },
     },
     JoyLink: {
       defaultProps: {
@@ -98,5 +103,12 @@ const theme = extendTheme({
     },
   },
 });
+
+declare module "@mui/joy/styles" {
+  interface TypographySystemOverrides {
+    subtitle1: true;
+    subtitle2: true;
+  }
+}
 
 export default theme;
