@@ -79,16 +79,23 @@ const theme = extendTheme({
         color: "neutral",
         variant: "soft",
       },
+      styleOverrides: {
+        root: {
+          borderRadius: "var(--joy-radius-xl)",
+        },
+      },
     },
     JoySheet: {
       styleOverrides: {
-        root: ({ theme }) => ({
+        root: ({ ownerState, theme }) => ({
           padding: `${theme.spacing(2)} ${theme.spacing(3)}`,
           borderRadius: theme.vars.radius.md,
 
-          [theme.getColorSchemeSelector("light")]: {
-            backgroundColor: theme.palette.neutral[50],
-          },
+          ...(ownerState.variant === "soft" && {
+            [theme.getColorSchemeSelector("light")]: {
+              backgroundColor: theme.palette.neutral[50],
+            },
+          }),
         }),
       },
     },
