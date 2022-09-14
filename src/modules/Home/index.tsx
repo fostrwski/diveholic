@@ -28,12 +28,7 @@ const Home: React.FC<HomeProps> = ({ user, dives }) => {
         You've logged {dives?.length} dives so far
       </Typography>
 
-      <Button
-        size="lg"
-        startIcon={<AddRounded />}
-        sx={{ mt: 2 }}
-        onClick={() => router.push("/dives/new")}
-      >
+      <Button sx={{ mt: 2 }} size="lg" startIcon={<AddRounded />}>
         Log dive
       </Button>
 
