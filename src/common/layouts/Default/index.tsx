@@ -89,7 +89,7 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
 
         <IconButton
           onClick={handleOpenMenu}
-          sx={{ borderRadius: "100%" }}
+          sx={{ fontWeight: "lg" }}
           color="neutral"
         >
           {initials}
