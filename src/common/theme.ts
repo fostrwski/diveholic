@@ -9,7 +9,7 @@ const theme = extendTheme({
       },
       styleOverrides: {
         root: {
-          borderRadius: "var(--joy-radius-xl)",
+          borderRadius: "var(--joy-radius-sm)",
         },
       },
     },
@@ -70,7 +70,7 @@ const theme = extendTheme({
     JoyListDivider: {
       styleOverrides: {
         root: {
-          borderRadius: "var(--joy-radius-md)",
+          borderRadius: "var(--joy-radius-sm)",
         },
       },
     },
@@ -79,9 +79,11 @@ const theme = extendTheme({
         color: "neutral",
         variant: "soft",
       },
+    },
+    JoyAvatar: {
       styleOverrides: {
         root: {
-          borderRadius: "var(--joy-radius-xl)",
+          borderRadius: "var(--joy-radius-sm)",
         },
       },
     },
@@ -89,7 +91,7 @@ const theme = extendTheme({
       styleOverrides: {
         root: ({ ownerState, theme }) => ({
           padding: `${theme.spacing(2)} ${theme.spacing(3)}`,
-          borderRadius: theme.vars.radius.md,
+          borderRadius: theme.vars.radius.sm,
 
           ...(ownerState.variant === "soft" && {
             [theme.getColorSchemeSelector("light")]: {
