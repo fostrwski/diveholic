@@ -20,7 +20,7 @@ const TextSeparator: React.FC<TextSeparatorProps> = ({ children, sx }) => {
         ...sx,
       }}
     >
-      <Typography component="p" level="h4">
+      <Typography component="p" level="h4" sx={{ whiteSpace: "nowrap" }}>
         {children}
       </Typography>
       <Separator />
