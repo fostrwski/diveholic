@@ -24,9 +24,15 @@ const BasicInformation: React.FC<BasicInformationProps> = ({ dive }) => {
         sx={(theme) => ({
           borderLeftWidth: theme.spacing(0.4),
           borderLeftStyle: "solid",
-          borderColor: "GrayText",
-          borderTopLeftRadius: theme.vars.radius.xs,
-          borderBottomLeftRadius: theme.vars.radius.xs,
+          borderTopLeftRadius: 0,
+          borderBottomLeftRadius: 0,
+
+          [theme.getColorSchemeSelector("light")]: {
+            borderColor: "neutral.200",
+          },
+          [theme.getColorSchemeSelector("dark")]: {
+            borderColor: "neutral.800",
+          },
         })}
       >
         <Grid container spacing={1}>
