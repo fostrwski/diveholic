@@ -17,6 +17,7 @@ const Location: React.FC<ComponentWithTextFieldsProps> = ({
           <TextField
             type="text"
             name="locationCountry"
+            placeholder="Croatia"
             label="Country"
             onChange={(e) => handleTextFieldChange(e, "locationCountryName")}
             startDecorator={
@@ -33,6 +34,7 @@ const Location: React.FC<ComponentWithTextFieldsProps> = ({
             type="text"
             name="locationCity"
             label="City"
+            placeholder="Trogir"
             onChange={(e) => handleTextFieldChange(e, "locationCity")}
           />
         </Grid>
@@ -41,6 +43,7 @@ const Location: React.FC<ComponentWithTextFieldsProps> = ({
             type="text"
             name="locationDiveCenter"
             label="Dive center"
+            placeholder="Trogir dive center"
             startDecorator={<FlagRounded />}
             onChange={(e) => handleTextFieldChange(e, "locationDiveCenter")}
           />
