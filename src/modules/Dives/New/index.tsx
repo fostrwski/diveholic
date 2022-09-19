@@ -1,6 +1,4 @@
 import CalendarTodayRounded from "@mui/icons-material/CalendarTodayRounded";
-import LineWeightRounded from "@mui/icons-material/LineWeightRounded";
-import NumbersRounded from "@mui/icons-material/NumbersRounded";
 import SaveRounded from "@mui/icons-material/SaveRounded";
 import ScheduleRounded from "@mui/icons-material/ScheduleRounded";
 import Avatar from "@mui/joy/Avatar";
@@ -8,6 +6,7 @@ import Box from "@mui/joy/Box";
 import Button from "@mui/joy/Button";
 import FormLabel from "@mui/joy/FormLabel";
 import Grid from "@mui/joy/Grid";
+import Link from "@mui/joy/Link";
 import TextField from "@mui/joy/TextField";
 import Typography from "@mui/joy/Typography";
 import type { User } from "@supabase/auth-helpers-nextjs";
@@ -18,6 +17,8 @@ import getFlagEmoji from "common/utils/getFlagEmoji";
 import { supabase } from "common/utils/supabaseClient";
 import React, { useEffect, useState } from "react";
 
+import DatePicker from "./DatePicker";
+import Gear from "./Gear";
 import Header from "./Header";
 import Tabs from "./Tabs";
 import diveInitialState from "./diveInitialState";
@@ -51,11 +52,7 @@ const New: React.FC<NewProps> = ({ user }) => {
     }));
   };
 
-  const handleDateTextFieldChange = (
-    e: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    const date = new Date(e.target.value);
-
+  const handleSetDate = (date: Date) => {
     setDive((prevState: DiveFlattened) => ({
       ...prevState,
       date: date,
@@ -77,118 +74,11 @@ const New: React.FC<NewProps> = ({ user }) => {
       <Header />
 
       <Box component="form" mt={4} onSubmit={handleSubmit}>
-        <Typography
-          sx={{
-            display: "flex",
-            gap: 2,
-            justifyContent: "space-between",
-            alignItems: "center",
-            mt: 2,
-            width: "100%",
-          }}
-          component="div"
-        >
-          <Box sx={{ display: "flex", gap: 2, alignItems: "center" }}>
-            <Avatar sx={{ "--Avatar-size": "52px" }}>
-              <CalendarTodayRounded sx={{ fontSize: "24px" }} />
-            </Avatar>
-            <div>
-              <FormLabel sx={{ color: "GrayText" }}>Date</FormLabel>
-              <Typography level="h6" component="p">
-                08/09/2022
-              </Typography>
-            </div>
-          </Box>
-        </Typography>
-
-        <Typography
-          sx={{
-            display: "flex",
-            gap: 2,
-            justifyContent: "space-between",
-            alignItems: "center",
-            mt: 2,
-            width: "100%",
-          }}
-          component="div"
-        >
-          <Box sx={{ display: "flex", gap: 2, alignItems: "center" }}>
-            <Avatar sx={{ "--Avatar-size": "52px" }}>
-              <ScheduleRounded sx={{ fontSize: "24px" }} />
-            </Avatar>
-            <div>
-              <FormLabel sx={{ color: "GrayText" }}>Time</FormLabel>
-              <Typography level="h6" component="p">
-                16:34
-              </Typography>
-            </div>
-          </Box>
-        </Typography>
+        <DatePicker setDate={handleSetDate} />
 
         <Tabs dive={dive} handleTextFieldChange={handleTextFieldChange} />
 
-        <TextSeparator sx={{ mt: 8 }}>Gear</TextSeparator>
-        <Typography
-          mb={2}
-          component="p"
-          textColor="GrayText"
-          fontWeight="md"
-          mt={4}
-        >
-          Exposure protection
-        </Typography>
-        <Grid container spacing={2} justifyContent="space-between">
-          <Grid xs={6}>
-            <TextField
-              type="text"
-              name="exposureProtectionType"
-              label="Type"
-              onChange={(e) =>
-                handleTextFieldChange(e, "gearExposureProtectionType")
-              }
-            />
-          </Grid>
-          <Grid xs={6}>
-            <TextField
-              type="text"
-              name="exposureProtectionThickness"
-              label="Thickness"
-              startDecorator={<LineWeightRounded />}
-              onChange={(e) =>
-                handleTextFieldChange(e, "gearExposureProtectionThickness")
-              }
-            />
-          </Grid>
-        </Grid>
-
-        <Typography
-          mb={2}
-          mt={4}
-          component="p"
-          textColor="GrayText"
-          fontWeight="md"
-        >
-          Tanks
-        </Typography>
-        <Grid container spacing={2} justifyContent="space-between">
-          <Grid xs={6}>
-            <TextField
-              type="number"
-              name="count"
-              label="Count"
-              startDecorator={<NumbersRounded />}
-              onChange={(e) => handleTextFieldChange(e, "gearTanksCount")}
-            />
-          </Grid>
-          <Grid xs={6}>
-            <TextField
-              type="text"
-              name="tankType"
-              label="Type"
-              onChange={(e) => handleTextFieldChange(e, "gearTanksType")}
-            />
-          </Grid>
-        </Grid>
+        <Gear dive={dive} handleTextFieldChange={handleTextFieldChange} />
 
         <TextSeparator sx={{ mt: 8 }}>Weather</TextSeparator>
         <Typography

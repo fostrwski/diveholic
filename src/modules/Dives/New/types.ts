@@ -1,6 +1,7 @@
 import type { DiveFlattened } from "common/types";
 
-interface TabProps {
+// Couldn't figure out better name
+interface ComponentWithTextFieldsProps {
   dive: DiveFlattened;
   handleTextFieldChange: (
     e: React.ChangeEvent<HTMLInputElement>,
@@ -8,4 +9,4 @@ interface TabProps {
   ) => void;
 }
 
-export type { TabProps };
+export type { ComponentWithTextFieldsProps };

@@ -4,9 +4,12 @@ import RadioGroup from "@mui/joy/RadioGroup";
 import TextField from "@mui/joy/TextField";
 import React from "react";
 
-import type { TabProps } from "./types";
+import type { ComponentWithTextFieldsProps } from "../types";
 
-const Details: React.FC<TabProps> = ({ dive, handleTextFieldChange }) => {
+const Details: React.FC<ComponentWithTextFieldsProps> = ({
+  dive,
+  handleTextFieldChange,
+}) => {
   return (
     <>
       <TextField

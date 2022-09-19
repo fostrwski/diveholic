@@ -4,9 +4,12 @@ import Grid from "@mui/joy/Grid";
 import TextField from "@mui/joy/TextField";
 import React from "react";
 
-import type { TabProps } from "./types";
+import type { ComponentWithTextFieldsProps } from "../types";
 
-const Location: React.FC<TabProps> = ({ dive, handleTextFieldChange }) => {
+const Location: React.FC<ComponentWithTextFieldsProps> = ({
+  dive,
+  handleTextFieldChange,
+}) => {
   return (
     <Grid container spacing={2}>
       <Grid spacing={2} container>
