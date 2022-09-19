@@ -1,7 +1,7 @@
+import DownloadDoneRounded from "@mui/icons-material/DownloadDoneRounded";
+import DownloadRounded from "@mui/icons-material/DownloadRounded";
 import LineWeightRounded from "@mui/icons-material/LineWeightRounded";
 import NumbersRounded from "@mui/icons-material/NumbersRounded";
-import ScaleRounded from "@mui/icons-material/ScaleRounded";
-import WaterRounded from "@mui/icons-material/WaterRounded";
 import Box from "@mui/joy/Box";
 import Button from "@mui/joy/Button";
 import Separator from "common/components/Separator";
@@ -20,12 +20,15 @@ const Details: React.FC<DetailsProps> = ({ dive }) => {
     <>
       <Section
         details={[
-          { title: "Water", content: dive.water, icon: <WaterRounded /> },
           {
-            title: "Weights",
-            content: dive.weights.taken,
-            unit: "kg",
-            icon: <ScaleRounded />,
+            title: "Avg. depth",
+            content: dive.depth.average,
+            icon: <DownloadDoneRounded />,
+          },
+          {
+            title: "Max depth",
+            content: dive.depth.max,
+            icon: <DownloadRounded />,
           },
         ]}
       />

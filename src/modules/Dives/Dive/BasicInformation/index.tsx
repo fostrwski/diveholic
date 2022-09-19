@@ -1,5 +1,7 @@
-import DownloadRounded from "@mui/icons-material/DownloadRounded";
+import ScaleRounded from "@mui/icons-material/ScaleRounded";
 import TimelapseRounded from "@mui/icons-material/TimelapseRounded";
+import TitleRounded from "@mui/icons-material/TitleRounded";
+import WavesRounded from "@mui/icons-material/WavesRounded";
 import Grid from "@mui/joy/Grid";
 import Sheet from "@mui/joy/Sheet";
 import Typography from "@mui/joy/Typography";
@@ -36,6 +38,11 @@ const BasicInformation: React.FC<BasicInformationProps> = ({ dive }) => {
         })}
       >
         <Grid container spacing={1}>
+          {dive.type && (
+            <Grid xs={12}>
+              <Info title="Type" value={dive.type} icon={<TitleRounded />} />
+            </Grid>
+          )}
           {dive.length && (
             <Grid xs={12}>
               <Info
@@ -46,13 +53,18 @@ const BasicInformation: React.FC<BasicInformationProps> = ({ dive }) => {
               />
             </Grid>
           )}
-          {dive.depth.max && (
+          {dive.water && (
+            <Grid xs={12}>
+              <Info title="Water" value={dive.water} icon={<WavesRounded />} />
+            </Grid>
+          )}
+          {dive.weights.taken && (
             <Grid xs={12}>
               <Info
-                title="Max depth"
-                value={dive.depth.max}
-                unit="m"
-                icon={<DownloadRounded />}
+                title="Weights"
+                value={dive.weights.taken}
+                unit="kg"
+                icon={<ScaleRounded />}
               />
             </Grid>
           )}
