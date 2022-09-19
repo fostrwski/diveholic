@@ -1,7 +1,7 @@
 import { DiveFlattened } from "common/types";
 
 const diveInitialState: DiveFlattened = {
-  date: "",
+  date: new Date(),
   time: "",
   locationCountryName: "",
   locationCountryCode: "",
