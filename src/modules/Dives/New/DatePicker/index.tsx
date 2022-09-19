@@ -1,6 +1,7 @@
 import CalendarTodayRounded from "@mui/icons-material/CalendarTodayRounded";
 import CheckCircleRounded from "@mui/icons-material/CheckCircleRounded";
 import CheckRounded from "@mui/icons-material/CheckRounded";
+import EditRounded from "@mui/icons-material/EditRounded";
 import Avatar from "@mui/joy/Avatar";
 import Box from "@mui/joy/Box";
 import Chip from "@mui/joy/Chip";
@@ -111,7 +112,12 @@ const DatePicker: React.FC<DatePickerProps> = ({ setDate }) => {
                 ? "Today"
                 : formatDate(date, true)}{" "}
               &bull;
-              <Link color="warning" level="body1" onClick={handleModalToggle}>
+              <Link
+                endDecorator={<EditRounded />}
+                color="warning"
+                level="body1"
+                onClick={handleModalToggle}
+              >
                 Edit
               </Link>
             </>
