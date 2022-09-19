@@ -42,6 +42,21 @@ const theme = extendTheme({
         },
       },
     },
+    JoySelect: {
+      defaultProps: {
+        variant: "soft",
+      },
+    },
+    JoyModalDialog: {
+      defaultProps: {
+        variant: "plain",
+      },
+      styleOverrides: {
+        root: ({ theme }) => ({
+          padding: theme.spacing(4),
+        }),
+      },
+    },
     JoyMenu: {
       styleOverrides: {
         root: ({ theme }) => ({
