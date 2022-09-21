@@ -18,6 +18,11 @@ const theme = extendTheme({
         underline: "none",
         variant: "plain",
       },
+      styleOverrides: {
+        root: ({ theme }) => ({
+          fontWeight: theme.vars.fontWeight.md,
+        }),
+      },
     },
     JoyCheckbox: {
       defaultProps: {
