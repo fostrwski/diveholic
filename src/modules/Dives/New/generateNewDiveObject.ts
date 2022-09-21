@@ -2,7 +2,7 @@ import type { Dive, DiveFlattened } from "common/types";
 
 export default function generateNewDiveObject(dive: DiveFlattened): Dive {
   const newDive: Dive = {
-    date: dive.date,
+    date: dive.date!,
     time: dive.time,
     location: {
       country: {
