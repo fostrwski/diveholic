@@ -41,7 +41,7 @@ export type Dive = {
 // Copy of the Dive type for easier use in react state
 export type DiveFlattened = {
   id?: number;
-  date: Date;
+  date: Date | null;
   time: string;
   locationCountryName: string;
   locationCountryCode: string;

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
-export default function useDate() {
-  const [date, setDate] = useState<Date>(new Date());
+export default function useDate(initialDate?: Date) {
+  const [date, setDate] = useState<Date>(initialDate || new Date());
 
   const [day, setDay] = useState<number>(date.getDate());
   const [month, setMonth] = useState<number>(date.getMonth());
