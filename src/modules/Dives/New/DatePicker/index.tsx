@@ -4,6 +4,7 @@ import CheckRounded from "@mui/icons-material/CheckRounded";
 import EditRounded from "@mui/icons-material/EditRounded";
 import Avatar from "@mui/joy/Avatar";
 import Box from "@mui/joy/Box";
+import Button from "@mui/joy/Button";
 import Chip from "@mui/joy/Chip";
 import FormLabel from "@mui/joy/FormLabel";
 import Grid from "@mui/joy/Grid";
@@ -26,20 +27,18 @@ import presetDates from "./presetDates";
 import textToDate from "./textToDate";
 
 interface DatePickerProps {
+  diveDate: any;
   setDate: (date: Date) => void;
 }
 
-const DatePicker: React.FC<DatePickerProps> = ({ setDate }) => {
+const DatePicker: React.FC<DatePickerProps> = ({ diveDate, setDate }) => {
   const [open, setOpen] = useState<boolean>(false);
-  const [showAutoSaveMessage, setShowAutoSaveMessage] =
-    useState<boolean>(false);
 
   const handleModalToggle = () => {
     setOpen(!open);
   };
 
   const handleModalClose = () => {
-    setShowAutoSaveMessage(false);
     setOpen(false);
   };
 
@@ -54,14 +53,10 @@ const DatePicker: React.FC<DatePickerProps> = ({ setDate }) => {
     daysInMonth,
   } = useDate();
 
-  useEffect(() => {
-    if (open) {
-      console.log("Change");
-      setDate(date);
-      setShowAutoSaveMessage(true);
-      setTimeout(() => setShowAutoSaveMessage(false), 3000);
-    }
-  }, [date]);
+  const handleModalDone = () => {
+    setDate(date);
+    handleModalClose();
+  };
 
   const handleRadioDayChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setDay(parseInt(e.target.value));
@@ -108,25 +103,36 @@ const DatePicker: React.FC<DatePickerProps> = ({ setDate }) => {
           <Typography fontWeight="md" level="h6">
             <FormLabel sx={{ color: "GrayText" }}>Date</FormLabel>
             <>
-              {isEqualDate(textToDate("today"), date)
-                ? "Today"
-                : formatDate(date, true)}{" "}
-              &bull;
-              <Link
-                endDecorator={<EditRounded />}
-                color="warning"
-                level="body1"
-                onClick={handleModalToggle}
-              >
-                Edit
-              </Link>
+              {diveDate ? (
+                <>
+                  {formatDate(diveDate)} &bull;{" "}
+                  <Link
+                    endDecorator={<EditRounded />}
+                    color="warning"
+                    level="body1"
+                    component="button"
+                    onClick={handleModalToggle}
+                    sx={{ p: 0 }}
+                  >
+                    Edit
+                  </Link>
+                </>
+              ) : (
+                <Link
+                  component="button"
+                  onClick={handleModalToggle}
+                  sx={{ color: "initial", p: 0 }}
+                >
+                  Click here to set
+                </Link>
+              )}
             </>
           </Typography>
         </Box>
       </Box>
 
       <Modal open={open} onClose={handleModalClose}>
-        <ModalDialog sx={{ maxWidth: 600 }}>
+        <ModalDialog sx={{ maxWidth: 600, maxHeight: "86%", overflow: "auto" }}>
           <Typography level="h4">Select date</Typography>
           <Grid container spacing={2} sx={{ mt: 2 }} component="form">
             <Grid xs={6}>
@@ -135,6 +141,14 @@ const DatePicker: React.FC<DatePickerProps> = ({ setDate }) => {
                 size="sm"
                 onChange={(value) => handleMonthSelectChange(value!)}
                 value={months[month]}
+                componentsProps={{
+                  listbox: {
+                    sx: {
+                      maxHeight: 280,
+                      overflow: "auto",
+                    },
+                  },
+                }}
               >
                 {months.map((month: string) => (
                   <Option key={month} value={month} sx={{ p: 1 }} label={month}>
@@ -161,7 +175,7 @@ const DatePicker: React.FC<DatePickerProps> = ({ setDate }) => {
                   const dayInMonth = index + 1;
                   const checked = dayInMonth === day;
                   return (
-                    <Avatar size="sm" color={checked ? "primary" : "neutral"}>
+                    <Avatar color={checked ? "primary" : "neutral"} size="sm">
                       <Radio
                         value={dayInMonth}
                         label={dayInMonth}
@@ -222,15 +236,9 @@ const DatePicker: React.FC<DatePickerProps> = ({ setDate }) => {
             </RadioGroup>
           </Box>
 
-          {showAutoSaveMessage && (
-            <Typography
-              level="subtitle1"
-              sx={{ mt: 4 }}
-              startDecorator={<CheckCircleRounded color="success" />}
-            >
-              Saved automatically
-            </Typography>
-          )}
+          <Button sx={{ mt: 6 }} fullWidth onClick={handleModalDone}>
+            Done
+          </Button>
         </ModalDialog>
       </Modal>
     </>
