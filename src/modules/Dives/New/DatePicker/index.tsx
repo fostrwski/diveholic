@@ -9,6 +9,7 @@ import FormLabel from "@mui/joy/FormLabel";
 import Grid from "@mui/joy/Grid";
 import Link from "@mui/joy/Link";
 import Modal from "@mui/joy/Modal";
+import ModalClose from "@mui/joy/ModalClose";
 import ModalDialog from "@mui/joy/ModalDialog";
 import Option from "@mui/joy/Option";
 import Radio from "@mui/joy/Radio";
@@ -96,7 +97,7 @@ const DatePicker: React.FC<DatePickerProps> = ({ diveDate, setDate }) => {
           <Avatar sx={{ "--Avatar-size": "52px" }}>
             <CalendarTodayRounded sx={{ fontSize: "24px" }} />
           </Avatar>
-          <Typography fontWeight="md" level="h6">
+          <Typography level="h6" component="p">
             <FormLabel sx={{ color: "GrayText" }}>Date</FormLabel>
             <>
               {diveDate ? (
@@ -117,7 +118,8 @@ const DatePicker: React.FC<DatePickerProps> = ({ diveDate, setDate }) => {
                 <Link
                   component="button"
                   onClick={handleModalToggle}
-                  sx={{ p: 0, color: "initial" }}
+                  level="h5"
+                  sx={{ p: 0, color: "text.primary" }}
                 >
                   Click here to set
                 </Link>
@@ -129,6 +131,7 @@ const DatePicker: React.FC<DatePickerProps> = ({ diveDate, setDate }) => {
 
       <Modal open={open} onClose={handleModalClose}>
         <ModalDialog sx={{ maxWidth: 600, maxHeight: "86%", overflow: "auto" }}>
+          <ModalClose />
           <Typography level="h4">Select date</Typography>
           <Grid container spacing={2} sx={{ mt: 2 }} component="form">
             <Grid xs={6}>
