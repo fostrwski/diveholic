@@ -1,15 +1,12 @@
 import CalendarTodayRounded from "@mui/icons-material/CalendarTodayRounded";
-import CheckRounded from "@mui/icons-material/CheckRounded";
 import EditRounded from "@mui/icons-material/EditRounded";
 import Avatar from "@mui/joy/Avatar";
 import Box from "@mui/joy/Box";
 import Button from "@mui/joy/Button";
-import Chip from "@mui/joy/Chip";
 import FormLabel from "@mui/joy/FormLabel";
 import Grid from "@mui/joy/Grid";
 import Link from "@mui/joy/Link";
 import Modal from "@mui/joy/Modal";
-import ModalClose from "@mui/joy/ModalClose";
 import ModalDialog from "@mui/joy/ModalDialog";
 import Option from "@mui/joy/Option";
 import Radio from "@mui/joy/Radio";
@@ -20,27 +17,20 @@ import useDate from "common/hooks/useDate";
 import formatDate from "common/utils/formatDate";
 import React, { useState } from "react";
 
-import isEqualDate from "./isEqualDate";
 import months from "./months";
-import presetDates from "./presetDates";
-import textToDate from "./textToDate";
 
 interface DatePickerProps {
   diveDate: any;
   setDate: (date: Date) => void;
+  initialDate?: Date;
 }
 
-const DatePicker: React.FC<DatePickerProps> = ({ diveDate, setDate }) => {
+const DatePicker: React.FC<DatePickerProps> = ({
+  diveDate,
+  setDate,
+  initialDate,
+}) => {
   const [open, setOpen] = useState<boolean>(false);
-
-  const handleModalToggle = () => {
-    setOpen(!open);
-  };
-
-  const handleModalClose = () => {
-    setOpen(false);
-  };
-
   const {
     date,
     setDay,
@@ -50,7 +40,15 @@ const DatePicker: React.FC<DatePickerProps> = ({ diveDate, setDate }) => {
     month,
     fullYear,
     daysInMonth,
-  } = useDate();
+  } = useDate(initialDate);
+
+  const handleModalToggle = () => {
+    setOpen(!open);
+  };
+
+  const handleModalClose = () => {
+    setOpen(false);
+  };
 
   const handleModalDone = () => {
     setDate(date);
@@ -60,6 +58,7 @@ const DatePicker: React.FC<DatePickerProps> = ({ diveDate, setDate }) => {
   const handleRadioDayChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setDay(parseInt(e.target.value));
   };
+
   const handleMonthSelectChange = (value: string) => {
     const monthNumeric = months.indexOf(value);
     setMonth(monthNumeric);
@@ -67,18 +66,6 @@ const DatePicker: React.FC<DatePickerProps> = ({ diveDate, setDate }) => {
 
   const handleYearSelectChange = (value: number) => {
     setFullYear(value);
-  };
-
-  const handleRadioChipChange = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    value: string
-  ) => {
-    if (e.target.checked) {
-      const date = textToDate(value);
-      setDay(date.getDate());
-      setMonth(date.getMonth());
-      setFullYear(date.getFullYear());
-    }
   };
 
   return (
@@ -130,134 +117,117 @@ const DatePicker: React.FC<DatePickerProps> = ({ diveDate, setDate }) => {
       </Box>
 
       <Modal open={open} onClose={handleModalClose}>
-        <ModalDialog sx={{ maxWidth: 600, maxHeight: "86%", overflow: "auto" }}>
-          <ModalClose />
-          <Typography level="h4">Select date</Typography>
-          <Grid container spacing={2} sx={{ mt: 2 }} component="form">
-            <Grid xs={6}>
-              <FormLabel>Month</FormLabel>
-              <Select
-                size="sm"
-                onChange={(value) => handleMonthSelectChange(value!)}
-                value={months[month]}
-                componentsProps={{
-                  listbox: {
-                    sx: {
-                      maxHeight: 280,
-                      overflow: "auto",
-                    },
-                  },
-                }}
-              >
-                {months.map((month: string) => (
-                  <Option key={month} value={month} label={month}>
-                    {month}
-                  </Option>
-                ))}
-              </Select>
-            </Grid>
-            <Grid xs={6}>
-              <FormLabel>Year</FormLabel>
-              <Select
-                size="sm"
-                onChange={(value) => handleYearSelectChange(value!)}
-                value={fullYear}
-                componentsProps={{
-                  listbox: {
-                    sx: {
-                      maxHeight: 280,
-                      overflow: "auto",
-                    },
-                  },
-                }}
-              >
-                {[...Array(new Date().getFullYear() - 1970 + 1)].map(
-                  (_, index) => {
-                    const year = index + 1970;
-                    return (
-                      <Option key={index} value={year}>
-                        {year}
-                      </Option>
-                    );
-                  }
-                )}
-              </Select>
-            </Grid>
+        <ModalDialog
+          sx={{
+            overflow: "auto",
+            top: "unset",
+          }}
+          layout="fullscreen"
+        >
+          <Typography level="h4" component="p">
+            Select date
+          </Typography>
 
-            <Grid xs={12}>
-              <RadioGroup sx={{ flexWrap: "wrap", gap: 1 }} row value={day}>
-                {[...Array(daysInMonth)].map((_, index) => {
-                  const dayInMonth = index + 1;
-                  const checked = dayInMonth === day;
-                  return (
-                    <Avatar
-                      color={checked ? "primary" : "neutral"}
-                      size="sm"
-                      key={index}
-                    >
-                      <Radio
-                        value={dayInMonth}
-                        label={dayInMonth}
-                        overlay
-                        disableIcon
-                        variant="plain"
-                        color={checked ? "primary" : "neutral"}
-                        sx={{ borderRadius: "sm" }}
-                        onChange={(e) => handleRadioDayChange(e)}
-                      />
-                    </Avatar>
-                  );
-                })}
-              </RadioGroup>
-            </Grid>
-          </Grid>
-
-          <Box
-            sx={{
-              mt: 4,
-              maxWidth: "100%",
-            }}
-          >
-            <RadioGroup
-              sx={{
-                flexWrap: "wrap",
-                gap: 1,
-              }}
-              row
-            >
-              {presetDates.map((presetDate) => {
-                const checked = isEqualDate(textToDate(presetDate), date);
-                return (
-                  <Chip
-                    key={presetDate}
-                    variant="outlined"
-                    color={checked ? "primary" : "neutral"}
-                    startDecorator={
-                      checked && (
-                        <CheckRounded
-                          sx={{ zIndex: 1, pointerEvents: "none" }}
-                        />
-                      )
+          <Box component="form" mt={2}>
+            <Grid container spacing={2}>
+              <Grid xs={6}>
+                <FormLabel>Month</FormLabel>
+                <Select
+                  onChange={(value) => handleMonthSelectChange(value!)}
+                  value={months[month]}
+                  componentsProps={{
+                    listbox: {
+                      sx: {
+                        maxHeight: 280,
+                        overflow: "auto",
+                      },
+                    },
+                  }}
+                >
+                  {months.map((month: string) => (
+                    <Option key={month} value={month} label={month}>
+                      {month}
+                    </Option>
+                  ))}
+                </Select>
+              </Grid>
+              <Grid xs={6}>
+                <FormLabel>Year</FormLabel>
+                <Select
+                  onChange={(value) => handleYearSelectChange(value!)}
+                  value={fullYear}
+                  componentsProps={{
+                    listbox: {
+                      sx: {
+                        maxHeight: 280,
+                        overflow: "auto",
+                      },
+                    },
+                  }}
+                >
+                  {[...Array(new Date().getFullYear() - 1970 + 1)].map(
+                    (_, index) => {
+                      const year = index + 1970;
+                      return (
+                        <Option key={index} value={year}>
+                          {year}
+                        </Option>
+                      );
                     }
-                  >
-                    <Radio
-                      variant="outlined"
-                      overlay
-                      disableIcon
-                      label={presetDate}
-                      value={presetDate}
-                      color={checked ? "primary" : "neutral"}
-                      onChange={(e) => handleRadioChipChange(e, presetDate)}
-                    />
-                  </Chip>
-                );
-              })}
-            </RadioGroup>
-          </Box>
+                  )}
+                </Select>
+              </Grid>
 
-          <Button sx={{ mt: 6 }} fullWidth onClick={handleModalDone}>
-            Done
-          </Button>
+              <Grid xs={12}>
+                <RadioGroup row value={day}>
+                  <Grid container columns={7} sx={{ width: "100%" }}>
+                    {[...Array(daysInMonth)].map((_, index) => {
+                      const dayInMonth = index + 1;
+                      const checked = dayInMonth === day;
+                      return (
+                        <Grid key={index} xs={1}>
+                          <Avatar
+                            variant={checked ? "soft" : "plain"}
+                            size="sm"
+                          >
+                            <Radio
+                              value={dayInMonth}
+                              label={dayInMonth}
+                              overlay
+                              disableIcon
+                              variant="plain"
+                              sx={{ borderRadius: "sm" }}
+                              onChange={(e) => handleRadioDayChange(e)}
+                            />
+                          </Avatar>
+                        </Grid>
+                      );
+                    })}
+                  </Grid>
+                </RadioGroup>
+              </Grid>
+            </Grid>
+
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                mt: 6,
+                gap: 2,
+              }}
+            >
+              <Button
+                color="neutral"
+                variant="plain"
+                onClick={handleModalClose}
+              >
+                Cancel
+              </Button>
+              <Button color="neutral" onClick={handleModalDone} size="lg">
+                Done
+              </Button>
+            </Box>
+          </Box>
         </ModalDialog>
       </Modal>
     </>
