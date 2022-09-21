@@ -1,6 +1,8 @@
 import FlagRounded from "@mui/icons-material/FlagRounded";
+import PlaceRounded from "@mui/icons-material/PlaceRounded";
 import PublicRounded from "@mui/icons-material/PublicRounded";
 import Grid from "@mui/joy/Grid";
+import Link from "@mui/joy/Link";
 import TextField from "@mui/joy/TextField";
 import React from "react";
 
@@ -11,8 +13,8 @@ const Location: React.FC<ComponentWithTextFieldsProps> = ({
   handleTextFieldChange,
 }) => {
   return (
-    <Grid container spacing={2}>
-      <Grid spacing={2} container>
+    <>
+      <Grid spacing={2} container component="form">
         <Grid xs={6}>
           <TextField
             type="text"
@@ -49,7 +51,10 @@ const Location: React.FC<ComponentWithTextFieldsProps> = ({
           />
         </Grid>
       </Grid>
-    </Grid>
+      <Link mt={4} startDecorator={<PlaceRounded />} color="info">
+        Fill in with location from your latest dive
+      </Link>
+    </>
   );
 };
 
