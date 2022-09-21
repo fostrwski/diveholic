@@ -128,6 +128,13 @@ const theme = extendTheme({
         }),
       },
     },
+    JoyTab: {
+      styleOverrides: {
+        root: ({ theme }) => ({
+          fontWeight: theme.vars.fontWeight.md,
+        }),
+      },
+    },
   },
   typography: {
     subtitle1: {
