@@ -65,7 +65,7 @@ const theme = extendTheme({
       },
       styleOverrides: {
         root: ({ theme }) => ({
-          padding: theme.spacing(4),
+          padding: theme.spacing(3),
         }),
       },
     },
