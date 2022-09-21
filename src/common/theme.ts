@@ -50,6 +50,7 @@ const theme = extendTheme({
     JoySelect: {
       defaultProps: {
         variant: "soft",
+        color: "neutral",
       },
     },
     JoyOption: {
