@@ -1,5 +1,4 @@
 import CalendarTodayRounded from "@mui/icons-material/CalendarTodayRounded";
-import CheckCircleRounded from "@mui/icons-material/CheckCircleRounded";
 import CheckRounded from "@mui/icons-material/CheckRounded";
 import EditRounded from "@mui/icons-material/EditRounded";
 import Avatar from "@mui/joy/Avatar";
@@ -15,11 +14,10 @@ import Option from "@mui/joy/Option";
 import Radio from "@mui/joy/Radio";
 import RadioGroup from "@mui/joy/RadioGroup";
 import Select from "@mui/joy/Select";
-import TextField from "@mui/joy/TextField";
 import Typography from "@mui/joy/Typography";
 import useDate from "common/hooks/useDate";
 import formatDate from "common/utils/formatDate";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import isEqualDate from "./isEqualDate";
 import months from "./months";
@@ -66,10 +64,8 @@ const DatePicker: React.FC<DatePickerProps> = ({ diveDate, setDate }) => {
     setMonth(monthNumeric);
   };
 
-  const handleYearTextFieldChange = (
-    e: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setFullYear(parseInt(e.target.value));
+  const handleYearSelectChange = (value: number) => {
+    setFullYear(value);
   };
 
   const handleRadioChipChange = (
@@ -121,7 +117,7 @@ const DatePicker: React.FC<DatePickerProps> = ({ diveDate, setDate }) => {
                 <Link
                   component="button"
                   onClick={handleModalToggle}
-                  sx={{ color: "initial", p: 0 }}
+                  sx={{ p: 0, color: "initial" }}
                 >
                   Click here to set
                 </Link>
@@ -136,7 +132,7 @@ const DatePicker: React.FC<DatePickerProps> = ({ diveDate, setDate }) => {
           <Typography level="h4">Select date</Typography>
           <Grid container spacing={2} sx={{ mt: 2 }} component="form">
             <Grid xs={6}>
-              <FormLabel required>Month</FormLabel>
+              <FormLabel>Month</FormLabel>
               <Select
                 size="sm"
                 onChange={(value) => handleMonthSelectChange(value!)}
@@ -151,22 +147,38 @@ const DatePicker: React.FC<DatePickerProps> = ({ diveDate, setDate }) => {
                 }}
               >
                 {months.map((month: string) => (
-                  <Option key={month} value={month} sx={{ p: 1 }} label={month}>
+                  <Option key={month} value={month} label={month}>
                     {month}
                   </Option>
                 ))}
               </Select>
             </Grid>
             <Grid xs={6}>
-              <TextField
-                type="number"
-                fullWidth
-                label="Year"
+              <FormLabel>Year</FormLabel>
+              <Select
                 size="sm"
-                required
-                onChange={(e) => handleYearTextFieldChange(e)}
+                onChange={(value) => handleYearSelectChange(value!)}
                 value={fullYear}
-              />
+                componentsProps={{
+                  listbox: {
+                    sx: {
+                      maxHeight: 280,
+                      overflow: "auto",
+                    },
+                  },
+                }}
+              >
+                {[...Array(new Date().getFullYear() - 1970 + 1)].map(
+                  (_, index) => {
+                    const year = index + 1970;
+                    return (
+                      <Option key={index} value={year}>
+                        {year}
+                      </Option>
+                    );
+                  }
+                )}
+              </Select>
             </Grid>
 
             <Grid xs={12}>
@@ -175,7 +187,11 @@ const DatePicker: React.FC<DatePickerProps> = ({ diveDate, setDate }) => {
                   const dayInMonth = index + 1;
                   const checked = dayInMonth === day;
                   return (
-                    <Avatar color={checked ? "primary" : "neutral"} size="sm">
+                    <Avatar
+                      color={checked ? "primary" : "neutral"}
+                      size="sm"
+                      key={index}
+                    >
                       <Radio
                         value={dayInMonth}
                         label={dayInMonth}
