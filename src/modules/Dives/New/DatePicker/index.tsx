@@ -17,7 +17,6 @@ import useDate from "common/hooks/useDate";
 import formatDate from "common/utils/formatDate";
 import React, { useState } from "react";
 
-import generateWeekDaysArrayStartingWithDay from "./generateWeekDaysArrayStartingWithDay";
 import getFirstDayOfMonth from "./getFirstDayOfMonth";
 import months from "./months";
 import weekdays from "./weekdays";
