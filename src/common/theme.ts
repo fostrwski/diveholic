@@ -88,6 +88,7 @@ const theme = extendTheme({
     JoyRadio: {
       defaultProps: {
         color: "neutral",
+        variant: "soft",
       },
     },
     JoyTextField: {
