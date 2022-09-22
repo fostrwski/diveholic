@@ -185,14 +185,17 @@ const DatePicker: React.FC<DatePickerProps> = ({
               <Grid xs={12}>
                 <RadioGroup row value={day}>
                   <Grid container columns={7} sx={{ width: "100%" }}>
-                    {/* Displays weekdays starting with the first weekday of month :) */}
-                    {generateWeekDaysArrayStartingWithDay(
-                      weekdays[getFirstDayOfMonth(date)]
-                    ).map((weekDay: string) => (
-                      <Grid xs={1} key={weekDay}>
-                        <Typography fontWeight="lg">{weekDay}</Typography>
+                    {weekdays.map((weekday: string) => (
+                      <Grid xs={1}>
+                        <Typography fontWeight="lg">{weekday}</Typography>
                       </Grid>
                     ))}
+                    {/* Create white space to properly align days of month with matching weekdays (hard to explain) */}
+                    {[...Array(getFirstDayOfMonth(date) - 1)].map(
+                      (_, index) => (
+                        <Grid xs={1} key={index} />
+                      )
+                    )}
                     {[...Array(daysInMonth)].map((_, index) => {
                       const dayInMonth = index + 1;
                       const checked = dayInMonth === day;

@@ -1,3 +1,3 @@
-const weekdays = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
+const weekdays = ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"];
 
 export default weekdays;
