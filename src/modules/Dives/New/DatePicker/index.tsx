@@ -191,11 +191,9 @@ const DatePicker: React.FC<DatePickerProps> = ({
                       </Grid>
                     ))}
                     {/* Create white space to properly align days of month with matching weekdays (hard to explain) */}
-                    {[...Array(getFirstDayOfMonth(date) - 1)].map(
-                      (_, index) => (
-                        <Grid xs={1} key={index} />
-                      )
-                    )}
+                    {[...Array(getFirstDayOfMonth(date))].map((_, index) => (
+                      <Grid xs={1} key={index} />
+                    ))}
                     {[...Array(daysInMonth)].map((_, index) => {
                       const dayInMonth = index + 1;
                       const checked = dayInMonth === day;
