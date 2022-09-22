@@ -60,7 +60,6 @@ const Details: React.FC<DetailsProps> = ({ dive, setDive }) => {
         }}
         value={dive.water}
       >
-        {console.log(dive)}
         {waterTypes.map((waterType: { title: string; examples: string }) => (
           <FormControl
             sx={{ width: "100%", flexDirection: "row", gap: 2 }}
