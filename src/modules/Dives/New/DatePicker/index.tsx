@@ -119,7 +119,11 @@ const DatePicker: React.FC<DatePickerProps> = ({
         </Box>
       </Box>
 
-      <Modal open={open} onClose={handleModalClose}>
+      <Modal
+        open={open}
+        onClose={handleModalClose}
+        aria-labelledby="modal-title"
+      >
         <ModalDialog
           sx={{
             overflow: "auto",
@@ -127,7 +131,7 @@ const DatePicker: React.FC<DatePickerProps> = ({
           }}
           layout="fullscreen"
         >
-          <Typography level="h4" component="p">
+          <Typography level="h4" component="p" id="modal-title">
             Select date
           </Typography>
 
