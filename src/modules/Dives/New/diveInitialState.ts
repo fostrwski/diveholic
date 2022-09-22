@@ -16,7 +16,7 @@ const diveInitialState: DiveFlattened = {
   weightsNextTimeTakeLess: false,
   weightsNextTimeTakeMore: false,
   weightsNextTimeWeightDifference: null,
-  water: "",
+  water: "Fresh",
   temperatureAir: null,
   temperatureWaterSurface: null,
   temperatureWaterBottom: null,

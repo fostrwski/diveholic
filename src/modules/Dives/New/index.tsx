@@ -76,7 +76,11 @@ const New: React.FC<NewProps> = ({ user }) => {
       <Box component="form" mt={4} onSubmit={handleSubmit}>
         <DatePicker diveDate={dive.date} setDate={handleSetDate} />
 
-        <Tabs dive={dive} handleTextFieldChange={handleTextFieldChange} />
+        <Tabs
+          dive={dive}
+          handleTextFieldChange={handleTextFieldChange}
+          setDive={setDive}
+        />
 
         <Gear dive={dive} handleTextFieldChange={handleTextFieldChange} />
 
