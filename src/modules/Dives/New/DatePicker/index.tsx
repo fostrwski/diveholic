@@ -185,6 +185,7 @@ const DatePicker: React.FC<DatePickerProps> = ({
               <Grid xs={12}>
                 <RadioGroup row value={day}>
                   <Grid container columns={7} sx={{ width: "100%" }}>
+                    {/* Displays weekdays starting with the first weekday of month :) */}
                     {generateWeekDaysArrayStartingWithDay(
                       weekdays[getFirstDayOfMonth(date)]
                     ).map((weekDay: string) => (
