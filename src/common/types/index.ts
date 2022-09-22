@@ -15,6 +15,7 @@ export type Dive = {
   };
   type: string;
   length: number | null;
+  units: "metric" | "imperial";
   depth: {
     max: number | null;
     average: number | null;
@@ -27,7 +28,7 @@ export type Dive = {
       weightDifference: number | null;
     };
   };
-  water: string;
+  water: "fresh" | "salt";
   temperature: {
     air: number | null;
     water: {
@@ -50,13 +51,14 @@ export type DiveFlattened = {
   locationDiveCenter: string;
   type: string;
   length: number | null;
+  units: "metric" | "imperial";
   depthMax: number | null;
   depthAverage: number | null;
   weightsTaken: number | null;
   weightsNextTimeTakeLess: boolean | null;
   weightsNextTimeTakeMore: boolean | null;
   weightsNextTimeWeightDifference: number | null;
-  water: string;
+  water: "fresh" | "salt";
   temperatureAir: number | null;
   temperatureWaterSurface: number | null;
   temperatureWaterBottom: number | null;
