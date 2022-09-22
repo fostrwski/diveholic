@@ -15,6 +15,7 @@ export default function generateNewDiveObject(dive: DiveFlattened): Dive {
     },
     type: dive.type,
     length: dive.length,
+    units: dive.units,
     depth: {
       average: dive.depthAverage,
       max: dive.depthMax,
