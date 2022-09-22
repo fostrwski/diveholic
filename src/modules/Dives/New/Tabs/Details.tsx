@@ -1,5 +1,3 @@
-import ScaleRounded from "@mui/icons-material/ScaleRounded";
-import Box from "@mui/joy/Box";
 import FormControl from "@mui/joy/FormControl";
 import FormHelperText from "@mui/joy/FormHelperText";
 import FormLabel from "@mui/joy/FormLabel";
@@ -9,23 +7,18 @@ import Slider from "@mui/joy/Slider";
 import type { DiveFlattened } from "common/types";
 import React from "react";
 
-import type { ComponentWithTextFieldsProps } from "../types";
-
-interface DetailsProps extends ComponentWithTextFieldsProps {
+interface DetailsProps {
+  dive: DiveFlattened;
   setDive: React.Dispatch<React.SetStateAction<DiveFlattened>>;
 }
 
-const Details: React.FC<DetailsProps> = ({
-  dive,
-  handleTextFieldChange,
-  setDive,
-}) => {
+const Details: React.FC<DetailsProps> = ({ dive, setDive }) => {
   const waterTypes = [
     { title: "Fresh", examples: "Quarries, lakes, rivers" },
     { title: "Salt", examples: "Seas, oceans" },
   ];
 
-  const handleSetWater = (water: string) => {
+  const handleSetWater = (water: typeof dive.water) => {
     setDive((prevState: DiveFlattened) => ({
       ...prevState,
       water: water,
@@ -33,7 +26,20 @@ const Details: React.FC<DetailsProps> = ({
   };
 
   const handleWaterRadioChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    handleSetWater(e.target.value);
+    handleSetWater(e.target.value.toLowerCase() as typeof dive.water);
+  };
+
+  const handleSetWeightsTaken = (weightsTaken: number) => {
+    setDive((prevState: DiveFlattened) => ({
+      ...prevState,
+      weightsTaken: weightsTaken,
+    }));
+  };
+
+  const handleWeightsSliderChange = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    handleSetWeightsTaken(parseInt(e.target.value));
   };
 
   const sliderMarks = [
@@ -54,6 +60,7 @@ const Details: React.FC<DetailsProps> = ({
         }}
         value={dive.water}
       >
+        {console.log(dive)}
         {waterTypes.map((waterType: { title: string; examples: string }) => (
           <FormControl
             sx={{ width: "100%", flexDirection: "row", gap: 2 }}
@@ -61,7 +68,7 @@ const Details: React.FC<DetailsProps> = ({
           >
             <Radio
               overlay
-              value={waterType.title}
+              value={waterType.title.toLowerCase()}
               size="lg"
               onChange={(e) => handleWaterRadioChange(e)}
             />
@@ -74,15 +81,19 @@ const Details: React.FC<DetailsProps> = ({
       </RadioGroup>
 
       <FormControl sx={{ mt: 4, px: 4 }}>
-        <FormLabel>Weight</FormLabel>
+        <FormLabel id="slider-title">
+          Weights ({dive.units === "metric" ? "kg" : "lbs"})
+        </FormLabel>
         <Slider
           color="neutral"
           size="lg"
-          aria-label="Weight picker"
+          aria-label="Weights"
+          aria-labelledby="slider-title"
           defaultValue={0}
           max={20}
           valueLabelDisplay="auto"
           marks={sliderMarks}
+          onChange={(e) => handleWeightsSliderChange(e)}
         />
       </FormControl>
 
