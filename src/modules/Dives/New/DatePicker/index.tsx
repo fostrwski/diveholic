@@ -17,7 +17,10 @@ import useDate from "common/hooks/useDate";
 import formatDate from "common/utils/formatDate";
 import React, { useState } from "react";
 
+import generateWeekDaysArrayStartingWithDay from "./generateWeekDaysArrayStartingWithDay";
+import getFirstDayOfMonth from "./getFirstDayOfMonth";
 import months from "./months";
+import weekdays from "./weekdays";
 
 interface DatePickerProps {
   diveDate: any;
@@ -106,7 +109,8 @@ const DatePicker: React.FC<DatePickerProps> = ({
                   component="button"
                   onClick={handleModalToggle}
                   level="h5"
-                  sx={{ p: 0, color: "text.primary" }}
+                  color="neutral"
+                  sx={{ p: 0 }}
                 >
                   Click here to set
                 </Link>
@@ -181,11 +185,18 @@ const DatePicker: React.FC<DatePickerProps> = ({
               <Grid xs={12}>
                 <RadioGroup row value={day}>
                   <Grid container columns={7} sx={{ width: "100%" }}>
+                    {generateWeekDaysArrayStartingWithDay(
+                      weekdays[getFirstDayOfMonth(date)]
+                    ).map((weekDay: string) => (
+                      <Grid xs={1} key={weekDay}>
+                        <Typography fontWeight="lg">{weekDay}</Typography>
+                      </Grid>
+                    ))}
                     {[...Array(daysInMonth)].map((_, index) => {
                       const dayInMonth = index + 1;
                       const checked = dayInMonth === day;
                       return (
-                        <Grid key={index} xs={1}>
+                        <Grid key={dayInMonth} xs={1}>
                           <Avatar
                             variant={checked ? "soft" : "plain"}
                             size="sm"
@@ -212,13 +223,14 @@ const DatePicker: React.FC<DatePickerProps> = ({
               sx={{
                 display: "flex",
                 justifyContent: "space-between",
+                alignItems: "center",
                 mt: 6,
                 gap: 2,
               }}
             >
               <Button
-                color="neutral"
                 variant="plain"
+                color="neutral"
                 onClick={handleModalClose}
               >
                 Cancel
