@@ -1,12 +1,7 @@
-import CalendarTodayRounded from "@mui/icons-material/CalendarTodayRounded";
 import SaveRounded from "@mui/icons-material/SaveRounded";
-import ScheduleRounded from "@mui/icons-material/ScheduleRounded";
-import Avatar from "@mui/joy/Avatar";
 import Box from "@mui/joy/Box";
 import Button from "@mui/joy/Button";
-import FormLabel from "@mui/joy/FormLabel";
 import Grid from "@mui/joy/Grid";
-import Link from "@mui/joy/Link";
 import TextField from "@mui/joy/TextField";
 import Typography from "@mui/joy/Typography";
 import type { User } from "@supabase/auth-helpers-nextjs";
@@ -52,13 +47,6 @@ const New: React.FC<NewProps> = ({ user }) => {
     }));
   };
 
-  const handleSetDate = (date: Date) => {
-    setDive((prevState: DiveFlattened) => ({
-      ...prevState,
-      date: date,
-    }));
-  };
-
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const newDive = generateNewDiveObject(dive);
@@ -73,7 +61,7 @@ const New: React.FC<NewProps> = ({ user }) => {
     <>
       <Header />
 
-      <DatePicker diveDate={dive.date} setDate={handleSetDate} />
+      <DatePicker dive={dive} setDive={setDive} />
 
       <Box component="form" onSubmit={handleSubmit}>
         <Tabs

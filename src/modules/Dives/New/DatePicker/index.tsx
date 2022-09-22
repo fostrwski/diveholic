@@ -14,6 +14,7 @@ import RadioGroup from "@mui/joy/RadioGroup";
 import Select from "@mui/joy/Select";
 import Typography from "@mui/joy/Typography";
 import useDate from "common/hooks/useDate";
+import type { DiveFlattened } from "common/types";
 import formatDate from "common/utils/formatDate";
 import React, { useState } from "react";
 
@@ -22,14 +23,14 @@ import months from "./months";
 import weekdays from "./weekdays";
 
 interface DatePickerProps {
-  diveDate: any;
-  setDate: React.Dispatch<React.SetStateAction<Date>>;
+  dive: DiveFlattened;
+  setDive: React.Dispatch<React.SetStateAction<DiveFlattened>>;
   initialDate?: Date;
 }
 
 const DatePicker: React.FC<DatePickerProps> = ({
-  diveDate,
-  setDate,
+  dive,
+  setDive,
   initialDate,
 }) => {
   const [open, setOpen] = useState<boolean>(false);
@@ -44,6 +45,13 @@ const DatePicker: React.FC<DatePickerProps> = ({
     daysInMonth,
   } = useDate(initialDate);
 
+  const handleSetDate = (date: Date) => {
+    setDive((prevState: DiveFlattened) => ({
+      ...prevState,
+      date: date,
+    }));
+  };
+
   const handleModalToggle = () => {
     setOpen(!open);
   };
@@ -53,7 +61,7 @@ const DatePicker: React.FC<DatePickerProps> = ({
   };
 
   const handleModalDone = () => {
-    setDate(date);
+    handleSetDate(date);
     handleModalClose();
   };
 
@@ -88,9 +96,9 @@ const DatePicker: React.FC<DatePickerProps> = ({
           <Typography level="h6" component="p">
             <FormLabel sx={{ color: "GrayText" }}>Date</FormLabel>
             <>
-              {diveDate ? (
+              {dive.date ? (
                 <>
-                  {formatDate(diveDate)} &bull;{" "}
+                  {formatDate(dive.date)} &bull;{" "}
                   <Link
                     endDecorator={<EditRounded />}
                     color="warning"

@@ -43,11 +43,7 @@ const Tabs: React.FC<TabsProps> = ({
       </TabPanel>
 
       <TabPanel value={2}>
-        <Details
-          dive={dive}
-          handleTextFieldChange={handleTextFieldChange}
-          setDive={setDive}
-        />
+        <Details dive={dive} setDive={setDive} />
       </TabPanel>
     </MuiTabs>
   );
