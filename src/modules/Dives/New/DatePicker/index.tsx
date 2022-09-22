@@ -23,7 +23,7 @@ import weekdays from "./weekdays";
 
 interface DatePickerProps {
   diveDate: any;
-  setDate: (date: Date) => void;
+  setDate: React.Dispatch<React.SetStateAction<Date>>;
   initialDate?: Date;
 }
 
@@ -78,7 +78,6 @@ const DatePicker: React.FC<DatePickerProps> = ({
           gap: 2,
           justifyContent: "space-between",
           alignItems: "center",
-          mt: 2,
           width: "100%",
         }}
       >

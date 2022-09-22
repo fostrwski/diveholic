@@ -10,7 +10,12 @@ const Header: React.FC = () => {
   const router = useRouter();
 
   return (
-    <Box display="flex" justifyContent="space-between" alignItems="center">
+    <Box
+      display="flex"
+      justifyContent="space-between"
+      alignItems="center"
+      mb={4}
+    >
       <Chip
         startDecorator={<AddRounded />}
         variant="soft"
