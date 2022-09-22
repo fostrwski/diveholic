@@ -36,9 +36,7 @@ const Details: React.FC<DetailsProps> = ({ dive, setDive }) => {
     }));
   };
 
-  const handleWeightsSliderChange = (
-    e: React.ChangeEvent<HTMLInputElement>
-  ) => {
+  const handleWeightsSliderChange = (e: any) => {
     handleSetWeightsTaken(parseInt(e.target.value));
   };
 
