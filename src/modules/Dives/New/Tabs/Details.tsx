@@ -1,6 +1,7 @@
 import FormControl from "@mui/joy/FormControl";
 import FormHelperText from "@mui/joy/FormHelperText";
 import FormLabel from "@mui/joy/FormLabel";
+import Grid from "@mui/joy/Grid";
 import Radio from "@mui/joy/Radio";
 import RadioGroup from "@mui/joy/RadioGroup";
 import Slider from "@mui/joy/Slider";
@@ -48,6 +49,24 @@ const Details: React.FC<DetailsProps> = ({ dive, setDive }) => {
     { value: 20, label: "20" },
   ];
 
+  const weightsAmmount = [
+    {
+      title: "Perfect 👌🏼",
+      value: "perfect",
+      helperText: "This ammount next time",
+    },
+    {
+      title: "Too little 👇🏼",
+      value: "tooLittle",
+      helperText: "Take more weights next time",
+    },
+    {
+      title: "Too much 👆🏼",
+      value: "tooMuch",
+      helperText: "Takke less weights next time",
+    },
+  ];
+
   return (
     <>
       <RadioGroup
@@ -77,7 +96,7 @@ const Details: React.FC<DetailsProps> = ({ dive, setDive }) => {
         ))}
       </RadioGroup>
 
-      <FormControl sx={{ mt: 4, px: 4 }}>
+      <FormControl sx={{ mt: 4, px: 2 }}>
         <FormLabel id="slider-title">
           Weights ({dive.units === "metric" ? "kg" : "lbs"})
         </FormLabel>
@@ -94,14 +113,21 @@ const Details: React.FC<DetailsProps> = ({ dive, setDive }) => {
         />
       </FormControl>
 
-      <RadioGroup
-        defaultValue="perfect"
-        name="radio-buttons-group"
-        sx={{ mt: 4 }}
-      >
-        <Radio value="perfect" label="Perfect" />
-        <Radio value="tooLittle" label="Too little" />
-        <Radio value="tooMuch" label="Too much" />
+      <RadioGroup defaultValue="perfect" sx={{ mt: 4, gap: 2 }}>
+        {weightsAmmount.map(
+          (ammount: { title: string; value: string; helperText: string }) => (
+            <FormControl
+              key={ammount.value}
+              sx={{ width: "100%", flexDirection: "row", gap: 2 }}
+            >
+              <Radio overlay size="lg" value={ammount.value} />
+              <div>
+                <FormLabel>{ammount.title}</FormLabel>
+                <FormHelperText>{ammount.helperText}</FormHelperText>
+              </div>
+            </FormControl>
+          )
+        )}
       </RadioGroup>
     </>
   );
