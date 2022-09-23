@@ -6,6 +6,7 @@ import Grid from "@mui/joy/Grid";
 import Option from "@mui/joy/Option";
 import Select from "@mui/joy/Select";
 import TextField from "@mui/joy/TextField";
+import getDiveEmoji from "common/utils/getDiveEmoji";
 import React from "react";
 
 import type { ComponentWithTextFieldsProps } from "../types";
@@ -29,6 +30,7 @@ const Basics: React.FC<BasicsProps> = ({
         <FormControl>
           <FormLabel>Dive type</FormLabel>
           <Select
+            startDecorator={getDiveEmoji(dive.type)}
             value={dive.type}
             onChange={(value) => handleDiveTypeSelectChange(value!)}
           >
