@@ -67,6 +67,28 @@ const Details: React.FC<DetailsProps> = ({ dive, setDive }) => {
     },
   ];
 
+  const handleSetWeightsAmmount = (
+    weightsAmmount: typeof dive.weightsAmmount
+  ) => {
+    setDive((prevState: DiveFlattened) => ({
+      ...prevState,
+      weightsAmmount: weightsAmmount,
+    }));
+  };
+
+  const handleWeightsAmmountRadioChange = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    switch (e.target.value) {
+      case "tooLittle":
+        return handleSetWeightsAmmount("tooLittle");
+      case "tooMuch":
+        return handleSetWeightsAmmount("tooMuch");
+      default:
+        return handleSetWeightsAmmount("perfect");
+    }
+  };
+
   return (
     <>
       <RadioGroup
@@ -109,11 +131,16 @@ const Details: React.FC<DetailsProps> = ({ dive, setDive }) => {
           max={20}
           valueLabelDisplay="auto"
           marks={sliderMarks}
+          value={dive.weightsTaken}
           onChange={(e) => handleWeightsSliderChange(e)}
         />
       </FormControl>
 
-      <RadioGroup defaultValue="perfect" sx={{ mt: 4, gap: 2 }}>
+      <RadioGroup
+        sx={{ mt: 4, gap: 2 }}
+        onChange={(e) => handleWeightsAmmountRadioChange(e)}
+        value={dive.weightsAmmount}
+      >
         {weightsAmmount.map(
           (ammount: { title: string; value: string; helperText: string }) => (
             <FormControl
