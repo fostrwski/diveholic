@@ -3,6 +3,7 @@ import EditRounded from "@mui/icons-material/EditRounded";
 import Avatar from "@mui/joy/Avatar";
 import Box from "@mui/joy/Box";
 import Button from "@mui/joy/Button";
+import FormControl from "@mui/joy/FormControl";
 import FormLabel from "@mui/joy/FormLabel";
 import Grid from "@mui/joy/Grid";
 import Link from "@mui/joy/Link";
@@ -86,36 +87,40 @@ const DatePicker: React.FC<DatePickerProps> = ({
           <Avatar sx={{ "--Avatar-size": "52px" }}>
             <CalendarTodayRounded sx={{ fontSize: "24px" }} />
           </Avatar>
-          <Typography level="h6" component="p">
-            <FormLabel sx={{ color: "GrayText" }}>Date</FormLabel>
-            <>
-              {dive.date ? (
-                <>
-                  {formatDate(dive.date)} &bull;{" "}
+          <FormControl>
+            <Typography level="h6" component="p">
+              <FormLabel sx={{ color: "GrayText" }}>Date</FormLabel>
+              <>
+                {dive.date ? (
+                  <>
+                    {formatDate(dive.date)} &bull;{" "}
+                    <Link
+                      endDecorator={<EditRounded />}
+                      color="warning"
+                      level="body1"
+                      component="button"
+                      onClick={handleModalToggle}
+                      sx={{ p: 0 }}
+                      aria-label="Edit date"
+                    >
+                      Edit
+                    </Link>
+                  </>
+                ) : (
                   <Link
-                    endDecorator={<EditRounded />}
-                    color="warning"
-                    level="body1"
                     component="button"
                     onClick={handleModalToggle}
+                    level="h5"
+                    color="neutral"
+                    aria-label="Set date"
                     sx={{ p: 0 }}
                   >
-                    Edit
+                    Click here to set
                   </Link>
-                </>
-              ) : (
-                <Link
-                  component="button"
-                  onClick={handleModalToggle}
-                  level="h5"
-                  color="neutral"
-                  sx={{ p: 0 }}
-                >
-                  Click here to set
-                </Link>
-              )}
-            </>
-          </Typography>
+                )}
+              </>
+            </Typography>
+          </FormControl>
         </Box>
       </Box>
 
@@ -138,55 +143,59 @@ const DatePicker: React.FC<DatePickerProps> = ({
           <Box component="form" mt={2}>
             <Grid container spacing={2}>
               <Grid xs={6}>
-                <FormLabel>Month</FormLabel>
-                <Select
-                  onChange={(value) => handleMonthSelectChange(value!)}
-                  value={months[month]}
-                  componentsProps={{
-                    listbox: {
-                      sx: {
-                        maxHeight: 280,
-                        overflow: "auto",
+                <FormControl>
+                  <FormLabel>Month</FormLabel>
+                  <Select
+                    onChange={(value) => handleMonthSelectChange(value!)}
+                    value={months[month]}
+                    componentsProps={{
+                      listbox: {
+                        sx: {
+                          maxHeight: 280,
+                          overflow: "auto",
+                        },
                       },
-                    },
-                  }}
-                >
-                  {months.map((month: string) => (
-                    <Option key={month} value={month} label={month}>
-                      {month}
-                    </Option>
-                  ))}
-                </Select>
+                    }}
+                  >
+                    {months.map((month: string) => (
+                      <Option key={month} value={month} label={month}>
+                        {month}
+                      </Option>
+                    ))}
+                  </Select>
+                </FormControl>
               </Grid>
               <Grid xs={6}>
-                <FormLabel>Year</FormLabel>
-                <Select
-                  onChange={(value) => handleYearSelectChange(value!)}
-                  value={fullYear}
-                  componentsProps={{
-                    listbox: {
-                      sx: {
-                        maxHeight: 280,
-                        overflow: "auto",
+                <FormControl>
+                  <FormLabel>Year</FormLabel>
+                  <Select
+                    onChange={(value) => handleYearSelectChange(value!)}
+                    value={fullYear}
+                    componentsProps={{
+                      listbox: {
+                        sx: {
+                          maxHeight: 280,
+                          overflow: "auto",
+                        },
                       },
-                    },
-                  }}
-                >
-                  {[...Array(new Date().getFullYear() - 1970 + 1)].map(
-                    (_, index) => {
-                      const year = index + 1970;
-                      return (
-                        <Option key={index} value={year}>
-                          {year}
-                        </Option>
-                      );
-                    }
-                  )}
-                </Select>
+                    }}
+                  >
+                    {[...Array(new Date().getFullYear() - 1970 + 1)].map(
+                      (_, index) => {
+                        const year = index + 1970;
+                        return (
+                          <Option key={index} value={year}>
+                            {year}
+                          </Option>
+                        );
+                      }
+                    )}
+                  </Select>
+                </FormControl>
               </Grid>
 
               <Grid xs={12}>
-                <RadioGroup row value={day}>
+                <RadioGroup row value={day} aria-label="Select day of month">
                   <Grid container columns={7} sx={{ width: "100%" }}>
                     {weekdays.map((weekday: string) => (
                       <Grid xs={1}>
