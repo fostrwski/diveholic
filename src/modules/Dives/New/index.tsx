@@ -37,10 +37,10 @@ const New: React.FC<NewProps> = ({ user }) => {
     }));
   }, [dive.locationCountryName]);
 
-  const handleDivePropUpdate = (prop: string, value: any) => {
+  const updateDiveProp = (prop: string, value: any) => {
     setDive((prevState: DiveFlattened) => ({
       ...prevState,
-      [prop]: e.target.value,
+      [prop]: value,
     }));
   };
 
@@ -48,10 +48,7 @@ const New: React.FC<NewProps> = ({ user }) => {
     e: React.ChangeEvent<HTMLInputElement>,
     prop: string
   ) => {
-    setDive((prevState: DiveFlattened) => ({
-      ...prevState,
-      [prop]: e.target.value,
-    }));
+    updateDiveProp(prop, e.target.value);
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {

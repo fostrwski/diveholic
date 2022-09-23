@@ -1,7 +1,6 @@
 import FormControl from "@mui/joy/FormControl";
 import FormHelperText from "@mui/joy/FormHelperText";
 import FormLabel from "@mui/joy/FormLabel";
-import Grid from "@mui/joy/Grid";
 import Radio from "@mui/joy/Radio";
 import RadioGroup from "@mui/joy/RadioGroup";
 import Slider from "@mui/joy/Slider";
@@ -10,35 +9,21 @@ import React from "react";
 
 interface DetailsProps {
   dive: DiveFlattened;
-  setDive: React.Dispatch<React.SetStateAction<DiveFlattened>>;
+  updateDiveProp: (prop: string, value: any) => void;
 }
 
-const Details: React.FC<DetailsProps> = ({ dive, setDive }) => {
+const Details: React.FC<DetailsProps> = ({ dive, updateDiveProp }) => {
   const waterTypes = [
     { title: "Fresh", examples: "Quarries, lakes, rivers" },
     { title: "Salt", examples: "Seas, oceans" },
   ];
 
-  const handleSetWater = (water: typeof dive.water) => {
-    setDive((prevState: DiveFlattened) => ({
-      ...prevState,
-      water: water,
-    }));
-  };
-
   const handleWaterRadioChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    handleSetWater(e.target.value.toLowerCase() as typeof dive.water);
-  };
-
-  const handleSetWeightsTaken = (weightsTaken: number) => {
-    setDive((prevState: DiveFlattened) => ({
-      ...prevState,
-      weightsTaken: weightsTaken,
-    }));
+    updateDiveProp("water", e.target.value.toLowerCase() as typeof dive.water);
   };
 
   const handleWeightsSliderChange = (e: any) => {
-    handleSetWeightsTaken(parseInt(e.target.value));
+    updateDiveProp("weightsTaken", parseInt(e.target.value));
   };
 
   const sliderMarks = [
@@ -67,25 +52,16 @@ const Details: React.FC<DetailsProps> = ({ dive, setDive }) => {
     },
   ];
 
-  const handleSetWeightsAmmount = (
-    weightsAmmount: typeof dive.weightsAmmount
-  ) => {
-    setDive((prevState: DiveFlattened) => ({
-      ...prevState,
-      weightsAmmount: weightsAmmount,
-    }));
-  };
-
   const handleWeightsAmmountRadioChange = (
     e: React.ChangeEvent<HTMLInputElement>
   ) => {
     switch (e.target.value) {
       case "tooLittle":
-        return handleSetWeightsAmmount("tooLittle");
+        return updateDiveProp("weightsAmmount", "tooLittle");
       case "tooMuch":
-        return handleSetWeightsAmmount("tooMuch");
+        return updateDiveProp("weightsAmmount", "tooMuch");
       default:
-        return handleSetWeightsAmmount("perfect");
+        return updateDiveProp("weightsAmmount", "perfect");
     }
   };
 
