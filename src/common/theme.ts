@@ -108,6 +108,11 @@ const theme = extendTheme({
         color: "neutral",
         variant: "soft",
       },
+      styleOverrides: {
+        root: {
+          fontWeight: "var(--joy-fontWeight-md)",
+        },
+      },
     },
     JoyAvatar: {
       styleOverrides: {

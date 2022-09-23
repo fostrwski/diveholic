@@ -40,7 +40,7 @@ const DiveCard: React.FC<DiveCard> = ({ dive }) => {
           </Typography>
 
           <Box my={2}>
-            <Grid container spacing={2}>
+            <Grid container spacing={2} sx={{ fontWeight: "md" }}>
               <Grid xs={6}>
                 <Typography component="p" startDecorator={<TitleRounded />}>
                   {dive.type}
@@ -49,7 +49,6 @@ const DiveCard: React.FC<DiveCard> = ({ dive }) => {
                   component="p"
                   startDecorator={<DownloadRounded />}
                   endDecorator="m"
-                  sx={{ mt: 0.6 }}
                 >
                   {dive.depth.max}
                 </Typography>
@@ -66,7 +65,6 @@ const DiveCard: React.FC<DiveCard> = ({ dive }) => {
                   component="p"
                   startDecorator={<DeviceThermostatRounded />}
                   endDecorator="°C"
-                  sx={{ mt: 0.6 }}
                 >
                   {dive.temperature.water.bottom}
                 </Typography>
