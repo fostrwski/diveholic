@@ -100,8 +100,6 @@ const Details: React.FC<DetailsProps> = ({ dive, updateDiveProp }) => {
         </FormLabel>
         <Slider
           size="lg"
-          aria-label="Weights"
-          defaultValue={0}
           max={20}
           valueLabelDisplay="auto"
           marks={sliderMarks}
