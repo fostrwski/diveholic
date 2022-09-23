@@ -99,7 +99,6 @@ const Details: React.FC<DetailsProps> = ({ dive, updateDiveProp }) => {
           Weights ({dive.units === "metric" ? "kg" : "lbs"})
         </FormLabel>
         <Slider
-          color="neutral"
           size="lg"
           aria-label="Weights"
           defaultValue={0}

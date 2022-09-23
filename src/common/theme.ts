@@ -137,6 +137,11 @@ const theme = extendTheme({
         }),
       },
     },
+    JoySlider: {
+      defaultProps: {
+        color: "neutral",
+      },
+    },
   },
   typography: {
     subtitle1: {
