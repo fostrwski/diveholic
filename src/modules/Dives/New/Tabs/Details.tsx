@@ -95,14 +95,13 @@ const Details: React.FC<DetailsProps> = ({ dive, updateDiveProp }) => {
       </RadioGroup>
 
       <FormControl sx={{ mt: 4, px: 2 }}>
-        <FormLabel id="slider-title">
+        <FormLabel>
           Weights ({dive.units === "metric" ? "kg" : "lbs"})
         </FormLabel>
         <Slider
           color="neutral"
           size="lg"
           aria-label="Weights"
-          aria-labelledby="slider-title"
           defaultValue={0}
           max={20}
           valueLabelDisplay="auto"
