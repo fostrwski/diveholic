@@ -1,26 +1,44 @@
 import DownloadRounded from "@mui/icons-material/DownloadRounded";
 import TimelapseRounded from "@mui/icons-material/TimelapseRounded";
-import TitleRounded from "@mui/icons-material/TitleRounded";
+import FormControl from "@mui/joy/FormControl";
+import FormLabel from "@mui/joy/FormLabel";
 import Grid from "@mui/joy/Grid";
+import Option from "@mui/joy/Option";
+import Select from "@mui/joy/Select";
 import TextField from "@mui/joy/TextField";
 import React from "react";
 
 import type { ComponentWithTextFieldsProps } from "../types";
 
-const Basics: React.FC<ComponentWithTextFieldsProps> = ({
+interface BasicsProps extends ComponentWithTextFieldsProps {
+  updateDiveProp: (prop: string, value: any) => void;
+}
+
+const Basics: React.FC<BasicsProps> = ({
   dive,
   handleTextFieldChange,
+  updateDiveProp,
 }) => {
+  const handleDiveTypeSelectChange = (diveType: typeof dive.type) => {
+    updateDiveProp("type", diveType);
+  };
+
   return (
     <Grid container spacing={2}>
       <Grid xs={6}>
-        <TextField
-          type="text"
-          name="diveType"
-          label="Dive type"
-          startDecorator={<TitleRounded />}
-          onChange={(e) => handleTextFieldChange(e, "type")}
-        />
+        <FormControl>
+          <FormLabel>Dive type</FormLabel>
+          <Select
+            value={dive.type}
+            onChange={(value) => handleDiveTypeSelectChange(value!)}
+          >
+            {["Boat", "Shore"].map((diveType: string) => (
+              <Option key={diveType} value={diveType.toLowerCase()}>
+                {diveType}
+              </Option>
+            ))}
+          </Select>
+        </FormControl>
       </Grid>
       <Grid xs={6}>
         <TextField
@@ -30,6 +48,7 @@ const Basics: React.FC<ComponentWithTextFieldsProps> = ({
           endDecorator="min"
           startDecorator={<TimelapseRounded />}
           onChange={(e) => handleTextFieldChange(e, "length")}
+          value={dive.length}
         />
       </Grid>
       <Grid xs={6}>
@@ -40,6 +59,7 @@ const Basics: React.FC<ComponentWithTextFieldsProps> = ({
           endDecorator="m"
           startDecorator={<DownloadRounded />}
           onChange={(e) => handleTextFieldChange(e, "depthMax")}
+          value={dive.depthMax}
         />
       </Grid>
       <Grid xs={6}>
@@ -49,6 +69,7 @@ const Basics: React.FC<ComponentWithTextFieldsProps> = ({
           label="Average depth"
           endDecorator="m"
           onChange={(e) => handleTextFieldChange(e, "depthAverage")}
+          value={dive.depthAverage}
         />
       </Grid>
     </Grid>

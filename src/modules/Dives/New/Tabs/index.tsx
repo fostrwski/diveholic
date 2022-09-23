@@ -38,7 +38,11 @@ const Tabs: React.FC<TabsProps> = ({
       </TabPanel>
 
       <TabPanel value={1}>
-        <Basics dive={dive} handleTextFieldChange={handleTextFieldChange} />
+        <Basics
+          dive={dive}
+          handleTextFieldChange={handleTextFieldChange}
+          updateDiveProp={updateDiveProp}
+        />
       </TabPanel>
 
       <TabPanel value={2}>
