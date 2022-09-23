@@ -65,7 +65,7 @@ const DatePicker: React.FC<DatePickerProps> = ({
     handleModalClose();
   };
 
-  const handleRadioDayChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleDayRadioChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setDay(parseInt(e.target.value));
   };
 
@@ -220,7 +220,7 @@ const DatePicker: React.FC<DatePickerProps> = ({
                               disableIcon
                               variant="plain"
                               sx={{ borderRadius: "sm" }}
-                              onChange={(e) => handleRadioDayChange(e)}
+                              onChange={(e) => handleDayRadioChange(e)}
                             />
                           </Avatar>
                         </Grid>
