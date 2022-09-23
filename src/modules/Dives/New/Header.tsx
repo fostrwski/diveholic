@@ -29,6 +29,7 @@ const Header: React.FC = () => {
         color="danger"
         size="sm"
         variant="plain"
+        aria-label="Cancel adding new dive"
         onClick={() => router.push("/")}
         endIcon={<CloseRounded />}
       >
