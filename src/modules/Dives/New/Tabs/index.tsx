@@ -2,7 +2,6 @@ import Tab from "@mui/joy/Tab";
 import TabList from "@mui/joy/TabList";
 import TabPanel from "@mui/joy/TabPanel";
 import MuiTabs from "@mui/joy/Tabs";
-import type { DiveFlattened } from "common/types";
 import React from "react";
 
 import type { ComponentWithTextFieldsProps } from "../types";
@@ -11,13 +10,13 @@ import Details from "./Details";
 import Location from "./Location";
 
 interface TabsProps extends ComponentWithTextFieldsProps {
-  setDive: React.Dispatch<React.SetStateAction<DiveFlattened>>;
+  updateDiveProp: (prop: string, value: any) => void;
 }
 
 const Tabs: React.FC<TabsProps> = ({
   dive,
   handleTextFieldChange,
-  setDive,
+  updateDiveProp,
 }) => {
   return (
     <MuiTabs
@@ -43,7 +42,7 @@ const Tabs: React.FC<TabsProps> = ({
       </TabPanel>
 
       <TabPanel value={2}>
-        <Details dive={dive} setDive={setDive} />
+        <Details dive={dive} updateDiveProp={updateDiveProp} />
       </TabPanel>
     </MuiTabs>
   );

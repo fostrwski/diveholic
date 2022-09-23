@@ -65,13 +65,13 @@ const New: React.FC<NewProps> = ({ user }) => {
     <>
       <Header />
 
-      <DatePicker dive={dive} setDive={setDive} />
+      <DatePicker dive={dive} updateDiveProp={updateDiveProp} />
 
       <Box component="form" onSubmit={handleSubmit}>
         <Tabs
           dive={dive}
           handleTextFieldChange={handleTextFieldChange}
-          setDive={setDive}
+          updateDiveProp={updateDiveProp}
         />
 
         <Gear dive={dive} handleTextFieldChange={handleTextFieldChange} />
