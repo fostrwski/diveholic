@@ -10,6 +10,7 @@ const Error: React.FC = () => {
       color="danger"
       level="h6"
     >
+      {/* TODO: add helper text to refresh page */}
       Something went wrong
     </Typography>
   );
