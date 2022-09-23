@@ -63,13 +63,13 @@ const DatePicker: React.FC<DatePickerProps> = ({
     setDay(parseInt(e.target.value));
   };
 
-  const handleMonthSelectChange = (value: string) => {
-    const monthNumeric = months.indexOf(value);
+  const handleMonthSelectChange = (month: string) => {
+    const monthNumeric = months.indexOf(month);
     setMonth(monthNumeric);
   };
 
-  const handleYearSelectChange = (value: number) => {
-    setFullYear(value);
+  const handleYearSelectChange = (year: number) => {
+    setFullYear(year);
   };
 
   return (
