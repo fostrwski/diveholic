@@ -37,6 +37,13 @@ const New: React.FC<NewProps> = ({ user }) => {
     }));
   }, [dive.locationCountryName]);
 
+  const handleDivePropUpdate = (prop: string, value: any) => {
+    setDive((prevState: DiveFlattened) => ({
+      ...prevState,
+      [prop]: e.target.value,
+    }));
+  };
+
   const handleTextFieldChange = (
     e: React.ChangeEvent<HTMLInputElement>,
     prop: string
