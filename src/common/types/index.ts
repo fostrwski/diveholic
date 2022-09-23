@@ -22,11 +22,7 @@ export type Dive = {
   };
   weights: {
     taken: number | null;
-    nextTime: {
-      takeLess: boolean | null;
-      takeMore: boolean | null;
-      weightDifference: number | null;
-    };
+    ammount: "perfect" | "tooLittle" | "tooMuch";
   };
   water: "fresh" | "salt";
   temperature: {
@@ -55,9 +51,7 @@ export type DiveFlattened = {
   depthMax: number | null;
   depthAverage: number | null;
   weightsTaken: number | null;
-  weightsNextTimeTakeLess: boolean | null;
-  weightsNextTimeTakeMore: boolean | null;
-  weightsNextTimeWeightDifference: number | null;
+  weightsAmmount: "perfect" | "tooLittle" | "tooMuch";
   water: "fresh" | "salt";
   temperatureAir: number | null;
   temperatureWaterSurface: number | null;
