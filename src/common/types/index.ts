@@ -13,12 +13,12 @@ export type Dive = {
     city: string;
     diveCenter: string;
   };
-  type: string;
-  length: number | null;
+  type: "shore" | "boat";
+  length: number;
   units: "metric" | "imperial";
   depth: {
-    max: number | null;
-    average: number | null;
+    max: number;
+    average: number;
   };
   weights: {
     taken: number;
@@ -45,11 +45,11 @@ export type DiveFlattened = {
   locationCountryFlagEmoji: string;
   locationCity: string;
   locationDiveCenter: string;
-  type: string;
-  length: number | null;
+  type: "boat" | "shore";
+  length: number;
   units: "metric" | "imperial";
-  depthMax: number | null;
-  depthAverage: number | null;
+  depthMax: number;
+  depthAverage: number;
   weightsTaken: number;
   weightsAmmount: "perfect" | "tooLittle" | "tooMuch";
   water: "fresh" | "salt";
