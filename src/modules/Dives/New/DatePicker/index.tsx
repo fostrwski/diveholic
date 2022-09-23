@@ -24,13 +24,13 @@ import weekdays from "./weekdays";
 
 interface DatePickerProps {
   dive: DiveFlattened;
-  setDive: React.Dispatch<React.SetStateAction<DiveFlattened>>;
+  updateDiveProp: (prop: string, value: any) => void;
   initialDate?: Date;
 }
 
 const DatePicker: React.FC<DatePickerProps> = ({
   dive,
-  setDive,
+  updateDiveProp,
   initialDate,
 }) => {
   const [open, setOpen] = useState<boolean>(false);
@@ -45,13 +45,6 @@ const DatePicker: React.FC<DatePickerProps> = ({
     daysInMonth,
   } = useDate(initialDate);
 
-  const handleSetDate = (date: Date) => {
-    setDive((prevState: DiveFlattened) => ({
-      ...prevState,
-      date: date,
-    }));
-  };
-
   const handleModalToggle = () => {
     setOpen(!open);
   };
@@ -61,7 +54,7 @@ const DatePicker: React.FC<DatePickerProps> = ({
   };
 
   const handleModalDone = () => {
-    handleSetDate(date);
+    updateDiveProp("date", date);
     handleModalClose();
   };
 
