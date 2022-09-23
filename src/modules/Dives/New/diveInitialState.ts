@@ -13,7 +13,7 @@ const diveInitialState: DiveFlattened = {
   units: "metric",
   depthMax: null,
   depthAverage: null,
-  weightsTaken: null,
+  weightsTaken: 0,
   weightsAmmount: "perfect",
   water: "fresh",
   temperatureAir: null,

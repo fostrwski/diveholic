@@ -21,7 +21,7 @@ export type Dive = {
     average: number | null;
   };
   weights: {
-    taken: number | null;
+    taken: number;
     ammount: "perfect" | "tooLittle" | "tooMuch";
   };
   water: "fresh" | "salt";
@@ -50,7 +50,7 @@ export type DiveFlattened = {
   units: "metric" | "imperial";
   depthMax: number | null;
   depthAverage: number | null;
-  weightsTaken: number | null;
+  weightsTaken: number;
   weightsAmmount: "perfect" | "tooLittle" | "tooMuch";
   water: "fresh" | "salt";
   temperatureAir: number | null;
