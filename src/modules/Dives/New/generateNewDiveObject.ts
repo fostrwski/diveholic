@@ -22,11 +22,7 @@ export default function generateNewDiveObject(dive: DiveFlattened): Dive {
     },
     weights: {
       taken: dive.weightsTaken,
-      nextTime: {
-        takeLess: dive.weightsNextTimeTakeLess,
-        takeMore: dive.weightsNextTimeTakeMore,
-        weightDifference: dive.weightsNextTimeWeightDifference,
-      },
+      ammount: dive.weightsAmmount,
     },
     water: dive.water,
     temperature: {
