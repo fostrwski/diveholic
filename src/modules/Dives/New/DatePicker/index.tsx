@@ -198,7 +198,7 @@ const DatePicker: React.FC<DatePickerProps> = ({
                 <RadioGroup row value={day} aria-label="Select day of month">
                   <Grid container columns={7} sx={{ width: "100%" }}>
                     {weekdays.map((weekday: string) => (
-                      <Grid xs={1}>
+                      <Grid xs={1} key={weekday}>
                         <Typography fontWeight="lg">{weekday}</Typography>
                       </Grid>
                     ))}
