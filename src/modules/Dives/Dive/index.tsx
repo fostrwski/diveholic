@@ -18,6 +18,7 @@ import { useEffect } from "react";
 import BasicInformation from "./BasicInformation";
 import Details from "./Details";
 import Error from "./Error";
+import Loading from "./Loading";
 
 const Dive: React.FC = () => {
   const { user } = useUser();
@@ -77,7 +78,7 @@ const Dive: React.FC = () => {
         />
       );
 
-    if (user && loading) return <>Loading</>;
+    if (user && loading) return <Loading />;
 
     if (user && diveNotFound) {
       return <Error error={error} customMessage="This dive does not exist" />;
