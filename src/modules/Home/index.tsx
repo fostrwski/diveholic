@@ -4,7 +4,6 @@ import Grid from "@mui/joy/Grid";
 import Typography from "@mui/joy/Typography";
 import { User } from "@supabase/auth-helpers-nextjs";
 import NextLink from "next/link";
-import { useRouter } from "next/router";
 import React from "react";
 
 import Checklist from "./Checklist";
@@ -17,8 +16,6 @@ interface HomeProps {
 }
 
 const Home: React.FC<HomeProps> = ({ user, dives }) => {
-  const router = useRouter();
-
   return (
     <>
       <Typography level="h4" component="h1">
@@ -32,9 +29,9 @@ const Home: React.FC<HomeProps> = ({ user, dives }) => {
       <NextLink href="/dives/new" passHref>
         <Button
           sx={{ mt: 2 }}
-          size="lg"
           startIcon={<AddRounded />}
           component="a"
+          size="lg"
         >
           Log dive
         </Button>
