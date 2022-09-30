@@ -1,8 +1,11 @@
 import SaveRounded from "@mui/icons-material/SaveRounded";
+import { FormLabel } from "@mui/joy";
 import Box from "@mui/joy/Box";
 import Button from "@mui/joy/Button";
+import FormControl from "@mui/joy/FormControl";
 import Grid from "@mui/joy/Grid";
 import TextField from "@mui/joy/TextField";
+import Textarea from "@mui/joy/Textarea";
 import Typography from "@mui/joy/Typography";
 import type { User } from "@supabase/auth-helpers-nextjs";
 import TextSeparator from "common/components/TextSeparator";
@@ -129,7 +132,17 @@ const New: React.FC<NewProps> = ({ user }) => {
           label="Dive buddy"
           sx={{ mt: 10 }}
         />
-        <TextField type="text" name="notes" label="Notes" sx={{ mt: 2 }} />
+
+        <FormControl sx={{ mt: 2 }}>
+          <FormLabel>Notes</FormLabel>
+          <Textarea
+            name="notes"
+            minRows={4}
+            variant="soft"
+            id="notes"
+            placeholder="Describe what you saw, share your experience"
+          />
+        </FormControl>
 
         <Button
           type="submit"
