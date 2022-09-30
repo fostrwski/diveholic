@@ -21,7 +21,7 @@ const Section: React.FC<SectionProps> = ({ title, details }) => {
       )}
       <Grid container spacing={2}>
         {details.map((detail) => (
-          <Grid xs={6}>
+          <Grid xs={6} key={detail.title}>
             <Detail
               title={detail.title}
               content={detail.content}
