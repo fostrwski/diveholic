@@ -12,7 +12,7 @@ interface InfoProps {
 
 const Info: React.FC<InfoProps> = ({ title, value, icon, unit }) => {
   return (
-    <Typography level="h6" component="p">
+    <Typography level="h6" component="div">
       <Box
         sx={{
           display: "flex",
