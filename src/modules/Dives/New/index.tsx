@@ -133,7 +133,7 @@ const New: React.FC<NewProps> = ({ user }) => {
           sx={{ mt: 10 }}
         />
 
-        <FormControl sx={{ mt: 2 }}>
+        <FormControl sx={{ mt: 6 }}>
           <FormLabel>Notes</FormLabel>
           <Textarea
             name="notes"
