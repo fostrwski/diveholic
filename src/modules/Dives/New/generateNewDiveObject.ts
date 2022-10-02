@@ -41,6 +41,9 @@ export default function generateNewDiveObject(dive: DiveFlattened): Dive {
         count: dive.gearTanksCount,
         type: dive.gearTanksType,
       },
+      bcd: dive.gearBcd,
+      regulator: dive.gearRegulator,
+      fins: dive.gearFins,
     },
   };
 

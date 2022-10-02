@@ -7,9 +7,9 @@ type Gear = {
     count: number;
     type: string;
   };
-  bcd: string;
-  fins: string;
-  regulator: string;
+  bcd: string | null;
+  fins: string | null;
+  regulator: string | null;
 };
 
 export default Gear;
