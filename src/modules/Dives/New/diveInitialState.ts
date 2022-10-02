@@ -23,6 +23,9 @@ const diveInitialState: DiveFlattened = {
   gearExposureProtectionThickness: null,
   gearTanksCount: 1,
   gearTanksType: "",
+  gearBcd: null,
+  gearRegulator: null,
+  gearFins: null,
 };
 
 export default diveInitialState;
