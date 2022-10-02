@@ -60,7 +60,7 @@ export type DiveFlattened = {
   gearExposureProtectionThickness: number | null;
   gearTanksCount: number;
   gearTanksType: string;
-  gearBcd: string;
-  gearFins: string;
-  gearRegulator: string;
+  gearBcd: string | null;
+  gearFins: string | null;
+  gearRegulator: string | null;
 };

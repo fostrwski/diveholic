@@ -1,4 +1,4 @@
-export type Gear = {
+type Gear = {
   exposureProtection: {
     type: string;
     thickness: number | null;
@@ -12,12 +12,4 @@ export type Gear = {
   regulator: string;
 };
 
-export type GearFlattened = {
-  exposureProtectionType: string;
-  exposureProtectionThickness: number | null;
-  tanksCount: number;
-  tanksType: string;
-  bcd: string;
-  fins: string;
-  regulator: string;
-};
+export default Gear;
