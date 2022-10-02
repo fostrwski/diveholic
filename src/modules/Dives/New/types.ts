@@ -5,7 +5,7 @@ interface ComponentWithTextFieldsProps {
   dive: DiveFlattened;
   handleTextFieldChange: (
     e: React.ChangeEvent<HTMLInputElement>,
-    prop: string
+    prop: keyof DiveFlattened
   ) => void;
 }
 
