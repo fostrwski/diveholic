@@ -1,6 +1,6 @@
 # In development ⚙️
 
-# Diveholic 🤿
+# `Diveholic 🤿`
 
 Web based dive log made with all the best practices regarding user experience, accessibility and usability kept in mind. Fully open source :)
 
