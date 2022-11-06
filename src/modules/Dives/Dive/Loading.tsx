@@ -1,7 +1,7 @@
 import Box from "@mui/joy/Box";
 import CircularProgress from "@mui/joy/CircularProgress";
 import Typography from "@mui/joy/Typography";
-import React from "React";
+import React from "react";
 
 const Loading: React.FC = () => {
   return (
