@@ -115,6 +115,7 @@ const SignIn: React.FC = () => {
             size="lg"
             label="Email"
             required
+            data-cy="email"
           />
           <TextField
             placeholder="Password"
@@ -125,6 +126,7 @@ const SignIn: React.FC = () => {
             size="lg"
             required
             label="Password"
+            data-cy="password"
             endDecorator={
               <IconButton
                 aria-label="Toggle password visibility"
@@ -162,6 +164,7 @@ const SignIn: React.FC = () => {
             sx={{ mt: 2 }}
             startIcon={success ? <DoneRounded /> : <LoginRounded />}
             disabled={loading}
+            data-cy="submit"
           >
             Sign in
           </Button>
