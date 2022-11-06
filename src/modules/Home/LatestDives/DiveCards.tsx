@@ -11,7 +11,7 @@ const DiveCards: React.FC<DiveCardsProps> = ({ dives }) => {
   return (
     <>
       {dives.map((dive: Dive) => (
-        <Grid xs={12} key={dive.id}>
+        <Grid xs={12} lg={4} key={dive.id}>
           <DiveCard dive={dive} />
         </Grid>
       ))}
