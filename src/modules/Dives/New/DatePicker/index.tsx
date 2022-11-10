@@ -15,17 +15,15 @@ import RadioGroup from "@mui/joy/RadioGroup";
 import Select from "@mui/joy/Select";
 import Typography from "@mui/joy/Typography";
 import useDate from "common/hooks/useDate";
-import type { DiveFlattened } from "common/types";
 import formatDate from "common/utils/formatDate";
 import React, { useState } from "react";
 
+import type { ComponentUpdatingDiveProps } from "../types";
 import getFirstDayOfMonth from "./getFirstDayOfMonth";
 import months from "./months";
 import weekdays from "./weekdays";
 
-interface DatePickerProps {
-  dive: DiveFlattened;
-  updateDiveProp: (prop: string, value: any) => void;
+interface DatePickerProps extends ComponentUpdatingDiveProps {
   initialDate?: Date;
 }
 
