@@ -12,6 +12,32 @@ interface DetailsProps {
   updateDiveProp: (prop: string, value: any) => void;
 }
 
+const sliderMarks = [
+  { value: 0, label: "0" },
+  { value: 5, label: "5" },
+  { value: 10, label: "10" },
+  { value: 15, label: "15" },
+  { value: 20, label: "20" },
+];
+
+const weightsAmmount = [
+  {
+    title: "Perfect 👌🏼",
+    value: "perfect",
+    helperText: "This ammount next time",
+  },
+  {
+    title: "Too little 👇🏼",
+    value: "tooLittle",
+    helperText: "Take more weights next time",
+  },
+  {
+    title: "Too much 👆🏼",
+    value: "tooMuch",
+    helperText: "Takke less weights next time",
+  },
+];
+
 const Details: React.FC<DetailsProps> = ({ dive, updateDiveProp }) => {
   const waterTypes = [
     { title: "Fresh", examples: "Quarries, lakes, rivers" },
@@ -25,32 +51,6 @@ const Details: React.FC<DetailsProps> = ({ dive, updateDiveProp }) => {
   const handleWeightsSliderChange = (e: any) => {
     updateDiveProp("weightsTaken", parseInt(e.target.value));
   };
-
-  const sliderMarks = [
-    { value: 0, label: "0" },
-    { value: 5, label: "5" },
-    { value: 10, label: "10" },
-    { value: 15, label: "15" },
-    { value: 20, label: "20" },
-  ];
-
-  const weightsAmmount = [
-    {
-      title: "Perfect 👌🏼",
-      value: "perfect",
-      helperText: "This ammount next time",
-    },
-    {
-      title: "Too little 👇🏼",
-      value: "tooLittle",
-      helperText: "Take more weights next time",
-    },
-    {
-      title: "Too much 👆🏼",
-      value: "tooMuch",
-      helperText: "Takke less weights next time",
-    },
-  ];
 
   const handleWeightsAmmountRadioChange = (
     e: React.ChangeEvent<HTMLInputElement>
