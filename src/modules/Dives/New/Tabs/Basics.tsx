@@ -12,17 +12,14 @@ import TextField from "@mui/joy/TextField";
 import getDiveEmoji from "common/utils/getDiveEmoji";
 import React from "react";
 
-import type { ComponentWithTextFieldsProps } from "../types";
+import type {
+  ComponentUpdatingDiveProps,
+  ComponentWithTextFieldsProps,
+} from "../types";
 
-interface BasicsProps extends ComponentWithTextFieldsProps {
-  updateDiveProp: (prop: string, value: any) => void;
-}
-
-const Basics: React.FC<BasicsProps> = ({
-  dive,
-  handleTextFieldChange,
-  updateDiveProp,
-}) => {
+const Basics: React.FC<
+  ComponentUpdatingDiveProps & ComponentWithTextFieldsProps
+> = ({ dive, handleTextFieldChange, updateDiveProp }) => {
   const handleDiveTypeSelectChange = (diveType: typeof dive.type) => {
     updateDiveProp("type", diveType);
   };

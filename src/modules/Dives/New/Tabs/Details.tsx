@@ -4,13 +4,9 @@ import FormLabel from "@mui/joy/FormLabel";
 import Radio from "@mui/joy/Radio";
 import RadioGroup from "@mui/joy/RadioGroup";
 import Slider from "@mui/joy/Slider";
-import type { DiveFlattened } from "common/types";
 import React from "react";
 
-interface DetailsProps {
-  dive: DiveFlattened;
-  updateDiveProp: (prop: string, value: any) => void;
-}
+import type { ComponentUpdatingDiveProps } from "../types";
 
 const sliderMarks = [
   { value: 0, label: "0" },
@@ -38,7 +34,10 @@ const weightsAmmount = [
   },
 ];
 
-const Details: React.FC<DetailsProps> = ({ dive, updateDiveProp }) => {
+const Details: React.FC<ComponentUpdatingDiveProps> = ({
+  dive,
+  updateDiveProp,
+}) => {
   const waterTypes = [
     { title: "Fresh", examples: "Quarries, lakes, rivers" },
     { title: "Salt", examples: "Seas, oceans" },

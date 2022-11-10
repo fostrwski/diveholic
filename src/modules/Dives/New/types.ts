@@ -1,6 +1,12 @@
 import type { DiveFlattened } from "common/types";
 
-// Couldn't figure out better name
+// Couldn't come up with a better names
+
+interface ComponentUpdatingDiveProps {
+  dive: DiveFlattened;
+  updateDiveProp: (prop: string, value: any) => void;
+}
+
 interface ComponentWithTextFieldsProps {
   dive: DiveFlattened;
   handleTextFieldChange: (
@@ -9,4 +15,4 @@ interface ComponentWithTextFieldsProps {
   ) => void;
 }
 
-export type { ComponentWithTextFieldsProps };
+export type { ComponentUpdatingDiveProps, ComponentWithTextFieldsProps };

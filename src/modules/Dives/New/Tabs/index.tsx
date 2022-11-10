@@ -4,20 +4,17 @@ import TabPanel from "@mui/joy/TabPanel";
 import MuiTabs from "@mui/joy/Tabs";
 import React from "react";
 
-import type { ComponentWithTextFieldsProps } from "../types";
+import type {
+  ComponentUpdatingDiveProps,
+  ComponentWithTextFieldsProps,
+} from "../types";
 import Basics from "./Basics";
 import Details from "./Details";
 import Location from "./Location";
 
-interface TabsProps extends ComponentWithTextFieldsProps {
-  updateDiveProp: (prop: string, value: any) => void;
-}
-
-const Tabs: React.FC<TabsProps> = ({
-  dive,
-  handleTextFieldChange,
-  updateDiveProp,
-}) => {
+const Tabs: React.FC<
+  ComponentUpdatingDiveProps & ComponentWithTextFieldsProps
+> = ({ dive, handleTextFieldChange, updateDiveProp }) => {
   return (
     <MuiTabs
       defaultValue={0}
