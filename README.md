@@ -1,4 +1,4 @@
-# In development ⚙️
+# In development ⚙️ I'm building it mobile first so the desktop version looks horrible at the moment 😬
 
 # `Diveholic 🤿`
 
