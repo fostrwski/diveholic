@@ -12,6 +12,10 @@ const DiveCardSkeletonLoader: React.FC = () => {
   return (
     <Card
       sx={{
+        width: {
+          xs: "100%",
+          md: "initial",
+        },
         display: "flex",
         gap: 2,
         flexDirection: "row",
@@ -24,14 +28,32 @@ const DiveCardSkeletonLoader: React.FC = () => {
         <Chip size="sm" />
 
         <Box my={2}>
-          <Grid container spacing={2}>
-            <Grid xs={6}>
+          <Grid container spacing={0.6}>
+            <Grid
+              xs={6}
+              lg={10}
+              sx={{
+                display: "flex",
+                gap: 0.6,
+                justifyContent: "space-between",
+                flexDirection: { xs: "column", md: "row" },
+              }}
+            >
               <Chip size="sm" sx={{ width: "64px" }} />
-              <Chip size="sm" sx={{ width: "64px", mt: 0.6 }} />
+              <Chip size="sm" sx={{ width: "64px" }} />
             </Grid>
-            <Grid xs={6}>
+            <Grid
+              xs={6}
+              lg={10}
+              sx={{
+                display: "flex",
+                gap: 0.6,
+                justifyContent: "space-between",
+                flexDirection: { xs: "column", md: "row" },
+              }}
+            >
               <Chip size="sm" sx={{ width: "64px" }} />
-              <Chip size="sm" sx={{ width: "64px", mt: 0.6 }} />
+              <Chip size="sm" sx={{ width: "64px" }} />
             </Grid>
           </Grid>
         </Box>

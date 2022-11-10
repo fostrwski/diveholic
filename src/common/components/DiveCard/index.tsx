@@ -29,6 +29,7 @@ const DiveCard: React.FC<DiveCard> = ({ dive }) => {
           display: "flex",
           gap: 2,
           flexDirection: "row",
+          cursor: "pointer",
         }}
       >
         <Avatar color="neutral" size="lg">
