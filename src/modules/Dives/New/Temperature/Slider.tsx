@@ -6,6 +6,7 @@ import React, { ComponentProps } from "react";
 import generateSliderMarks from "../generateSliderMarks";
 import { SliderMark } from "../types";
 
+// Extends MuiSlider props but overrides 'marks' property
 interface TemperatureSliderProps
   extends Omit<ComponentProps<typeof MuiSlider>, "marks"> {
   label: string;
