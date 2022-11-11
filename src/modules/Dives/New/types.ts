@@ -15,4 +15,10 @@ interface ComponentWithTextFieldsProps {
   ) => void;
 }
 
-export type { ComponentUpdatingDiveProps, ComponentWithTextFieldsProps };
+type SliderMark = { value: number; label: string };
+
+export type {
+  ComponentUpdatingDiveProps,
+  ComponentWithTextFieldsProps,
+  SliderMark,
+};

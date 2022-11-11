@@ -77,10 +77,7 @@ const New: React.FC<NewProps> = ({ user }) => {
 
         <Gear dive={dive} handleTextFieldChange={handleTextFieldChange} />
 
-        <Temperature
-          dive={dive}
-          handleTextFieldChange={handleTextFieldChange}
-        />
+        <Temperature dive={dive} updateDiveProp={updateDiveProp} />
 
         <TextField
           type="text"

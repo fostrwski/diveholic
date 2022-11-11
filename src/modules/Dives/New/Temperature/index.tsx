@@ -1,14 +1,14 @@
 import Grid from "@mui/joy/Grid";
-import TextField from "@mui/joy/TextField";
 import Typography from "@mui/joy/Typography";
 import TextSeparator from "common/components/TextSeparator";
 import React from "react";
 
-import type { ComponentWithTextFieldsProps } from "../types";
+import type { ComponentUpdatingDiveProps } from "../types";
+import TemperatureSlider from "./Slider";
 
-const Temperature: React.FC<ComponentWithTextFieldsProps> = ({
+const Temperature: React.FC<ComponentUpdatingDiveProps> = ({
   dive,
-  handleTextFieldChange,
+  updateDiveProp,
 }) => {
   return (
     <>
@@ -22,37 +22,31 @@ const Temperature: React.FC<ComponentWithTextFieldsProps> = ({
       >
         Temperature
       </Typography>
-      <Grid container spacing={2} justifyContent="space-between">
-        <Grid xs={4}>
-          <TextField
-            type="number"
-            name="temperatureAir"
-            label="Air"
-            fullWidth
-            endDecorator="°C"
-            onChange={(e) => handleTextFieldChange(e, "temperatureAir")}
+      <Grid container spacing={4} justifyContent="space-between" sx={{ px: 2 }}>
+        <Grid xs={12}>
+          <TemperatureSlider
+            label="Air 💨"
+            min={-50}
+            max={50}
+            marks={[-50, -25, 0, 25, 50]}
           />
         </Grid>
-        <Grid xs={4}>
-          <TextField
-            type="number"
-            name="temperatureWaterSurface"
-            label="Water surface"
-            fullWidth
-            endDecorator="°C"
-            onChange={(e) =>
-              handleTextFieldChange(e, "temperatureWaterSurface")
-            }
+        <Grid xs={12}>
+          <TemperatureSlider
+            label="Water surface 🌊"
+            min={-30}
+            max={40}
+            color="primary"
+            marks={[-30, -15, 0, 20, 40]}
           />
         </Grid>
-        <Grid xs={4}>
-          <TextField
-            type="number"
-            name="temperatureWaterBottom"
-            label="Water bottom"
-            fullWidth
-            endDecorator="°C"
-            onChange={(e) => handleTextFieldChange(e, "temperatureWaterBottom")}
+        <Grid xs={12}>
+          <TemperatureSlider
+            label="Water bottom 🔽"
+            min={-30}
+            max={40}
+            color="warning"
+            marks={[-30, -15, 0, 20, 40]}
           />
         </Grid>
       </Grid>
