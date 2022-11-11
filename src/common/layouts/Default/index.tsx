@@ -74,10 +74,9 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
             sx={{ textDecoration: "none" }}
           >
             <Image
-              src="/diver_down_flag.svg"
-              style={{ borderRadius: 4 }}
-              width={50}
-              height={32}
+              src="/logo.svg"
+              width={48}
+              height={34}
               layout="fixed"
               alt="Diver down flag"
             />

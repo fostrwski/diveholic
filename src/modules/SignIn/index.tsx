@@ -80,12 +80,11 @@ const SignIn: React.FC = () => {
       maxWidth="sm"
     >
       <div>
-        <Box display="flex" alignItems="center" gap={2}>
+        <Box display="flex" alignItems="center" gap={1.2}>
           <Image
-            src="/diver_down_flag.svg"
-            style={{ borderRadius: 4 }}
+            src="/logo.svg"
             width={48}
-            height={30}
+            height={34}
             layout="fixed"
             alt="Diver down flag"
           />

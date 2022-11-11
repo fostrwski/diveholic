@@ -102,7 +102,7 @@ const SignUp: React.FC = () => {
           }}
         >
           <Image
-            src="/diver_down_flag.svg"
+            src="/logo.svg"
             style={{ borderRadius: 4 }}
             width={48}
             height={30}
