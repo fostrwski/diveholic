@@ -6,15 +6,8 @@ import RadioGroup from "@mui/joy/RadioGroup";
 import Slider from "@mui/joy/Slider";
 import React from "react";
 
+import generateSliderMarks from "../generateSliderMarks";
 import type { ComponentUpdatingDiveProps } from "../types";
-
-const sliderMarks = [
-  { value: 0, label: "0" },
-  { value: 5, label: "5" },
-  { value: 10, label: "10" },
-  { value: 15, label: "15" },
-  { value: 20, label: "20" },
-];
 
 const weightsAmmount = [
   {
@@ -34,15 +27,17 @@ const weightsAmmount = [
   },
 ];
 
+const waterTypes = [
+  { title: "Fresh", examples: "Quarries, lakes, rivers" },
+  { title: "Salt", examples: "Seas, oceans" },
+];
+
+const sliderMarks = generateSliderMarks([0, 5, 10, 15, 20]);
+
 const Details: React.FC<ComponentUpdatingDiveProps> = ({
   dive,
   updateDiveProp,
 }) => {
-  const waterTypes = [
-    { title: "Fresh", examples: "Quarries, lakes, rivers" },
-    { title: "Salt", examples: "Seas, oceans" },
-  ];
-
   const handleWaterRadioChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     updateDiveProp("water", e.target.value.toLowerCase() as typeof dive.water);
   };
