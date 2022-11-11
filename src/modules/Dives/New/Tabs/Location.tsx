@@ -21,6 +21,7 @@ const Location: React.FC<ComponentWithTextFieldsProps> = ({
             name="locationCountry"
             placeholder="Croatia"
             label="Country"
+            value={dive.locationCountryName}
             onChange={(e) => handleTextFieldChange(e, "locationCountryName")}
             startDecorator={
               dive.locationCountryFlagEmoji ? (
@@ -37,6 +38,7 @@ const Location: React.FC<ComponentWithTextFieldsProps> = ({
             name="locationCity"
             label="City"
             placeholder="Trogir"
+            value={dive.locationCity}
             onChange={(e) => handleTextFieldChange(e, "locationCity")}
           />
         </Grid>
@@ -47,6 +49,7 @@ const Location: React.FC<ComponentWithTextFieldsProps> = ({
             label="Dive center"
             placeholder="Trogir dive center"
             startDecorator={<FlagRounded />}
+            value={dive.locationDiveCenter}
             onChange={(e) => handleTextFieldChange(e, "locationDiveCenter")}
           />
         </Grid>
