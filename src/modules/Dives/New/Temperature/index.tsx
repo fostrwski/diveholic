@@ -29,6 +29,10 @@ const Temperature: React.FC<ComponentUpdatingDiveProps> = ({
             min={-50}
             max={50}
             marks={[-50, -25, 0, 25, 50]}
+            value={dive.temperatureAir || 0}
+            onChange={(e: any) =>
+              updateDiveProp("temperatureAir", parseInt(e.target.value))
+            }
           />
         </Grid>
         <Grid xs={12}>
@@ -38,6 +42,13 @@ const Temperature: React.FC<ComponentUpdatingDiveProps> = ({
             max={40}
             color="primary"
             marks={[-30, -15, 0, 20, 40]}
+            value={dive.temperatureWaterSurface || 0}
+            onChange={(e: any) =>
+              updateDiveProp(
+                "temperatureWaterSurface",
+                parseInt(e.target.value)
+              )
+            }
           />
         </Grid>
         <Grid xs={12}>
@@ -47,6 +58,10 @@ const Temperature: React.FC<ComponentUpdatingDiveProps> = ({
             max={40}
             color="warning"
             marks={[-30, -15, 0, 20, 40]}
+            value={dive.temperatureWaterBottom || 0}
+            onChange={(e: any) =>
+              updateDiveProp("temperatureWaterBottom", parseInt(e.target.value))
+            }
           />
         </Grid>
       </Grid>

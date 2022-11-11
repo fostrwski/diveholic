@@ -19,6 +19,7 @@ const TemperatureSlider: React.FC<TemperatureSliderProps> = ({
   max,
   color,
   marks,
+  ...props
 }) => {
   const sliderMarks: Array<SliderMark> = generateSliderMarks(marks);
 
@@ -32,6 +33,7 @@ const TemperatureSlider: React.FC<TemperatureSliderProps> = ({
         max={max}
         marks={sliderMarks}
         valueLabelDisplay="auto"
+        {...props}
       />
     </FormControl>
   );
