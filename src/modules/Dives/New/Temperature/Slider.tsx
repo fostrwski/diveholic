@@ -6,12 +6,9 @@ import React, { ComponentProps } from "react";
 import generateSliderMarks from "../generateSliderMarks";
 import { SliderMark } from "../types";
 
-interface TemperatureSliderProps {
+interface TemperatureSliderProps
+  extends Omit<ComponentProps<typeof MuiSlider>, "marks"> {
   label: string;
-  // Temperature
-  min: number;
-  max: number;
-  color?: ComponentProps<typeof MuiSlider>["color"];
   marks: Array<number>;
 }
 
