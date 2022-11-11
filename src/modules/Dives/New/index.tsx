@@ -1,14 +1,12 @@
 import SaveRounded from "@mui/icons-material/SaveRounded";
-import { FormLabel } from "@mui/joy";
 import Box from "@mui/joy/Box";
 import Button from "@mui/joy/Button";
 import FormControl from "@mui/joy/FormControl";
+import FormLabel from "@mui/joy/FormLabel";
 import TextField from "@mui/joy/TextField";
 import Textarea from "@mui/joy/Textarea";
 import type { User } from "@supabase/auth-helpers-nextjs";
 import type { DiveFlattened } from "common/types";
-import getCountryCode from "common/utils/getCountryCode";
-import getFlagEmoji from "common/utils/getFlagEmoji";
 import { supabase } from "common/utils/supabaseClient";
 import React, { useEffect, useState } from "react";
 
@@ -17,8 +15,10 @@ import Gear from "./Gear";
 import Header from "./Header";
 import Tabs from "./Tabs";
 import Temperature from "./Temperature";
-import diveInitialState from "./diveInitialState";
-import generateNewDiveObject from "./generateNewDiveObject";
+import diveInitialState from "./utils/diveInitialState";
+import generateNewDiveObject from "./utils/generateNewDiveObject";
+import getCountryCode from "./utils/getCountryCode";
+import getFlagEmoji from "./utils/getFlagEmoji";
 
 interface NewProps {
   user: User;

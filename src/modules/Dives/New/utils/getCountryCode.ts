@@ -1,4 +1,4 @@
-import listOfCountries from "common/utils/listOfCountries";
+import listOfCountries from "./listOfCountries";
 
 export default function getCountryCode(country: string) {
   const countryCodes = Object.keys(listOfCountries).filter(

@@ -9,13 +9,13 @@ import Option from "@mui/joy/Option";
 import Select from "@mui/joy/Select";
 import Slider from "@mui/joy/Slider";
 import TextField from "@mui/joy/TextField";
-import getDiveEmoji from "common/utils/getDiveEmoji";
 import React from "react";
 
 import type {
   ComponentUpdatingDiveProps,
   ComponentWithTextFieldsProps,
 } from "../types";
+import getDiveEmoji from "../utils/getDiveEmoji";
 
 const Basics: React.FC<
   ComponentUpdatingDiveProps & ComponentWithTextFieldsProps

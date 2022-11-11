@@ -6,8 +6,8 @@ import RadioGroup from "@mui/joy/RadioGroup";
 import Slider from "@mui/joy/Slider";
 import React from "react";
 
-import generateSliderMarks from "../generateSliderMarks";
 import type { ComponentUpdatingDiveProps } from "../types";
+import generateSliderMarks from "../utils/generateSliderMarks";
 
 const weightsAmmount = [
   {
