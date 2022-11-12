@@ -66,8 +66,6 @@ const New: React.FC<NewProps> = ({ user }) => {
     <>
       <Header />
 
-      {console.log(dive)}
-
       <DatePicker dive={dive} updateDiveProp={updateDiveProp} />
 
       <Box component="form" onSubmit={handleSubmit}>
