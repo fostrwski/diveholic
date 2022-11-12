@@ -1,6 +1,6 @@
-import { DiveFlattened } from "common/types";
+import type { DiveFlattened } from "common/types";
 
-const diveInitialState: DiveFlattened = {
+const newDiveInitialState: DiveFlattened = {
   date: null,
   time: "",
   locationCountryName: "",
@@ -28,4 +28,4 @@ const diveInitialState: DiveFlattened = {
   gearFins: null,
 };
 
-export default diveInitialState;
+export default newDiveInitialState;
