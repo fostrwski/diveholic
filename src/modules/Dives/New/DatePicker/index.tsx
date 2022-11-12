@@ -86,7 +86,7 @@ const DatePicker: React.FC<DatePickerProps> = ({
             <CalendarTodayRounded sx={{ fontSize: "24px" }} />
           </Avatar>
           <FormControl>
-            <Typography level="h6" component="p">
+            <Typography level="h6" component="div">
               <FormLabel sx={{ color: "GrayText" }}>Date</FormLabel>
               <>
                 {dive.date ? (
