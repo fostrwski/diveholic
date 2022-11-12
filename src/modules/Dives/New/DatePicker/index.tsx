@@ -17,11 +17,11 @@ import Typography from "@mui/joy/Typography";
 import formatDate from "common/utils/formatDate";
 import React, { useState } from "react";
 
+import useDate from "../hooks/useDate";
 import type { ComponentUpdatingDiveProps } from "../types";
-import useDate from "./hooks/useDate";
-import getFirstDayOfMonth from "./utils/getFirstDayOfMonth";
-import months from "./utils/months";
-import weekdays from "./utils/weekdays";
+import getFirstDayOfMonth from "../utils/getFirstDayOfMonth";
+import months from "../utils/months";
+import weekdays from "../utils/weekdays";
 
 interface DatePickerProps extends ComponentUpdatingDiveProps {
   initialDate?: Date;
