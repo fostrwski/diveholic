@@ -2,7 +2,7 @@ import Tab from "@mui/joy/Tab";
 import TabList from "@mui/joy/TabList";
 import TabPanel from "@mui/joy/TabPanel";
 import MuiTabs from "@mui/joy/Tabs";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import type {
   ComponentUpdatingDiveProps,

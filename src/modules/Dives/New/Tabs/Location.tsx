@@ -14,7 +14,7 @@ const Location: React.FC<ComponentWithTextFieldsProps> = ({
 }) => {
   return (
     <>
-      <Grid spacing={2} container component="form">
+      <Grid spacing={2} container>
         <Grid xs={6}>
           <TextField
             type="text"
