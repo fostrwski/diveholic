@@ -28,7 +28,6 @@ const NewDiveContextProvider: React.FC<NewDiveProviderProps> = ({
   };
 
   return (
-    // @ts-ignore
     <NewDiveContext.Provider value={{ newDive, updateNewDiveProp }}>
       {children}
     </NewDiveContext.Provider>
