@@ -15,17 +15,18 @@ import Gear from "./Gear";
 import Header from "./Header";
 import Tabs from "./Tabs";
 import Temperature from "./Temperature";
-import diveInitialState from "./utils/diveInitialState";
+import { NewDiveContextProvider } from "./context/NewDive";
 import generateNewDiveObject from "./utils/generateNewDiveObject";
 import getCountryCode from "./utils/getCountryCode";
 import getFlagEmoji from "./utils/getFlagEmoji";
+import newDiveInitialState from "./utils/newDiveInitialState";
 
 interface NewProps {
   user: User;
 }
 
 const New: React.FC<NewProps> = ({ user }) => {
-  const [dive, setDive] = useState<DiveFlattened>(diveInitialState);
+  const [dive, setDive] = useState<DiveFlattened>(newDiveInitialState);
 
   useEffect(() => {
     const countryCode = getCountryCode(dive.locationCountryName);
@@ -63,7 +64,7 @@ const New: React.FC<NewProps> = ({ user }) => {
   };
 
   return (
-    <>
+    <NewDiveContextProvider>
       <Header />
 
       <DatePicker dive={dive} updateDiveProp={updateDiveProp} />
@@ -108,7 +109,7 @@ const New: React.FC<NewProps> = ({ user }) => {
           Save
         </Button>
       </Box>
-    </>
+    </NewDiveContextProvider>
   );
 };
 

@@ -17,22 +17,20 @@ import Typography from "@mui/joy/Typography";
 import formatDate from "common/utils/formatDate";
 import React, { useState } from "react";
 
+import { useNewDiveContext } from "../context/NewDive";
 import useDate from "../hooks/useDate";
-import type { ComponentUpdatingDiveProps } from "../types";
 import getFirstDayOfMonth from "../utils/getFirstDayOfMonth";
 import months from "../utils/months";
 import weekdays from "../utils/weekdays";
 
-interface DatePickerProps extends ComponentUpdatingDiveProps {
+interface DatePickerProps {
   initialDate?: Date;
 }
 
-const DatePicker: React.FC<DatePickerProps> = ({
-  dive,
-  updateDiveProp,
-  initialDate,
-}) => {
+const DatePicker: React.FC<DatePickerProps> = ({ initialDate }) => {
   const [open, setOpen] = useState<boolean>(false);
+  const { newDive, updateNewDiveProp } = useNewDiveContext();
+  console.log(newDive);
   const {
     date,
     setDay,
@@ -53,7 +51,7 @@ const DatePicker: React.FC<DatePickerProps> = ({
   };
 
   const handleModalDone = () => {
-    updateDiveProp("date", date);
+    updateNewDiveProp("date", date);
     handleModalClose();
   };
 
@@ -89,9 +87,9 @@ const DatePicker: React.FC<DatePickerProps> = ({
             <Typography level="h6" component="div">
               <FormLabel sx={{ color: "GrayText" }}>Date</FormLabel>
               <>
-                {dive.date ? (
+                {newDive.date ? (
                   <>
-                    {formatDate(dive.date)} &bull;{" "}
+                    {formatDate(newDive.date)} &bull;{" "}
                     <Link
                       endDecorator={<EditRounded />}
                       color="warning"
