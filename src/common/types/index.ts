@@ -26,10 +26,10 @@ export type Dive = {
   };
   water: "fresh" | "salt";
   temperature: {
-    air: number | null;
+    air: number;
     water: {
-      surface: number | null;
-      bottom: number | null;
+      surface: number;
+      bottom: number;
     };
   };
   gear: Gear;
@@ -57,7 +57,7 @@ export type DiveFlattened = {
   temperatureWaterSurface: number | null;
   temperatureWaterBottom: number | null;
   gearExposureProtectionType: string;
-  gearExposureProtectionThickness: number | null;
+  gearExposureProtectionThickness: number;
   gearTanksCount: number;
   gearTanksType: string;
   gearBcd: string;

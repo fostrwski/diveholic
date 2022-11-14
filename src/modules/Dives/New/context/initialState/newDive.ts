@@ -20,12 +20,12 @@ const newDiveInitialState: DiveFlattened = {
   temperatureWaterSurface: null,
   temperatureWaterBottom: null,
   gearExposureProtectionType: "",
-  gearExposureProtectionThickness: null,
+  gearExposureProtectionThickness: 0,
   gearTanksCount: 1,
   gearTanksType: "",
-  gearBcd: null,
-  gearRegulator: null,
-  gearFins: null,
+  gearBcd: "",
+  gearRegulator: "",
+  gearFins: "",
 };
 
 export default newDiveInitialState;

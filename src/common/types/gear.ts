@@ -1,15 +1,15 @@
 type Gear = {
   exposureProtection: {
     type: string;
-    thickness: number | null;
+    thickness: number;
   };
   tanks: {
     count: number;
     type: string;
   };
-  bcd: string | null;
-  fins: string | null;
-  regulator: string | null;
+  bcd: string;
+  fins: string;
+  regulator: string;
 };
 
 export default Gear;
