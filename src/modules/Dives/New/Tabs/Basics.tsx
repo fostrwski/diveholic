@@ -1,6 +1,4 @@
-import DownloadRounded from "@mui/icons-material/DownloadRounded";
 import TimelapseRounded from "@mui/icons-material/TimelapseRounded";
-import Box from "@mui/joy/Box";
 import FormControl from "@mui/joy/FormControl";
 import FormHelperText from "@mui/joy/FormHelperText";
 import FormLabel from "@mui/joy/FormLabel";
@@ -9,28 +7,13 @@ import Option from "@mui/joy/Option";
 import Select from "@mui/joy/Select";
 import Slider from "@mui/joy/Slider";
 import TextField from "@mui/joy/TextField";
+import { useNewDiveContext } from "common/context/NewDive";
 import React from "react";
 
-import type {
-  ComponentUpdatingDiveProps,
-  ComponentWithTextFieldsProps,
-} from "../types";
 import getDiveEmoji from "../utils/getDiveEmoji";
 
-const Basics: React.FC<
-  ComponentUpdatingDiveProps & ComponentWithTextFieldsProps
-> = ({ dive, handleTextFieldChange, updateDiveProp }) => {
-  const handleDiveTypeSelectChange = (diveType: typeof dive.type) => {
-    updateDiveProp("type", diveType);
-  };
-
-  const handleDepthAverageSliderChange = (e: any) => {
-    updateDiveProp("depthAverage", parseInt(e.target.value));
-  };
-
-  const handleDepthMaxSliderChange = (e: any) => {
-    updateDiveProp("depthMax", parseInt(e.target.value));
-  };
+const Basics: React.FC = () => {
+  const { newDive, updateNewDiveProp } = useNewDiveContext();
 
   return (
     <>
@@ -39,9 +22,9 @@ const Basics: React.FC<
           <FormControl>
             <FormLabel>Dive type</FormLabel>
             <Select
-              startDecorator={getDiveEmoji(dive.type)}
-              value={dive.type}
-              onChange={(value) => handleDiveTypeSelectChange(value!)}
+              startDecorator={getDiveEmoji(newDive.type)}
+              value={newDive.type}
+              onChange={(value) => updateNewDiveProp("type", value)}
             >
               {["Boat", "Shore"].map((diveType: string) => (
                 <Option key={diveType} value={diveType.toLowerCase()}>
@@ -59,8 +42,8 @@ const Basics: React.FC<
             label="Length"
             endDecorator="min"
             startDecorator={<TimelapseRounded />}
-            onChange={(e) => handleTextFieldChange(e, "length")}
-            value={dive.length}
+            onChange={(e) => updateNewDiveProp("length", e.target.value)}
+            value={newDive.length}
           />
         </Grid>
       </Grid>
@@ -69,36 +52,42 @@ const Basics: React.FC<
         <Grid xs={12}>
           <FormControl sx={{ px: 2 }}>
             <FormLabel>
-              Average depth ({dive.units === "metric" ? "m" : "ft"})
+              Average depth ({newDive.units === "metric" ? "m" : "ft"})
             </FormLabel>
             <Slider
               size="lg"
               color="primary"
               max={120}
               valueLabelDisplay="auto"
-              value={dive.depthAverage}
-              onChange={(e) => handleDepthAverageSliderChange(e)}
+              value={newDive.depthAverage}
+              onChange={(e) =>
+                // @ts-ignore
+                updateNewDiveProp("depthAverage", parseInt(e.target.value))
+              }
             />
             <FormHelperText sx={{ alignSelf: "flex-end" }}>
-              {dive.depthAverage}
+              {newDive.depthAverage}
             </FormHelperText>
           </FormControl>
         </Grid>
         <Grid xs={12}>
           <FormControl sx={{ px: 2 }}>
             <FormLabel>
-              Max depth ({dive.units === "metric" ? "m" : "ft"})
+              Max depth ({newDive.units === "metric" ? "m" : "ft"})
             </FormLabel>
             <Slider
               size="lg"
               color="primary"
               max={120}
               valueLabelDisplay="auto"
-              value={dive.depthMax}
-              onChange={(e) => handleDepthMaxSliderChange(e)}
+              value={newDive.depthMax}
+              onChange={(e) =>
+                // @ts-ignore
+                updateNewDiveProp("depthMax", parseInt(e.target.value))
+              }
             />
             <FormHelperText sx={{ alignSelf: "flex-end" }}>
-              {dive.depthMax}
+              {newDive.depthMax}
             </FormHelperText>
           </FormControl>
         </Grid>

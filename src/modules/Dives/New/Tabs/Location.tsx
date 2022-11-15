@@ -4,28 +4,28 @@ import PublicRounded from "@mui/icons-material/PublicRounded";
 import Grid from "@mui/joy/Grid";
 import Link from "@mui/joy/Link";
 import TextField from "@mui/joy/TextField";
+import { useNewDiveContext } from "common/context/NewDive";
 import React from "react";
 
-import type { ComponentWithTextFieldsProps } from "../types";
+const Location: React.FC = () => {
+  const { newDive, updateNewDiveProp } = useNewDiveContext();
 
-const Location: React.FC<ComponentWithTextFieldsProps> = ({
-  dive,
-  handleTextFieldChange,
-}) => {
   return (
     <>
       <Grid spacing={2} container>
         <Grid xs={6}>
           <TextField
             type="text"
-            name="locationCountry"
+            name="locationCountryName"
             placeholder="Croatia"
             label="Country"
-            value={dive.locationCountryName}
-            onChange={(e) => handleTextFieldChange(e, "locationCountryName")}
+            value={newDive.locationCountryName}
+            onChange={(e) =>
+              updateNewDiveProp("locationCountryName", e.target.value)
+            }
             startDecorator={
-              dive.locationCountryFlagEmoji ? (
-                dive.locationCountryFlagEmoji
+              newDive.locationCountryFlagEmoji ? (
+                newDive.locationCountryFlagEmoji
               ) : (
                 <PublicRounded />
               )
@@ -38,8 +38,8 @@ const Location: React.FC<ComponentWithTextFieldsProps> = ({
             name="locationCity"
             label="City"
             placeholder="Trogir"
-            value={dive.locationCity}
-            onChange={(e) => handleTextFieldChange(e, "locationCity")}
+            value={newDive.locationCity}
+            onChange={(e) => updateNewDiveProp("locationCity", e.target.value)}
           />
         </Grid>
         <Grid xs={12}>
@@ -49,8 +49,10 @@ const Location: React.FC<ComponentWithTextFieldsProps> = ({
             label="Dive center"
             placeholder="Trogir dive center"
             startDecorator={<FlagRounded />}
-            value={dive.locationDiveCenter}
-            onChange={(e) => handleTextFieldChange(e, "locationDiveCenter")}
+            value={newDive.locationDiveCenter}
+            onChange={(e) =>
+              updateNewDiveProp("locationDiveCenter", e.target.value)
+            }
           />
         </Grid>
       </Grid>

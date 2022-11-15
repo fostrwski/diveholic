@@ -2,19 +2,13 @@ import Tab from "@mui/joy/Tab";
 import TabList from "@mui/joy/TabList";
 import TabPanel from "@mui/joy/TabPanel";
 import MuiTabs from "@mui/joy/Tabs";
-import React, { useEffect, useState } from "react";
+import React from "react";
 
-import type {
-  ComponentUpdatingDiveProps,
-  ComponentWithTextFieldsProps,
-} from "../types";
 import Basics from "./Basics";
 import Details from "./Details";
 import Location from "./Location";
 
-const Tabs: React.FC<
-  ComponentUpdatingDiveProps & ComponentWithTextFieldsProps
-> = ({ dive, handleTextFieldChange, updateDiveProp }) => {
+const Tabs: React.FC = () => {
   return (
     <MuiTabs
       defaultValue={0}
@@ -31,19 +25,15 @@ const Tabs: React.FC<
       </TabList>
 
       <TabPanel value={0}>
-        <Location dive={dive} handleTextFieldChange={handleTextFieldChange} />
+        <Location />
       </TabPanel>
 
       <TabPanel value={1}>
-        <Basics
-          dive={dive}
-          handleTextFieldChange={handleTextFieldChange}
-          updateDiveProp={updateDiveProp}
-        />
+        <Basics />
       </TabPanel>
 
       <TabPanel value={2}>
-        <Details dive={dive} updateDiveProp={updateDiveProp} />
+        <Details />
       </TabPanel>
     </MuiTabs>
   );

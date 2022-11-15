@@ -14,10 +14,10 @@ import Radio from "@mui/joy/Radio";
 import RadioGroup from "@mui/joy/RadioGroup";
 import Select from "@mui/joy/Select";
 import Typography from "@mui/joy/Typography";
+import { useNewDiveContext } from "common/context/NewDive";
 import formatDate from "common/utils/formatDate";
 import React, { useState } from "react";
 
-import { useNewDiveContext } from "../context/NewDive";
 import useDate from "../hooks/useDate";
 import getFirstDayOfMonth from "../utils/getFirstDayOfMonth";
 import months from "../utils/months";
@@ -30,7 +30,6 @@ interface DatePickerProps {
 const DatePicker: React.FC<DatePickerProps> = ({ initialDate }) => {
   const [open, setOpen] = useState<boolean>(false);
   const { newDive, updateNewDiveProp } = useNewDiveContext();
-  console.log(newDive);
   const {
     date,
     setDay,

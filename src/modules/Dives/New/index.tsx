@@ -6,79 +6,62 @@ import FormLabel from "@mui/joy/FormLabel";
 import TextField from "@mui/joy/TextField";
 import Textarea from "@mui/joy/Textarea";
 import type { User } from "@supabase/auth-helpers-nextjs";
-import type { DiveFlattened } from "common/types";
+import { useNewDiveContext } from "common/context/NewDive";
 import { supabase } from "common/utils/supabaseClient";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
 import DatePicker from "./DatePicker";
 import Gear from "./Gear";
 import Header from "./Header";
 import Tabs from "./Tabs";
 import Temperature from "./Temperature";
-import { NewDiveContextProvider } from "./context/NewDive";
 import generateNewDiveObject from "./utils/generateNewDiveObject";
 import getCountryCode from "./utils/getCountryCode";
 import getFlagEmoji from "./utils/getFlagEmoji";
-import newDiveInitialState from "./utils/newDiveInitialState";
 
 interface NewProps {
   user: User;
 }
 
 const New: React.FC<NewProps> = ({ user }) => {
-  const [dive, setDive] = useState<DiveFlattened>(newDiveInitialState);
+  const { newDive, updateNewDiveProp } = useNewDiveContext();
 
+  // TODO: Optimize it!
   useEffect(() => {
-    const countryCode = getCountryCode(dive.locationCountryName);
+    const countryCode = getCountryCode(newDive.locationCountryName);
     let flagEmoji = "";
-    if (countryCode) flagEmoji = getFlagEmoji(countryCode);
-    setDive((prevState: DiveFlattened) => ({
-      ...prevState,
-      locationCountryCode: countryCode,
-      locationCountryFlagEmoji: flagEmoji,
-    }));
-  }, [dive.locationCountryName]);
-
-  const updateDiveProp = (prop: string, value: any) => {
-    setDive((prevState: DiveFlattened) => ({
-      ...prevState,
-      [prop]: value,
-    }));
-  };
-
-  const handleTextFieldChange = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    prop: string
-  ) => {
-    updateDiveProp(prop, e.target.value);
-  };
+    if (countryCode) {
+      flagEmoji = getFlagEmoji(countryCode);
+      updateNewDiveProp("locationCountryCode", countryCode);
+      updateNewDiveProp("locationCountryFlagEmoji", flagEmoji);
+    } else {
+      flagEmoji = "";
+      updateNewDiveProp("locationCountryFlagEmoji", flagEmoji);
+    }
+  }, [newDive.locationCountryName]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const newDive = generateNewDiveObject(dive);
+    const diveObject = generateNewDiveObject(newDive);
 
     const { error } = await supabase
       .from("dives")
-      .insert({ user_id: user.id, ...newDive });
+      .insert({ user_id: user.id, ...diveObject });
     if (error) console.error(error);
   };
 
   return (
-    <NewDiveContextProvider>
+    <>
       <Header />
 
-      <DatePicker dive={dive} updateDiveProp={updateDiveProp} />
+      <DatePicker />
 
       <Box component="form" onSubmit={handleSubmit}>
-        <Tabs
-          dive={dive}
-          handleTextFieldChange={handleTextFieldChange}
-          updateDiveProp={updateDiveProp}
-        />
+        <Tabs />
 
-        <Gear dive={dive} handleTextFieldChange={handleTextFieldChange} />
+        <Gear />
 
-        <Temperature dive={dive} updateDiveProp={updateDiveProp} />
+        <Temperature />
 
         <TextField
           type="text"
@@ -109,7 +92,7 @@ const New: React.FC<NewProps> = ({ user }) => {
           Save
         </Button>
       </Box>
-    </NewDiveContextProvider>
+    </>
   );
 };
 

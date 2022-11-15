@@ -1,18 +1,18 @@
 import Grid from "@mui/joy/Grid";
 import Typography from "@mui/joy/Typography";
 import TextSeparator from "common/components/TextSeparator";
+import { useNewDiveContext } from "common/context/NewDive";
 import React from "react";
 
-import type { ComponentUpdatingDiveProps } from "../types";
 import TemperatureSlider from "./Slider";
 
-const Temperature: React.FC<ComponentUpdatingDiveProps> = ({
-  dive,
-  updateDiveProp,
-}) => {
+const Temperature: React.FC = () => {
+  const { newDive, updateNewDiveProp } = useNewDiveContext();
+
   return (
     <>
       <TextSeparator sx={{ mt: 8 }}>Weather</TextSeparator>
+      {console.log(newDive)}
       <Typography
         mb={2}
         mt={4}
@@ -29,9 +29,9 @@ const Temperature: React.FC<ComponentUpdatingDiveProps> = ({
             min={-50}
             max={50}
             marks={[-50, -25, 0, 25, 50]}
-            value={dive.temperatureAir || 0}
+            value={newDive.temperatureAir || 0}
             onChange={(e: any) =>
-              updateDiveProp("temperatureAir", parseInt(e.target.value))
+              updateNewDiveProp("temperatureAir", parseInt(e.target.value))
             }
           />
         </Grid>
@@ -42,9 +42,9 @@ const Temperature: React.FC<ComponentUpdatingDiveProps> = ({
             max={40}
             color="primary"
             marks={[-30, -15, 0, 20, 40]}
-            value={dive.temperatureWaterSurface || 0}
+            value={newDive.temperatureWaterSurface || 0}
             onChange={(e: any) =>
-              updateDiveProp(
+              updateNewDiveProp(
                 "temperatureWaterSurface",
                 parseInt(e.target.value)
               )
@@ -58,9 +58,12 @@ const Temperature: React.FC<ComponentUpdatingDiveProps> = ({
             max={40}
             color="warning"
             marks={[-30, -15, 0, 20, 40]}
-            value={dive.temperatureWaterBottom || 0}
+            value={newDive.temperatureWaterBottom || 0}
             onChange={(e: any) =>
-              updateDiveProp("temperatureWaterBottom", parseInt(e.target.value))
+              updateNewDiveProp(
+                "temperatureWaterBottom",
+                parseInt(e.target.value)
+              )
             }
           />
         </Grid>

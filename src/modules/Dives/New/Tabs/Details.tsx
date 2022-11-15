@@ -4,9 +4,9 @@ import FormLabel from "@mui/joy/FormLabel";
 import Radio from "@mui/joy/Radio";
 import RadioGroup from "@mui/joy/RadioGroup";
 import Slider from "@mui/joy/Slider";
+import { useNewDiveContext } from "common/context/NewDive";
 import React from "react";
 
-import type { ComponentUpdatingDiveProps } from "../types";
 import generateSliderMarks from "../utils/generateSliderMarks";
 
 const weightsAmmount = [
@@ -34,30 +34,20 @@ const waterTypes = [
 
 const sliderMarks = generateSliderMarks([0, 5, 10, 15, 20]);
 
-const Details: React.FC<ComponentUpdatingDiveProps> = ({
-  dive,
-  updateDiveProp,
-}) => {
-  const handleWaterRadioChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    updateDiveProp("water", e.target.value.toLowerCase() as typeof dive.water);
-  };
+const Details: React.FC = () => {
+  const { newDive, updateNewDiveProp } = useNewDiveContext();
 
-  const handleWeightsSliderChange = (e: any) => {
-    updateDiveProp("weightsTaken", parseInt(e.target.value));
-  };
-
-  const handleWeightsAmmountRadioChange = (
-    e: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    switch (e.target.value) {
-      case "tooLittle":
-        return updateDiveProp("weightsAmmount", "tooLittle");
-      case "tooMuch":
-        return updateDiveProp("weightsAmmount", "tooMuch");
-      default:
-        return updateDiveProp("weightsAmmount", "perfect");
-    }
-  };
+  const handleWeightsAmmountRadioChange =
+    () => (e: React.ChangeEvent<HTMLInputElement>) => {
+      switch (e.target.value) {
+        case "tooLittle":
+          return updateNewDiveProp("weightsAmmount", "tooLittle");
+        case "tooMuch":
+          return updateNewDiveProp("weightsAmmount", "tooMuch");
+        default:
+          return updateNewDiveProp("weightsAmmount", "perfect");
+      }
+    };
 
   return (
     <>
@@ -67,7 +57,7 @@ const Details: React.FC<ComponentUpdatingDiveProps> = ({
           gap: 2,
           width: "100%",
         }}
-        value={dive.water}
+        value={newDive.water}
       >
         {waterTypes.map((waterType: { title: string; examples: string }) => (
           <FormControl
@@ -78,7 +68,9 @@ const Details: React.FC<ComponentUpdatingDiveProps> = ({
               overlay
               value={waterType.title.toLowerCase()}
               size="lg"
-              onChange={(e) => handleWaterRadioChange(e)}
+              onChange={(e) =>
+                updateNewDiveProp("water", e.target.value.toLowerCase())
+              }
             />
             <div>
               <FormLabel>{waterType.title} water</FormLabel>
@@ -90,22 +82,25 @@ const Details: React.FC<ComponentUpdatingDiveProps> = ({
 
       <FormControl sx={{ mt: 4, px: 2 }}>
         <FormLabel>
-          Weights ({dive.units === "metric" ? "kg" : "lbs"})
+          Weights ({newDive.units === "metric" ? "kg" : "lbs"})
         </FormLabel>
         <Slider
           size="lg"
           max={20}
           valueLabelDisplay="auto"
           marks={sliderMarks}
-          value={dive.weightsTaken}
-          onChange={(e) => handleWeightsSliderChange(e)}
+          value={newDive.weightsTaken}
+          onChange={(e) =>
+            // @ts-ignore
+            updateNewDiveProp("weightsTaken", parseInt(e.target.value))
+          }
         />
       </FormControl>
 
       <RadioGroup
         sx={{ mt: 4, gap: 2 }}
         onChange={(e) => handleWeightsAmmountRadioChange(e)}
-        value={dive.weightsAmmount}
+        value={newDive.weightsAmmount}
       >
         {weightsAmmount.map(
           (ammount: { title: string; value: string; helperText: string }) => (

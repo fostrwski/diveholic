@@ -5,9 +5,8 @@ import Grid from "@mui/joy/Grid";
 import TextField from "@mui/joy/TextField";
 import Typography from "@mui/joy/Typography";
 import TextSeparator from "common/components/TextSeparator";
+import { useNewDiveContext } from "common/context/NewDive";
 import React, { useState } from "react";
-
-import { useNewDiveContext } from "../context/NewDive";
 
 const Gear: React.FC = () => {
   const { newDive, updateNewDiveProp } = useNewDiveContext();
