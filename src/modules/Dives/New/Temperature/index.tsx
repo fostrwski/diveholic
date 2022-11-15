@@ -12,7 +12,6 @@ const Temperature: React.FC = () => {
   return (
     <>
       <TextSeparator sx={{ mt: 8 }}>Weather</TextSeparator>
-      {console.log(newDive)}
       <Typography
         mb={2}
         mt={4}
