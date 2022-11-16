@@ -12,13 +12,17 @@ const NewDiveContext = createContext<NewDiveContextInitialState>(
 );
 
 interface NewDiveProviderProps {
+  initialState?: DiveFlattened;
   children: React.ReactNode;
 }
 
 const NewDiveContextProvider: React.FC<NewDiveProviderProps> = ({
+  initialState,
   children,
 }) => {
-  const [newDive, setNewDive] = useState<DiveFlattened>(newDiveInitialState);
+  const [newDive, setNewDive] = useState<DiveFlattened>(
+    initialState || newDiveInitialState
+  );
 
   const updateNewDiveProp = (prop: keyof DiveFlattened, value: any) => {
     setNewDive((prevState: DiveFlattened) => ({
