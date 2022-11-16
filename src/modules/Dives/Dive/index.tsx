@@ -134,7 +134,7 @@ const Dive: React.FC = () => {
             color="warning"
             fullWidth
             startIcon={<EditRounded />}
-            onClick={() => console.log(dive.id)}
+            onClick={() => router.push(`/dives/edit/${diveId}`)}
           >
             Edit
           </Button>
