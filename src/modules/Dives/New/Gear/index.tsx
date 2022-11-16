@@ -84,7 +84,7 @@ const Gear: React.FC = () => {
             type="text"
             name="tankType"
             label="Type"
-            value={newDive.gearExposureProtectionType}
+            value={newDive.gearTanksType}
             onChange={(e) => updateNewDiveProp("gearTanksType", e.target.value)}
           />
         </Grid>
