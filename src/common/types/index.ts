@@ -26,10 +26,10 @@ export type Dive = {
   };
   water: "fresh" | "salt";
   temperature: {
-    air: number;
+    air: number | null;
     water: {
-      surface: number;
-      bottom: number;
+      surface: number | null;
+      bottom: number | null;
     };
   };
   gear: Gear;
