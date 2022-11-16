@@ -37,17 +37,18 @@ const sliderMarks = generateSliderMarks([0, 5, 10, 15, 20]);
 const Details: React.FC = () => {
   const { newDive, updateNewDiveProp } = useNewDiveContext();
 
-  const handleWeightsAmmountRadioChange =
-    () => (e: React.ChangeEvent<HTMLInputElement>) => {
-      switch (e.target.value) {
-        case "tooLittle":
-          return updateNewDiveProp("weightsAmmount", "tooLittle");
-        case "tooMuch":
-          return updateNewDiveProp("weightsAmmount", "tooMuch");
-        default:
-          return updateNewDiveProp("weightsAmmount", "perfect");
-      }
-    };
+  const handleWeightsAmmountRadioChange = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    switch (e.target.value) {
+      case "tooLittle":
+        return updateNewDiveProp("weightsAmmount", "tooLittle");
+      case "tooMuch":
+        return updateNewDiveProp("weightsAmmount", "tooMuch");
+      default:
+        return updateNewDiveProp("weightsAmmount", "perfect");
+    }
+  };
 
   return (
     <>
