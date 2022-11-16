@@ -1,4 +1,4 @@
-import type { SliderMark } from "../types";
+import type { SliderMark } from "../utils/types";
 
 export default function generateSliderMarks(marks: Array<number>) {
   const sliderMarks: Array<SliderMark> = marks.map((mark) => ({
