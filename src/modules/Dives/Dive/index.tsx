@@ -42,7 +42,7 @@ const Dive: React.FC = () => {
   };
 
   useEffect(() => {
-    const getDives = async () => {
+    const getDive = async () => {
       setError(null);
       setLoading(true);
       const { data, error } = await supabase
@@ -66,7 +66,7 @@ const Dive: React.FC = () => {
       setLoading(false);
     };
 
-    if (user) getDives();
+    if (user) getDive();
   }, [user]);
 
   const determineView = (): React.ReactElement => {
@@ -134,6 +134,7 @@ const Dive: React.FC = () => {
             color="warning"
             fullWidth
             startIcon={<EditRounded />}
+            onClick={() => console.log(dive.id)}
           >
             Edit
           </Button>
