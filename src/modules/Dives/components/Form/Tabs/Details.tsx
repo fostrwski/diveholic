@@ -23,7 +23,7 @@ const weightsAmmount = [
   {
     title: "Too much 👆🏼",
     value: "tooMuch",
-    helperText: "Takke less weights next time",
+    helperText: "Take less weights next time",
   },
 ];
 
