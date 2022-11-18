@@ -12,8 +12,7 @@ import Grid from "@mui/joy/Grid";
 import Typography from "@mui/joy/Typography";
 import Separator from "common/components/Separator";
 import type { Dive } from "common/types";
-import formatDate from "common/utils/formatDate";
-import formatTime from "common/utils/formatTime";
+import { formatDate, formatTime } from "common/utils/datetime/format";
 import NextLink from "next/link";
 import React from "react";
 
@@ -37,7 +36,7 @@ const DiveCard: React.FC<DiveCard> = ({ dive }) => {
         </Avatar>
         <CardContent>
           <Typography component="p" level="subtitle1">
-            {formatDate(dive.date)} &bull; {formatTime(dive.time)}
+            {formatDate(dive.date)} &bull; {formatTime(dive.date)}
           </Typography>
 
           <Box my={2}>

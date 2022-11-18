@@ -16,7 +16,7 @@ import Select from "@mui/joy/Select";
 import TextField from "@mui/joy/TextField";
 import Typography from "@mui/joy/Typography";
 import { useNewDiveContext } from "common/context/NewDive";
-import formatDate from "common/utils/formatDate";
+import { formatDate, formatTime } from "common/utils/datetime/format";
 import React, { useState } from "react";
 
 import useDate from "../hooks/useDate";
@@ -95,7 +95,10 @@ const DatePicker: React.FC<DatePickerProps> = ({ initialDate }) => {
               <>
                 {newDive.date ? (
                   <>
-                    {formatDate(newDive.date)} &bull;{" "}
+                    {formatDate(newDive.date)}
+                    <br />
+                    {formatTime(newDive.date)}
+                    <br />
                     <Link
                       endDecorator={<EditRounded />}
                       color="warning"
