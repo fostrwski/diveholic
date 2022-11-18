@@ -13,6 +13,7 @@ import Option from "@mui/joy/Option";
 import Radio from "@mui/joy/Radio";
 import RadioGroup from "@mui/joy/RadioGroup";
 import Select from "@mui/joy/Select";
+import TextField from "@mui/joy/TextField";
 import Typography from "@mui/joy/Typography";
 import { useNewDiveContext } from "common/context/NewDive";
 import formatDate from "common/utils/formatDate";
@@ -39,6 +40,8 @@ const DatePicker: React.FC<DatePickerProps> = ({ initialDate }) => {
     month,
     fullYear,
     daysInMonth,
+    time,
+    setTime,
   } = useDate(initialDate);
 
   const handleModalToggle = () => {
@@ -65,6 +68,10 @@ const DatePicker: React.FC<DatePickerProps> = ({ initialDate }) => {
 
   const handleYearSelectChange = (year: number) => {
     setFullYear(year);
+  };
+
+  const handleTimeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setTime(e.target.value);
   };
 
   return (
@@ -227,6 +234,14 @@ const DatePicker: React.FC<DatePickerProps> = ({ initialDate }) => {
                 </RadioGroup>
               </Grid>
             </Grid>
+
+            <TextField
+              type="time"
+              sx={{ mt: 4 }}
+              label="Time"
+              value={time}
+              onChange={handleTimeChange}
+            />
 
             <Box
               sx={{
