@@ -1,14 +1,16 @@
-const formatTime = (date: Date) => {
+const formatTime = (date: string) => {
+  const d = new Date(date);
   const options: Intl.DateTimeFormatOptions = {
     hour: "2-digit",
     minute: "2-digit",
     hour12: true,
   };
 
-  return date.toLocaleTimeString(undefined, options);
+  return d.toLocaleTimeString(undefined, options);
 };
 
-const formatDate = (date: Date) => {
+const formatDate = (date: string) => {
+  const d = new Date(date);
   const options: Intl.DateTimeFormatOptions = {
     weekday: "short",
     year: "numeric",
@@ -16,7 +18,7 @@ const formatDate = (date: Date) => {
     day: "numeric",
   };
 
-  return date.toLocaleDateString(undefined, options);
+  return d.toLocaleDateString(undefined, options);
 };
 
 export { formatTime, formatDate };
