@@ -84,6 +84,7 @@ const DiveCard: React.FC<DiveCard> = ({ dive }) => {
             <Chip
               color="neutral"
               variant="soft"
+              size="sm"
               startDecorator={dive.location.country.flagEmoji}
             >
               {dive.location.city}, {dive.location.country.name}
