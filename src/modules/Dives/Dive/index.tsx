@@ -54,7 +54,7 @@ const Dive: React.FC = () => {
       }
 
       if (data && data.length > 0) {
-        setDive(data![0]);
+        setDive(data[0]);
         return setLoading(false);
       }
 
