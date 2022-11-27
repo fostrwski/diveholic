@@ -29,7 +29,9 @@ const Info: React.FC<InfoProps> = ({ title, value, icon, unit }) => {
           startDecorator={icon}
           endDecorator={unit ? unit : ""}
         >
-          {value}
+          {typeof value === "string"
+            ? value.slice(0, 1).toUpperCase() + value.slice(1)
+            : value}
         </Chip>
       </Box>
     </Typography>
