@@ -56,7 +56,7 @@ const Location: React.FC = () => {
           />
         </Grid>
       </Grid>
-      <Link mt={4} startDecorator={<PlaceRounded />} color="info">
+      <Link mt={4} startDecorator={<PlaceRounded />} color="info" disabled>
         Fill in with location from your latest dive
       </Link>
     </>
