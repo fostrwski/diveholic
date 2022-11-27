@@ -18,7 +18,11 @@ export const getServerSideProps = withPageAuth({
   },
 });
 
-export default function DivesPage({ data }: { data: Array<Dive> }) {
+interface DivesPageProps {
+  data: Array<Dive>;
+}
+
+export default function DivesPage({ data }: DivesPageProps) {
   return (
     <DefaultLayout>
       <Dives data={data} />
