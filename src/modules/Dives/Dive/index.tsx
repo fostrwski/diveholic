@@ -31,8 +31,7 @@ const Dive: React.FC = () => {
     const { error } = await supabase
       .from<DiveType>("dives")
       .delete()
-      // @ts-ignore
-      .match({ id: parseInt(diveId) });
+      .match({ id: diveId });
 
     if (error) console.error(error);
 
@@ -46,8 +45,7 @@ const Dive: React.FC = () => {
       const { data, error } = await supabase
         .from<DiveType>("dives")
         .select("*")
-        // @ts-ignore
-        .match({ id: parseInt(diveId) });
+        .match({ id: diveId });
 
       if (error) {
         setError(error);
