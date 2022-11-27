@@ -32,7 +32,9 @@ const NewDiveContextProvider: React.FC<NewDiveProviderProps> = ({
   };
 
   return (
-    <NewDiveContext.Provider value={{ newDive, updateNewDiveProp }}>
+    <NewDiveContext.Provider
+      value={{ newDive, updateNewDiveProp, setNewDive: setNewDive }}
+    >
       {children}
     </NewDiveContext.Provider>
   );
