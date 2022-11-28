@@ -20,6 +20,7 @@ const CancelButton: React.FC = () => {
   };
 
   const handleCancel = () => {
+    handleModalClose();
     router.push("/");
   };
 
