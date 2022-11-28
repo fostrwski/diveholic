@@ -1,11 +1,9 @@
 import TimelapseRounded from "@mui/icons-material/TimelapseRounded";
 import FormControl from "@mui/joy/FormControl";
-import FormHelperText from "@mui/joy/FormHelperText";
 import FormLabel from "@mui/joy/FormLabel";
 import Grid from "@mui/joy/Grid";
 import Option from "@mui/joy/Option";
 import Select from "@mui/joy/Select";
-import Slider from "@mui/joy/Slider";
 import TextField from "@mui/joy/TextField";
 import { useNewDiveContext } from "common/context/NewDive";
 import React from "react";
@@ -42,54 +40,36 @@ const Basics: React.FC = () => {
             label="Length"
             endDecorator="min"
             startDecorator={<TimelapseRounded />}
-            onChange={(e) => updateNewDiveProp("length", e.target.value)}
+            onChange={(e) =>
+              updateNewDiveProp("length", parseInt(e.target.value))
+            }
             value={newDive.length}
           />
         </Grid>
-      </Grid>
 
-      <Grid container mt={4} spacing={2}>
-        <Grid xs={12}>
-          <FormControl sx={{ px: 2 }}>
-            <FormLabel>
-              Average depth ({newDive.units === "metric" ? "m" : "ft"})
-            </FormLabel>
-            <Slider
-              size="lg"
-              color="primary"
-              max={120}
-              valueLabelDisplay="auto"
-              value={newDive.depthAverage}
-              onChange={(e) =>
-                // @ts-ignore
-                updateNewDiveProp("depthAverage", parseInt(e.target.value))
-              }
-            />
-            <FormHelperText sx={{ alignSelf: "flex-end" }}>
-              {newDive.depthAverage}
-            </FormHelperText>
-          </FormControl>
+        <Grid xs={6}>
+          <TextField
+            name="depthAverage"
+            label="Average depth"
+            type="number"
+            endDecorator={newDive.units === "metric" ? "m" : "ft"}
+            value={newDive.depthAverage}
+            onChange={(e) =>
+              updateNewDiveProp("depthAverage", parseInt(e.target.value))
+            }
+          />
         </Grid>
-        <Grid xs={12}>
-          <FormControl sx={{ px: 2 }}>
-            <FormLabel>
-              Max depth ({newDive.units === "metric" ? "m" : "ft"})
-            </FormLabel>
-            <Slider
-              size="lg"
-              color="primary"
-              max={120}
-              valueLabelDisplay="auto"
-              value={newDive.depthMax}
-              onChange={(e) =>
-                // @ts-ignore
-                updateNewDiveProp("depthMax", parseInt(e.target.value))
-              }
-            />
-            <FormHelperText sx={{ alignSelf: "flex-end" }}>
-              {newDive.depthMax}
-            </FormHelperText>
-          </FormControl>
+        <Grid xs={6}>
+          <TextField
+            name="depthMax"
+            label="Max depth"
+            type="number"
+            endDecorator={newDive.units === "metric" ? "m" : "ft"}
+            value={newDive.depthMax.toString()}
+            onChange={(e) => {
+              updateNewDiveProp("depthMax", parseInt(e.target.value));
+            }}
+          />
         </Grid>
       </Grid>
     </>
