@@ -42,7 +42,7 @@ const Gear: React.FC = () => {
         </Grid>
         <Grid xs={6}>
           <TextField
-            type="text"
+            type="number"
             name="exposureProtectionThickness"
             label="Thickness"
             startDecorator={<LineWeightRounded />}
