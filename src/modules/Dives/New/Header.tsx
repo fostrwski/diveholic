@@ -1,14 +1,11 @@
 import AddRounded from "@mui/icons-material/AddRounded";
-import CloseRounded from "@mui/icons-material/CloseRounded";
 import Box from "@mui/joy/Box";
-import Button from "@mui/joy/Button";
 import Chip from "@mui/joy/Chip";
-import { useRouter } from "next/router";
 import React from "react";
 
-const Header: React.FC = () => {
-  const router = useRouter();
+import CancelButton from "../components/CancelButton";
 
+const Header: React.FC = () => {
   return (
     <Box
       display="flex"
@@ -24,17 +21,7 @@ const Header: React.FC = () => {
       >
         New dive
       </Chip>
-
-      <Button
-        color="danger"
-        size="sm"
-        variant="plain"
-        aria-label="Cancel adding new dive"
-        onClick={() => router.push("/")}
-        endIcon={<CloseRounded />}
-      >
-        Cancel
-      </Button>
+      <CancelButton />
     </Box>
   );
 };

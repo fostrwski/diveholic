@@ -1,10 +1,10 @@
-import CloseRounded from "@mui/icons-material/CloseRounded";
 import EditRounded from "@mui/icons-material/EditRounded";
 import Box from "@mui/joy/Box";
-import Button from "@mui/joy/Button";
 import Chip from "@mui/joy/Chip";
 import { useRouter } from "next/router";
 import React from "react";
+
+import CancelButton from "../components/CancelButton";
 
 const Header: React.FC = () => {
   const router = useRouter();
@@ -19,23 +19,15 @@ const Header: React.FC = () => {
     >
       <Chip
         startDecorator={<EditRounded />}
+        endDecorator={`#${diveId}`}
         variant="soft"
         size="lg"
         color="warning"
       >
-        Edit dive #{diveId}
+        Edit dive
       </Chip>
 
-      <Button
-        color="danger"
-        size="sm"
-        variant="plain"
-        aria-label="Cancel dive editing"
-        onClick={() => router.push("/")}
-        endIcon={<CloseRounded />}
-      >
-        Cancel
-      </Button>
+      <CancelButton />
     </Box>
   );
 };
