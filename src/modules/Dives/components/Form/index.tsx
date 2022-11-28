@@ -51,6 +51,7 @@ const Form: React.FC<FormProps> = ({ onSubmit }) => {
           type="text"
           name="diveBuddy"
           label="Dive buddy"
+          placeholder="Joe Doe"
           sx={{ mt: 10 }}
         />
 
