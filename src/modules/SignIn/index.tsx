@@ -2,11 +2,12 @@ import AlternateEmailRounded from "@mui/icons-material/AlternateEmailRounded";
 import DoneRounded from "@mui/icons-material/DoneRounded";
 import ErrorOutlineRounded from "@mui/icons-material/ErrorOutlineRounded";
 import KeyRounded from "@mui/icons-material/KeyRounded";
+import LockResetRounded from "@mui/icons-material/LockResetRounded";
 import LoginRounded from "@mui/icons-material/LoginRounded";
 import VisibilityOffRounded from "@mui/icons-material/VisibilityOffRounded";
 import VisibilityRounded from "@mui/icons-material/VisibilityRounded";
-import { Button } from "@mui/joy";
 import Box from "@mui/joy/Box";
+import Button from "@mui/joy/Button";
 import Container from "@mui/joy/Container";
 import IconButton from "@mui/joy/IconButton";
 import JoyLink from "@mui/joy/Link";
@@ -153,7 +154,12 @@ const SignIn: React.FC = () => {
           )}
 
           <div>
-            <JoyLink sx={{ float: "right" }}>Forgot password?</JoyLink>
+            <JoyLink
+              sx={{ float: "right" }}
+              endDecorator={<LockResetRounded />}
+            >
+              Restore password
+            </JoyLink>
           </div>
 
           <Button
