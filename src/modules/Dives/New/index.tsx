@@ -28,7 +28,7 @@ const New: React.FC<NewProps> = ({ user }) => {
     <>
       <Header />
 
-      <Form onSubmit={handleSubmit} />
+      <Form />
     </>
   );
 };
