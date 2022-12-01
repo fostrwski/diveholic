@@ -6,7 +6,7 @@ import FormLabel from "@mui/joy/FormLabel";
 import TextField from "@mui/joy/TextField";
 import Textarea from "@mui/joy/Textarea";
 import React, { useEffect } from "react";
-import { useFormContext } from "react-hook-form";
+import { useFormContext, useFormState } from "react-hook-form";
 
 import DatePicker from "./DatePicker";
 import Gear from "./Gear";
@@ -20,10 +20,11 @@ interface FormProps {
 }
 
 const Form: React.FC<FormProps> = ({ onSubmit }) => {
-  const { setValue, getValues } = useFormContext();
+  const { setValue, watch, getValues, control } = useFormContext();
+  const watchLocationCountryName = watch("locationCountryName");
 
   useEffect(() => {
-    const countryCode = getCountryCode(getValues("locationCountryName"));
+    const countryCode = getCountryCode(watchLocationCountryName);
     let flagEmoji = "";
     if (countryCode) {
       flagEmoji = getFlagEmoji(countryCode);
@@ -33,7 +34,7 @@ const Form: React.FC<FormProps> = ({ onSubmit }) => {
       flagEmoji = "";
       setValue("locationCountryFlagEmoji", flagEmoji);
     }
-  }, [getValues, setValue]);
+  }, [getValues, setValue, watchLocationCountryName]);
 
   return (
     <>
