@@ -4,13 +4,11 @@ import PublicRounded from "@mui/icons-material/PublicRounded";
 import Grid from "@mui/joy/Grid";
 import Link from "@mui/joy/Link";
 import TextField from "@mui/joy/TextField";
-import { useFormikContext } from "formik";
 import React from "react";
-
-import type { FormFields } from "../types";
+import { useFormContext } from "react-hook-form";
 
 const Location: React.FC = () => {
-  const formik = useFormikContext<FormFields>();
+  const { register, getValues } = useFormContext();
 
   return (
     <>
@@ -18,14 +16,12 @@ const Location: React.FC = () => {
         <Grid xs={6}>
           <TextField
             type="text"
-            name="locationCountryName"
             placeholder="Croatia"
             label="Country"
-            value={formik.values.locationCountryName}
-            onChange={formik.handleChange}
+            {...register("locationCountryName")}
             startDecorator={
-              formik.values.locationCountryFlagEmoji ? (
-                formik.values.locationCountryFlagEmoji
+              getValues("locationCountryFlagEmoji") ? (
+                getValues("locationCountryFlagEmoji")
               ) : (
                 <PublicRounded />
               )
@@ -35,22 +31,18 @@ const Location: React.FC = () => {
         <Grid xs={6}>
           <TextField
             type="text"
-            name="locationCity"
             label="City"
             placeholder="Trogir"
-            value={formik.values.locationCity}
-            onChange={formik.handleChange}
+            {...register("locationCountryCity")}
           />
         </Grid>
         <Grid xs={12}>
           <TextField
             type="text"
-            name="locationDiveCenter"
             label="Dive center"
             placeholder="Trogir dive center"
             startDecorator={<FlagRounded />}
-            value={formik.values.locationDiveCenter}
-            onChange={formik.handleChange}
+            {...register("locationDiveCenter")}
           />
         </Grid>
       </Grid>
