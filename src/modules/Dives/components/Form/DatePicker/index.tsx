@@ -15,13 +15,11 @@ import RadioGroup from "@mui/joy/RadioGroup";
 import Select from "@mui/joy/Select";
 import TextField from "@mui/joy/TextField";
 import Typography from "@mui/joy/Typography";
-import { useNewDiveContext } from "common/context/NewDive";
 import { formatDate, formatTime } from "common/utils/datetime/format";
-import { useFormikContext } from "formik";
 import React, { useState } from "react";
+import { useFormContext } from "react-hook-form";
 
 import useDate from "../hooks/useDate";
-import type { FormFields } from "../types";
 import getFirstDayOfMonth from "../utils/getFirstDayOfMonth";
 import months from "../utils/months";
 import weekdays from "../utils/weekdays";
@@ -32,8 +30,7 @@ interface DatePickerProps {
 
 const DatePicker: React.FC<DatePickerProps> = ({ initialDate }) => {
   const [open, setOpen] = useState<boolean>(false);
-  const { newDive, updateNewDiveProp } = useNewDiveContext();
-  const formik = useFormikContext<FormFields>();
+  const { setValue, getValues } = useFormContext();
   const {
     date,
     setDay,
@@ -56,7 +53,7 @@ const DatePicker: React.FC<DatePickerProps> = ({ initialDate }) => {
   };
 
   const handleModalDone = () => {
-    formik.setFieldValue("date", date);
+    setValue("date", date);
     handleModalClose();
   };
 
@@ -96,11 +93,11 @@ const DatePicker: React.FC<DatePickerProps> = ({ initialDate }) => {
             <Typography level="h6" component="div">
               <FormLabel sx={{ color: "GrayText" }}>Date</FormLabel>
               <>
-                {formik.values.date ? (
+                {getValues("date") ? (
                   <>
-                    {formatDate(formik.values.date)}
+                    {formatDate(getValues("date"))}
                     <br />
-                    {formatTime(formik.values.date)}
+                    {formatTime(getValues("date"))}
                     <br />
                     <Link
                       endDecorator={<EditRounded />}

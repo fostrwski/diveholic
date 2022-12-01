@@ -5,13 +5,13 @@ import Grid from "@mui/joy/Grid";
 import Option from "@mui/joy/Option";
 import Select from "@mui/joy/Select";
 import TextField from "@mui/joy/TextField";
-import { useNewDiveContext } from "common/context/NewDive";
 import React from "react";
+import { Controller, useFormContext } from "react-hook-form";
 
 import getDiveEmoji from "../utils/getDiveEmoji";
 
 const Basics: React.FC = () => {
-  const { newDive, updateNewDiveProp } = useNewDiveContext();
+  const { register, getValues, control } = useFormContext();
 
   return (
     <>
@@ -19,56 +19,50 @@ const Basics: React.FC = () => {
         <Grid xs={6}>
           <FormControl>
             <FormLabel>Dive type</FormLabel>
-            <Select
-              startDecorator={getDiveEmoji(newDive.type)}
-              value={newDive.type}
-              onChange={(value) => updateNewDiveProp("type", value)}
-            >
-              {["Boat", "Shore"].map((diveType: string) => (
-                <Option key={diveType} value={diveType.toLowerCase()}>
-                  {diveType}
-                </Option>
-              ))}
-            </Select>
+
+            <Controller
+              control={control}
+              name="type"
+              render={({ field }) => (
+                <Select
+                  {...field}
+                  startDecorator={getDiveEmoji(getValues("type"))}
+                >
+                  {["Boat", "Shore"].map((diveType: string) => (
+                    <Option key={diveType} value={diveType.toLowerCase()}>
+                      {diveType}
+                    </Option>
+                  ))}
+                </Select>
+              )}
+            />
           </FormControl>
         </Grid>
 
         <Grid xs={6}>
           <TextField
+            {...register("length")}
             type="number"
-            name="length"
             label="Length"
             endDecorator="min"
             startDecorator={<TimelapseRounded />}
-            onChange={(e) =>
-              updateNewDiveProp("length", parseInt(e.target.value))
-            }
-            value={newDive.length}
           />
         </Grid>
 
         <Grid xs={6}>
           <TextField
-            name="depthAverage"
+            {...register("depthAverage")}
             label="Average depth"
             type="number"
-            endDecorator={newDive.units === "metric" ? "m" : "ft"}
-            value={newDive.depthAverage}
-            onChange={(e) =>
-              updateNewDiveProp("depthAverage", parseInt(e.target.value))
-            }
+            endDecorator={getValues("units") === "metric" ? "m" : "ft"}
           />
         </Grid>
         <Grid xs={6}>
           <TextField
-            name="depthMax"
+            {...register("depthMax")}
             label="Max depth"
             type="number"
-            endDecorator={newDive.units === "metric" ? "m" : "ft"}
-            value={newDive.depthMax.toString()}
-            onChange={(e) => {
-              updateNewDiveProp("depthMax", parseInt(e.target.value));
-            }}
+            endDecorator={getValues("units") === "metric" ? "m" : "ft"}
           />
         </Grid>
       </Grid>

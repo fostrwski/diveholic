@@ -7,6 +7,8 @@ import TextField from "@mui/joy/TextField";
 import React from "react";
 import { useFormContext } from "react-hook-form";
 
+import getFlagEmoji from "../utils/getFlagEmoji";
+
 const Location: React.FC = () => {
   const { register, getValues } = useFormContext();
 
@@ -15,10 +17,10 @@ const Location: React.FC = () => {
       <Grid spacing={2} container>
         <Grid xs={6}>
           <TextField
+            {...register("locationCountryName")}
             type="text"
             placeholder="Croatia"
             label="Country"
-            {...register("locationCountryName")}
             startDecorator={
               getValues("locationCountryFlagEmoji") ? (
                 getValues("locationCountryFlagEmoji")
@@ -30,19 +32,19 @@ const Location: React.FC = () => {
         </Grid>
         <Grid xs={6}>
           <TextField
+            {...register("locationCountryCity")}
             type="text"
             label="City"
             placeholder="Trogir"
-            {...register("locationCountryCity")}
           />
         </Grid>
         <Grid xs={12}>
           <TextField
+            {...register("locationDiveCenter")}
             type="text"
             label="Dive center"
             placeholder="Trogir dive center"
             startDecorator={<FlagRounded />}
-            {...register("locationDiveCenter")}
           />
         </Grid>
       </Grid>
