@@ -4,7 +4,6 @@ import PublicRounded from "@mui/icons-material/PublicRounded";
 import Grid from "@mui/joy/Grid";
 import Link from "@mui/joy/Link";
 import TextField from "@mui/joy/TextField";
-import { DiveFlattened } from "common/types";
 import { useFormikContext } from "formik";
 import React from "react";
 
