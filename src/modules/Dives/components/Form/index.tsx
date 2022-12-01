@@ -6,6 +6,7 @@ import FormLabel from "@mui/joy/FormLabel";
 import TextField from "@mui/joy/TextField";
 import Textarea from "@mui/joy/Textarea";
 import { useNewDiveContext } from "common/context/NewDive";
+import { Form as FormikForm } from "formik";
 import React, { useEffect } from "react";
 
 import DatePicker from "./DatePicker";
@@ -15,14 +16,11 @@ import Temperature from "./Temperature";
 import getCountryCode from "./utils/getCountryCode";
 import getFlagEmoji from "./utils/getFlagEmoji";
 
-interface FormProps {
-  onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
-}
-
-const Form: React.FC<FormProps> = ({ onSubmit }) => {
+const Form: React.FC = () => {
   const { newDive, updateNewDiveProp } = useNewDiveContext();
 
   // TODO: Optimize it!
+
   useEffect(() => {
     const countryCode = getCountryCode(newDive.locationCountryName);
     let flagEmoji = "";
@@ -40,7 +38,7 @@ const Form: React.FC<FormProps> = ({ onSubmit }) => {
     <>
       <DatePicker />
 
-      <Box component="form" onSubmit={onSubmit}>
+      <FormikForm>
         <Tabs />
 
         <Gear />
@@ -76,7 +74,7 @@ const Form: React.FC<FormProps> = ({ onSubmit }) => {
         >
           Save
         </Button>
-      </Box>
+      </FormikForm>
     </>
   );
 };
