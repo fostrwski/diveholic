@@ -4,9 +4,10 @@ import FormLabel from "@mui/joy/FormLabel";
 import Radio from "@mui/joy/Radio";
 import RadioGroup from "@mui/joy/RadioGroup";
 import Slider from "@mui/joy/Slider";
-import { useNewDiveContext } from "common/context/NewDive";
+import { useFormikContext } from "formik";
 import React from "react";
 
+import type { FormFields } from "../types";
 import generateSliderMarks from "../utils/generateSliderMarks";
 
 const weightsAmmount = [
@@ -35,18 +36,18 @@ const waterTypes = [
 const sliderMarks = generateSliderMarks([0, 5, 10, 15, 20]);
 
 const Details: React.FC = () => {
-  const { newDive, updateNewDiveProp } = useNewDiveContext();
+  const formik = useFormikContext<FormFields>();
 
   const handleWeightsAmmountRadioChange = (
     e: React.ChangeEvent<HTMLInputElement>
   ) => {
     switch (e.target.value) {
       case "tooLittle":
-        return updateNewDiveProp("weightsAmmount", "tooLittle");
+        return formik.setFieldValue("weightsAmmount", "tooLittle");
       case "tooMuch":
-        return updateNewDiveProp("weightsAmmount", "tooMuch");
+        return formik.setFieldValue("weightsAmmount", "tooMuch");
       default:
-        return updateNewDiveProp("weightsAmmount", "perfect");
+        return formik.setFieldValue("weightsAmmount", "perfect");
     }
   };
 
@@ -58,7 +59,7 @@ const Details: React.FC = () => {
           gap: 2,
           width: "100%",
         }}
-        value={newDive.water}
+        value={formik.values.water}
       >
         {waterTypes.map((waterType: { title: string; examples: string }) => (
           <FormControl
@@ -66,11 +67,12 @@ const Details: React.FC = () => {
             key={waterType.title}
           >
             <Radio
+              name="water"
               overlay
               value={waterType.title.toLowerCase()}
               size="lg"
               onChange={(e) =>
-                updateNewDiveProp("water", e.target.value.toLowerCase())
+                formik.setFieldValue("water", e.target.value.toLowerCase())
               }
             />
             <div>
@@ -83,25 +85,23 @@ const Details: React.FC = () => {
 
       <FormControl sx={{ mt: 4, px: 2 }}>
         <FormLabel>
-          Weights ({newDive.units === "metric" ? "kg" : "lbs"})
+          Weights ({formik.values.units === "metric" ? "kg" : "lbs"})
         </FormLabel>
         <Slider
+          name="weightsTaken"
           size="lg"
           max={20}
           valueLabelDisplay="auto"
           marks={sliderMarks}
-          value={newDive.weightsTaken}
-          onChange={(e) =>
-            // @ts-ignore
-            updateNewDiveProp("weightsTaken", parseInt(e.target.value))
-          }
+          value={formik.values.weightsTaken}
+          onChange={formik.handleChange}
         />
       </FormControl>
 
       <RadioGroup
         sx={{ mt: 4, gap: 2 }}
         onChange={(e) => handleWeightsAmmountRadioChange(e)}
-        value={newDive.weightsAmmount}
+        value={formik.values.weightsAmmount}
       >
         {weightsAmmount.map(
           (ammount: { title: string; value: string; helperText: string }) => (
