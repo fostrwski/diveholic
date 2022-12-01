@@ -22,8 +22,6 @@ interface FormProps {
 const Form: React.FC<FormProps> = ({ onSubmit }) => {
   const { setValue, getValues } = useFormContext();
 
-  // TODO: Optimize it!
-
   useEffect(() => {
     const countryCode = getCountryCode(getValues("locationCountryName"));
     let flagEmoji = "";
