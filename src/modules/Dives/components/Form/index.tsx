@@ -16,7 +16,11 @@ import Temperature from "./Temperature";
 import getCountryCode from "./utils/getCountryCode";
 import getFlagEmoji from "./utils/getFlagEmoji";
 
-const Form: React.FC = () => {
+interface FormProps {
+  onSubmit: () => void;
+}
+
+const Form: React.FC<FormProps> = ({ onSubmit }) => {
   const { newDive, updateNewDiveProp } = useNewDiveContext();
 
   // TODO: Optimize it!
@@ -39,41 +43,43 @@ const Form: React.FC = () => {
       <DatePicker />
 
       <FormikForm>
-        <Tabs />
+        <Box component="form" onSubmit={onSubmit}>
+          <Tabs />
 
-        <Gear />
+          <Gear />
 
-        <Temperature />
+          <Temperature />
 
-        <TextField
-          type="text"
-          name="diveBuddy"
-          label="Dive buddy"
-          placeholder="Joe Doe"
-          sx={{ mt: 10 }}
-        />
-
-        <FormControl sx={{ mt: 6 }}>
-          <FormLabel>Notes</FormLabel>
-          <Textarea
-            name="notes"
-            minRows={4}
-            variant="soft"
-            id="notes"
-            placeholder="Describe what you saw, share your experience"
+          <TextField
+            type="text"
+            name="diveBuddy"
+            label="Dive buddy"
+            placeholder="Joe Doe"
+            sx={{ mt: 10 }}
           />
-        </FormControl>
 
-        <Button
-          type="submit"
-          color="success"
-          size="lg"
-          startIcon={<SaveRounded />}
-          sx={{ mt: 6 }}
-          fullWidth
-        >
-          Save
-        </Button>
+          <FormControl sx={{ mt: 6 }}>
+            <FormLabel>Notes</FormLabel>
+            <Textarea
+              name="notes"
+              minRows={4}
+              variant="soft"
+              id="notes"
+              placeholder="Describe what you saw, share your experience"
+            />
+          </FormControl>
+
+          <Button
+            type="submit"
+            color="success"
+            size="lg"
+            startIcon={<SaveRounded />}
+            sx={{ mt: 6 }}
+            fullWidth
+          >
+            Save
+          </Button>
+        </Box>
       </FormikForm>
     </>
   );
