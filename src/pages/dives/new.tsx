@@ -1,29 +1,23 @@
-import { User, withPageAuth } from "@supabase/auth-helpers-nextjs";
+import { type User, withPageAuth } from "@supabase/auth-helpers-nextjs";
 import { NewDiveContextProvider } from "common/context/NewDive";
 import DefaultLayout from "common/layouts/Default";
-import { supabase } from "common/utils/supabaseClient";
-import { Formik } from "formik";
 import New from "modules/Dives/New";
-import initialValues from "modules/Dives/components/Form/initialValues";
-import generateNewDiveObject from "modules/Dives/utils/generateNewDiveObject";
+import defaultValues from "modules/Dives/components/Form/defaultValues";
 import React from "react";
+import { FormProvider, useForm } from "react-hook-form";
 
 export const getServerSideProps = withPageAuth({ redirectTo: "/signin" });
 
 export default function NewPage({ user }: { user: User }) {
+  const methods = useForm({ defaultValues: defaultValues });
+
   return (
     <DefaultLayout>
-      <Formik
-        initialValues={initialValues}
-        onSubmit={(values, actions) => {
-          console.log(values);
-          actions.setSubmitting(false);
-        }}
-      >
+      <FormProvider {...methods}>
         <NewDiveContextProvider>
           <New user={user} />
         </NewDiveContextProvider>
-      </Formik>
+      </FormProvider>
     </DefaultLayout>
   );
 }

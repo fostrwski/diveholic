@@ -1,6 +1,6 @@
 import type { DiveFlattened } from "common/types";
 
-const initialValues: DiveFlattened = {
+const defaultValues: DiveFlattened = {
   date: "",
   locationCountryName: "",
   locationCountryCode: "",
@@ -27,4 +27,4 @@ const initialValues: DiveFlattened = {
   gearFins: "",
 };
 
-export default initialValues;
+export default defaultValues;
