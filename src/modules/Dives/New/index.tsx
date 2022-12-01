@@ -2,6 +2,7 @@ import type { User } from "@supabase/auth-helpers-nextjs";
 import { useNewDiveContext } from "common/context/NewDive";
 import { supabase } from "common/utils/supabaseClient";
 import React from "react";
+import { useFormContext } from "react-hook-form";
 
 import Form from "../components/Form";
 import generateNewDiveObject from "../utils/generateNewDiveObject";
@@ -13,8 +14,10 @@ interface NewProps {
 
 const New: React.FC<NewProps> = ({ user }) => {
   const { newDive } = useNewDiveContext();
+  const { handleSubmit } = useFormContext();
+  const onSubmit = (data) => console.log(data);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const customSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const diveObject = generateNewDiveObject(newDive);
 
@@ -28,7 +31,7 @@ const New: React.FC<NewProps> = ({ user }) => {
     <>
       <Header />
 
-      <Form />
+      <Form onSubmit={handleSubmit(onSubmit)} />
     </>
   );
 };
