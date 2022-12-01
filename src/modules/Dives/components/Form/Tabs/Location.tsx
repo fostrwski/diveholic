@@ -4,11 +4,14 @@ import PublicRounded from "@mui/icons-material/PublicRounded";
 import Grid from "@mui/joy/Grid";
 import Link from "@mui/joy/Link";
 import TextField from "@mui/joy/TextField";
-import { useNewDiveContext } from "common/context/NewDive";
+import { DiveFlattened } from "common/types";
+import { useFormikContext } from "formik";
 import React from "react";
 
+import type { FormFields } from "../types";
+
 const Location: React.FC = () => {
-  const { newDive, updateNewDiveProp } = useNewDiveContext();
+  const formik = useFormikContext<FormFields>();
 
   return (
     <>
@@ -19,13 +22,11 @@ const Location: React.FC = () => {
             name="locationCountryName"
             placeholder="Croatia"
             label="Country"
-            value={newDive.locationCountryName}
-            onChange={(e) =>
-              updateNewDiveProp("locationCountryName", e.target.value)
-            }
+            value={formik.values.locationCountryName}
+            onChange={formik.handleChange}
             startDecorator={
-              newDive.locationCountryFlagEmoji ? (
-                newDive.locationCountryFlagEmoji
+              formik.values.locationCountryFlagEmoji ? (
+                formik.values.locationCountryFlagEmoji
               ) : (
                 <PublicRounded />
               )
@@ -38,8 +39,8 @@ const Location: React.FC = () => {
             name="locationCity"
             label="City"
             placeholder="Trogir"
-            value={newDive.locationCity}
-            onChange={(e) => updateNewDiveProp("locationCity", e.target.value)}
+            value={formik.values.locationCity}
+            onChange={formik.handleChange}
           />
         </Grid>
         <Grid xs={12}>
@@ -49,10 +50,8 @@ const Location: React.FC = () => {
             label="Dive center"
             placeholder="Trogir dive center"
             startDecorator={<FlagRounded />}
-            value={newDive.locationDiveCenter}
-            onChange={(e) =>
-              updateNewDiveProp("locationDiveCenter", e.target.value)
-            }
+            value={formik.values.locationDiveCenter}
+            onChange={formik.handleChange}
           />
         </Grid>
       </Grid>
