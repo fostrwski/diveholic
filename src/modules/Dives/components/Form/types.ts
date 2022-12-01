@@ -1,5 +1,5 @@
-import initialValues from "./initialValues";
+import type defaultValues from "./defaultValues";
 
-type FormFields = typeof initialValues;
+type FormFields = typeof defaultValues;
 
 export type { FormFields };
