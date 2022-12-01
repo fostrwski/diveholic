@@ -28,7 +28,7 @@ const SignIn: React.FC = () => {
     if (user) {
       router.push("/");
     }
-  }, [user]);
+  }, [user, router]);
 
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
