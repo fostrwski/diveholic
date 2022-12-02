@@ -8,7 +8,8 @@ import React from "react";
 import { useFormContext } from "react-hook-form";
 
 const Location: React.FC = () => {
-  const { register, getValues } = useFormContext();
+  const { register, watch } = useFormContext();
+  const watchLocationCountryFlagEmoji = watch("locationCountryFlagEmoji");
 
   return (
     <>
@@ -20,8 +21,8 @@ const Location: React.FC = () => {
             placeholder="Croatia"
             label="Country"
             startDecorator={
-              getValues("locationCountryFlagEmoji") ? (
-                getValues("locationCountryFlagEmoji")
+              watchLocationCountryFlagEmoji ? (
+                watchLocationCountryFlagEmoji
               ) : (
                 <PublicRounded />
               )
