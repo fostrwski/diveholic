@@ -31,14 +31,14 @@ const Gear: React.FC = () => {
       <Grid container spacing={2} justifyContent="space-between">
         <Grid xs={6}>
           <TextField
-            {...register("exposureProtectionType")}
+            {...register("gearExposureProtectionType")}
             type="text"
             label="Type"
           />
         </Grid>
         <Grid xs={6}>
           <TextField
-            {...register("exposureProtectionThickness")}
+            {...register("gearExposureProtectionThickness")}
             type="number"
             label="Thickness"
             startDecorator={<LineWeightRounded />}
@@ -58,14 +58,14 @@ const Gear: React.FC = () => {
       <Grid container spacing={2} justifyContent="space-between">
         <Grid xs={6}>
           <TextField
-            {...register("tanksCount")}
+            {...register("gearTanksCount")}
             type="number"
             label="Count"
             startDecorator={<NumbersRounded />}
           />
         </Grid>
         <Grid xs={6}>
-          <TextField {...register("tankType")} type="text" label="Type" />
+          <TextField {...register("gearTanksType")} type="text" label="Type" />
         </Grid>
       </Grid>
 
@@ -82,11 +82,11 @@ const Gear: React.FC = () => {
           </Typography>
           <Grid container spacing={2} justifyContent="space-between">
             <Grid xs={6}>
-              <TextField {...register("bcd")} type="text" label="BCD" />
+              <TextField {...register("gearBcd")} type="text" label="BCD" />
             </Grid>
             <Grid xs={6}>
               <TextField
-                {...register("fins")}
+                {...register("gearFins")}
                 type="text"
                 name="fins"
                 label="Fins"
@@ -94,7 +94,7 @@ const Gear: React.FC = () => {
             </Grid>
             <Grid xs={6}>
               <TextField
-                {...register("regulator")}
+                {...register("gearRegulator")}
                 type="text"
                 label="Regulator"
               />
