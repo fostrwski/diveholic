@@ -41,7 +41,7 @@ const Basics: React.FC = () => {
 
         <Grid xs={6}>
           <TextField
-            {...register("length")}
+            {...register("length", { valueAsNumber: true })}
             type="number"
             label="Length"
             endDecorator="min"
@@ -51,7 +51,7 @@ const Basics: React.FC = () => {
 
         <Grid xs={6}>
           <TextField
-            {...register("depthAverage")}
+            {...register("depthAverage", { valueAsNumber: true })}
             label="Average depth"
             type="number"
             endDecorator={getValues("units") === "metric" ? "m" : "ft"}
@@ -59,7 +59,7 @@ const Basics: React.FC = () => {
         </Grid>
         <Grid xs={6}>
           <TextField
-            {...register("depthMax")}
+            {...register("depthMax", { valueAsNumber: true })}
             label="Max depth"
             type="number"
             endDecorator={getValues("units") === "metric" ? "m" : "ft"}
