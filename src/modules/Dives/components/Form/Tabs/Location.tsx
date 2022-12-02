@@ -22,6 +22,7 @@ const Location: React.FC = () => {
         <Grid xs={6}>
           <FormControl>
             <FormLabel>Country</FormLabel>
+            {/* TODO: Optimize it! */}
             <Controller
               name="locationCountryName"
               render={({ field }) => (
