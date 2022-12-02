@@ -1,7 +1,7 @@
 import FormControl from "@mui/joy/FormControl";
 import FormLabel from "@mui/joy/FormLabel";
 import MuiSlider from "@mui/joy/Slider";
-import React, { ComponentProps, useEffect, useState } from "react";
+import React, { type ComponentProps, useEffect, useState } from "react";
 
 import generateSliderMarks from "../utils/generateSliderMarks";
 import type { SliderMark } from "../utils/types";
@@ -24,7 +24,7 @@ const TemperatureSlider: React.FC<TemperatureSliderProps> = ({
   const [sliderMarks, setSliderMarks] = useState<Array<SliderMark>>([]);
   useEffect(() => {
     setSliderMarks(generateSliderMarks(marks));
-  }, []);
+  }, [marks]);
 
   return (
     <FormControl>
