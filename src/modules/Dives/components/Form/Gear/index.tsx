@@ -38,7 +38,9 @@ const Gear: React.FC = () => {
         </Grid>
         <Grid xs={6}>
           <TextField
-            {...register("gearExposureProtectionThickness")}
+            {...register("gearExposureProtectionThickness", {
+              valueAsNumber: true,
+            })}
             type="number"
             label="Thickness"
             startDecorator={<LineWeightRounded />}
@@ -58,7 +60,7 @@ const Gear: React.FC = () => {
       <Grid container spacing={2} justifyContent="space-between">
         <Grid xs={6}>
           <TextField
-            {...register("gearTanksCount")}
+            {...register("gearTanksCount", { valueAsNumber: true })}
             type="number"
             label="Count"
             startDecorator={<NumbersRounded />}
@@ -85,11 +87,7 @@ const Gear: React.FC = () => {
               <TextField {...register("gearBcd")} type="text" label="BCD" />
             </Grid>
             <Grid xs={6}>
-              <TextField
-                {...register("gearFins")}
-                type="text"
-                label="Fins"
-              />
+              <TextField {...register("gearFins")} type="text" label="Fins" />
             </Grid>
             <Grid xs={6}>
               <TextField
