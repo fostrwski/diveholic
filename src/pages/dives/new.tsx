@@ -9,12 +9,12 @@ import { FormProvider, useForm } from "react-hook-form";
 export const getServerSideProps = withPageAuth({ redirectTo: "/signin" });
 
 export default function NewPage({ user }: { user: User }) {
-  const methods = useForm<FormFields>({ defaultValues: defaultValues });
+  const methods = useForm<FormFields>({ defaultValues });
 
   return (
     <DefaultLayout>
       <FormProvider {...methods}>
-          <New user={user} />
+        <New user={user} />
       </FormProvider>
     </DefaultLayout>
   );
