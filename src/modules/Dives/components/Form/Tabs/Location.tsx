@@ -7,8 +7,6 @@ import TextField from "@mui/joy/TextField";
 import React from "react";
 import { useFormContext } from "react-hook-form";
 
-import getFlagEmoji from "../utils/getFlagEmoji";
-
 const Location: React.FC = () => {
   const { register, getValues } = useFormContext();
 
