@@ -88,7 +88,6 @@ const Gear: React.FC = () => {
               <TextField
                 {...register("gearFins")}
                 type="text"
-                name="fins"
                 label="Fins"
               />
             </Grid>
