@@ -1,5 +1,4 @@
 import { type User, withPageAuth } from "@supabase/auth-helpers-nextjs";
-import { NewDiveContextProvider } from "common/context/NewDive";
 import DefaultLayout from "common/layouts/Default";
 import New from "modules/Dives/New";
 import defaultValues from "modules/Dives/components/Form/defaultValues";
@@ -15,9 +14,7 @@ export default function NewPage({ user }: { user: User }) {
   return (
     <DefaultLayout>
       <FormProvider {...methods}>
-        <NewDiveContextProvider>
           <New user={user} />
-        </NewDiveContextProvider>
       </FormProvider>
     </DefaultLayout>
   );
