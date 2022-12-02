@@ -1,6 +1,8 @@
-import type { Dive, DiveFlattened } from "common/types";
+import type { Dive } from "common/types";
 
-export default function generateNewDiveObject(dive: DiveFlattened): Dive {
+import type { FormFields } from "../types";
+
+export default function generateNewDiveObject(dive: FormFields): Dive {
   const newDive: Dive = {
     date: dive.date!,
     location: {
