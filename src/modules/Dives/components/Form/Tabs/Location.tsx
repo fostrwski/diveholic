@@ -1,33 +1,65 @@
 import FlagRounded from "@mui/icons-material/FlagRounded";
 import PlaceRounded from "@mui/icons-material/PlaceRounded";
 import PublicRounded from "@mui/icons-material/PublicRounded";
+import Autocomplete from "@mui/joy/Autocomplete";
+import FormControl from "@mui/joy/FormControl";
+import FormLabel from "@mui/joy/FormLabel";
 import Grid from "@mui/joy/Grid";
 import Link from "@mui/joy/Link";
 import TextField from "@mui/joy/TextField";
+import { createFilterOptions } from "@mui/material/Autocomplete";
 import React from "react";
-import { useFormContext } from "react-hook-form";
+import { Controller, useFormContext } from "react-hook-form";
+
+import listOfCountries from "../utils/listOfCountries";
 
 const Location: React.FC = () => {
   const { register, watch } = useFormContext();
   const watchLocationCountryFlagEmoji = watch("locationCountryFlagEmoji");
 
+  const filterOptions = createFilterOptions({ limit: 20 });
+
   return (
     <>
       <Grid spacing={2} container>
         <Grid xs={6}>
-          <TextField
-            {...register("locationCountryName")}
-            type="text"
-            placeholder="Croatia"
-            label="Country"
-            startDecorator={
-              watchLocationCountryFlagEmoji ? (
-                watchLocationCountryFlagEmoji
-              ) : (
-                <PublicRounded />
-              )
-            }
-          />
+          <FormControl>
+            <FormLabel>Country</FormLabel>
+            <Controller
+              name="locationCountryName"
+              render={({ field }) => (
+                <Autocomplete
+                  {...field}
+                  options={Object.values(listOfCountries)}
+                  onInputChange={(_, data) => {
+                    if (
+                      Object.values(listOfCountries).includes(data) ||
+                      data === ""
+                    ) {
+                      field.onChange(data);
+                    }
+                  }}
+                  onChange={(_, data) => {
+                    if (
+                      Object.values(listOfCountries).includes(data) ||
+                      data === ""
+                    ) {
+                      field.onChange(data);
+                    }
+                  }}
+                  placeholder="Croatia"
+                  startDecorator={
+                    watchLocationCountryFlagEmoji ? (
+                      watchLocationCountryFlagEmoji
+                    ) : (
+                      <PublicRounded />
+                    )
+                  }
+                  freeSolo
+                />
+              )}
+            />
+          </FormControl>
         </Grid>
         <Grid xs={6}>
           <TextField
