@@ -2,7 +2,7 @@ import Grid from "@mui/joy/Grid";
 import Typography from "@mui/joy/Typography";
 import TextSeparator from "common/components/TextSeparator";
 import React from "react";
-import { Controller, useFormContext } from "react-hook-form";
+import { Controller } from "react-hook-form";
 
 import TemperatureSlider from "./Slider";
 
