@@ -5,11 +5,11 @@ import Grid from "@mui/joy/Grid";
 import TextField from "@mui/joy/TextField";
 import Typography from "@mui/joy/Typography";
 import TextSeparator from "common/components/TextSeparator";
-import { useNewDiveContext } from "common/context/NewDive";
 import React, { useState } from "react";
+import { useFormContext } from "react-hook-form";
 
 const Gear: React.FC = () => {
-  const { newDive, updateNewDiveProp } = useNewDiveContext();
+  const { register } = useFormContext();
   const [showMore, setShowMore] = useState<boolean>(false);
 
   const handleClick = () => {
@@ -31,28 +31,17 @@ const Gear: React.FC = () => {
       <Grid container spacing={2} justifyContent="space-between">
         <Grid xs={6}>
           <TextField
+            {...register("exposureProtectionType")}
             type="text"
-            name="exposureProtectionType"
             label="Type"
-            value={newDive.gearExposureProtectionType}
-            onChange={(e) =>
-              updateNewDiveProp("gearExposureProtectionType", e.target.value)
-            }
           />
         </Grid>
         <Grid xs={6}>
           <TextField
+            {...register("exposureProtectionThickness")}
             type="number"
-            name="exposureProtectionThickness"
             label="Thickness"
             startDecorator={<LineWeightRounded />}
-            value={newDive.gearExposureProtectionThickness}
-            onChange={(e) =>
-              updateNewDiveProp(
-                "gearExposureProtectionThickness",
-                e.target.value
-              )
-            }
           />
         </Grid>
       </Grid>
@@ -69,24 +58,14 @@ const Gear: React.FC = () => {
       <Grid container spacing={2} justifyContent="space-between">
         <Grid xs={6}>
           <TextField
+            {...register("tanksCount")}
             type="number"
-            name="tanksCount"
             label="Count"
             startDecorator={<NumbersRounded />}
-            value={newDive.gearTanksCount}
-            onChange={(e) =>
-              updateNewDiveProp("gearTanksCount", e.target.value)
-            }
           />
         </Grid>
         <Grid xs={6}>
-          <TextField
-            type="text"
-            name="tankType"
-            label="Type"
-            value={newDive.gearTanksType}
-            onChange={(e) => updateNewDiveProp("gearTanksType", e.target.value)}
-          />
+          <TextField {...register("tankType")} type="text" label="Type" />
         </Grid>
       </Grid>
 
@@ -103,32 +82,21 @@ const Gear: React.FC = () => {
           </Typography>
           <Grid container spacing={2} justifyContent="space-between">
             <Grid xs={6}>
-              <TextField
-                type="text"
-                name="bcd"
-                label="BCD"
-                value={newDive.gearBcd}
-                onChange={(e) => updateNewDiveProp("gearBcd", e.target.value)}
-              />
+              <TextField {...register("bcd")} type="text" label="BCD" />
             </Grid>
             <Grid xs={6}>
               <TextField
+                {...register("fins")}
                 type="text"
                 name="fins"
                 label="Fins"
-                value={newDive.gearFins}
-                onChange={(e) => updateNewDiveProp("gearFins", e.target.value)}
               />
             </Grid>
             <Grid xs={6}>
               <TextField
+                {...register("regulator")}
                 type="text"
-                name="regulator"
                 label="Regulator"
-                value={newDive.gearRegulator}
-                onChange={(e) =>
-                  updateNewDiveProp("gearRegulator", e.target.value)
-                }
               />
             </Grid>
           </Grid>
