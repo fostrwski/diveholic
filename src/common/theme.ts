@@ -60,6 +60,11 @@ const theme = extendTheme({
         }),
       },
     },
+    JoyAutocomplete: {
+      defaultProps : {
+        variant: "soft"
+      }
+    },
     JoyModalDialog: {
       defaultProps: {
         variant: "plain",
