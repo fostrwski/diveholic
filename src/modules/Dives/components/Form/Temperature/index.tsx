@@ -1,15 +1,12 @@
 import Grid from "@mui/joy/Grid";
 import Typography from "@mui/joy/Typography";
 import TextSeparator from "common/components/TextSeparator";
-import { useNewDiveContext } from "common/context/NewDive";
 import React from "react";
 import { Controller, useFormContext } from "react-hook-form";
 
 import TemperatureSlider from "./Slider";
 
 const Temperature: React.FC = () => {
-  const { newDive, updateNewDiveProp } = useNewDiveContext();
-
   return (
     <>
       <TextSeparator sx={{ mt: 8 }}>Weather</TextSeparator>
