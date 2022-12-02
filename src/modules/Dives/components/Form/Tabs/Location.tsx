@@ -7,7 +7,6 @@ import FormLabel from "@mui/joy/FormLabel";
 import Grid from "@mui/joy/Grid";
 import Link from "@mui/joy/Link";
 import TextField from "@mui/joy/TextField";
-import { createFilterOptions } from "@mui/material/Autocomplete";
 import React from "react";
 import { Controller, useFormContext } from "react-hook-form";
 
@@ -16,8 +15,6 @@ import listOfCountries from "../utils/listOfCountries";
 const Location: React.FC = () => {
   const { register, watch } = useFormContext();
   const watchLocationCountryFlagEmoji = watch("locationCountryFlagEmoji");
-
-  const filterOptions = createFilterOptions({ limit: 20 });
 
   return (
     <>
