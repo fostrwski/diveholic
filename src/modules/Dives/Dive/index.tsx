@@ -130,7 +130,7 @@ const Dive: React.FC = () => {
             sx={{ mt: 6 }}
             color="warning"
             fullWidth
-            startIcon={<EditRounded />}
+            startDecorator={<EditRounded />}
             onClick={() => router.push(`/dives/edit/${diveId}`)}
           >
             Edit
@@ -139,7 +139,7 @@ const Dive: React.FC = () => {
             sx={{ mt: 2 }}
             color="danger"
             fullWidth
-            startIcon={<DeleteRounded />}
+            startDecorator={<DeleteRounded />}
             onClick={handleDiveDelete}
           >
             Delete

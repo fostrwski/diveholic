@@ -167,7 +167,7 @@ const SignIn: React.FC = () => {
             color={success ? "success" : "primary"}
             size="lg"
             sx={{ mt: 2 }}
-            startIcon={success ? <DoneRounded /> : <LoginRounded />}
+            startDecorator={success ? <DoneRounded /> : <LoginRounded />}
             disabled={loading}
             data-cy="submit"
           >

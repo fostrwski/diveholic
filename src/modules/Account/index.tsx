@@ -76,7 +76,7 @@ const Account: React.FC<AccountProps> = ({ user }) => {
 
         <Box textAlign="right">
           <Button
-            startIcon={<DoneRounded />}
+            startDecorator={<DoneRounded />}
             color="success"
             sx={{ mt: 4 }}
             disabled

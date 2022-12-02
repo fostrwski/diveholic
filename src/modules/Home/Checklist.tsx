@@ -34,7 +34,7 @@ const Checklist: React.FC = () => {
       </Grid>
 
       <Box textAlign="right" mt={2}>
-        <Button color="danger" startIcon={<ClearRounded />} disabled>
+        <Button color="danger" startDecorator={<ClearRounded />} disabled>
           Clear
         </Button>
       </Box>

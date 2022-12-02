@@ -32,7 +32,7 @@ const CancelButton: React.FC = () => {
         variant="plain"
         aria-label="Cancel adding new dive"
         onClick={handleModalToggle}
-        endIcon={<CloseRounded />}
+        endDecorator={<CloseRounded />}
       >
         Cancel
       </Button>

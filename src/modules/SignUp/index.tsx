@@ -205,7 +205,7 @@ const SignUp: React.FC = () => {
             type="submit"
             size="lg"
             sx={{ mt: 2, width: "100%" }}
-            startIcon={success ? <DoneRounded /> : <PersonAddRounded />}
+            startDecorator={success ? <DoneRounded /> : <PersonAddRounded />}
             disabled={loading}
           >
             Create account

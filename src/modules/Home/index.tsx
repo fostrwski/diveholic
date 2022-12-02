@@ -29,7 +29,7 @@ const Home: React.FC<HomeProps> = ({ user, dives }) => {
       <NextLink href="/dives/new" passHref>
         <Button
           sx={{ mt: 2 }}
-          startIcon={<AddRounded />}
+          startDecorator={<AddRounded />}
           component="a"
           size="lg"
         >
