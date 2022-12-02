@@ -31,7 +31,7 @@ const Location: React.FC = () => {
         </Grid>
         <Grid xs={6}>
           <TextField
-            {...register("locationCountryCity")}
+            {...register("locationCity")}
             type="text"
             label="City"
             placeholder="Trogir"
