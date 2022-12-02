@@ -36,14 +36,7 @@ const Location: React.FC = () => {
                       field.onChange(data);
                     }
                   }}
-                  onChange={(_, data) => {
-                    if (
-                      Object.values(listOfCountries).includes(data) ||
-                      data === ""
-                    ) {
-                      field.onChange(data);
-                    }
-                  }}
+                  onChange={(_, data) => field.onChange(data)}
                   placeholder="Croatia"
                   startDecorator={
                     watchLocationCountryFlagEmoji ? (
