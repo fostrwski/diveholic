@@ -13,17 +13,19 @@ interface NewProps {
 
 const New: React.FC<NewProps> = ({ user }) => {
   const { handleSubmit, getValues } = useFormContext();
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data: any) => console.log(data);
 
-  // const customSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-  //   e.preventDefault();
-  //   const diveObject = generateNewDiveObject(getValues());
+  // @ts-ignore
+  const unusedOnSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    // @ts-ignore
+    const diveObject = generateNewDiveObject(getValues());
 
-  //   const { error } = await supabase
-  //     .from("dives")
-  //     .insert({ user_id: user.id, ...diveObject });
-  //   if (error) console.error(error);
-  // };
+    const { error } = await supabase
+      .from("dives")
+      .insert({ user_id: user.id, ...diveObject });
+    if (error) console.error(error);
+  };
 
   return (
     <>
