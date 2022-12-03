@@ -35,12 +35,10 @@ const waterTypes = [
 const sliderMarks = generateSliderMarks([0, 5, 10, 15, 20]);
 
 const Details: React.FC = () => {
-  const {
-    register, setValue, getValues, control,
-  } = useFormContext();
+  const { setValue, getValues, control } = useFormContext();
 
   const handleWeightsAmmountRadioChange = (
-    e: React.ChangeEvent<HTMLInputElement>,
+    e: React.ChangeEvent<HTMLInputElement>
   ) => {
     switch (e.target.value) {
       case "tooLittle":
@@ -83,7 +81,7 @@ const Details: React.FC = () => {
                     <FormHelperText>{waterType.examples}</FormHelperText>
                   </div>
                 </FormControl>
-              ),
+              )
             )}
           </RadioGroup>
         )}
@@ -133,7 +131,7 @@ const Details: React.FC = () => {
                     <FormHelperText>{ammount.helperText}</FormHelperText>
                   </div>
                 </FormControl>
-              ),
+              )
             )}
           </RadioGroup>
         )}
