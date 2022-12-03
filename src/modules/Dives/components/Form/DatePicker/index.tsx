@@ -58,7 +58,7 @@ const DatePicker: React.FC<DatePickerProps> = ({ initialDate }) => {
   };
 
   const handleDayRadioChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setDay(parseInt(e.target.value));
+    setDay(parseInt(e.target.value, 10));
   };
 
   const handleMonthSelectChange = (month: string) => {
@@ -207,7 +207,8 @@ const DatePicker: React.FC<DatePickerProps> = ({ initialDate }) => {
                         <Typography fontWeight="lg">{weekday}</Typography>
                       </Grid>
                     ))}
-                    {/* Create white space to properly align days of month with matching weekdays (hard to explain) */}
+                    {/* Create white space to properly align
+                        days of month with matching weekdays (hard to explain) */}
                     {[...Array(getFirstDayOfMonth(date))].map((_, index) => (
                       <Grid xs={1} key={index} />
                     ))}
