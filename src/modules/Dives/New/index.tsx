@@ -15,7 +15,7 @@ const New: React.FC<NewProps> = ({ user }) => {
   const { handleSubmit, getValues } = useFormContext();
   const onSubmit = (data: any) => console.log(data);
 
-  // @ts-ignore
+  // eslint no-unused-vars: "off"
   const unusedOnSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // @ts-ignore
