@@ -16,11 +16,11 @@ import { formatDate, formatTime } from "common/utils/datetime/format";
 import NextLink from "next/link";
 import React from "react";
 
-interface DiveCard {
+interface DiveCardProps {
   dive: Dive;
 }
 
-const DiveCard: React.FC<DiveCard> = ({ dive }) => (
+const DiveCard: React.FC<DiveCardProps> = ({ dive }) => (
   <NextLink href={`/dives/${dive.id}`}>
     <Card
       sx={{
