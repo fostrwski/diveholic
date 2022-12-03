@@ -5,7 +5,6 @@ import {
 } from "@mui/icons-material";
 import DoneRounded from "@mui/icons-material/DoneRounded";
 import EditRounded from "@mui/icons-material/EditRounded";
-import Avatar from "@mui/joy/Avatar";
 import Box from "@mui/joy/Box";
 import Button from "@mui/joy/Button";
 import Radio from "@mui/joy/Radio";
@@ -14,7 +13,6 @@ import TextField from "@mui/joy/TextField";
 import Typography from "@mui/joy/Typography";
 import { useColorScheme } from "@mui/joy/styles";
 import { User } from "@supabase/auth-helpers-nextjs";
-import generateInitials from "common/utils/generateInitials";
 import React, { useEffect, useState } from "react";
 
 interface AccountProps {
@@ -42,10 +40,6 @@ const Account: React.FC<AccountProps> = ({ user }) => {
 
   return (
     <>
-      {/* <Avatar sx={{ width: 140, height: 140, mx: "auto" }} size="lg"> */}
-      {/*   <Typography level="display2">{generateInitials(firstName)}</Typography> */}
-      {/* </Avatar> */}
-
       <Box mb={4} width="100%">
         <Typography
           startDecorator={<PersonRounded />}

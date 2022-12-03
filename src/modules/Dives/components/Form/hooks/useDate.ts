@@ -13,12 +13,13 @@ export default function useDate(initialDate?: Date) {
   );
 
   useEffect(() => {
+    // TODO: Sometimes works in a wrong way!
     const date = new Date();
     date.setDate(day);
     date.setMonth(month);
     date.setFullYear(fullYear);
-    date.setHours(parseInt(time.split(":")[0]));
-    date.setMinutes(parseInt(time.split(":")[1]));
+    date.setHours(parseInt(time.split(":")[0], 10));
+    date.setMinutes(parseInt(time.split(":")[1], 10));
 
     setDate(date);
 
