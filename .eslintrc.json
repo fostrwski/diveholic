@@ -3,6 +3,8 @@
   "extends": ["next/core-web-vitals", "prettier", "airbnb-base"],
   "rules": {
     "react/no-unescaped-entities": "off",
+    "no-shadow": "off",
+    "consistent-return": "off",
     "quotes": [2, "double"],
     "import/extensions": [
       "error",
