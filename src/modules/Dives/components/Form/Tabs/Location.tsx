@@ -41,11 +41,11 @@ const Location: React.FC = () => {
                   options={Object.values(listOfCountries)}
                   onInputChange={debounce(
                     (_, data: string) => field.onChange(data),
-                    600
+                    500
                   )}
                   onChange={debounce(
                     (_, data: string) => field.onChange(data),
-                    600
+                    500
                   )}
                   placeholder="Croatia"
                   startDecorator={
