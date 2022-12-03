@@ -6,7 +6,7 @@ import FormLabel from "@mui/joy/FormLabel";
 import TextField from "@mui/joy/TextField";
 import Textarea from "@mui/joy/Textarea";
 import React, { useEffect } from "react";
-import { useFormContext, useFormState } from "react-hook-form";
+import { useFormContext } from "react-hook-form";
 
 import DatePicker from "./DatePicker";
 import Gear from "./Gear";
@@ -20,9 +20,7 @@ interface FormProps {
 }
 
 const Form: React.FC<FormProps> = ({ onSubmit }) => {
-  const {
-    setValue, watch, getValues, control,
-  } = useFormContext();
+  const { setValue, watch, getValues } = useFormContext();
   const watchLocationCountryName = watch("locationCountryName");
 
   useEffect(() => {
