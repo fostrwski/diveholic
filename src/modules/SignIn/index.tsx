@@ -18,7 +18,7 @@ import { supabase } from "common/utils/supabaseClient";
 import Image from "next/image";
 import NextLink from "next/link";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const SignIn: React.FC = () => {
   const router = useRouter();
