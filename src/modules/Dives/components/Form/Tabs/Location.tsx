@@ -40,13 +40,14 @@ const Location: React.FC = () => {
                   {...field}
                   options={Object.values(listOfCountries)}
                   onInputChange={debounce(
-                    (_, data: string) => field.onChange(data),
+                    (_: React.ChangeEvent<HTMLInputElement>, data: string) =>
+                      field.onChange(data),
                     500
                   )}
-                  onChange={debounce(
-                    (_, data: string) => field.onChange(data),
-                    500
-                  )}
+                  onChange={(
+                    _: any,
+                    data: string
+                  ) => field.onChange(data)}
                   placeholder="Croatia"
                   startDecorator={
                     watchLocationCountryFlagEmoji ? (
@@ -58,6 +59,7 @@ const Location: React.FC = () => {
                   freeSolo
                   error={!!errors.locationCountryName}
                   filterOptions={filterOptions}
+                  disableClearable
                 />
               )}
             />
