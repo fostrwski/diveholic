@@ -4,5 +4,7 @@ export default function getDiveEmoji(diveType: "boat" | "shore") {
       return "⚓️";
     case "shore":
       return "🏝";
+    default:
+      return "🤿";
   }
 }
