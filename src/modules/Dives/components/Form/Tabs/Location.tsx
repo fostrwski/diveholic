@@ -1,3 +1,4 @@
+import { createFilterOptions } from "@mui/base";
 import FlagRounded from "@mui/icons-material/FlagRounded";
 import PlaceRounded from "@mui/icons-material/PlaceRounded";
 import PublicRounded from "@mui/icons-material/PublicRounded";
@@ -21,6 +22,7 @@ const Location: React.FC = () => {
     formState: { errors },
   } = useFormContext();
   const watchLocationCountryFlagEmoji = watch("locationCountryFlagEmoji");
+  const filterOptions = createFilterOptions({ limit: 20 });
 
   return (
     <>
@@ -28,12 +30,11 @@ const Location: React.FC = () => {
         <Grid xs={6}>
           <FormControl error={!!errors.locationCountryName}>
             <FormLabel>Country</FormLabel>
-            {/* TODO: Optimize it! */}
             <Controller
               name="locationCountryName"
-              // rules={{
-              //   required: "This field is required",
-              // }}
+              rules={{
+                required: "This field is required",
+              }}
               render={({ field }) => (
                 <Autocomplete
                   {...field}
@@ -56,6 +57,7 @@ const Location: React.FC = () => {
                   }
                   freeSolo
                   error={!!errors.locationCountryName}
+                  filterOptions={filterOptions}
                 />
               )}
             />
