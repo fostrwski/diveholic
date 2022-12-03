@@ -7,8 +7,7 @@ import ListItemDecorator from "@mui/joy/ListItemDecorator";
 import Typography from "@mui/joy/Typography";
 import React from "react";
 
-const Statistics: React.FC = () => {
-  return (
+const Statistics: React.FC = () => (
     <>
       <Typography startDecorator={<BarChartRounded />} level="h4" component="p">
         Statistics
@@ -35,7 +34,6 @@ const Statistics: React.FC = () => {
         </ListItem>
       </List>
     </>
-  );
-};
+);
 
 export default Statistics;

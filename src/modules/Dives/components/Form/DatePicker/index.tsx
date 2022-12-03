@@ -193,7 +193,7 @@ const DatePicker: React.FC<DatePickerProps> = ({ initialDate }) => {
                             {year}
                           </Option>
                         );
-                      }
+                      },
                     )}
                   </Select>
                 </FormControl>

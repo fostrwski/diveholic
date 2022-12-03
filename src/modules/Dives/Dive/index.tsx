@@ -11,8 +11,7 @@ import type { Dive as DiveType } from "common/types";
 import { formatDate, formatTime } from "common/utils/datetime/format";
 import { supabase } from "common/utils/supabaseClient";
 import { useRouter } from "next/router";
-import React, { useState } from "react";
-import { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 import BasicInformation from "./BasicInformation";
 import Details from "./Details";
@@ -67,13 +66,14 @@ const Dive: React.FC = () => {
   }, [user]);
 
   const determineView = (): React.ReactElement => {
-    if (error)
+    if (error) {
       return (
         <Error
           error={error}
           tip="Make sure you're connected to the internet and try reloading the page."
         />
       );
+    }
 
     if (user && loading) return <Loading />;
 

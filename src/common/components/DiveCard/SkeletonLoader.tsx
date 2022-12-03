@@ -8,8 +8,7 @@ import Grid from "@mui/joy/Grid";
 import Separator from "common/components/Separator";
 import React from "react";
 
-const DiveCardSkeletonLoader: React.FC = () => {
-  return (
+const DiveCardSkeletonLoader: React.FC = () => (
     <Card
       sx={{
         width: {
@@ -71,7 +70,6 @@ const DiveCardSkeletonLoader: React.FC = () => {
         </Box>
       </CardContent>
     </Card>
-  );
-};
+);
 
 export default DiveCardSkeletonLoader;

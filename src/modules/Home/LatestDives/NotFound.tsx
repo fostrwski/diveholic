@@ -3,8 +3,7 @@ import Typography from "@mui/joy/Typography";
 import NextLink from "next/link";
 import React from "react";
 
-const NotFound: React.FC = () => {
-  return (
+const NotFound: React.FC = () => (
     <>
       <Typography component="p" level="subtitle1">
         It looks like you haven't logged any dives yet 🤭
@@ -16,7 +15,6 @@ const NotFound: React.FC = () => {
         </Button>
       </NextLink>
     </>
-  );
-};
+);
 
 export default NotFound;

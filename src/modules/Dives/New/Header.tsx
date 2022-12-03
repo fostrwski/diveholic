@@ -5,8 +5,7 @@ import React from "react";
 
 import CancelButton from "../components/CancelButton";
 
-const Header: React.FC = () => {
-  return (
+const Header: React.FC = () => (
     <Box
       display="flex"
       justifyContent="space-between"
@@ -23,7 +22,6 @@ const Header: React.FC = () => {
       </Chip>
       <CancelButton />
     </Box>
-  );
-};
+);
 
 export default Header;

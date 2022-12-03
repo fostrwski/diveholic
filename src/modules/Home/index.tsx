@@ -15,8 +15,7 @@ interface HomeProps {
   dives: any;
 }
 
-const Home: React.FC<HomeProps> = ({ user, dives }) => {
-  return (
+const Home: React.FC<HomeProps> = ({ user, dives }) => (
     <>
       <Typography level="h4" component="h1">
         Hi {user.user_metadata.first_name} 🤿
@@ -51,7 +50,6 @@ const Home: React.FC<HomeProps> = ({ user, dives }) => {
         {/* </Grid> */}
       </Grid>
     </>
-  );
-};
+);
 
 export default Home;

@@ -11,8 +11,7 @@ interface SectionProps {
   details: Array<DetailProps>;
 }
 
-const Section: React.FC<SectionProps> = ({ title, details }) => {
-  return (
+const Section: React.FC<SectionProps> = ({ title, details }) => (
     <Box mt={4}>
       {title && (
         <Typography mb={2} component="p" level="subtitle1">
@@ -32,7 +31,6 @@ const Section: React.FC<SectionProps> = ({ title, details }) => {
         ))}
       </Grid>
     </Box>
-  );
-};
+);
 
 export default Section;

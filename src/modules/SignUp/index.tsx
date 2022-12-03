@@ -62,7 +62,7 @@ const SignUp: React.FC = () => {
           data: {
             first_name: firstName,
           },
-        }
+        },
       );
       if (error) return setError(error.message);
       setSuccess(true);

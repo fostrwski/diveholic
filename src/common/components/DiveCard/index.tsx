@@ -20,8 +20,7 @@ interface DiveCard {
   dive: Dive;
 }
 
-const DiveCard: React.FC<DiveCard> = ({ dive }) => {
-  return (
+const DiveCard: React.FC<DiveCard> = ({ dive }) => (
     <NextLink href={`/dives/${dive.id}`}>
       <Card
         sx={{
@@ -93,7 +92,6 @@ const DiveCard: React.FC<DiveCard> = ({ dive }) => {
         </CardContent>
       </Card>
     </NextLink>
-  );
-};
+);
 
 export default DiveCard;

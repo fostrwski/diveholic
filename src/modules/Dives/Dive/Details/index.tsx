@@ -15,8 +15,7 @@ interface DetailsProps {
   dive: Dive;
 }
 
-const Details: React.FC<DetailsProps> = ({ dive }) => {
-  return (
+const Details: React.FC<DetailsProps> = ({ dive }) => (
     <>
       <Section
         details={[
@@ -78,7 +77,6 @@ const Details: React.FC<DetailsProps> = ({ dive }) => {
         </Button>
       </Box>
     </>
-  );
-};
+);
 
 export default Details;

@@ -20,7 +20,9 @@ interface FormProps {
 }
 
 const Form: React.FC<FormProps> = ({ onSubmit }) => {
-  const { setValue, watch, getValues, control } = useFormContext();
+  const {
+    setValue, watch, getValues, control,
+  } = useFormContext();
   const watchLocationCountryName = watch("locationCountryName");
 
   useEffect(() => {

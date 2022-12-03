@@ -61,9 +61,9 @@ const theme = extendTheme({
       },
     },
     JoyAutocomplete: {
-      defaultProps : {
-        variant: "soft"
-      }
+      defaultProps: {
+        variant: "soft",
+      },
     },
     JoyModalDialog: {
       defaultProps: {

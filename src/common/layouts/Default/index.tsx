@@ -14,8 +14,7 @@ import { supabase } from "common/utils/supabaseClient";
 import Image from "next/image";
 import NextLink from "next/link";
 import { useRouter } from "next/router";
-import React, { useState } from "react";
-import { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 interface DefaultLayoutProps {
   children: React.ReactNode;

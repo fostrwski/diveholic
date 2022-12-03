@@ -14,8 +14,7 @@ interface BasicInformationProps {
   dive: Dive;
 }
 
-const BasicInformation: React.FC<BasicInformationProps> = ({ dive }) => {
-  return (
+const BasicInformation: React.FC<BasicInformationProps> = ({ dive }) => (
     <>
       <Typography component="p" mb={2} level="subtitle1">
         Basic information
@@ -71,7 +70,6 @@ const BasicInformation: React.FC<BasicInformationProps> = ({ dive }) => {
         </Grid>
       </Sheet>
     </>
-  );
-};
+);
 
 export default BasicInformation;

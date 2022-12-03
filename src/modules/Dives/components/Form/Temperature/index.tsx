@@ -6,8 +6,7 @@ import { Controller } from "react-hook-form";
 
 import TemperatureSlider from "./Slider";
 
-const Temperature: React.FC = () => {
-  return (
+const Temperature: React.FC = () => (
     <>
       <TextSeparator sx={{ mt: 8 }}>Weather</TextSeparator>
       <Typography
@@ -69,7 +68,6 @@ const Temperature: React.FC = () => {
         </Grid>
       </Grid>
     </>
-  );
-};
+);
 
 export default Temperature;

@@ -7,8 +7,7 @@ interface Dives {
   data: Array<Dive>;
 }
 
-const Dives: React.FC<Dives> = ({ data }) => {
-  return (
+const Dives: React.FC<Dives> = ({ data }) => (
     <Grid container gap={2}>
       {data.map((dive: Dive) => (
         <Grid xs={12}>
@@ -16,7 +15,6 @@ const Dives: React.FC<Dives> = ({ data }) => {
         </Grid>
       ))}
     </Grid>
-  );
-};
+);
 
 export default Dives;

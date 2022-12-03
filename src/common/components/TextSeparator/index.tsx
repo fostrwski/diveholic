@@ -10,8 +10,7 @@ interface TextSeparatorProps {
   sx?: SxProps;
 }
 
-const TextSeparator: React.FC<TextSeparatorProps> = ({ children, sx }) => {
-  return (
+const TextSeparator: React.FC<TextSeparatorProps> = ({ children, sx }) => (
     <Box
       sx={{
         display: "flex",
@@ -25,7 +24,6 @@ const TextSeparator: React.FC<TextSeparatorProps> = ({ children, sx }) => {
       </Typography>
       <Separator />
     </Box>
-  );
-};
+);
 
 export default TextSeparator;

@@ -9,7 +9,7 @@ export default function useDate(initialDate?: Date) {
   const [daysInMonth, setDaysInMonth] = useState(0);
 
   const [time, setTime] = useState<string>(
-    `${date.getHours()}:${date.getMinutes()}`
+    `${date.getHours()}:${date.getMinutes()}`,
   );
 
   useEffect(() => {
@@ -23,7 +23,7 @@ export default function useDate(initialDate?: Date) {
     setDate(date);
 
     setDaysInMonth(
-      new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate()
+      new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate(),
     );
   }, [day, month, fullYear, time]);
 

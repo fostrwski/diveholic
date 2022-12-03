@@ -8,8 +8,7 @@ import Basics from "./Basics";
 import Details from "./Details";
 import Location from "./Location";
 
-const Tabs: React.FC = () => {
-  return (
+const Tabs: React.FC = () => (
     <MuiTabs
       defaultValue={0}
       sx={{
@@ -36,7 +35,6 @@ const Tabs: React.FC = () => {
         <Details />
       </TabPanel>
     </MuiTabs>
-  );
-};
+);
 
 export default Tabs;

@@ -10,8 +10,9 @@ interface InfoProps {
   unit?: string;
 }
 
-const Info: React.FC<InfoProps> = ({ title, value, icon, unit }) => {
-  return (
+const Info: React.FC<InfoProps> = ({
+  title, value, icon, unit,
+}) => (
     <Typography level="h6" component="div">
       <Box
         sx={{
@@ -27,7 +28,7 @@ const Info: React.FC<InfoProps> = ({ title, value, icon, unit }) => {
           size="lg"
           variant="outlined"
           startDecorator={icon}
-          endDecorator={unit ? unit : ""}
+          endDecorator={unit || ""}
         >
           {typeof value === "string"
             ? value.slice(0, 1).toUpperCase() + value.slice(1)
@@ -35,7 +36,6 @@ const Info: React.FC<InfoProps> = ({ title, value, icon, unit }) => {
         </Chip>
       </Box>
     </Typography>
-  );
-};
+);
 
 export default Info;

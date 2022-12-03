@@ -10,8 +10,7 @@ interface ErrorProps {
   tip?: string;
 }
 
-const Error: React.FC<ErrorProps> = ({ error, customMessage, tip }) => {
-  return (
+const Error: React.FC<ErrorProps> = ({ error, customMessage, tip }) => (
     <Box>
       {/* @ts-ignore  */}
       <ErrorOutlineRounded sx={{ fontSize: 64 }} color="danger" />
@@ -19,7 +18,7 @@ const Error: React.FC<ErrorProps> = ({ error, customMessage, tip }) => {
         Something went wrong
       </Typography>
       <Typography component="p" fontWeight="lg">
-        {customMessage ? customMessage : error?.message}
+        {customMessage || error?.message}
       </Typography>
 
       {tip && (
@@ -32,7 +31,6 @@ const Error: React.FC<ErrorProps> = ({ error, customMessage, tip }) => {
         Need more help?
       </Typography>
     </Box>
-  );
-};
+);
 
 export default Error;

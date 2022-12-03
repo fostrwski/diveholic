@@ -7,8 +7,7 @@ interface DiveCardsProps {
   dives: Array<Dive>;
 }
 
-const DiveCards: React.FC<DiveCardsProps> = ({ dives }) => {
-  return (
+const DiveCards: React.FC<DiveCardsProps> = ({ dives }) => (
     <>
       {dives.map((dive: Dive) => (
         <Grid xs={12} lg={4} key={dive.id}>
@@ -16,7 +15,6 @@ const DiveCards: React.FC<DiveCardsProps> = ({ dives }) => {
         </Grid>
       ))}
     </>
-  );
-};
+);
 
 export default DiveCards;
