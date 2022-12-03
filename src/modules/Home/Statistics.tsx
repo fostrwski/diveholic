@@ -8,32 +8,32 @@ import Typography from "@mui/joy/Typography";
 import React from "react";
 
 const Statistics: React.FC = () => (
-    <>
-      <Typography startDecorator={<BarChartRounded />} level="h4" component="p">
-        Statistics
-      </Typography>
+  <>
+    <Typography startDecorator={<BarChartRounded />} level="h4" component="p">
+      Statistics
+    </Typography>
 
-      <List
-        size="lg"
-        sx={{
-          mt: 2,
-          "--List-item-minHeight": "6px",
-        }}
-      >
-        <ListItem>
-          <ListItemDecorator>
-            <TimelapseRounded />
-          </ListItemDecorator>
-          Total 574min
-        </ListItem>
-        <ListItem>
-          <ListItemDecorator>
-            <DownloadRounded />
-          </ListItemDecorator>
-          Max 32.2m
-        </ListItem>
-      </List>
-    </>
+    <List
+      size="lg"
+      sx={{
+        mt: 2,
+        "--List-item-minHeight": "6px",
+      }}
+    >
+      <ListItem>
+        <ListItemDecorator>
+          <TimelapseRounded />
+        </ListItemDecorator>
+        Total 574min
+      </ListItem>
+      <ListItem>
+        <ListItemDecorator>
+          <DownloadRounded />
+        </ListItemDecorator>
+        Max 32.2m
+      </ListItem>
+    </List>
+  </>
 );
 
 export default Statistics;

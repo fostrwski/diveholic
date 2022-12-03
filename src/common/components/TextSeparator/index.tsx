@@ -11,19 +11,19 @@ interface TextSeparatorProps {
 }
 
 const TextSeparator: React.FC<TextSeparatorProps> = ({ children, sx }) => (
-    <Box
-      sx={{
-        display: "flex",
-        alignItems: "center",
-        gap: 6,
-        ...sx,
-      }}
-    >
-      <Typography component="p" level="h4" sx={{ whiteSpace: "nowrap" }}>
-        {children}
-      </Typography>
-      <Separator />
-    </Box>
+  <Box
+    sx={{
+      display: "flex",
+      alignItems: "center",
+      gap: 6,
+      ...sx,
+    }}
+  >
+    <Typography component="p" level="h4" sx={{ whiteSpace: "nowrap" }}>
+      {children}
+    </Typography>
+    <Separator />
+  </Box>
 );
 
 export default TextSeparator;

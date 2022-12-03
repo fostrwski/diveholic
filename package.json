@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint .",
+    "lint": "eslint . --fix",
+    "format": "prettier . --write",
     "cypress:run": "cypress run",
     "cypress:open": "cypress open"
   },

@@ -16,67 +16,67 @@ interface DetailsProps {
 }
 
 const Details: React.FC<DetailsProps> = ({ dive }) => (
-    <>
-      <Section
-        details={[
-          {
-            title: "Avg. depth",
-            content: dive.depth.average,
-            icon: <DownloadDoneRounded />,
-          },
-          {
-            title: "Max depth",
-            content: dive.depth.max,
-            icon: <DownloadRounded />,
-          },
-        ]}
-      />
+  <>
+    <Section
+      details={[
+        {
+          title: "Avg. depth",
+          content: dive.depth.average,
+          icon: <DownloadDoneRounded />,
+        },
+        {
+          title: "Max depth",
+          content: dive.depth.max,
+          icon: <DownloadRounded />,
+        },
+      ]}
+    />
 
-      <TextSeparator sx={{ mt: 8 }}>Gear</TextSeparator>
-      <Section
-        title="Exposure protection"
-        details={[
-          { title: "Type", content: dive.gear.exposureProtection.type },
-          {
-            title: "Thickness",
-            content: dive.gear.exposureProtection.thickness,
-            icon: <LineWeightRounded />,
-          },
-        ]}
-      />
+    <TextSeparator sx={{ mt: 8 }}>Gear</TextSeparator>
+    <Section
+      title="Exposure protection"
+      details={[
+        { title: "Type", content: dive.gear.exposureProtection.type },
+        {
+          title: "Thickness",
+          content: dive.gear.exposureProtection.thickness,
+          icon: <LineWeightRounded />,
+        },
+      ]}
+    />
 
-      <Section
-        title="Tanks"
-        details={[
-          {
-            title: "Count",
-            content: dive.gear.tanks.count,
-            icon: <NumbersRounded />,
-          },
+    <Section
+      title="Tanks"
+      details={[
+        {
+          title: "Count",
+          content: dive.gear.tanks.count,
+          icon: <NumbersRounded />,
+        },
 
-          { title: "Type", content: dive.gear.tanks.type },
-        ]}
-      />
+        { title: "Type", content: dive.gear.tanks.type },
+      ]}
+    />
 
-      <Box
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          gap: 6,
-          mt: 6,
-        }}
+    <Box
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        gap: 6,
+        mt: 6,
+      }}
+    >
+      <Separator />
+      <Button
+        variant="plain"
+        size="sm"
+        color="neutral"
+        sx={{ whiteSpace: "nowrap" }}
       >
-        <Separator />
-        <Button
-          variant="plain"
-          size="sm"
-          color="neutral"
-          sx={{ whiteSpace: "nowrap" }}
-        >
-          See more
-        </Button>
-      </Box>
-    </>
+        See more
+      </Button>
+    </Box>
+  </>
 );
 
 export default Details;

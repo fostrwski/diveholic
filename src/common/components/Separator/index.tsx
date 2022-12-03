@@ -8,12 +8,9 @@ interface SeparatorProps {
 }
 
 const Separator: React.FC<SeparatorProps> = ({ sx }) => (
-    <Box width="100%">
-      <ListDivider
-        component="hr"
-        sx={{ width: "100%", height: "2px", ...sx }}
-      />
-    </Box>
+  <Box width="100%">
+    <ListDivider component="hr" sx={{ width: "100%", height: "2px", ...sx }} />
+  </Box>
 );
 
 export default Separator;

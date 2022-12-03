@@ -15,61 +15,61 @@ interface BasicInformationProps {
 }
 
 const BasicInformation: React.FC<BasicInformationProps> = ({ dive }) => (
-    <>
-      <Typography component="p" mb={2} level="subtitle1">
-        Basic information
-      </Typography>
+  <>
+    <Typography component="p" mb={2} level="subtitle1">
+      Basic information
+    </Typography>
 
-      <Sheet
-        variant="plain"
-        sx={(theme) => ({
-          borderLeftWidth: theme.spacing(0.4),
-          borderLeftStyle: "solid",
-          borderTopLeftRadius: 0,
-          borderBottomLeftRadius: 0,
+    <Sheet
+      variant="plain"
+      sx={(theme) => ({
+        borderLeftWidth: theme.spacing(0.4),
+        borderLeftStyle: "solid",
+        borderTopLeftRadius: 0,
+        borderBottomLeftRadius: 0,
 
-          [theme.getColorSchemeSelector("light")]: {
-            borderColor: "neutral.200",
-          },
-          [theme.getColorSchemeSelector("dark")]: {
-            borderColor: "neutral.800",
-          },
-        })}
-      >
-        <Grid container spacing={1}>
-          {dive.type && (
-            <Grid xs={12}>
-              <Info title="Type" value={dive.type} icon={<TitleRounded />} />
-            </Grid>
-          )}
-          {dive.length && (
-            <Grid xs={12}>
-              <Info
-                title="Length"
-                value={dive.length}
-                unit="min"
-                icon={<TimelapseRounded />}
-              />
-            </Grid>
-          )}
-          {dive.water && (
-            <Grid xs={12}>
-              <Info title="Water" value={dive.water} icon={<WavesRounded />} />
-            </Grid>
-          )}
-          {dive.weights.taken && (
-            <Grid xs={12}>
-              <Info
-                title="Weights"
-                value={dive.weights.taken}
-                unit="kg"
-                icon={<ScaleRounded />}
-              />
-            </Grid>
-          )}
-        </Grid>
-      </Sheet>
-    </>
+        [theme.getColorSchemeSelector("light")]: {
+          borderColor: "neutral.200",
+        },
+        [theme.getColorSchemeSelector("dark")]: {
+          borderColor: "neutral.800",
+        },
+      })}
+    >
+      <Grid container spacing={1}>
+        {dive.type && (
+          <Grid xs={12}>
+            <Info title="Type" value={dive.type} icon={<TitleRounded />} />
+          </Grid>
+        )}
+        {dive.length && (
+          <Grid xs={12}>
+            <Info
+              title="Length"
+              value={dive.length}
+              unit="min"
+              icon={<TimelapseRounded />}
+            />
+          </Grid>
+        )}
+        {dive.water && (
+          <Grid xs={12}>
+            <Info title="Water" value={dive.water} icon={<WavesRounded />} />
+          </Grid>
+        )}
+        {dive.weights.taken && (
+          <Grid xs={12}>
+            <Info
+              title="Weights"
+              value={dive.weights.taken}
+              unit="kg"
+              icon={<ScaleRounded />}
+            />
+          </Grid>
+        )}
+      </Grid>
+    </Sheet>
+  </>
 );
 
 export default BasicInformation;

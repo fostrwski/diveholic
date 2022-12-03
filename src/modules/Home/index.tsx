@@ -14,32 +14,32 @@ interface HomeProps {
 }
 
 const Home: React.FC<HomeProps> = ({ user, dives }) => (
-    <>
-      <Typography level="h4" component="h1">
-        Hi {user.user_metadata.first_name} 🤿
-      </Typography>
+  <>
+    <Typography level="h4" component="h1">
+      Hi {user.user_metadata.first_name} 🤿
+    </Typography>
 
-      <Typography level="h6" textColor="GrayText" component="h2">
-        You've logged {dives?.length} dives so far
-      </Typography>
+    <Typography level="h6" textColor="GrayText" component="h2">
+      You've logged {dives?.length} dives so far
+    </Typography>
 
-      <NextLink href="/dives/new" passHref>
-        <Button
-          sx={{ mt: 2 }}
-          startDecorator={<AddRounded />}
-          component="a"
-          size="lg"
-        >
-          Log dive
-        </Button>
-      </NextLink>
+    <NextLink href="/dives/new" passHref>
+      <Button
+        sx={{ mt: 2 }}
+        startDecorator={<AddRounded />}
+        component="a"
+        size="lg"
+      >
+        Log dive
+      </Button>
+    </NextLink>
 
-      <Grid container gap={6} mt={6}>
-        <Grid xs={12}>
-          <LatestDives />
-        </Grid>
+    <Grid container gap={6} mt={6}>
+      <Grid xs={12}>
+        <LatestDives />
       </Grid>
-    </>
+    </Grid>
+  </>
 );
 
 export default Home;

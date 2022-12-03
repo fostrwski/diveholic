@@ -8,13 +8,13 @@ interface DiveCardsProps {
 }
 
 const DiveCards: React.FC<DiveCardsProps> = ({ dives }) => (
-    <>
-      {dives.map((dive: Dive) => (
-        <Grid xs={12} lg={4} key={dive.id}>
-          <DiveCard dive={dive} />
-        </Grid>
-      ))}
-    </>
+  <>
+    {dives.map((dive: Dive) => (
+      <Grid xs={12} lg={4} key={dive.id}>
+        <DiveCard dive={dive} />
+      </Grid>
+    ))}
+  </>
 );
 
 export default DiveCards;

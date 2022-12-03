@@ -1,4 +1,3 @@
-import { createFilterOptions } from "@mui/base";
 import FlagRounded from "@mui/icons-material/FlagRounded";
 import PlaceRounded from "@mui/icons-material/PlaceRounded";
 import PublicRounded from "@mui/icons-material/PublicRounded";
@@ -9,6 +8,7 @@ import FormLabel from "@mui/joy/FormLabel";
 import Grid from "@mui/joy/Grid";
 import Link from "@mui/joy/Link";
 import TextField from "@mui/joy/TextField";
+import { createFilterOptions } from "@mui/material/Autocomplete";
 import { debounce } from "debounce";
 import React from "react";
 import { Controller, useFormContext } from "react-hook-form";
@@ -40,15 +40,14 @@ const Location: React.FC = () => {
                   {...field}
                   options={Object.values(listOfCountries)}
                   onInputChange={debounce(
-                    (_: React.ChangeEvent<HTMLInputElement>, data: string) => field.onChange(data),
+                    (_: React.ChangeEvent<HTMLInputElement>, data: string) =>
+                      field.onChange(data),
                     500,
                   )}
                   onChange={(_: any, data: string) => field.onChange(data)}
                   placeholder="Croatia"
                   startDecorator={
-                    watchLocationCountryFlagEmoji || (
-                      <PublicRounded />
-                    )
+                    watchLocationCountryFlagEmoji || <PublicRounded />
                   }
                   freeSolo
                   error={!!errors.locationCountryName}

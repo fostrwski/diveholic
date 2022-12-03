@@ -9,32 +9,32 @@ import Details from "./Details";
 import Location from "./Location";
 
 const Tabs: React.FC = () => (
-    <MuiTabs
-      defaultValue={0}
-      sx={{
-        backgroundColor: "transparent",
-        px: 0,
-        mt: 4,
-      }}
-    >
-      <TabList size="lg" sx={{ mb: 4 }}>
-        <Tab>Location</Tab>
-        <Tab>Basics</Tab>
-        <Tab>Details</Tab>
-      </TabList>
+  <MuiTabs
+    defaultValue={0}
+    sx={{
+      backgroundColor: "transparent",
+      px: 0,
+      mt: 4,
+    }}
+  >
+    <TabList size="lg" sx={{ mb: 4 }}>
+      <Tab>Location</Tab>
+      <Tab>Basics</Tab>
+      <Tab>Details</Tab>
+    </TabList>
 
-      <TabPanel value={0}>
-        <Location />
-      </TabPanel>
+    <TabPanel value={0}>
+      <Location />
+    </TabPanel>
 
-      <TabPanel value={1}>
-        <Basics />
-      </TabPanel>
+    <TabPanel value={1}>
+      <Basics />
+    </TabPanel>
 
-      <TabPanel value={2}>
-        <Details />
-      </TabPanel>
-    </MuiTabs>
+    <TabPanel value={2}>
+      <Details />
+    </TabPanel>
+  </MuiTabs>
 );
 
 export default Tabs;

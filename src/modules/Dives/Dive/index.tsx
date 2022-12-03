@@ -11,7 +11,7 @@ import type { Dive as DiveType } from "common/types";
 import { formatDate, formatTime } from "common/utils/datetime/format";
 import { supabase } from "common/utils/supabaseClient";
 import { useRouter } from "next/router";
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import BasicInformation from "./BasicInformation";
 import Details from "./Details";

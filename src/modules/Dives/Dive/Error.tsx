@@ -11,26 +11,26 @@ interface ErrorProps {
 }
 
 const Error: React.FC<ErrorProps> = ({ error, customMessage, tip }) => (
-    <Box>
-      {/* @ts-ignore  */}
-      <ErrorOutlineRounded sx={{ fontSize: 64 }} color="danger" />
-      <Typography component="p" level="h4" color="danger" gutterBottom>
-        Something went wrong
-      </Typography>
-      <Typography component="p" fontWeight="lg">
-        {customMessage || error?.message}
-      </Typography>
+  <Box>
+    {/* @ts-ignore  */}
+    <ErrorOutlineRounded sx={{ fontSize: 64 }} color="danger" />
+    <Typography component="p" level="h4" color="danger" gutterBottom>
+      Something went wrong
+    </Typography>
+    <Typography component="p" fontWeight="lg">
+      {customMessage || error?.message}
+    </Typography>
 
-      {tip && (
-        <Typography component="p" mt={4}>
-          {tip}
-        </Typography>
-      )}
-
-      <Typography component="p" level="body2" mt={6}>
-        Need more help?
+    {tip && (
+      <Typography component="p" mt={4}>
+        {tip}
       </Typography>
-    </Box>
+    )}
+
+    <Typography component="p" level="body2" mt={6}>
+      Need more help?
+    </Typography>
+  </Box>
 );
 
 export default Error;

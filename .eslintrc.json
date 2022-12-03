@@ -1,6 +1,11 @@
 {
   "root": true,
-  "extends": ["next/core-web-vitals", "plugin:cypress/recommended", "prettier", "airbnb-base"],
+  "extends": [
+    "next/core-web-vitals",
+    "plugin:cypress/recommended",
+    "prettier",
+    "airbnb-base"
+  ],
   "rules": {
     "react/no-unescaped-entities": "off",
     "no-shadow": "off",
