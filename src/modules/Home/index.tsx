@@ -6,9 +6,7 @@ import { User } from "@supabase/auth-helpers-nextjs";
 import NextLink from "next/link";
 import React from "react";
 
-import Checklist from "./Checklist";
 import LatestDives from "./LatestDives";
-import Statistics from "./Statistics";
 
 interface HomeProps {
   user: User;
@@ -40,14 +38,6 @@ const Home: React.FC<HomeProps> = ({ user, dives }) => (
         <Grid xs={12}>
           <LatestDives />
         </Grid>
-
-        {/* <Grid xs={12}> */}
-        {/*   <Statistics /> */}
-        {/* </Grid> */}
-
-        {/* <Grid xs={12}> */}
-        {/*   <Checklist /> */}
-        {/* </Grid> */}
       </Grid>
     </>
 );
