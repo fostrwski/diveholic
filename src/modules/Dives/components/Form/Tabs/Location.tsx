@@ -53,6 +53,7 @@ const Location: React.FC = () => {
                   freeSolo
                   error={!!errors.locationCountryName}
                   filterOptions={filterOptions}
+                  isOptionEqualToValue={(option, value) => option === value}
                   disableClearable
                 />
               )}
