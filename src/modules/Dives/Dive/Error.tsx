@@ -1,7 +1,6 @@
 import ErrorOutlineRounded from "@mui/icons-material/ErrorOutlineRounded";
 import Box from "@mui/joy/Box";
 import Typography from "@mui/joy/Typography";
-import Separator from "common/components/Separator";
 import React from "react";
 
 interface ErrorProps {
