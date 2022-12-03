@@ -4,6 +4,7 @@
   "rules": {
     "react/no-unescaped-entities": "off",
     "no-shadow": "off",
+    "class-methods-use-this": "off",
     "consistent-return": "off",
     "quotes": [2, "double"],
     "import/extensions": [
