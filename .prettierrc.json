@@ -3,5 +3,5 @@
   "importOrderSeparation": true,
   "importOrderSortSpecifiers": true,
   "singleQuote": false,
-  "trailingComma": "all"
+  "trailingComma": "all",
 }

@@ -10,7 +10,9 @@ interface InfoProps {
   unit?: string;
 }
 
-const Info: React.FC<InfoProps> = ({ title, value, icon, unit }) => (
+const Info: React.FC<InfoProps> = ({
+  title, value, icon, unit,
+}) => (
   <Typography level="h6" component="div">
     <Box
       sx={{
