@@ -3,8 +3,8 @@ import FormLabel from "@mui/joy/FormLabel";
 import MuiSlider from "@mui/joy/Slider";
 import React, { type ComponentProps, useEffect, useState } from "react";
 
+import type { SliderMark } from "../types";
 import generateSliderMarks from "../utils/generateSliderMarks";
-import type { SliderMark } from "../utils/types";
 
 // Extends MuiSlider props but overrides 'marks' property
 interface TemperatureSliderProps

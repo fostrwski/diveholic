@@ -2,4 +2,5 @@ import type defaultValues from "./defaultValues";
 
 type FormFields = typeof defaultValues;
 
-export type { FormFields };
+type SliderMark = { value: number; label: string };
+export type { FormFields, SliderMark };
