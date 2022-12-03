@@ -10,6 +10,7 @@
     "react/no-unescaped-entities": "off",
     "no-shadow": "off",
     "class-methods-use-this": "off",
+    "no-unused-vars": "warn",
     "consistent-return": "off",
     "quotes": [2, "double"],
     "import/extensions": [
