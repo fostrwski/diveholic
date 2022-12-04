@@ -151,6 +151,7 @@ const DatePicker: React.FC<DatePickerProps> = ({ initialDate }) => {
                 <FormControl>
                   <FormLabel>Month</FormLabel>
                   <Select
+                    // @ts-ignore
                     onChange={(value) => handleMonthSelectChange(value!)}
                     value={months[month]}
                     componentsProps={{
@@ -174,6 +175,7 @@ const DatePicker: React.FC<DatePickerProps> = ({ initialDate }) => {
                 <FormControl>
                   <FormLabel>Year</FormLabel>
                   <Select
+                    // @ts-ignore
                     onChange={(value) => handleYearSelectChange(value!)}
                     value={fullYear}
                     componentsProps={{
