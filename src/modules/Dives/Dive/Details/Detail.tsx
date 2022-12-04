@@ -10,7 +10,9 @@ export interface DetailProps {
   icon?: React.ReactElement;
 }
 
-const Detail: React.FC<DetailProps> = ({ title, content, unit, icon }) => (
+const Detail: React.FC<DetailProps> = ({
+  title, content, unit, icon
+}) => (
   <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
     {icon && (
       <Avatar size="lg" sx={{ alignSelf: "start" }}>
