@@ -13,7 +13,7 @@ const Edit: React.FC = () => {
   const { user } = useUser();
   const router = useRouter();
   const { id: diveId } = router.query;
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data: any) => console.log(data);
   const { handleSubmit } = useFormContext();
 
   // useEffect(() => {
