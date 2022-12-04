@@ -1,6 +1,6 @@
 import {
   supabaseServerClient,
-  withPageAuth,
+  withPageAuth
 } from "@supabase/auth-helpers-nextjs";
 import DefaultLayout from "common/layouts/Default";
 import { Dive } from "common/types";
@@ -15,7 +15,7 @@ export const getServerSideProps = withPageAuth({
       .select("*")
       .order("date", { ascending: false });
     return { props: { data } };
-  },
+  }
 });
 
 interface DivesPageProps {

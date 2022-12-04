@@ -3,7 +3,7 @@ import DefaultLayout from "common/layouts/Default";
 import Dive from "modules/Dives/Dive";
 
 export const getServerSideProps = withPageAuth({
-  redirectTo: "/signin",
+  redirectTo: "/signin"
 });
 
 export default function DivePage() {

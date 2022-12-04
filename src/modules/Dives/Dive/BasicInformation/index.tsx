@@ -29,11 +29,11 @@ const BasicInformation: React.FC<BasicInformationProps> = ({ dive }) => (
         borderBottomLeftRadius: 0,
 
         [theme.getColorSchemeSelector("light")]: {
-          borderColor: "neutral.200",
+          borderColor: "neutral.200"
         },
         [theme.getColorSchemeSelector("dark")]: {
-          borderColor: "neutral.800",
-        },
+          borderColor: "neutral.800"
+        }
       })}
     >
       <Grid container spacing={1}>

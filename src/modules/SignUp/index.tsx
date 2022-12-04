@@ -60,9 +60,9 @@ const SignUp: React.FC = () => {
         { email, password },
         {
           data: {
-            first_name: firstName,
-          },
-        },
+            first_name: firstName
+          }
+        }
       );
       if (error) return setError(error.message);
       setSuccess(true);
@@ -89,7 +89,7 @@ const SignUp: React.FC = () => {
       component="main"
       sx={{
         py: 4,
-        height: "100vh",
+        height: "100vh"
       }}
       maxWidth="sm"
     >
@@ -98,7 +98,7 @@ const SignUp: React.FC = () => {
           sx={{
             display: "flex",
             alignItems: "center",
-            gap: 2,
+            gap: 2
           }}
         >
           <Image

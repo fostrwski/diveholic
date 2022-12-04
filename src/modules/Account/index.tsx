@@ -1,7 +1,7 @@
 import {
   AlternateEmailRounded,
   PersonRounded,
-  TuneRounded,
+  TuneRounded
 } from "@mui/icons-material";
 import DoneRounded from "@mui/icons-material/DoneRounded";
 import EditRounded from "@mui/icons-material/EditRounded";

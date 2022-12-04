@@ -10,9 +10,7 @@ interface InfoProps {
   unit?: string;
 }
 
-const Info: React.FC<InfoProps> = ({
-  title, value, icon, unit,
-}) => (
+const Info: React.FC<InfoProps> = ({ title, value, icon, unit }) => (
   <Typography level="h6" component="div">
     <Box
       sx={{
@@ -20,7 +18,7 @@ const Info: React.FC<InfoProps> = ({
         justifyContent: "space-between",
         alignItems: "center",
         gap: 2,
-        width: "100%",
+        width: "100%"
       }}
     >
       <Typography component="span">{title}</Typography>

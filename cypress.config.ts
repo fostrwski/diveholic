@@ -5,13 +5,13 @@ export default defineConfig({
   component: {
     devServer: {
       framework: "next",
-      bundler: "webpack",
-    },
+      bundler: "webpack"
+    }
   },
 
   e2e: {
     setupNodeEvents(on, config) {
       // implement node event listeners here
-    },
-  },
+    }
+  }
 });

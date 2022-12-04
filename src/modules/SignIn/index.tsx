@@ -76,7 +76,7 @@ const SignIn: React.FC = () => {
       component="main"
       sx={{
         py: 4,
-        height: "100vh",
+        height: "100vh"
       }}
       maxWidth="sm"
     >
@@ -181,7 +181,7 @@ const SignIn: React.FC = () => {
         sx={{
           display: "flex",
           justifyContent: "center",
-          gap: 1,
+          gap: 1
         }}
       >
         <Typography component="p">Don't have an account?</Typography>

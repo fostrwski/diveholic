@@ -13,11 +13,11 @@ const DiveCardSkeletonLoader: React.FC = () => (
     sx={{
       width: {
         xs: "100%",
-        md: "initial",
+        md: "initial"
       },
       display: "flex",
       gap: 2,
-      flexDirection: "row",
+      flexDirection: "row"
     }}
   >
     <Avatar color="neutral" size="lg">
@@ -35,7 +35,7 @@ const DiveCardSkeletonLoader: React.FC = () => (
               display: "flex",
               gap: 0.6,
               justifyContent: "space-between",
-              flexDirection: { xs: "column", md: "row" },
+              flexDirection: { xs: "column", md: "row" }
             }}
           >
             <Chip size="sm" sx={{ width: "64px" }} />
@@ -48,7 +48,7 @@ const DiveCardSkeletonLoader: React.FC = () => (
               display: "flex",
               gap: 0.6,
               justifyContent: "space-between",
-              flexDirection: { xs: "column", md: "row" },
+              flexDirection: { xs: "column", md: "row" }
             }}
           >
             <Chip size="sm" sx={{ width: "64px" }} />

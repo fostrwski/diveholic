@@ -39,7 +39,7 @@ const Gear: React.FC = () => {
         <Grid xs={6}>
           <TextField
             {...register("gearExposureProtectionThickness", {
-              valueAsNumber: true,
+              valueAsNumber: true
             })}
             type="number"
             label="Thickness"

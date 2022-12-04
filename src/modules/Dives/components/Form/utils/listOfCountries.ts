@@ -247,7 +247,7 @@ const listOfCountries = {
   YE: "Yemen",
   ZM: "Zambia",
   ZW: "Zimbabwe",
-  AX: "Åland Islands",
+  AX: "Åland Islands"
 };
 
 export default listOfCountries;

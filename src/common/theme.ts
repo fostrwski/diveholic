@@ -5,126 +5,126 @@ const theme = extendTheme({
   components: {
     JoyButton: {
       defaultProps: {
-        variant: "soft",
+        variant: "soft"
       },
       styleOverrides: {
         root: {
-          borderRadius: "var(--joy-radius-sm)",
-        },
-      },
+          borderRadius: "var(--joy-radius-sm)"
+        }
+      }
     },
     JoyLink: {
       defaultProps: {
         underline: "none",
-        variant: "plain",
+        variant: "plain"
       },
       styleOverrides: {
         root: ({ theme }) => ({
-          fontWeight: theme.vars.fontWeight.md,
-        }),
-      },
+          fontWeight: theme.vars.fontWeight.md
+        })
+      }
     },
     JoyCheckbox: {
       defaultProps: {
         variant: "soft",
-        color: "neutral",
-      },
+        color: "neutral"
+      }
     },
     JoyCard: {
       defaultProps: {
-        variant: "plain",
+        variant: "plain"
       },
       styleOverrides: {
         root: {
-          boxShadow: "none",
-        },
-      },
+          boxShadow: "none"
+        }
+      }
     },
     JoyList: {
       styleOverrides: {
         root: {
-          "--List-item-paddingX": "0px",
-        },
-      },
+          "--List-item-paddingX": "0px"
+        }
+      }
     },
     JoySelect: {
       defaultProps: {
         variant: "soft",
-        color: "neutral",
-      },
+        color: "neutral"
+      }
     },
     JoyOption: {
       styleOverrides: {
         root: ({ theme }) => ({
-          padding: theme.spacing(1),
-        }),
-      },
+          padding: theme.spacing(1)
+        })
+      }
     },
     JoyAutocomplete: {
       defaultProps: {
-        variant: "soft",
-      },
+        variant: "soft"
+      }
     },
     JoyModalDialog: {
       defaultProps: {
-        variant: "plain",
+        variant: "plain"
       },
       styleOverrides: {
         root: ({ theme }) => ({
-          padding: theme.spacing(4),
-        }),
-      },
+          padding: theme.spacing(4)
+        })
+      }
     },
     JoyMenu: {
       styleOverrides: {
         root: ({ theme }) => ({
-          padding: theme.spacing(1),
-        }),
-      },
+          padding: theme.spacing(1)
+        })
+      }
     },
     JoyMenuItem: {
       styleOverrides: {
         root: {
           padding: "0 0.6rem",
-          borderRadius: "var(--joy-radius-xs)",
-        },
-      },
+          borderRadius: "var(--joy-radius-xs)"
+        }
+      }
     },
     JoyRadio: {
       defaultProps: {
         color: "neutral",
-        variant: "soft",
-      },
+        variant: "soft"
+      }
     },
     JoyTextField: {
       defaultProps: {
-        variant: "soft",
-      },
+        variant: "soft"
+      }
     },
     JoyListDivider: {
       styleOverrides: {
         root: {
-          borderRadius: "var(--joy-radius-sm)",
-        },
-      },
+          borderRadius: "var(--joy-radius-sm)"
+        }
+      }
     },
     JoyChip: {
       defaultProps: {
         color: "neutral",
-        variant: "soft",
+        variant: "soft"
       },
       styleOverrides: {
         root: {
-          fontWeight: "var(--joy-fontWeight-md)",
-        },
-      },
+          fontWeight: "var(--joy-fontWeight-md)"
+        }
+      }
     },
     JoyAvatar: {
       styleOverrides: {
         root: {
-          borderRadius: "var(--joy-radius-sm)",
-        },
-      },
+          borderRadius: "var(--joy-radius-sm)"
+        }
+      }
     },
     JoySheet: {
       styleOverrides: {
@@ -134,34 +134,34 @@ const theme = extendTheme({
 
           ...(ownerState.variant === "soft" && {
             [theme.getColorSchemeSelector("light")]: {
-              backgroundColor: theme.palette.neutral[50],
-            },
-          }),
-        }),
-      },
+              backgroundColor: theme.palette.neutral[50]
+            }
+          })
+        })
+      }
     },
     JoyTab: {
       styleOverrides: {
         root: ({ theme }) => ({
-          fontWeight: theme.vars.fontWeight.md,
-        }),
-      },
+          fontWeight: theme.vars.fontWeight.md
+        })
+      }
     },
     JoySlider: {
       defaultProps: {
-        color: "neutral",
-      },
-    },
+        color: "neutral"
+      }
+    }
   },
   typography: {
     subtitle1: {
       fontWeight: "var(--joy-fontWeight-md)",
-      color: "GrayText",
+      color: "GrayText"
     },
     subtitle2: {
-      color: "GrayText",
-    },
-  },
+      color: "GrayText"
+    }
+  }
 });
 
 declare module "@mui/joy/styles" {

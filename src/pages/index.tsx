@@ -1,7 +1,7 @@
 import {
   User,
   supabaseServerClient,
-  withPageAuth,
+  withPageAuth
 } from "@supabase/auth-helpers-nextjs";
 import DefaultLayout from "common/layouts/Default";
 import Home from "modules/Home";
@@ -12,7 +12,7 @@ export const getServerSideProps = withPageAuth({
   async getServerSideProps(ctx) {
     const { data } = await supabaseServerClient(ctx).from("dives").select("*");
     return { props: { dives: data } };
-  },
+  }
 });
 
 interface HomePageProps {

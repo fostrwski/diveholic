@@ -22,13 +22,13 @@ const Details: React.FC<DetailsProps> = ({ dive }) => (
         {
           title: "Avg. depth",
           content: dive.depth.average,
-          icon: <DownloadDoneRounded />,
+          icon: <DownloadDoneRounded />
         },
         {
           title: "Max depth",
           content: dive.depth.max,
-          icon: <DownloadRounded />,
-        },
+          icon: <DownloadRounded />
+        }
       ]}
     />
 
@@ -40,8 +40,8 @@ const Details: React.FC<DetailsProps> = ({ dive }) => (
         {
           title: "Thickness",
           content: dive.gear.exposureProtection.thickness,
-          icon: <LineWeightRounded />,
-        },
+          icon: <LineWeightRounded />
+        }
       ]}
     />
 
@@ -51,10 +51,10 @@ const Details: React.FC<DetailsProps> = ({ dive }) => (
         {
           title: "Count",
           content: dive.gear.tanks.count,
-          icon: <NumbersRounded />,
+          icon: <NumbersRounded />
         },
 
-        { title: "Type", content: dive.gear.tanks.type },
+        { title: "Type", content: dive.gear.tanks.type }
       ]}
     />
 
@@ -63,7 +63,7 @@ const Details: React.FC<DetailsProps> = ({ dive }) => (
         display: "flex",
         alignItems: "center",
         gap: 6,
-        mt: 6,
+        mt: 6
       }}
     >
       <Separator />

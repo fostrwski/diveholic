@@ -3,7 +3,7 @@ const formatTime = (date: string) => {
   const options: Intl.DateTimeFormatOptions = {
     hour: "2-digit",
     minute: "2-digit",
-    hour12: true,
+    hour12: true
   };
 
   return d.toLocaleTimeString(undefined, options);
@@ -15,7 +15,7 @@ const formatDate = (date: string) => {
     weekday: "short",
     year: "numeric",
     month: "short",
-    day: "numeric",
+    day: "numeric"
   };
 
   return d.toLocaleDateString(undefined, options);

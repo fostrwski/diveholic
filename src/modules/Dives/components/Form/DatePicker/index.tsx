@@ -41,7 +41,7 @@ const DatePicker: React.FC<DatePickerProps> = ({ initialDate }) => {
     fullYear,
     daysInMonth,
     time,
-    setTime,
+    setTime
   } = useDate(initialDate);
 
   const handleModalToggle = () => {
@@ -82,7 +82,7 @@ const DatePicker: React.FC<DatePickerProps> = ({ initialDate }) => {
           gap: 2,
           justifyContent: "space-between",
           alignItems: "center",
-          width: "100%",
+          width: "100%"
         }}
       >
         <Box sx={{ display: "flex", gap: 2, alignItems: "center" }}>
@@ -137,7 +137,7 @@ const DatePicker: React.FC<DatePickerProps> = ({ initialDate }) => {
         <ModalDialog
           sx={{
             overflow: "auto",
-            top: "unset",
+            top: "unset"
           }}
           layout="fullscreen"
         >
@@ -157,9 +157,9 @@ const DatePicker: React.FC<DatePickerProps> = ({ initialDate }) => {
                       listbox: {
                         sx: {
                           maxHeight: 280,
-                          overflow: "auto",
-                        },
-                      },
+                          overflow: "auto"
+                        }
+                      }
                     }}
                   >
                     {months.map((month: string) => (
@@ -180,9 +180,9 @@ const DatePicker: React.FC<DatePickerProps> = ({ initialDate }) => {
                       listbox: {
                         sx: {
                           maxHeight: 280,
-                          overflow: "auto",
-                        },
-                      },
+                          overflow: "auto"
+                        }
+                      }
                     }}
                   >
                     {[...Array(new Date().getFullYear() - 1970 + 1)].map(
@@ -193,7 +193,7 @@ const DatePicker: React.FC<DatePickerProps> = ({ initialDate }) => {
                             {year}
                           </Option>
                         );
-                      },
+                      }
                     )}
                   </Select>
                 </FormControl>
@@ -253,7 +253,7 @@ const DatePicker: React.FC<DatePickerProps> = ({ initialDate }) => {
                 justifyContent: "space-between",
                 alignItems: "center",
                 mt: 6,
-                gap: 2,
+                gap: 2
               }}
             >
               <Button

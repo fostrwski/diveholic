@@ -16,7 +16,7 @@ const TextSeparator: React.FC<TextSeparatorProps> = ({ children, sx }) => (
       display: "flex",
       alignItems: "center",
       gap: 6,
-      ...sx,
+      ...sx
     }}
   >
     <Typography component="p" level="h4" sx={{ whiteSpace: "nowrap" }}>

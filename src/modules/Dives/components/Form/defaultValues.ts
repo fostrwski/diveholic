@@ -24,7 +24,7 @@ const defaultValues: DiveFlattened = {
   gearTanksType: "",
   gearBcd: "",
   gearRegulator: "",
-  gearFins: "",
+  gearFins: ""
 };
 
 export default defaultValues;

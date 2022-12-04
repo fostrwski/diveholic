@@ -13,23 +13,23 @@ const weightsAmmount = [
   {
     title: "Perfect 👌🏼",
     value: "perfect",
-    helperText: "This ammount next time",
+    helperText: "This ammount next time"
   },
   {
     title: "Too little 👇🏼",
     value: "tooLittle",
-    helperText: "Take more weights next time",
+    helperText: "Take more weights next time"
   },
   {
     title: "Too much 👆🏼",
     value: "tooMuch",
-    helperText: "Take less weights next time",
-  },
+    helperText: "Take less weights next time"
+  }
 ];
 
 const waterTypes = [
   { title: "Fresh", examples: "Quarries, lakes, rivers" },
-  { title: "Salt", examples: "Seas, oceans" },
+  { title: "Salt", examples: "Seas, oceans" }
 ];
 
 const sliderMarks = generateSliderMarks([0, 5, 10, 15, 20]);
@@ -38,7 +38,7 @@ const Details: React.FC = () => {
   const { setValue, getValues, control } = useFormContext();
 
   const handleWeightsAmmountRadioChange = (
-    e: React.ChangeEvent<HTMLInputElement>,
+    e: React.ChangeEvent<HTMLInputElement>
   ) => {
     switch (e.target.value) {
       case "tooLittle":
@@ -61,7 +61,7 @@ const Details: React.FC = () => {
             row
             sx={{
               gap: 2,
-              width: "100%",
+              width: "100%"
             }}
           >
             {waterTypes.map(
@@ -81,7 +81,7 @@ const Details: React.FC = () => {
                     <FormHelperText>{waterType.examples}</FormHelperText>
                   </div>
                 </FormControl>
-              ),
+              )
             )}
           </RadioGroup>
         )}
@@ -131,7 +131,7 @@ const Details: React.FC = () => {
                     <FormHelperText>{ammount.helperText}</FormHelperText>
                   </div>
                 </FormControl>
-              ),
+              )
             )}
           </RadioGroup>
         )}

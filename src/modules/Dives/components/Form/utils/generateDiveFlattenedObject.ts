@@ -25,7 +25,7 @@ export default function generateDiveFlattenedObject(dive: Dive) {
     gearTanksType: dive.gear.tanks.type,
     gearBcd: dive.gear.bcd,
     gearRegulator: dive.gear.regulator,
-    gearFins: dive.gear.fins,
+    gearFins: dive.gear.fins
   };
 
   return diveFlattened;

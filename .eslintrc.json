@@ -9,6 +9,7 @@
   "rules": {
     "react/no-unescaped-entities": "off",
     "no-shadow": "off",
+    "comma-dangle": "off",
     "class-methods-use-this": "off",
     "no-unused-vars": "warn",
     "consistent-return": "off",

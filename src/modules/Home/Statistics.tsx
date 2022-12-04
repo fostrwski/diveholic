@@ -17,7 +17,7 @@ const Statistics: React.FC = () => (
       size="lg"
       sx={{
         mt: 2,
-        "--List-item-minHeight": "6px",
+        "--List-item-minHeight": "6px"
       }}
     >
       <ListItem>
