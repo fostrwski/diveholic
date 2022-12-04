@@ -3,6 +3,9 @@ import * as yup from "yup";
 yup.setLocale({
   mixed: {
     required: "Required field"
+  },
+  number: {
+    positive: "Should be positive"
   }
 });
 
@@ -16,15 +19,9 @@ const validationSchema = yup.object({
   units: yup.string().required(),
   depthAverage: yup.number().min(1, "Should be at least 1").required(),
   depthMax: yup.number().min(1, "Should be at least 1").required(),
-  weightsTaken: yup.number().required(),
-  weightsAmmount: yup.string().required(),
-  water: yup.string().required(),
-  temperatureAir: yup.number(),
-  temperatureWaterSurface: yup.number(),
-  temperatureWaterBottom: yup.number(),
   gearExposureProtectionType: yup.string(),
-  gearExposureProtectionThickness: yup.number(),
-  gearTanksCount: yup.number(),
+  gearExposureProtectionThickness: yup.number().positive(),
+  gearTanksCount: yup.number().min(1, "Should be at least 1"),
   gearTanksType: yup.string(),
   gearBcd: yup.string(),
   gearFins: yup.string(),

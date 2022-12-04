@@ -9,7 +9,10 @@ import React, { useState } from "react";
 import { useFormContext } from "react-hook-form";
 
 const Gear: React.FC = () => {
-  const { register } = useFormContext();
+  const {
+    register,
+    formState: { errors }
+  } = useFormContext();
   const [showMore, setShowMore] = useState<boolean>(false);
 
   const handleClick = () => {
@@ -38,9 +41,9 @@ const Gear: React.FC = () => {
         </Grid>
         <Grid xs={6}>
           <TextField
-            {...register("gearExposureProtectionThickness", {
-              valueAsNumber: true
-            })}
+            {...register("gearExposureProtectionThickness")}
+            error={!!errors.gearExposureProtectionThickness}
+            helperText={errors.gearExposureProtectionThickness?.message?.toString()}
             type="number"
             label="Thickness"
             startDecorator={<LineWeightRounded />}
@@ -60,7 +63,9 @@ const Gear: React.FC = () => {
       <Grid container spacing={2} justifyContent="space-between">
         <Grid xs={6}>
           <TextField
-            {...register("gearTanksCount", { valueAsNumber: true })}
+            {...register("gearTanksCount")}
+            error={!!errors.gearTanksCount}
+            helperText={errors.gearTanksCount?.message?.toString()}
             type="number"
             label="Count"
             startDecorator={<NumbersRounded />}

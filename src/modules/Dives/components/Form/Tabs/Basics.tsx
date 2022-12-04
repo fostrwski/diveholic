@@ -11,7 +11,12 @@ import { Controller, useFormContext } from "react-hook-form";
 import getDiveEmoji from "../utils/getDiveEmoji";
 
 const Basics: React.FC = () => {
-  const { register, getValues, control } = useFormContext();
+  const {
+    register,
+    getValues,
+    control,
+    formState: { errors }
+  } = useFormContext();
 
   return (
     <>
@@ -41,7 +46,9 @@ const Basics: React.FC = () => {
 
         <Grid xs={6}>
           <TextField
-            {...register("length", { valueAsNumber: true })}
+            {...register("length")}
+            error={!!errors.length}
+            helperText={errors.length?.message?.toString()}
             type="number"
             label="Length"
             endDecorator="min"
@@ -55,6 +62,8 @@ const Basics: React.FC = () => {
             label="Average depth"
             type="number"
             endDecorator={getValues("units") === "metric" ? "m" : "ft"}
+            error={!!errors.depthAverage}
+            helperText={errors.depthAverage?.message?.toString()}
           />
         </Grid>
         <Grid xs={6}>
@@ -63,6 +72,8 @@ const Basics: React.FC = () => {
             label="Max depth"
             type="number"
             endDecorator={getValues("units") === "metric" ? "m" : "ft"}
+            error={!!errors.depthMax}
+            helperText={errors.depthMax?.message?.toString()}
           />
         </Grid>
       </Grid>
