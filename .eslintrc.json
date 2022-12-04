@@ -3,8 +3,8 @@
   "extends": [
     "next/core-web-vitals",
     "plugin:cypress/recommended",
-    "prettier",
-    "airbnb-base"
+    "airbnb-base",
+    "prettier"
   ],
   "rules": {
     "react/no-unescaped-entities": "off",
