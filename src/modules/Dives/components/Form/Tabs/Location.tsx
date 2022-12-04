@@ -18,7 +18,7 @@ const Location: React.FC = () => {
   const {
     register,
     watch,
-    formState: { errors },
+    formState: { errors }
   } = useFormContext();
   const watchLocationCountryFlagEmoji = watch("locationCountryFlagEmoji");
   const filterOptions = createFilterOptions({ limit: 20 });
@@ -32,16 +32,15 @@ const Location: React.FC = () => {
             <Controller
               name="locationCountryName"
               rules={{
-                required: "This field is required",
+                required: "This field is required"
               }}
               render={({ field }) => (
                 <Autocomplete
                   {...field}
                   options={Object.values(listOfCountries)}
                   onInputChange={debounce(
-                    (e: React.ChangeEvent<HTMLInputElement>, data: string) => {
-console.log(typeof e)
-                     return field.onChange(data),
+                    (_: React.BaseSyntheticEvent, data: string) =>
+                      field.onChange(data),
                     500
                   )}
                   onChange={(_: any, data: string) => field.onChange(data)}
@@ -65,7 +64,7 @@ console.log(typeof e)
         <Grid xs={6}>
           <TextField
             {...register("locationCity", {
-              required: "This field is required",
+              required: "This field is required"
             })}
             type="text"
             label="City"
@@ -77,7 +76,7 @@ console.log(typeof e)
         <Grid xs={12}>
           <TextField
             {...register("locationDiveCenter", {
-              required: "This field is required",
+              required: "This field is required"
             })}
             type="text"
             label="Dive center"
