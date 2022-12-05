@@ -20,7 +20,12 @@ interface FormProps {
 }
 
 const Form: React.FC<FormProps> = ({ onSubmit }) => {
-  const { setValue, watch, getValues } = useFormContext();
+  const {
+    setValue,
+    watch,
+    getValues,
+    formState: {  errors }
+  } = useFormContext();
   const watchLocationCountryName = watch("locationCountryName");
 
   useEffect(() => {
@@ -68,7 +73,7 @@ const Form: React.FC<FormProps> = ({ onSubmit }) => {
 
         <Button
           type="submit"
-          color="success"
+          color={Object.keys(errors).length === 0 ? "success" : "danger"}
           size="lg"
           startDecorator={<SaveRounded />}
           sx={{ mt: 6 }}
