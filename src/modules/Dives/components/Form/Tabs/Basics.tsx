@@ -58,22 +58,22 @@ const Basics: React.FC = () => {
 
         <Grid xs={6}>
           <TextField
-            {...register("depthAverage", { valueAsNumber: true })}
+            {...register("depthAverage")}
+            error={!!errors.depthAverage}
+            helperText={errors.depthAverage?.message?.toString()}
             label="Average depth"
             type="number"
             endDecorator={getValues("units") === "metric" ? "m" : "ft"}
-            error={!!errors.depthAverage}
-            helperText={errors.depthAverage?.message?.toString()}
           />
         </Grid>
         <Grid xs={6}>
           <TextField
-            {...register("depthMax", { valueAsNumber: true })}
+            {...register("depthMax")}
+            error={!!errors.depthMax}
+            helperText={errors.depthMax?.message?.toString()}
             label="Max depth"
             type="number"
             endDecorator={getValues("units") === "metric" ? "m" : "ft"}
-            error={!!errors.depthMax}
-            helperText={errors.depthMax?.message?.toString()}
           />
         </Grid>
       </Grid>
