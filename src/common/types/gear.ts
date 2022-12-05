@@ -1,7 +1,7 @@
 type Gear = {
   exposureProtection: {
     type: string;
-    thickness: number;
+    thickness: number | null;
   };
   tanks: {
     count: number;

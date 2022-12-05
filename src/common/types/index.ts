@@ -55,7 +55,7 @@ export type DiveFlattened = {
   temperatureWaterSurface: number | null;
   temperatureWaterBottom: number | null;
   gearExposureProtectionType: string;
-  gearExposureProtectionThickness: number;
+  gearExposureProtectionThickness: number | null;
   gearTanksCount: number;
   gearTanksType: string;
   gearBcd: string;
