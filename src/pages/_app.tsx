@@ -1,3 +1,4 @@
+import { CssBaseline } from "@mui/joy";
 import { CssVarsProvider } from "@mui/joy/styles";
 import { UserProvider } from "@supabase/auth-helpers-react";
 import theme from "common/theme";
@@ -12,6 +13,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         defaultMode="system"
         disableTransitionOnChange
       >
+        <CssBaseline />
         <Component {...pageProps} />
       </CssVarsProvider>
     </UserProvider>
