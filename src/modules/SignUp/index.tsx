@@ -15,6 +15,7 @@ import JoyLink from "@mui/joy/Link";
 import TextField from "@mui/joy/TextField";
 import Typography from "@mui/joy/Typography";
 import { useUser } from "@supabase/auth-helpers-react";
+import AuthLayout from "common/layouts/Auth";
 import { supabase } from "common/utils/supabaseClient";
 import Image from "next/image";
 import NextLink from "next/link";
@@ -85,142 +86,103 @@ const SignUp: React.FC = () => {
   };
 
   return (
-    <Container
-      component="main"
-      sx={{
-        py: 4,
-        height: "100vh"
-      }}
-      maxWidth="sm"
-    >
-      <div>
-        <Box
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            gap: 2
-          }}
-        >
-          <Image
-            src="/logo.svg"
-            style={{ borderRadius: 4 }}
-            width={48}
-            height={30}
-            layout="fixed"
-            alt="Diver down flag"
-          />
-          <Typography level="h3" component="p">
-            Diveholic
+    <AuthLayout title="Create account" icon={<PersonAddRounded />}>
+      <Box
+        component="form"
+        display="flex"
+        flexDirection="column"
+        gap={2}
+        onSubmit={handleSubmit}
+      >
+        <TextField
+          placeholder="Email"
+          type="email"
+          startDecorator={<AlternateEmailRounded />}
+          onChange={handleEmailChange}
+          value={email}
+          size="lg"
+          required
+          label="Email"
+        />
+        <TextField
+          placeholder="Password"
+          type={showPassword ? "text" : "password"}
+          startDecorator={<KeyRounded />}
+          onChange={handlePasswordChange}
+          value={password}
+          size="lg"
+          required
+          label="Password"
+          endDecorator={
+            <IconButton
+              aria-label="Toggle password visibility"
+              color="neutral"
+              variant="plain"
+              onClick={handleShowPassword}
+            >
+              {showPassword ? <VisibilityOffRounded /> : <VisibilityRounded />}
+            </IconButton>
+          }
+        />
+        <TextField
+          placeholder="First name"
+          type="text"
+          startDecorator={<PersonRounded />}
+          onChange={handleFirstNameChange}
+          value={firstName}
+          size="lg"
+          required
+          label="First name"
+        />
+
+        {success && (
+          <Typography
+            color="success"
+            textAlign="left"
+            startDecorator={<SendRounded />}
+          >
+            Confirmation link was sent to your email
           </Typography>
-        </Box>
+        )}
 
-        <Typography textColor="GrayText" level="h6" component="h1" mt={1}>
-          Dive log built for the modern age
-        </Typography>
+        {error && (
+          <Typography
+            color="danger"
+            textAlign="left"
+            startDecorator={<ErrorOutlineRounded />}
+          >
+            {error}
+          </Typography>
+        )}
 
-        <Typography
-          level="h5"
-          component="h2"
-          mt={4}
-          startDecorator={<PersonAddRounded />}
+        <Button
+          color={success ? "success" : "primary"}
+          type="submit"
+          size="lg"
+          sx={{ mt: 2, width: "100%" }}
+          startDecorator={success ? <DoneRounded /> : <PersonAddRounded />}
+          disabled={loading}
         >
           Create account
-        </Typography>
+        </Button>
+      </Box>
 
-        <Box
-          component="form"
-          display="flex"
-          flexDirection="column"
-          mt={2}
-          gap={2}
-          onSubmit={handleSubmit}
-        >
-          <TextField
-            placeholder="Email"
-            type="email"
-            startDecorator={<AlternateEmailRounded />}
-            onChange={handleEmailChange}
-            value={email}
-            size="lg"
-            required
-            label="Email"
-          />
-          <TextField
-            placeholder="Password"
-            type={showPassword ? "text" : "password"}
-            startDecorator={<KeyRounded />}
-            onChange={handlePasswordChange}
-            value={password}
-            size="lg"
-            required
-            label="Password"
-            endDecorator={
-              <IconButton
-                aria-label="Toggle password visibility"
-                color="neutral"
-                variant="plain"
-                onClick={handleShowPassword}
-              >
-                {showPassword ? (
-                  <VisibilityOffRounded />
-                ) : (
-                  <VisibilityRounded />
-                )}
-              </IconButton>
-            }
-          />
-          <TextField
-            placeholder="First name"
-            type="text"
-            startDecorator={<PersonRounded />}
-            onChange={handleFirstNameChange}
-            value={firstName}
-            size="lg"
-            required
-            label="First name"
-          />
-
-          {success && (
-            <Typography
-              color="success"
-              textAlign="left"
-              startDecorator={<SendRounded />}
-            >
-              Confirmation link was sent to your email
-            </Typography>
-          )}
-
-          {error && (
-            <Typography
-              color="danger"
-              textAlign="left"
-              startDecorator={<ErrorOutlineRounded />}
-            >
-              {error}
-            </Typography>
-          )}
-
-          <Button
-            color={success ? "success" : "primary"}
-            type="submit"
-            size="lg"
-            sx={{ mt: 2, width: "100%" }}
-            startDecorator={success ? <DoneRounded /> : <PersonAddRounded />}
-            disabled={loading}
-          >
-            Create account
-          </Button>
-        </Box>
-      </div>
-
-      <Box mt={8} sx={{ display: "flex", justifyContent: "center", gap: 1 }}>
+      <Box
+        mt={8}
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          gap: 1
+        }}
+      >
         <Typography component="p">Already have an account? </Typography>
 
         <NextLink href="/signin" passHref>
           <JoyLink>Sign in</JoyLink>
         </NextLink>
       </Box>
-    </Container>
+    </AuthLayout>
   );
 };
 
