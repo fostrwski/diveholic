@@ -1,9 +1,7 @@
 import Box from "@mui/joy/Box";
 import Container from "@mui/joy/Container";
-import JoyLink from "@mui/joy/Link";
 import Typography from "@mui/joy/Typography";
 import Image from "next/image";
-import NextLink from "next/link";
 import React from "react";
 
 interface AuthLayoutProps {
@@ -16,7 +14,7 @@ const AuthLayout: React.FC<AuthLayoutProps> = ({ title, icon, children }) => (
   <Container
     component="main"
     sx={{
-      py: 4,
+      p: 4,
       height: "100vh"
     }}
     maxWidth="sm"
