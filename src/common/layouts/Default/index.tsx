@@ -42,7 +42,7 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
   };
 
   return (
-    <Container>
+    <Container sx={{ px: 4, py: 2 }}>
       <Box
         component="nav"
         mb={2}
