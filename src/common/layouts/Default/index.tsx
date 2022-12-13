@@ -10,10 +10,8 @@ import MenuItem from "@mui/joy/MenuItem";
 import Typography from "@mui/joy/Typography";
 import { useUser } from "@supabase/auth-helpers-react";
 import generateInitials from "common/utils/generateInitials";
-import { supabase } from "common/utils/supabaseClient";
 import Image from "next/image";
 import NextLink from "next/link";
-import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 
 interface DefaultLayoutProps {
@@ -22,7 +20,6 @@ interface DefaultLayoutProps {
 
 const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
   const { user } = useUser();
-  const router = useRouter();
 
   const [initials, setInitials] = useState<string>("");
 
@@ -32,16 +29,6 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
       setInitials(generateInitials(firstName));
     }
   }, [user]);
-
-  const handleSignOut = async () => {
-    try {
-      const { error } = await supabase.auth.signOut();
-      if (error) throw error;
-      router.push("/signin");
-    } catch (error) {
-      alert(error);
-    }
-  };
 
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
@@ -118,12 +105,14 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
             </MenuItem>
           </NextLink>
 
-          <MenuItem onClick={handleSignOut}>
-            <ListItemDecorator>
-              <LogoutRounded />
-            </ListItemDecorator>
-            Sign out
-          </MenuItem>
+          <NextLink href="/api/auth/logout">
+            <MenuItem>
+              <ListItemDecorator>
+                <LogoutRounded />
+              </ListItemDecorator>
+              Sign out
+            </MenuItem>
+          </NextLink>
         </Menu>
       </Box>
 
