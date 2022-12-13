@@ -23,8 +23,6 @@
       "type": "image/png"
     }
   ],
-  "theme_color": "#666",
-  "background_color": "#777",
   "start_url": "/",
   "display": "standalone",
   "orientation": "portrait"
