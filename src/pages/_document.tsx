@@ -6,19 +6,9 @@ export default class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <meta name="application-name" content="Diveholic" />
-          <meta name="apple-mobile-web-app-capable" content="yes" />
-          <meta
-            name="apple-mobile-web-app-status-bar-style"
-            content="default"
-          />
-          <meta name="apple-mobile-web-app-title" content="Diveholic" />
-          <meta
-            name="description"
-            content="Dive log built for the modern age"
-          />
-          <meta name="format-detection" content="telephone=no" />
-          <meta name="mobile-web-app-capable" content="yes" />
+          <link rel="icon" href="/favicon.ico" type="image/svg+xml" />
+          <link rel="manifest" href="/manifest.json" />
+          <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         </Head>
         <body>
           {getInitColorSchemeScript({ defaultMode: "system" })}
