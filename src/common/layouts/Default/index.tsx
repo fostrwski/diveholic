@@ -69,7 +69,7 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
             display="flex"
             justifyContent="center"
             alignItems="center"
-            gap={2}
+            gap={1.2}
             sx={{ textDecoration: "none" }}
           >
             <Image
