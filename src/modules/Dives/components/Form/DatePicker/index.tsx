@@ -82,7 +82,7 @@ const DatePicker: React.FC<DatePickerProps> = ({ initialDate }) => {
           gap: 2,
           justifyContent: "space-between",
           alignItems: "center",
-          width: "100%"
+          width: "100%",
         }}
       >
         <Box sx={{ display: "flex", gap: 2, alignItems: "center" }}>
@@ -136,7 +136,8 @@ const DatePicker: React.FC<DatePickerProps> = ({ initialDate }) => {
       >
         <ModalDialog
           sx={{
-            overflow: "auto",
+            overflow: "scroll",
+            maxHeight: "92%",
             top: "unset"
           }}
           layout="fullscreen"
