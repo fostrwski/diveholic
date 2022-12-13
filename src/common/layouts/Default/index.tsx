@@ -119,20 +119,6 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
       <Box component="main" sx={{ minHeight: "100vh" }}>
         {children}
       </Box>
-
-      <Box
-        component="footer"
-        mt={6}
-        py={4}
-        display="flex"
-        alignItems="center"
-        justifyContent="space-between"
-        gap={2}
-      >
-        <Typography level="subtitle1" component="p">
-          &copy; {new Date().getFullYear()} Diveholic
-        </Typography>
-      </Box>
     </Container>
   );
 };
