@@ -60,6 +60,7 @@ export default class MyDocument extends Document {
             media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)"
             rel="apple-touch-startup-image"
           />
+          <meta name="apple-mobile-web-app-capable" content="yes" />
         </Head>
         <body>
           {getInitColorSchemeScript({ defaultMode: "system" })}
