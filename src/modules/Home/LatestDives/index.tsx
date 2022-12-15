@@ -1,9 +1,10 @@
+import ArrowForwardRounded from "@mui/icons-material/ArrowForwardRounded";
 import Box from "@mui/joy/Box";
 import Grid from "@mui/joy/Grid";
-import JoyLink from "@mui/joy/Link";
+import IconButton from "@mui/joy/IconButton";
 import Typography from "@mui/joy/Typography";
 import { useUser } from "@supabase/auth-helpers-react";
-import { Dive } from "common/types";
+import type { Dive } from "common/types";
 import { supabase } from "common/utils/supabaseClient";
 import NextLink from "next/link";
 import React, { useEffect, useState } from "react";
@@ -55,20 +56,22 @@ const LatestDives: React.FC = () => {
 
   return (
     <>
-      <Box
-        display="flex"
-        alignItems="center"
-        justifyContent="space-between"
-        gap={2}
-        mb={2}
-      >
-        <Typography level="h4" component="p">
-          Your dives
-        </Typography>
-        <NextLink href="/dives" passHref>
-          <JoyLink>See all</JoyLink>
-        </NextLink>
-      </Box>
+      <NextLink href="/dives" passHref>
+        <Box
+          display="flex"
+          alignItems="center"
+          justifyContent="space-between"
+          gap={2}
+          mb={2}
+        >
+          <Typography level="h4" component="p">
+            Your dives
+          </Typography>
+          <IconButton variant="plain" color="neutral">
+            <ArrowForwardRounded />
+          </IconButton>
+        </Box>
+      </NextLink>
 
       <Grid container gap={2}>
         {determineView()}

@@ -20,7 +20,8 @@ const Home: React.FC<HomeProps> = ({ user, dives }) => (
     </Typography>
 
     <Typography level="h6" textColor="GrayText" component="h2">
-      You've logged {dives?.length} dives so far
+      You've logged {dives?.length} {dives?.length === 1 ? "dive" : "dives"} so
+      far
     </Typography>
 
     <NextLink href="/dives/new" passHref>
