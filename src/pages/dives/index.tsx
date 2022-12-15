@@ -3,7 +3,7 @@ import {
   withPageAuth
 } from "@supabase/auth-helpers-nextjs";
 import DefaultLayout from "common/layouts/Default";
-import { Dive } from "common/types";
+import type { Dive } from "common/types";
 import Dives from "modules/Dives";
 import React from "react";
 
