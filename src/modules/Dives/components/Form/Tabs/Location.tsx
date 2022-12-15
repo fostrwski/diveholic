@@ -87,8 +87,9 @@ const Location: React.FC = () => {
           />
         </Grid>
       </Grid>
+
       <Link mt={4} startDecorator={<PlaceRounded />} color="info" disabled>
-        Fill in with location from your latest dive
+        Use previous dive location
       </Link>
     </>
   );

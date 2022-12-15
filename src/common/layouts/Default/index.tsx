@@ -119,6 +119,8 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
       <Box component="main" sx={{ minHeight: "100vh" }}>
         {children}
       </Box>
+
+      <Box component="footer" py={6} />
     </Container>
   );
 };
