@@ -12,7 +12,7 @@ interface DivesProps {
 const Dives: React.FC<DivesProps> = ({ data }) => (
   <>
     <TextField
-      type="search"
+      type="text"
       placeholder="Search by location"
       startDecorator={<SearchRounded />}
       sx={{ mb: 4 }}
