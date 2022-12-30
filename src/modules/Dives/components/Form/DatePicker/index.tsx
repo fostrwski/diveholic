@@ -1,5 +1,8 @@
+import { ChevronLeftRounded, ChevronRightRounded } from "@mui/icons-material";
 import CalendarTodayRounded from "@mui/icons-material/CalendarTodayRounded";
 import EditRounded from "@mui/icons-material/EditRounded";
+import ErrorOutlineRounded from "@mui/icons-material/ErrorOutlineRounded";
+import { FormHelperText, IconButton } from "@mui/joy";
 import Avatar from "@mui/joy/Avatar";
 import Box from "@mui/joy/Box";
 import Button from "@mui/joy/Button";
@@ -9,20 +12,16 @@ import Grid from "@mui/joy/Grid";
 import Link from "@mui/joy/Link";
 import Modal from "@mui/joy/Modal";
 import ModalDialog from "@mui/joy/ModalDialog";
-import Option from "@mui/joy/Option";
 import Radio from "@mui/joy/Radio";
 import RadioGroup from "@mui/joy/RadioGroup";
-import Select from "@mui/joy/Select";
-import TextField from "@mui/joy/TextField";
 import Typography from "@mui/joy/Typography";
+import {
+  type DatePickerUserConfig,
+  useDatePicker
+} from "@rehookify/datepicker";
 import { formatDate, formatTime } from "common/utils/datetime/format";
 import React, { useState } from "react";
 import { useFormContext } from "react-hook-form";
-
-import useDate from "../hooks/useDate";
-import getFirstDayOfMonth from "../utils/getFirstDayOfMonth";
-import months from "../utils/months";
-import weekdays from "../utils/weekdays";
 
 interface DatePickerProps {
   initialDate?: Date;
@@ -30,19 +29,29 @@ interface DatePickerProps {
 
 const DatePicker: React.FC<DatePickerProps> = ({ initialDate }) => {
   const [open, setOpen] = useState<boolean>(false);
-  const { setValue, getValues } = useFormContext();
+  const [error, setError] = useState<boolean>(false);
   const {
-    date,
-    setDay,
-    setMonth,
-    setFullYear,
-    day,
-    month,
-    fullYear,
-    daysInMonth,
-    time,
-    setTime
-  } = useDate(initialDate);
+    setValue,
+    getValues,
+    formState: { errors }
+  } = useFormContext();
+
+  const config: DatePickerUserConfig = {
+    locale: {
+      weekday: "short"
+    }
+  };
+
+  const {
+    data: { selectedDates, calendars, weekDays },
+    propGetters: { nextMonthButton, previousMonthButton },
+    actions: { setDay }
+    // @ts-ignore
+  } = useDatePicker(config);
+
+  const selectedDate = selectedDates[0];
+
+  const { days, month, year } = calendars[0];
 
   const handleModalToggle = () => {
     setOpen(!open);
@@ -53,25 +62,17 @@ const DatePicker: React.FC<DatePickerProps> = ({ initialDate }) => {
   };
 
   const handleModalDone = () => {
-    setValue("date", date);
+    setError(false);
+    if (!selectedDate) return setError(true);
+
+    console.log(selectedDate);
     handleModalClose();
   };
 
-  const handleDayRadioChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setDay(parseInt(e.target.value, 10));
-  };
-
-  const handleMonthSelectChange = (month: string) => {
-    const monthNumeric = months.indexOf(month);
-    setMonth(monthNumeric);
-  };
-
-  const handleYearSelectChange = (year: number) => {
-    setFullYear(year);
-  };
-
-  const handleTimeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setTime(e.target.value);
+  const handleRadioChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const [day, month, year] = e.target.value.split("/");
+    // Convert strings to ints
+    setDay(new Date(+year, +month - 1, +day));
   };
 
   return (
@@ -89,7 +90,7 @@ const DatePicker: React.FC<DatePickerProps> = ({ initialDate }) => {
           <Avatar sx={{ "--Avatar-size": "52px" }}>
             <CalendarTodayRounded sx={{ fontSize: "24px" }} />
           </Avatar>
-          <FormControl>
+          <FormControl error={!!errors?.date}>
             <Typography level="h6" component="div">
               <FormLabel sx={{ color: "GrayText" }}>Date</FormLabel>
               <>
@@ -105,7 +106,7 @@ const DatePicker: React.FC<DatePickerProps> = ({ initialDate }) => {
                       level="body1"
                       component="button"
                       onClick={handleModalToggle}
-                      sx={{ p: 0 }}
+                      sx={{ p: 0, fontWeigth: "lg" }}
                       aria-label="Edit date"
                     >
                       Edit
@@ -118,121 +119,106 @@ const DatePicker: React.FC<DatePickerProps> = ({ initialDate }) => {
                     level="h5"
                     color="neutral"
                     aria-label="Set date"
-                    sx={{ p: 0 }}
+                    sx={{ p: 0, fontWeight: "lg" }}
                   >
                     Click here to set
                   </Link>
                 )}
               </>
             </Typography>
+
+            {!!errors?.date && <FormHelperText>Required field</FormHelperText>}
           </FormControl>
         </Box>
       </Box>
 
-      <Modal
-        open={open}
-        onClose={handleModalClose}
-        aria-labelledby="modal-title"
-      >
+      <Modal open={open} onClose={handleModalClose} aria-label="Select date">
         <ModalDialog
           sx={{
             overflow: "scroll",
             maxHeight: "92%",
             top: "unset",
-            pb: 8
+            pb: 8,
+            borderRadius: "xl",
+            borderBottomLeftRadius: 0,
+            borderBottomRightRadius: 0
           }}
           layout="fullscreen"
         >
-          <Typography level="h4" component="p" id="modal-title">
-            Select date
-          </Typography>
-
-          <Box component="form" mt={2}>
+          <Box component="form">
             <Grid container spacing={2}>
-              <Grid xs={6}>
-                <FormControl>
-                  <FormLabel>Month</FormLabel>
-                  <Select
-                    // @ts-ignore
-                    onChange={(value) => handleMonthSelectChange(value!)}
-                    value={months[month]}
-                    componentsProps={{
-                      listbox: {
-                        sx: {
-                          maxHeight: 280,
-                          overflow: "auto"
-                        }
-                      }
-                    }}
-                  >
-                    {months.map((month: string) => (
-                      <Option key={month} value={month} label={month}>
-                        {month}
-                      </Option>
-                    ))}
-                  </Select>
-                </FormControl>
-              </Grid>
-              <Grid xs={6}>
-                <FormControl>
-                  <FormLabel>Year</FormLabel>
-                  <Select
-                    // @ts-ignore
-                    onChange={(value) => handleYearSelectChange(value!)}
-                    value={fullYear}
-                    componentsProps={{
-                      listbox: {
-                        sx: {
-                          maxHeight: 280,
-                          overflow: "auto"
-                        }
-                      }
-                    }}
-                  >
-                    {[...Array(new Date().getFullYear() - 1970 + 1)].map(
-                      (_, index) => {
-                        const year = index + 1970;
-                        return (
-                          <Option key={index} value={year}>
-                            {year}
-                          </Option>
-                        );
-                      }
-                    )}
-                  </Select>
-                </FormControl>
+              <Grid
+                xs={12}
+                sx={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center"
+                }}
+              >
+                <IconButton
+                  color="neutral"
+                  variant="plain"
+                  {...previousMonthButton()}
+                >
+                  <ChevronLeftRounded />
+                </IconButton>
+
+                <Box sx={{ textAlign: "center" }}>
+                  <Typography level="subtitle1">{year}</Typography>
+
+                  <Typography level="h5" component="p">
+                    {month}
+                  </Typography>
+                </Box>
+
+                <IconButton
+                  color="neutral"
+                  variant="plain"
+                  {...nextMonthButton()}
+                >
+                  <ChevronRightRounded />
+                </IconButton>
               </Grid>
 
               <Grid xs={12}>
-                <RadioGroup row value={day} aria-label="Select day of month">
+                <RadioGroup row onChange={handleRadioChange}>
                   <Grid container columns={7} sx={{ width: "100%" }}>
-                    {weekdays.map((weekday: string) => (
-                      <Grid xs={1} key={weekday}>
-                        <Typography fontWeight="lg">{weekday}</Typography>
-                      </Grid>
-                    ))}
-                    {/* Create white space to properly align
-                        days of month with matching weekdays (hard to explain) */}
-                    {[...Array(getFirstDayOfMonth(date))].map((_, index) => (
-                      <Grid xs={1} key={index} />
-                    ))}
-                    {[...Array(daysInMonth)].map((_, index) => {
-                      const dayInMonth = index + 1;
-                      const checked = dayInMonth === day;
+                    {weekDays.map((wd: string) => {
+                      const weekDay = wd.slice(0, 2);
+
                       return (
-                        <Grid key={dayInMonth} xs={1}>
+                        <Grid xs={1} key={`${month}-${weekDay}`} sx={{ mb: 1 }}>
                           <Avatar
-                            variant={checked ? "soft" : "plain"}
                             size="sm"
+                            color="primary"
+                            variant="plain"
+                            sx={{ fontWeight: "xl" }}
+                          >
+                            {weekDay}
+                          </Avatar>
+                        </Grid>
+                      );
+                    })}
+
+                    {days.map((dpDay: any) => {
+                      let checked;
+
+                      return (
+                        <Grid key={`${month}-${dpDay.date}`} xs={1}>
+                          <Avatar
+                            size="sm"
+                            color="neutral"
+                            variant={dpDay.selected ? "soft" : "plain"}
                           >
                             <Radio
-                              value={dayInMonth}
-                              label={dayInMonth}
+                              value={dpDay.date}
+                              label={dpDay.day}
+                              disabled={!dpDay.inCurrentMonth}
+                              size="sm"
+                              color="neutral"
+                              variant="plain"
                               overlay
                               disableIcon
-                              variant="plain"
-                              sx={{ borderRadius: "sm" }}
-                              onChange={(e) => handleDayRadioChange(e)}
                             />
                           </Avatar>
                         </Grid>
@@ -243,20 +229,22 @@ const DatePicker: React.FC<DatePickerProps> = ({ initialDate }) => {
               </Grid>
             </Grid>
 
-            <TextField
-              type="time"
-              sx={{ mt: 4 }}
-              label="Time"
-              value={time}
-              onChange={handleTimeChange}
-            />
+            {error && (
+              <Typography
+                startDecorator={<ErrorOutlineRounded />}
+                color="danger"
+                sx={{ mt: 3, fontWeight: "xl" }}
+              >
+                Select valid date
+              </Typography>
+            )}
 
             <Box
               sx={{
                 display: "flex",
                 justifyContent: "space-between",
                 alignItems: "center",
-                mt: 6,
+                mt: 4,
                 gap: 2
               }}
             >
