@@ -31,7 +31,6 @@ const DatePicker: React.FC<DatePickerProps> = ({ initialDate }) => {
   const [open, setOpen] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
   const {
-    setValue,
     getValues,
     formState: { errors }
   } = useFormContext();
@@ -65,7 +64,6 @@ const DatePicker: React.FC<DatePickerProps> = ({ initialDate }) => {
     setError(false);
     if (!selectedDate) return setError(true);
 
-    console.log(selectedDate);
     handleModalClose();
   };
 
