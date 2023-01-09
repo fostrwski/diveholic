@@ -26,16 +26,17 @@ const validationSchema = yup.object({
   locationCity: yup.string().required(),
   locationDiveCenter: yup.string().required(),
   type: yup.string().required(),
-  length: yup.number().min(1, "Should be at least 1").required(),
+  length: yup.number().min(1, "Should be at least 1").nullable().required(),
   units: yup.string().required(),
-  depthAverage: yup.number().min(1, "Should be at least 1").required(),
-  depthMax: yup.number().min(1, "Should be at least 1").required(),
-  gearExposureProtectionType: yup.string(),
+  depthAverage: yup.number().min(1, "Should be at least 1").nullable(true),
+  depthMax: yup.number().min(1, "Should be at least 1").nullable(true),
+  weightsTaken: yup.number().required(),
+  gearExposureProtectionType: yup.string().nullable(),
   gearExposureProtectionThickness: yup
     .number()
     .min(0, "Should be at least 0")
     .nullable(),
-  gearTanksCount: yup.number().min(1, "Should be at least 1"),
+  gearTanksCount: yup.number().min(1, "Should be at least 1").optional(),
   gearTanksType: yup.string(),
   gearBcd: yup.string(),
   gearFins: yup.string(),

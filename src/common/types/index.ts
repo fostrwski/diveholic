@@ -44,10 +44,10 @@ export type DiveFlattened = {
   locationCity: string;
   locationDiveCenter: string;
   type: "boat" | "shore";
-  length: number;
+  length: number | null;
   units: "metric" | "imperial";
-  depthMax: number;
-  depthAverage: number;
+  depthMax: number | null;
+  depthAverage: number | null;
   weightsTaken: number;
   weightsAmmount: "perfect" | "tooLittle" | "tooMuch";
   water: "fresh" | "salt";
@@ -56,7 +56,7 @@ export type DiveFlattened = {
   temperatureWaterBottom: number | null;
   gearExposureProtectionType: string;
   gearExposureProtectionThickness: number | null;
-  gearTanksCount: number;
+  gearTanksCount: number | null;
   gearTanksType: string;
   gearBcd: string;
   gearFins: string;
