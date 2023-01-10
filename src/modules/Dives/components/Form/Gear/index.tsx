@@ -8,6 +8,8 @@ import TextSeparator from "common/components/TextSeparator";
 import React, { useState } from "react";
 import { useFormContext } from "react-hook-form";
 
+import setNullOrValue from "../utils/setNullOrValue";
+
 const Gear: React.FC = () => {
   const {
     register,
@@ -22,6 +24,32 @@ const Gear: React.FC = () => {
   return (
     <>
       <TextSeparator sx={{ mt: 8 }}>Gear</TextSeparator>
+
+      <Typography
+        mb={2}
+        mt={4}
+        component="p"
+        textColor="GrayText"
+        fontWeight="md"
+      >
+        Tanks
+      </Typography>
+      <Grid container spacing={2} justifyContent="space-between">
+        <Grid xs={6}>
+          <TextField
+            {...register("gearTanksCount", { setValueAs: setNullOrValue })}
+            error={!!errors.gearTanksCount}
+            helperText={errors.gearTanksCount?.message?.toString()}
+            type="number"
+            label="Count"
+            startDecorator={<NumbersRounded />}
+          />
+        </Grid>
+        <Grid xs={6}>
+          <TextField {...register("gearTanksType")} type="text" label="Type" />
+        </Grid>
+      </Grid>
+
       <Typography
         mb={2}
         component="p"
@@ -41,38 +69,15 @@ const Gear: React.FC = () => {
         </Grid>
         <Grid xs={6}>
           <TextField
-            {...register("gearExposureProtectionThickness")}
+            {...register("gearExposureProtectionThickness", {
+              setValueAs: setNullOrValue
+            })}
             error={!!errors.gearExposureProtectionThickness}
             helperText={errors.gearExposureProtectionThickness?.message?.toString()}
             type="number"
             label="Thickness"
             startDecorator={<LineWeightRounded />}
           />
-        </Grid>
-      </Grid>
-
-      <Typography
-        mb={2}
-        mt={4}
-        component="p"
-        textColor="GrayText"
-        fontWeight="md"
-      >
-        Tanks
-      </Typography>
-      <Grid container spacing={2} justifyContent="space-between">
-        <Grid xs={6}>
-          <TextField
-            {...register("gearTanksCount")}
-            error={!!errors.gearTanksCount}
-            helperText={errors.gearTanksCount?.message?.toString()}
-            type="number"
-            label="Count"
-            startDecorator={<NumbersRounded />}
-          />
-        </Grid>
-        <Grid xs={6}>
-          <TextField {...register("gearTanksType")} type="text" label="Type" />
         </Grid>
       </Grid>
 
