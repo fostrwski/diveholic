@@ -65,7 +65,7 @@ const DatePicker: React.FC<DatePickerProps> = ({ initialDate }) => {
     setError(false);
     if (!selectedDate) return setError(true);
 
-    console.log(selectedDate);
+    setValue("date", selectedDate);
     handleModalClose();
   };
 
