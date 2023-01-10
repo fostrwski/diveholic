@@ -9,6 +9,7 @@ import React from "react";
 import { Controller, useFormContext } from "react-hook-form";
 
 import getDiveEmoji from "../utils/getDiveEmoji";
+import setNullOrValue from "../utils/setNullOrValue";
 
 const Basics: React.FC = () => {
   const {
@@ -58,7 +59,7 @@ const Basics: React.FC = () => {
 
         <Grid xs={6}>
           <TextField
-            {...register("depthAverage")}
+            {...register("depthAverage", { setValueAs: setNullOrValue })}
             error={!!errors.depthAverage}
             helperText={errors.depthAverage?.message?.toString()}
             label="Average depth"
@@ -68,7 +69,7 @@ const Basics: React.FC = () => {
         </Grid>
         <Grid xs={6}>
           <TextField
-            {...register("depthMax")}
+            {...register("depthMax", { setValueAs: setNullOrValue })}
             error={!!errors.depthMax}
             helperText={errors.depthMax?.message?.toString()}
             label="Max depth"
