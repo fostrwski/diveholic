@@ -31,9 +31,6 @@ const Location: React.FC = () => {
             <FormLabel>Country</FormLabel>
             <Controller
               name="locationCountryName"
-              rules={{
-                required: "This field is required"
-              }}
               render={({ field }) => (
                 <Autocomplete
                   {...field}
@@ -63,9 +60,7 @@ const Location: React.FC = () => {
         </Grid>
         <Grid xs={6}>
           <TextField
-            {...register("locationCity", {
-              required: "This field is required"
-            })}
+            {...register("locationCity")}
             type="text"
             label="City"
             placeholder="Trogir"
@@ -75,9 +70,7 @@ const Location: React.FC = () => {
         </Grid>
         <Grid xs={12}>
           <TextField
-            {...register("locationDiveCenter", {
-              required: "This field is required"
-            })}
+            {...register("locationDiveCenter")}
             type="text"
             label="Dive center"
             placeholder="Trogir dive center"

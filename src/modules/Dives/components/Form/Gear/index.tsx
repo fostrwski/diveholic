@@ -10,7 +10,7 @@ import TextSeparator from "common/components/TextSeparator";
 import React, { useState } from "react";
 import { useFormContext } from "react-hook-form";
 
-import setNullOrValue from "../utils/setNullOrValue";
+import setNullOrNumber from "../utils/setNullOrNumber";
 
 const Gear: React.FC = () => {
   const {
@@ -39,7 +39,7 @@ const Gear: React.FC = () => {
       <Grid container spacing={2} justifyContent="space-between">
         <Grid xs={6}>
           <TextField
-            {...register("gearTanksCount", { setValueAs: setNullOrValue })}
+            {...register("gearTanksCount", { setValueAs: setNullOrNumber })}
             error={!!errors.gearTanksCount}
             helperText={errors.gearTanksCount?.message?.toString()}
             type="number"
@@ -72,7 +72,7 @@ const Gear: React.FC = () => {
         <Grid xs={6}>
           <TextField
             {...register("gearExposureProtectionThickness", {
-              setValueAs: setNullOrValue
+              setValueAs: setNullOrNumber
             })}
             error={!!errors.gearExposureProtectionThickness}
             helperText={errors.gearExposureProtectionThickness?.message?.toString()}

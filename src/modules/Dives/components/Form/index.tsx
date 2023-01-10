@@ -20,11 +20,7 @@ interface FormProps {
 }
 
 const Form: React.FC<FormProps> = ({ onSubmit }) => {
-  const {
-    setValue,
-    watch,
-    getValues,
-  } = useFormContext();
+  const { setValue, watch, getValues, register } = useFormContext();
   const watchLocationCountryName = watch("locationCountryName");
 
   useEffect(() => {
@@ -52,8 +48,8 @@ const Form: React.FC<FormProps> = ({ onSubmit }) => {
         <Temperature />
 
         <TextField
+          {...register("diveBuddy")}
           type="text"
-          name="diveBuddy"
           label="Dive buddy"
           placeholder="Joe Doe"
           sx={{ mt: 10 }}
@@ -62,7 +58,7 @@ const Form: React.FC<FormProps> = ({ onSubmit }) => {
         <FormControl sx={{ mt: 6 }}>
           <FormLabel>Notes</FormLabel>
           <Textarea
-            name="notes"
+            {...register("notes")}
             minRows={4}
             variant="soft"
             id="notes"
@@ -77,6 +73,8 @@ const Form: React.FC<FormProps> = ({ onSubmit }) => {
           startDecorator={<SaveRounded />}
           sx={{ mt: 6 }}
           fullWidth
+          onSubmit={onSubmit}
+          onClick={console.log(getValues())}
         >
           Save
         </Button>
