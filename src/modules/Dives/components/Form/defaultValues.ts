@@ -20,7 +20,7 @@ const defaultValues: DiveFlattened = {
   temperatureWaterBottom: null,
   gearExposureProtectionType: "",
   gearExposureProtectionThickness: null,
-  gearTanksCount: 1,
+  gearTanksCount: null,
   gearTanksType: "",
   gearBcd: "",
   gearRegulator: "",

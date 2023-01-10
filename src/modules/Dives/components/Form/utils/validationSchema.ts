@@ -36,7 +36,11 @@ const validationSchema = yup.object({
     .number()
     .min(0, "Should be at least 0")
     .nullable(),
-  gearTanksCount: yup.number().min(1, "Should be at least 1").optional(),
+  gearTanksCount: yup
+    .number()
+    .min(1, "Should be at least 1")
+    .nullable()
+    .optional(),
   gearTanksType: yup.string(),
   gearBcd: yup.string(),
   gearFins: yup.string(),
