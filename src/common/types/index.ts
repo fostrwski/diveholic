@@ -61,4 +61,6 @@ export type DiveFlattened = {
   gearBcd: string;
   gearFins: string;
   gearRegulator: string;
+  diveBuddy: string;
+  notes: string;
 };

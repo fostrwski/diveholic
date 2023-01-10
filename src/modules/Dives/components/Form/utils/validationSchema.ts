@@ -44,7 +44,9 @@ const validationSchema = yup.object({
   gearTanksType: yup.string(),
   gearBcd: yup.string(),
   gearFins: yup.string(),
-  gearRegulator: yup.string()
+  gearRegulator: yup.string(),
+  diveBuddy: yup.string(),
+  notes: yup.string()
 });
 
 export default validationSchema;
