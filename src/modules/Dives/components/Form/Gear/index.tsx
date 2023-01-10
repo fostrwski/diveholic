@@ -1,9 +1,9 @@
-import LineWeightRounded from "@mui/icons-material/LineWeightRounded";
 import AutoAwesomeRounded from "@mui/icons-material/AutoAwesomeRounded";
+import LineWeightRounded from "@mui/icons-material/LineWeightRounded";
 import NumbersRounded from "@mui/icons-material/NumbersRounded";
 import Button from "@mui/joy/Button";
 import Grid from "@mui/joy/Grid";
-import MuiLink from "@mui/joy/Link"
+import MuiLink from "@mui/joy/Link";
 import TextField from "@mui/joy/TextField";
 import Typography from "@mui/joy/Typography";
 import TextSeparator from "common/components/TextSeparator";
@@ -122,7 +122,12 @@ const Gear: React.FC = () => {
         {showMore ? "Show less" : "Show more"}
       </Button>
 
-      <MuiLink color="info" sx={{ mt: 2 }} startDecorator={<AutoAwesomeRounded />}>
+      <MuiLink
+        color="info"
+        sx={{ mt: 4 }}
+        startDecorator={<AutoAwesomeRounded />}
+        disabled
+      >
         Use preset
       </MuiLink>
     </>
