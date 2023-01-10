@@ -24,7 +24,6 @@ const Form: React.FC<FormProps> = ({ onSubmit }) => {
     setValue,
     watch,
     getValues,
-    formState: { errors }
   } = useFormContext();
   const watchLocationCountryName = watch("locationCountryName");
 
@@ -74,7 +73,6 @@ const Form: React.FC<FormProps> = ({ onSubmit }) => {
         <Button
           type="submit"
           color="success"
-          disabled={!(Object.keys(errors).length === 0)}
           size="lg"
           startDecorator={<SaveRounded />}
           sx={{ mt: 6 }}
