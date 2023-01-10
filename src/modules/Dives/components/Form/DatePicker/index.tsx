@@ -1,15 +1,17 @@
-import { ChevronLeftRounded, ChevronRightRounded } from "@mui/icons-material";
 import CalendarTodayRounded from "@mui/icons-material/CalendarTodayRounded";
+import ChevronRightRounded from "@mui/icons-material/ChevronRightRounded";
+import ChevronLeftRounded from "@mui/icons-material/ChevronLeftRounded";
 import EditRounded from "@mui/icons-material/EditRounded";
 import ErrorOutlineRounded from "@mui/icons-material/ErrorOutlineRounded";
-import { FormHelperText, IconButton } from "@mui/joy";
 import Avatar from "@mui/joy/Avatar";
 import Box from "@mui/joy/Box";
 import Button from "@mui/joy/Button";
 import FormControl from "@mui/joy/FormControl";
+import FormHelperText from "@mui/joy/FormHelperText";
 import FormLabel from "@mui/joy/FormLabel";
 import Grid from "@mui/joy/Grid";
-import Link from "@mui/joy/Link";
+import IconButton from "@mui/joy/IconButton";
+import MuiLink from "@mui/joy/Link";
 import Modal from "@mui/joy/Modal";
 import ModalDialog from "@mui/joy/ModalDialog";
 import Radio from "@mui/joy/Radio";
@@ -100,7 +102,7 @@ const DatePicker: React.FC<DatePickerProps> = ({ initialDate }) => {
                     <br />
                     {formatTime(getValues("date"))}
                     <br />
-                    <Link
+                    <MuiLink
                       endDecorator={<EditRounded />}
                       color="warning"
                       level="body1"
@@ -110,10 +112,10 @@ const DatePicker: React.FC<DatePickerProps> = ({ initialDate }) => {
                       aria-label="Edit date"
                     >
                       Edit
-                    </Link>
+                    </MuiLink>
                   </>
                 ) : (
-                  <Link
+                  <MuiLink
                     component="button"
                     onClick={handleModalToggle}
                     level="h5"
@@ -122,7 +124,7 @@ const DatePicker: React.FC<DatePickerProps> = ({ initialDate }) => {
                     sx={{ p: 0, fontWeight: "lg" }}
                   >
                     Click here to set
-                  </Link>
+                  </MuiLink>
                 )}
               </>
             </Typography>
@@ -248,14 +250,15 @@ const DatePicker: React.FC<DatePickerProps> = ({ initialDate }) => {
                 gap: 2
               }}
             >
-              <Button
+              <MuiLink
+                component="button"
                 variant="plain"
                 color="neutral"
                 onClick={handleModalClose}
               >
                 Cancel
-              </Button>
-              <Button color="neutral" onClick={handleModalDone} size="lg">
+              </MuiLink>
+              <Button color="neutral" onClick={handleModalDone}>
                 Done
               </Button>
             </Box>
