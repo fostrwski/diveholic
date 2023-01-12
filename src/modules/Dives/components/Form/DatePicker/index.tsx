@@ -40,7 +40,6 @@ const DatePicker: React.FC<DatePickerProps> = ({ initialDate }) => {
           width: "100%"
         }}
       >
-        {console.log(errors)}
         <Box sx={{ display: "flex", gap: 2, alignItems: "center" }}>
           <Avatar sx={{ "--Avatar-size": "52px" }}>
             <CalendarTodayRounded sx={{ fontSize: "24px" }} />
