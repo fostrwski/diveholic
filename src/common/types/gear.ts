@@ -4,7 +4,7 @@ type Gear = {
     thickness: number | null;
   };
   tanks: {
-    count: number;
+    count: number | null;
     type: string;
   };
   bcd: string;

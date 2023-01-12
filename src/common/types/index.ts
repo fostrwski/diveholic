@@ -13,11 +13,11 @@ export type Dive = {
     diveCenter: string;
   };
   type: "shore" | "boat";
-  length: number;
+  length: number | null;
   units: "metric" | "imperial";
   depth: {
-    max: number;
-    average: number;
+    max: number | null;
+    average: number | null;
   };
   weights: {
     taken: number;
@@ -32,6 +32,8 @@ export type Dive = {
     };
   };
   gear: Gear;
+  diveBuddy: string;
+  notes: string;
 };
 
 // Copy of the Dive type for easier use in react state

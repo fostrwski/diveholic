@@ -45,7 +45,9 @@ export default function generateNewDiveObject(dive: FormFields): Dive {
       bcd: dive.gearBcd,
       regulator: dive.gearRegulator,
       fins: dive.gearFins
-    }
+    },
+    diveBuddy: dive.diveBuddy,
+    notes: dive.notes
   };
 
   return newDive;
