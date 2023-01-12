@@ -1,29 +1,18 @@
 import CalendarTodayRounded from "@mui/icons-material/CalendarTodayRounded";
-import ChevronRightRounded from "@mui/icons-material/ChevronRightRounded";
-import ChevronLeftRounded from "@mui/icons-material/ChevronLeftRounded";
 import EditRounded from "@mui/icons-material/EditRounded";
-import ErrorOutlineRounded from "@mui/icons-material/ErrorOutlineRounded";
 import Avatar from "@mui/joy/Avatar";
 import Box from "@mui/joy/Box";
-import Button from "@mui/joy/Button";
 import FormControl from "@mui/joy/FormControl";
 import FormHelperText from "@mui/joy/FormHelperText";
 import FormLabel from "@mui/joy/FormLabel";
-import Grid from "@mui/joy/Grid";
-import IconButton from "@mui/joy/IconButton";
-import MuiLink from "@mui/joy/Link";
-import Modal from "@mui/joy/Modal";
-import ModalDialog from "@mui/joy/ModalDialog";
-import Radio from "@mui/joy/Radio";
-import RadioGroup from "@mui/joy/RadioGroup";
+import Link from "@mui/joy/Link";
 import Typography from "@mui/joy/Typography";
-import {
-  type DatePickerUserConfig,
-  useDatePicker
-} from "@rehookify/datepicker";
 import { formatDate, formatTime } from "common/utils/datetime/format";
+import dynamic from "next/dynamic";
 import React, { useState } from "react";
 import { useFormContext } from "react-hook-form";
+
+const Modal = dynamic(() => import("./Modal"));
 
 interface DatePickerProps {
   initialDate?: Date;
@@ -31,50 +20,13 @@ interface DatePickerProps {
 
 const DatePicker: React.FC<DatePickerProps> = ({ initialDate }) => {
   const [open, setOpen] = useState<boolean>(false);
-  const [error, setError] = useState<boolean>(false);
   const {
-    setValue,
     getValues,
     formState: { errors }
   } = useFormContext();
 
-  const config: DatePickerUserConfig = {
-    locale: {
-      weekday: "short"
-    }
-  };
-
-  const {
-    data: { selectedDates, calendars, weekDays },
-    propGetters: { nextMonthButton, previousMonthButton },
-    actions: { setDay }
-    // @ts-ignore
-  } = useDatePicker(config);
-
-  const selectedDate = selectedDates[0];
-
-  const { days, month, year } = calendars[0];
-
   const handleModalToggle = () => {
     setOpen(!open);
-  };
-
-  const handleModalClose = () => {
-    setOpen(false);
-  };
-
-  const handleModalDone = () => {
-    setError(false);
-    if (!selectedDate) return setError(true);
-
-    setValue("date", selectedDate);
-    handleModalClose();
-  };
-
-  const handleRadioChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const [day, month, year] = e.target.value.split("/");
-    // Convert strings to ints
-    setDay(new Date(+year, +month - 1, +day));
   };
 
   return (
@@ -88,6 +40,7 @@ const DatePicker: React.FC<DatePickerProps> = ({ initialDate }) => {
           width: "100%"
         }}
       >
+        {console.log(errors)}
         <Box sx={{ display: "flex", gap: 2, alignItems: "center" }}>
           <Avatar sx={{ "--Avatar-size": "52px" }}>
             <CalendarTodayRounded sx={{ fontSize: "24px" }} />
@@ -102,7 +55,7 @@ const DatePicker: React.FC<DatePickerProps> = ({ initialDate }) => {
                     <br />
                     {formatTime(getValues("date"))}
                     <br />
-                    <MuiLink
+                    <Link
                       endDecorator={<EditRounded />}
                       color="warning"
                       level="body1"
@@ -112,10 +65,10 @@ const DatePicker: React.FC<DatePickerProps> = ({ initialDate }) => {
                       aria-label="Edit date"
                     >
                       Edit
-                    </MuiLink>
+                    </Link>
                   </>
                 ) : (
-                  <MuiLink
+                  <Link
                     component="button"
                     onClick={handleModalToggle}
                     level="h5"
@@ -124,7 +77,7 @@ const DatePicker: React.FC<DatePickerProps> = ({ initialDate }) => {
                     sx={{ p: 0, fontWeight: "lg" }}
                   >
                     Click here to set
-                  </MuiLink>
+                  </Link>
                 )}
               </>
             </Typography>
@@ -134,137 +87,7 @@ const DatePicker: React.FC<DatePickerProps> = ({ initialDate }) => {
         </Box>
       </Box>
 
-      <Modal open={open} onClose={handleModalClose} aria-label="Select date">
-        <ModalDialog
-          sx={{
-            overflow: "scroll",
-            maxHeight: "92%",
-            top: "unset",
-            pb: 8,
-            borderRadius: "xl",
-            borderBottomLeftRadius: 0,
-            borderBottomRightRadius: 0
-          }}
-          layout="fullscreen"
-        >
-          <Box component="form">
-            <Grid container spacing={2}>
-              <Grid
-                xs={12}
-                sx={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center"
-                }}
-              >
-                <IconButton
-                  color="neutral"
-                  variant="plain"
-                  {...previousMonthButton()}
-                >
-                  <ChevronLeftRounded />
-                </IconButton>
-
-                <Box sx={{ textAlign: "center" }}>
-                  <Typography level="subtitle1">{year}</Typography>
-
-                  <Typography level="h5" component="p">
-                    {month}
-                  </Typography>
-                </Box>
-
-                <IconButton
-                  color="neutral"
-                  variant="plain"
-                  {...nextMonthButton()}
-                >
-                  <ChevronRightRounded />
-                </IconButton>
-              </Grid>
-
-              <Grid xs={12}>
-                <RadioGroup row onChange={handleRadioChange}>
-                  <Grid container columns={7} sx={{ width: "100%" }}>
-                    {weekDays.map((wd: string) => {
-                      const weekDay = wd.slice(0, 2);
-
-                      return (
-                        <Grid xs={1} key={`${month}-${weekDay}`} sx={{ mb: 1 }}>
-                          <Avatar
-                            size="sm"
-                            color="primary"
-                            variant="plain"
-                            sx={{ fontWeight: "xl" }}
-                          >
-                            {weekDay}
-                          </Avatar>
-                        </Grid>
-                      );
-                    })}
-
-                    {days.map((dpDay: any) => {
-                      let checked;
-
-                      return (
-                        <Grid key={`${month}-${dpDay.date}`} xs={1}>
-                          <Avatar
-                            size="sm"
-                            color="neutral"
-                            variant={dpDay.selected ? "soft" : "plain"}
-                          >
-                            <Radio
-                              value={dpDay.date}
-                              label={dpDay.day}
-                              disabled={!dpDay.inCurrentMonth}
-                              size="sm"
-                              color="neutral"
-                              variant="plain"
-                              overlay
-                              disableIcon
-                            />
-                          </Avatar>
-                        </Grid>
-                      );
-                    })}
-                  </Grid>
-                </RadioGroup>
-              </Grid>
-            </Grid>
-
-            {error && (
-              <Typography
-                startDecorator={<ErrorOutlineRounded />}
-                color="danger"
-                sx={{ mt: 3, fontWeight: "xl" }}
-              >
-                Select valid date
-              </Typography>
-            )}
-
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-                mt: 4,
-                gap: 2
-              }}
-            >
-              <MuiLink
-                component="button"
-                variant="plain"
-                color="neutral"
-                onClick={handleModalClose}
-              >
-                Cancel
-              </MuiLink>
-              <Button color="neutral" onClick={handleModalDone}>
-                Done
-              </Button>
-            </Box>
-          </Box>
-        </ModalDialog>
-      </Modal>
+      <Modal open={open} setOpen={setOpen} />
     </>
   );
 };
