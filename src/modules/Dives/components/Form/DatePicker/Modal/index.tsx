@@ -5,6 +5,7 @@ import Avatar from "@mui/joy/Avatar";
 import Box from "@mui/joy/Box";
 import Button from "@mui/joy/Button";
 import FormHelperText from "@mui/joy/FormHelperText";
+import FormLabel from "@mui/joy/FormLabel";
 import Grid from "@mui/joy/Grid";
 import IconButton from "@mui/joy/IconButton";
 import MuiLink from "@mui/joy/Link";
@@ -12,12 +13,13 @@ import MuiModal from "@mui/joy/Modal";
 import MuiModalDialog from "@mui/joy/ModalDialog";
 import Radio from "@mui/joy/Radio";
 import RadioGroup from "@mui/joy/RadioGroup";
+import TextField from "@mui/joy/TextField";
 import Typography from "@mui/joy/Typography";
 import {
   type DatePickerUserConfig,
   useDatePicker
 } from "@rehookify/datepicker";
-import React, { Dispatch, SetStateAction, useState } from "react";
+import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { useFormContext } from "react-hook-form";
 
 interface ModalProps {
@@ -35,6 +37,10 @@ const Modal: React.FC<ModalProps> = ({ open, setOpen }) => {
   };
 
   const { setValue, clearErrors } = useFormContext();
+
+  const date = new Date();
+  const [hours, setHours] = useState<number | "">(date.getHours());
+  const [minutes, setMinutes] = useState<number | "">(date.getMinutes());
 
   const {
     data: { selectedDates, calendars, weekDays },
@@ -60,10 +66,18 @@ const Modal: React.FC<ModalProps> = ({ open, setOpen }) => {
     handleModalClose();
   };
 
-  const handleRadioChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onRadioChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const [day, month, year] = e.target.value.split("/");
     // Convert strings to ints
     setDay(new Date(+year, +month - 1, +day));
+  };
+
+  const onHoursChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setHours(parseInt(e.target.value, 10) || "");
+  };
+
+  const onMinutesChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setMinutes(parseInt(e.target.value, 10) || "");
   };
 
   return (
@@ -81,84 +95,123 @@ const Modal: React.FC<ModalProps> = ({ open, setOpen }) => {
         layout="fullscreen"
       >
         <Box component="form">
-          <Grid container spacing={2}>
-            <Grid
-              xs={12}
-              sx={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center"
-              }}
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center"
+            }}
+          >
+            <IconButton
+              color="neutral"
+              variant="plain"
+              {...previousMonthButton()}
             >
-              <IconButton
-                color="neutral"
-                variant="plain"
-                {...previousMonthButton()}
-              >
-                <ChevronLeftRounded />
-              </IconButton>
+              <ChevronLeftRounded />
+            </IconButton>
 
-              <Box sx={{ textAlign: "center" }}>
-                <Typography level="subtitle1">{year}</Typography>
+            <Box sx={{ textAlign: "center" }}>
+              <Typography level="subtitle1">{year}</Typography>
 
-                <Typography level="h5" component="p">
-                  {month}
-                </Typography>
-              </Box>
+              <Typography level="h5" component="p">
+                {month}
+              </Typography>
+            </Box>
 
-              <IconButton
-                color="neutral"
-                variant="plain"
-                {...nextMonthButton()}
-              >
-                <ChevronRightRounded />
-              </IconButton>
-            </Grid>
+            <IconButton color="neutral" variant="plain" {...nextMonthButton()}>
+              <ChevronRightRounded />
+            </IconButton>
+          </Box>
 
-            <Grid xs={12}>
-              <RadioGroup row onChange={handleRadioChange}>
-                <Grid container columns={7} sx={{ width: "100%" }}>
-                  {weekDays.map((wd: string) => {
-                    const weekDay = wd.slice(0, 2);
+          <Box mt={2}>
+            <RadioGroup row onChange={onRadioChange}>
+              <Grid container columns={7} sx={{ width: "100%" }}>
+                {weekDays.map((wd: string) => {
+                  const weekDay = wd.slice(0, 2);
 
-                    return (
-                      <Grid xs={1} key={`${month}-${weekDay}`} sx={{ mb: 1 }}>
-                        <Avatar
-                          size="sm"
-                          color="primary"
-                          variant="plain"
-                          sx={{ fontWeight: "xl" }}
-                        >
-                          {weekDay}
-                        </Avatar>
-                      </Grid>
-                    );
-                  })}
-
-                  {days.map((dpDay: any) => (
-                    <Grid key={`${month}-${dpDay.date}`} xs={1}>
+                  return (
+                    <Grid xs={1} key={`${month}-${weekDay}`} sx={{ mb: 1 }}>
                       <Avatar
                         size="sm"
-                        color="neutral"
-                        variant={dpDay.selected ? "soft" : "plain"}
+                        color="primary"
+                        variant="plain"
+                        sx={{ fontWeight: "xl" }}
                       >
-                        <Radio
-                          value={dpDay.date}
-                          label={dpDay.day}
-                          disabled={!dpDay.inCurrentMonth}
-                          size="sm"
-                          color="neutral"
-                          variant="plain"
-                          overlay
-                          disableIcon
-                        />
+                        {weekDay}
                       </Avatar>
                     </Grid>
-                  ))}
-                </Grid>
-              </RadioGroup>
-            </Grid>
-          </Grid>
+                  );
+                })}
+
+                {days.map((dpDay: any) => (
+                  <Grid key={`${month}-${dpDay.date}`} xs={1}>
+                    <Avatar
+                      size="sm"
+                      color="neutral"
+                      variant={dpDay.selected ? "soft" : "plain"}
+                    >
+                      <Radio
+                        value={dpDay.date}
+                        label={dpDay.day}
+                        disabled={!dpDay.inCurrentMonth}
+                        size="sm"
+                        color="neutral"
+                        variant="plain"
+                        overlay
+                        disableIcon
+                      />
+                    </Avatar>
+                  </Grid>
+                ))}
+              </Grid>
+            </RadioGroup>
+
+            <Box mt={4}>
+              <Typography level="subtitle1" textAlign="center">
+                Time
+              </Typography>
+              <Box
+                sx={{
+                  mt: 1,
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  gap: 2
+                }}
+              >
+                <TextField
+                  type="number"
+                  value={hours}
+                  onChange={onHoursChange}
+                  sx={{
+                    width: 60,
+                    input: {
+                      textAlign: "center",
+                      fontSize: "md",
+                      fontWeight: "md"
+                    }
+                  }}
+                  aria-label="Hours"
+                />
+                <Typography level="h2">:</Typography>
+                <TextField
+                  type="number"
+                  value={minutes}
+                  onChange={onMinutesChange}
+                  sx={{
+                    width: 60,
+                    input: {
+                      textAlign: "center",
+                      fontSize: "md",
+                      fontWeight: "md"
+                    }
+                  }}
+                  aria-label="Minutes"
+                />
+              </Box>
+            </Box>
+          </Box>
 
           {error && (
             <Typography
@@ -166,7 +219,7 @@ const Modal: React.FC<ModalProps> = ({ open, setOpen }) => {
               color="danger"
               sx={{ mt: 3, fontWeight: "xl" }}
             >
-              Select valid date
+              Select valid date and time
             </Typography>
           )}
 
