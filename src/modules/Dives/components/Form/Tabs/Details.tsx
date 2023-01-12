@@ -4,7 +4,6 @@ import FormLabel from "@mui/joy/FormLabel";
 import Radio from "@mui/joy/Radio";
 import RadioGroup from "@mui/joy/RadioGroup";
 import Slider from "@mui/joy/Slider";
-import Typography from "@mui/joy/Typography";
 import React from "react";
 import { Controller, useFormContext } from "react-hook-form";
 
@@ -29,8 +28,13 @@ const weightsAmmount = [
 ];
 
 const waterTypes = [
-  { title: "Fresh", icon: "🍃", value: "fresh", examples: "Quarries, lakes, rivers" },
-  { title: "Salt", icon: "🧂", value:"salt", examples: "Seas, oceans" }
+  {
+    title: "Fresh",
+    icon: "🍃",
+    value: "fresh",
+    examples: "Quarries, lakes, rivers"
+  },
+  { title: "Salt", icon: "🧂", value: "salt", examples: "Seas, oceans" }
 ];
 
 const sliderMarks = generateSliderMarks([0, 5, 10, 15, 20]);
@@ -38,9 +42,7 @@ const sliderMarks = generateSliderMarks([0, 5, 10, 15, 20]);
 const Details: React.FC = () => {
   const { setValue, getValues, control } = useFormContext();
 
-  const onRadioChange = (
-    e: React.ChangeEvent<HTMLInputElement>
-  ) => {
+  const onRadioChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     switch (e.target.value) {
       case "tooLittle":
         return setValue("weightsAmmount", "tooLittle");
@@ -65,25 +67,21 @@ const Details: React.FC = () => {
               width: "100%"
             }}
           >
-            {waterTypes.map(
-              (waterType) => (
-                <FormControl
-                  sx={{ width: "100%", flexDirection: "row", gap: 2 }}
-                  key={waterType.title}
-                >
-                  <Radio
-                    value={waterType.value}
-                    overlay
-                    size="lg"
-                  />
+            {waterTypes.map((waterType) => (
+              <FormControl
+                sx={{ width: "100%", flexDirection: "row", gap: 2 }}
+                key={waterType.title}
+              >
+                <Radio value={waterType.value} overlay size="lg" />
 
-                  <div>
-                    <FormLabel>{waterType.title} water {waterType.icon}</FormLabel>
-                    <FormHelperText>{waterType.examples}</FormHelperText>
-                  </div>
-                </FormControl>
-              )
-            )}
+                <div>
+                  <FormLabel>
+                    {waterType.title} water {waterType.icon}
+                  </FormLabel>
+                  <FormHelperText>{waterType.examples}</FormHelperText>
+                </div>
+              </FormControl>
+            ))}
           </RadioGroup>
         )}
       />

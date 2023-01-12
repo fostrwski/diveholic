@@ -4,8 +4,6 @@ import ErrorOutlineRounded from "@mui/icons-material/ErrorOutlineRounded";
 import Avatar from "@mui/joy/Avatar";
 import Box from "@mui/joy/Box";
 import Button from "@mui/joy/Button";
-import FormHelperText from "@mui/joy/FormHelperText";
-import FormLabel from "@mui/joy/FormLabel";
 import Grid from "@mui/joy/Grid";
 import IconButton from "@mui/joy/IconButton";
 import MuiLink from "@mui/joy/Link";
@@ -19,7 +17,7 @@ import {
   type DatePickerUserConfig,
   useDatePicker
 } from "@rehookify/datepicker";
-import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
+import React, { Dispatch, SetStateAction, useState } from "react";
 import { useFormContext } from "react-hook-form";
 
 interface ModalProps {
