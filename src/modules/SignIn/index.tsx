@@ -32,11 +32,11 @@ const SignIn: React.FC = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
-  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
   };
 
-  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
   };
 
@@ -84,7 +84,7 @@ const SignIn: React.FC = () => {
           placeholder="Email"
           startDecorator={<AlternateEmailRounded />}
           type="email"
-          onChange={handleEmailChange}
+          onChange={onEmailChange}
           value={email}
           size="lg"
           label="Email"
@@ -95,7 +95,7 @@ const SignIn: React.FC = () => {
           placeholder="Password"
           startDecorator={<KeyRounded />}
           type={showPassword ? "text" : "password"}
-          onChange={handlePasswordChange}
+          onChange={onPasswordChange}
           value={password}
           size="lg"
           required

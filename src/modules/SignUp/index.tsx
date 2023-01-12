@@ -27,15 +27,15 @@ const SignUp: React.FC = () => {
   const [password, setPassword] = useState<string>("");
   const [firstName, setFirstName] = useState<string>("");
 
-  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
   };
 
-  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
   };
 
-  const handleFirstNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onFirstNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFirstName(e.target.value);
   };
 
@@ -98,7 +98,7 @@ const SignUp: React.FC = () => {
           placeholder="Email"
           type="email"
           startDecorator={<AlternateEmailRounded />}
-          onChange={handleEmailChange}
+          onChange={onEmailChange}
           value={email}
           size="lg"
           required
@@ -108,7 +108,7 @@ const SignUp: React.FC = () => {
           placeholder="Password"
           type={showPassword ? "text" : "password"}
           startDecorator={<KeyRounded />}
-          onChange={handlePasswordChange}
+          onChange={onPasswordChange}
           value={password}
           size="lg"
           required
@@ -128,7 +128,7 @@ const SignUp: React.FC = () => {
           placeholder="First name"
           type="text"
           startDecorator={<PersonRounded />}
-          onChange={handleFirstNameChange}
+          onChange={onFirstNameChange}
           value={firstName}
           size="lg"
           required

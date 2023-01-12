@@ -33,7 +33,7 @@ const Account: React.FC<AccountProps> = ({ user }) => {
     setMounted(true);
   }, []);
 
-  const handleRadioChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onRadioChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     // @ts-ignore
     setMode(e.target.value);
   };
@@ -89,7 +89,7 @@ const Account: React.FC<AccountProps> = ({ user }) => {
           <Typography level="h5" my={2}>
             Mode
           </Typography>
-          <RadioGroup row value={mode} onChange={handleRadioChange}>
+          <RadioGroup row value={mode} onChange={onRadioChange}>
             <Radio value="system" label="System" />
             <Radio value="light" label="Light" />
             <Radio value="dark" label="Dark" />

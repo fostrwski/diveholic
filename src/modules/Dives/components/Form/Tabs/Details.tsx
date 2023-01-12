@@ -38,7 +38,7 @@ const sliderMarks = generateSliderMarks([0, 5, 10, 15, 20]);
 const Details: React.FC = () => {
   const { setValue, getValues, control } = useFormContext();
 
-  const handleWeightsAmmountRadioChange = (
+  const onRadioChange = (
     e: React.ChangeEvent<HTMLInputElement>
   ) => {
     switch (e.target.value) {
@@ -114,7 +114,7 @@ const Details: React.FC = () => {
           <RadioGroup
             {...field}
             sx={{ mt: 4, gap: 2 }}
-            onChange={(e) => handleWeightsAmmountRadioChange(e)}
+            onChange={(e) => onRadioChange(e)}
           >
             {weightsAmmount.map(
               (ammount: {
