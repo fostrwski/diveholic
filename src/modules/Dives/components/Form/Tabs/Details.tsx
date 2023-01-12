@@ -4,6 +4,7 @@ import FormLabel from "@mui/joy/FormLabel";
 import Radio from "@mui/joy/Radio";
 import RadioGroup from "@mui/joy/RadioGroup";
 import Slider from "@mui/joy/Slider";
+import Typography from "@mui/joy/Typography";
 import React from "react";
 import { Controller, useFormContext } from "react-hook-form";
 
@@ -28,8 +29,8 @@ const weightsAmmount = [
 ];
 
 const waterTypes = [
-  { title: "Fresh", examples: "Quarries, lakes, rivers" },
-  { title: "Salt", examples: "Seas, oceans" }
+  { title: "Fresh", icon: "🍃", value: "fresh", examples: "Quarries, lakes, rivers" },
+  { title: "Salt", icon: "🧂", value:"salt", examples: "Seas, oceans" }
 ];
 
 const sliderMarks = generateSliderMarks([0, 5, 10, 15, 20]);
@@ -65,19 +66,19 @@ const Details: React.FC = () => {
             }}
           >
             {waterTypes.map(
-              (waterType: { title: string; examples: string }) => (
+              (waterType) => (
                 <FormControl
                   sx={{ width: "100%", flexDirection: "row", gap: 2 }}
                   key={waterType.title}
                 >
                   <Radio
-                    value={waterType.title.toLowerCase()}
+                    value={waterType.value}
                     overlay
                     size="lg"
                   />
 
                   <div>
-                    <FormLabel>{waterType.title} water</FormLabel>
+                    <FormLabel>{waterType.title} water {waterType.icon}</FormLabel>
                     <FormHelperText>{waterType.examples}</FormHelperText>
                   </div>
                 </FormControl>
