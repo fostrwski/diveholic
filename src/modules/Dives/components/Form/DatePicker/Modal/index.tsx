@@ -1,29 +1,31 @@
 import ChevronLeftRounded from "@mui/icons-material/ChevronLeftRounded";
 import ChevronRightRounded from "@mui/icons-material/ChevronRightRounded";
 import ErrorOutlineRounded from "@mui/icons-material/ErrorOutlineRounded";
-import Avatar from "@mui/joy/Avatar"
-import Box from "@mui/joy/Box"
-import FormHelperText from "@mui/joy/FormHelperText"
-import IconButton from "@mui/joy/IconButton"
-import Typography from "@mui/joy/Typography"
+import Avatar from "@mui/joy/Avatar";
+import Box from "@mui/joy/Box";
 import Button from "@mui/joy/Button";
+import FormHelperText from "@mui/joy/FormHelperText";
 import Grid from "@mui/joy/Grid";
+import IconButton from "@mui/joy/IconButton";
+import MuiLink from "@mui/joy/Link";
 import MuiModal from "@mui/joy/Modal";
 import MuiModalDialog from "@mui/joy/ModalDialog";
 import Radio from "@mui/joy/Radio";
 import RadioGroup from "@mui/joy/RadioGroup";
+import Typography from "@mui/joy/Typography";
 import {
   type DatePickerUserConfig,
   useDatePicker
 } from "@rehookify/datepicker";
 import React, { Dispatch, SetStateAction, useState } from "react";
+import { useFormContext } from "react-hook-form";
 
 interface ModalProps {
   open: boolean;
   setOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-const Modal: React.FC<ModalProps> = ({ open, setOpen }) => {
+const Modal: React.FC<ModalProps> = ({ open, setOpen, setVa }) => {
   const [error, setError] = useState<boolean>(false);
 
   const config: DatePickerUserConfig = {
@@ -31,6 +33,8 @@ const Modal: React.FC<ModalProps> = ({ open, setOpen }) => {
       weekday: "short"
     }
   };
+
+  const { setValue } = useFormContext();
 
   const {
     data: { selectedDates, calendars, weekDays },
@@ -48,6 +52,11 @@ const Modal: React.FC<ModalProps> = ({ open, setOpen }) => {
   };
 
   const handleModalDone = () => {
+    setError(false);
+    if (!selectedDate) return setError(true);
+
+    setValue("date", selectedDate);
+    handleModalClose();
     handleModalClose();
   };
 
@@ -126,28 +135,26 @@ const Modal: React.FC<ModalProps> = ({ open, setOpen }) => {
                     );
                   })}
 
-                  {days.map((dpDay: any) => {
-                    return (
-                      <Grid key={`${month}-${dpDay.date}`} xs={1}>
-                        <Avatar
+                  {days.map((dpDay: any) => (
+                    <Grid key={`${month}-${dpDay.date}`} xs={1}>
+                      <Avatar
+                        size="sm"
+                        color="neutral"
+                        variant={dpDay.selected ? "soft" : "plain"}
+                      >
+                        <Radio
+                          value={dpDay.date}
+                          label={dpDay.day}
+                          disabled={!dpDay.inCurrentMonth}
                           size="sm"
                           color="neutral"
-                          variant={dpDay.selected ? "soft" : "plain"}
-                        >
-                          <Radio
-                            value={dpDay.date}
-                            label={dpDay.day}
-                            disabled={!dpDay.inCurrentMonth}
-                            size="sm"
-                            color="neutral"
-                            variant="plain"
-                            overlay
-                            disableIcon
-                          />
-                        </Avatar>
-                      </Grid>
-                    );
-                  })}
+                          variant="plain"
+                          overlay
+                          disableIcon
+                        />
+                      </Avatar>
+                    </Grid>
+                  ))}
                 </Grid>
               </RadioGroup>
             </Grid>
@@ -172,10 +179,10 @@ const Modal: React.FC<ModalProps> = ({ open, setOpen }) => {
               gap: 2
             }}
           >
-            <Button variant="plain" color="neutral" onClick={handleModalClose}>
+            <MuiLink variant="plain" color="neutral" onClick={handleModalClose}>
               Cancel
-            </Button>
-            <Button color="neutral" onClick={handleModalDone} size="lg">
+            </MuiLink>
+            <Button color="neutral" onClick={handleModalDone}>
               Done
             </Button>
           </Box>
