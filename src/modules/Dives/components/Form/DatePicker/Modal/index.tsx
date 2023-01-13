@@ -230,7 +230,7 @@ const Modal: React.FC<ModalProps> = ({ open, setOpen }) => {
               gap: 2
             }}
           >
-            <MuiLink variant="plain" color="neutral" onClick={handleModalClose}>
+            <MuiLink variant="plain" color="danger" onClick={handleModalClose}>
               Cancel
             </MuiLink>
             <Button color="neutral" onClick={handleModalDone}>
