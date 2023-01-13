@@ -13,7 +13,9 @@ interface NewProps {
 
 const New: React.FC<NewProps> = ({ user }) => {
   const { handleSubmit, getValues } = useFormContext();
-  const onSubmit = (data: any) => console.log(data);
+  const onSubmit = (data: any) => {
+    alert(JSON.stringify(data, null, 2));
+  };
 
   const unusedOnSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
