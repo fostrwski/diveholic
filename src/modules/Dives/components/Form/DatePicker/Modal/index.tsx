@@ -57,9 +57,12 @@ const Modal: React.FC<ModalProps> = ({ open, setOpen }) => {
 
   const handleModalDone = () => {
     setError(false);
-    if (!selectedDate) return setError(true);
+    if (!selectedDate || !hours || !minutes) return setError(true);
 
-    setValue("date", selectedDate);
+    const datetime = new Date(selectedDate)
+    datetime.setHours(hours)
+    datetime.setMinutes(minutes)
+    setValue("date", datetime);
     clearErrors("date");
     handleModalClose();
   };
