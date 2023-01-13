@@ -74,6 +74,7 @@ const Form: React.FC<FormProps> = ({ onSubmit }) => {
           sx={{ mt: 6 }}
           fullWidth
           onSubmit={onSubmit}
+          onClick={console.log(getValues())}
         >
           Save
         </Button>

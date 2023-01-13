@@ -1,7 +1,7 @@
 export default function getDiveEmoji(diveType: "boat" | "shore") {
   switch (diveType) {
     case "boat":
-      return "⚓️";
+      return "🛥";
     case "shore":
       return "🏝";
     default:
