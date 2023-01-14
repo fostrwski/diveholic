@@ -46,7 +46,7 @@ const DatePicker: React.FC<DatePickerProps> = ({ initialDate }) => {
           </Avatar>
           <FormControl error={!!errors?.date}>
             <Typography level="h6" component="div">
-              <FormLabel sx={{ color: "GrayText" }}>Date</FormLabel>
+              <FormLabel sx={{ color: "GrayText" }}>Date and time</FormLabel>
               <>
                 {getValues("date") ? (
                   <>
