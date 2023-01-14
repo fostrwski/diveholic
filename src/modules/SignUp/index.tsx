@@ -9,15 +9,13 @@ import VisibilityOffRounded from "@mui/icons-material/VisibilityOffRounded";
 import VisibilityRounded from "@mui/icons-material/VisibilityRounded";
 import Box from "@mui/joy/Box";
 import Button from "@mui/joy/Button";
-import Container from "@mui/joy/Container";
 import IconButton from "@mui/joy/IconButton";
-import JoyLink from "@mui/joy/Link";
+import MuiLink from "@mui/joy/Link";
 import TextField from "@mui/joy/TextField";
 import Typography from "@mui/joy/Typography";
 import { useUser } from "@supabase/auth-helpers-react";
 import AuthLayout from "common/layouts/Auth";
 import { supabase } from "common/utils/supabaseClient";
-import Image from "next/image";
 import NextLink from "next/link";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
@@ -179,7 +177,7 @@ const SignUp: React.FC = () => {
         <Typography component="p">Already have an account? </Typography>
 
         <NextLink href="/signin" passHref>
-          <JoyLink>Sign in</JoyLink>
+          <MuiLink>Sign in</MuiLink>
         </NextLink>
       </Box>
     </AuthLayout>

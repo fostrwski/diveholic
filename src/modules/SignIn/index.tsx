@@ -9,7 +9,7 @@ import VisibilityRounded from "@mui/icons-material/VisibilityRounded";
 import Box from "@mui/joy/Box";
 import Button from "@mui/joy/Button";
 import IconButton from "@mui/joy/IconButton";
-import JoyLink from "@mui/joy/Link";
+import MuiLink from "@mui/joy/Link";
 import TextField from "@mui/joy/TextField";
 import Typography from "@mui/joy/Typography";
 import { useUser } from "@supabase/auth-helpers-react";
@@ -124,9 +124,9 @@ const SignIn: React.FC = () => {
         )}
 
         <div>
-          <JoyLink sx={{ float: "right" }} endDecorator={<LockResetRounded />}>
+          <MuiLink sx={{ float: "right" }} endDecorator={<LockResetRounded />} component="button" type="button">
             Restore password
-          </JoyLink>
+          </MuiLink>
         </div>
 
         <Button
@@ -154,7 +154,7 @@ const SignIn: React.FC = () => {
         <Typography component="p">Don't have an account?</Typography>
 
         <NextLink href="/signup" passHref>
-          <JoyLink>Sign up</JoyLink>
+          <MuiLink>Sign up</MuiLink>
         </NextLink>
       </Box>
     </AuthLayout>
