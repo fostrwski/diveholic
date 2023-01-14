@@ -13,8 +13,9 @@ const Tabs: React.FC = () => (
     defaultValue={0}
     sx={{
       backgroundColor: "transparent",
-      px: 0,
-      mt: 4
+      px: 0
+      ,
+      mt: 2
     }}
   >
     <TabList size="lg" sx={{ mb: 4 }}>

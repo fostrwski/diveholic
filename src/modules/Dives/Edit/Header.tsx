@@ -11,12 +11,7 @@ const Header: React.FC = () => {
   const { id: diveId } = router.query;
 
   return (
-    <Box
-      display="flex"
-      justifyContent="space-between"
-      alignItems="center"
-      mb={2}
-    >
+    <Box display="flex" justifyContent="space-between" alignItems="center">
       <Chip
         startDecorator={<EditRounded />}
         endDecorator={`#${diveId}`}

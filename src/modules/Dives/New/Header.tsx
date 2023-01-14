@@ -6,7 +6,7 @@ import React from "react";
 import CancelButton from "../components/CancelButton";
 
 const Header: React.FC = () => (
-  <Box display="flex" justifyContent="space-between" alignItems="center" mb={2}>
+  <Box display="flex" justifyContent="space-between" alignItems="center">
     <Chip
       startDecorator={<AddRounded />}
       variant="soft"
