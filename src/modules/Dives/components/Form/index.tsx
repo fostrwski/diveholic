@@ -8,7 +8,6 @@ import Textarea from "@mui/joy/Textarea";
 import React, { useEffect } from "react";
 import { useFormContext } from "react-hook-form";
 
-import DatePicker from "./DatePicker";
 import Gear from "./Gear";
 import Tabs from "./Tabs";
 import Temperature from "./Temperature";
@@ -38,8 +37,6 @@ const Form: React.FC<FormProps> = ({ onSubmit }) => {
 
   return (
     <>
-      <DatePicker />
-
       <Box component="form" onSubmit={onSubmit}>
         <Tabs />
 
