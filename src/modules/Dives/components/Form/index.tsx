@@ -36,46 +36,44 @@ const Form: React.FC<FormProps> = ({ onSubmit }) => {
   }, [getValues, setValue, watchLocationCountryName]);
 
   return (
-    <>
-      <Box component="form" onSubmit={onSubmit}>
-        <Tabs />
+    <Box component="form" onSubmit={onSubmit}>
+      <Tabs />
 
-        <Gear />
+      <Gear />
 
-        <Temperature />
+      <Temperature />
 
-        <TextField
-          {...register("diveBuddy")}
-          type="text"
-          label="Dive buddy"
-          placeholder="Joe Doe"
-          sx={{ mt: 10 }}
+      <TextField
+        {...register("diveBuddy")}
+        type="text"
+        label="Dive buddy"
+        placeholder="Joe Doe"
+        sx={{ mt: 10 }}
+      />
+
+      <FormControl sx={{ mt: 6 }}>
+        <FormLabel>Notes</FormLabel>
+        <Textarea
+          {...register("notes")}
+          minRows={4}
+          variant="soft"
+          id="notes"
+          placeholder="Describe what you saw, share your experience"
         />
+      </FormControl>
 
-        <FormControl sx={{ mt: 6 }}>
-          <FormLabel>Notes</FormLabel>
-          <Textarea
-            {...register("notes")}
-            minRows={4}
-            variant="soft"
-            id="notes"
-            placeholder="Describe what you saw, share your experience"
-          />
-        </FormControl>
-
-        <Button
-          type="submit"
-          color="success"
-          size="lg"
-          startDecorator={<SaveRounded />}
-          sx={{ mt: 6 }}
-          fullWidth
-          onSubmit={onSubmit}
-        >
-          Save
-        </Button>
-      </Box>
-    </>
+      <Button
+        type="submit"
+        color="success"
+        size="lg"
+        startDecorator={<SaveRounded />}
+        sx={{ mt: 6 }}
+        fullWidth
+        onSubmit={onSubmit}
+      >
+        Save
+      </Button>
+    </Box>
   );
 };
 
