@@ -18,17 +18,17 @@ const Tabs: React.FC = () => (
     }}
   >
     <TabList size="lg" sx={{ mb: 4 }}>
-      <Tab>Location</Tab>
       <Tab>Basics</Tab>
+      <Tab>Location</Tab>
       <Tab>Details</Tab>
     </TabList>
 
     <TabPanel value={0}>
-      <Location />
+      <Basics />
     </TabPanel>
 
     <TabPanel value={1}>
-      <Basics />
+      <Location />
     </TabPanel>
 
     <TabPanel value={2}>

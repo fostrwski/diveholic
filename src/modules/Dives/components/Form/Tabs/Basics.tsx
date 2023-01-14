@@ -10,6 +10,7 @@ import type { DiveFlattened } from "common/types";
 import React from "react";
 import { Controller, useFormContext } from "react-hook-form";
 
+import DatePicker from "../DatePicker";
 import getDiveEmoji from "../utils/getDiveEmoji";
 import setNullOrNumber from "../utils/setNullOrNumber";
 
@@ -32,6 +33,8 @@ const Basics: React.FC = () => {
 
   return (
     <>
+      <DatePicker />
+
       <Controller
         name="type"
         control={control}
@@ -40,6 +43,7 @@ const Basics: React.FC = () => {
             {...field}
             row
             sx={{
+              mt: 4,
               gap: 2,
               width: "100%"
             }}
