@@ -59,9 +59,9 @@ const Modal: React.FC<ModalProps> = ({ open, setOpen }) => {
     setError(false);
     if (!selectedDate || !hours || !minutes) return setError(true);
 
-    const datetime = new Date(selectedDate)
-    datetime.setHours(hours)
-    datetime.setMinutes(minutes)
+    const datetime = new Date(selectedDate);
+    datetime.setHours(hours);
+    datetime.setMinutes(minutes);
     setValue("date", datetime);
     clearErrors("date");
     handleModalClose();
@@ -82,7 +82,11 @@ const Modal: React.FC<ModalProps> = ({ open, setOpen }) => {
   };
 
   return (
-    <MuiModal open={open} onClose={handleModalClose} aria-label="Select date">
+    <MuiModal
+      open={open}
+      onClose={handleModalClose}
+      aria-label="Select date and time"
+    >
       <MuiModalDialog
         sx={{
           overflow: "scroll",
@@ -95,7 +99,7 @@ const Modal: React.FC<ModalProps> = ({ open, setOpen }) => {
         }}
         layout="fullscreen"
       >
-        <Box component="form">
+        <Box>
           <Box
             sx={{
               display: "flex",
@@ -233,7 +237,7 @@ const Modal: React.FC<ModalProps> = ({ open, setOpen }) => {
               gap: 2
             }}
           >
-            <MuiLink variant="plain" color="danger" onClick={handleModalClose}>
+            <MuiLink component="button" type="button" variant="plain" color="danger" onClick={handleModalClose}>
               Cancel
             </MuiLink>
             <Button color="neutral" onClick={handleModalDone}>

@@ -40,6 +40,7 @@ const DatePicker: React.FC<DatePickerProps> = ({ initialDate }) => {
           width: "100%"
         }}
       >
+        {console.log(errors)}
         <Box sx={{ display: "flex", gap: 2, alignItems: "center" }}>
           <Avatar sx={{ "--Avatar-size": "52px" }}>
             <CalendarTodayRounded sx={{ fontSize: "24px" }} />
@@ -59,6 +60,7 @@ const DatePicker: React.FC<DatePickerProps> = ({ initialDate }) => {
                       color="warning"
                       level="body1"
                       component="button"
+                      type="button"
                       onClick={handleModalToggle}
                       sx={{ p: 0, fontWeigth: "lg" }}
                       aria-label="Edit date"
@@ -69,6 +71,7 @@ const DatePicker: React.FC<DatePickerProps> = ({ initialDate }) => {
                 ) : (
                   <Link
                     component="button"
+                    type="button"
                     onClick={handleModalToggle}
                     level="h5"
                     color="neutral"
