@@ -1,39 +1,50 @@
-/// <reference types="cypress" />
-// ***********************************************
-// This example commands.ts shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
-//
-// declare global {
-//   namespace Cypress {
-//     interface Chainable {
-//       login(email: string, password: string): Chainable<void>
-//       drag(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
-//       dismiss(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
-//       visit(originalFn: CommandOriginalFn, url: string, options: Partial<VisitOptions>): Chainable<Element>
-//     }
-//   }
-// }
+import "cypress-real-events";
+
+Cypress.Commands.add("signIn", (testUserId) => {
+  cy.session(`Test user ${testUserId}`, () => {
+    cy.visit("/signin");
+    cy.log("Filling out email");
+    cy.getByDataCy("email").type(Cypress.env(`test_user_${testUserId}_email`));
+    cy.log("Filling out password");
+    cy.getByDataCy("password").type(
+      Cypress.env(`test_user_${testUserId}_password`)
+    );
+    cy.getByDataCy("submit").click();
+    cy.contains(`Hi ${Cypress.env(`test_user_${testUserId}_firstname`)}`);
+  });
+});
+
+Cypress.Commands.add("getByDataCy", (dataCy) =>
+  cy.get(`[data-cy='${dataCy}']`)
+);
+
+Cypress.Commands.add("getInputByName", (name) =>
+  cy.get(`input[name='${name}']`)
+);
+
+declare global {
+  namespace Cypress {
+    interface Chainable {
+      /**
+       * Signs in with test user credentials
+       * @param testUserId - test user id to sign in
+       * @example cy.signIn()
+       */
+      signIn(testUserId: number): Chainable<JQuery<HTMLElement>>;
+
+      /**
+       * Custom command to get input by data-cy
+       * @example cy.getByDataCy("submit")
+       */
+      getByDataCy(dataCy: string): Chainable<JQuery<HTMLElement>>;
+
+      /**
+       * Custom command to get input by name
+       * @example cy.getInputByName("date")
+       */
+      getInputByName(name: string): Chainable<JQuery<HTMLElement>>;
+    }
+  }
+}
 
 export {};
