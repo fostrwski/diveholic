@@ -1,18 +1,14 @@
-import DeviceThermostatRounded from "@mui/icons-material/DeviceThermostatRounded";
-import DownloadRounded from "@mui/icons-material/DownloadRounded";
-import ScubaDivingRounded from "@mui/icons-material/ScubaDivingRounded";
 import TimelapseRounded from "@mui/icons-material/TimelapseRounded";
-import TitleRounded from "@mui/icons-material/TitleRounded";
 import Avatar from "@mui/joy/Avatar";
 import Box from "@mui/joy/Box";
 import Card from "@mui/joy/Card";
 import CardContent from "@mui/joy/CardContent";
 import Chip from "@mui/joy/Chip";
-import Grid from "@mui/joy/Grid";
 import Typography from "@mui/joy/Typography";
 import Separator from "common/components/Separator";
 import type { Dive } from "common/types";
 import { formatDate, formatTime } from "common/utils/datetime/format";
+import getDiveEmoji from "modules/Dives/components/Form/utils/getDiveEmoji";
 import NextLink from "next/link";
 import React from "react";
 
@@ -31,45 +27,23 @@ const DiveCard: React.FC<DiveCardProps> = ({ dive }) => (
       }}
     >
       <Avatar color="neutral" size="lg">
-        <ScubaDivingRounded />
+        {getDiveEmoji(dive.type)}
       </Avatar>
       <CardContent>
         <Typography component="p" level="subtitle1">
-          {formatDate(dive.date)} &bull; {formatTime(dive.date)}
+          {formatDate(dive.date)} &bull; {formatTime(dive.date)} &bull;{" "}
+          <Box
+            component="span"
+            sx={{
+              display: "inline-flex",
+              alignItems: "center",
+              verticalAlign: "top",
+              gap: 0.4
+            }}
+          >
+            <TimelapseRounded /> {dive.length}min
+          </Box>
         </Typography>
-
-        <Box my={2}>
-          <Grid container spacing={2} sx={{ fontWeight: "md" }}>
-            <Grid xs={6}>
-              <Typography component="p" startDecorator={<TitleRounded />}>
-                {dive.type}
-              </Typography>
-              <Typography
-                component="p"
-                startDecorator={<DownloadRounded />}
-                endDecorator="m"
-              >
-                {dive.depth.max}
-              </Typography>
-            </Grid>
-            <Grid xs={6}>
-              <Typography
-                component="p"
-                startDecorator={<TimelapseRounded />}
-                endDecorator="min"
-              >
-                {dive.length}
-              </Typography>
-              <Typography
-                component="p"
-                startDecorator={<DeviceThermostatRounded />}
-                endDecorator="°C"
-              >
-                {dive.temperature.water.bottom}
-              </Typography>
-            </Grid>
-          </Grid>
-        </Box>
 
         <Box
           mt={2}
@@ -83,7 +57,6 @@ const DiveCard: React.FC<DiveCardProps> = ({ dive }) => (
           <Chip
             color="neutral"
             variant="soft"
-            size="sm"
             startDecorator={dive.location.country.flagEmoji}
           >
             {dive.location.city}, {dive.location.country.name}
