@@ -165,7 +165,7 @@ const Modal: React.FC<ModalProps> = ({ open, setOpen }) => {
                         variant="plain"
                         overlay
                         disableIcon
-                        data-cy={`datetimepicker-dayRadio-${dpDay.day}`}
+                        data-cy={`DateTimePicker-dayRadio-${dpDay.day}`}
                       />
                     </Avatar>
                   </Grid>
@@ -242,7 +242,7 @@ const Modal: React.FC<ModalProps> = ({ open, setOpen }) => {
             <MuiLink component="button" type="button" variant="plain" color="danger" onClick={handleModalClose}>
               Cancel
             </MuiLink>
-            <Button color="neutral" onClick={handleModalDone} data-cy="datetimepicker-submit">
+            <Button color="neutral" onClick={handleModalDone} data-cy="DateTimePicker-submit">
               Done
             </Button>
           </Box>

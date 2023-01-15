@@ -61,6 +61,7 @@ const FormSubmittedModal: React.FC<FormSubmittedModalProps> = ({
           endDecorator={<ArrowForwardRounded />}
           size="lg"
           onClick={handleContinue}
+          data-cy="New-FormSubmittedModal-continue"
         >
           Continue
         </Button>
