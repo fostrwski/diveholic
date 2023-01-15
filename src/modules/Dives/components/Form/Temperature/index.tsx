@@ -22,8 +22,9 @@ const Temperature: React.FC = () => (
       <Grid xs={12}>
         <Controller
           name="temperature.air"
-          render={({ field: { value, onChange } }) => (
+          render={({ field: { value, onChange, name } }) => (
             <TemperatureSlider
+              name={name}
               value={value}
               onChange={onChange}
               label="Air 💨"
@@ -37,8 +38,9 @@ const Temperature: React.FC = () => (
       <Grid xs={12}>
         <Controller
           name="temperature.water.surface"
-          render={({ field: { value, onChange } }) => (
+          render={({ field: { value, onChange, name } }) => (
             <TemperatureSlider
+              name={name}
               value={value}
               onChange={onChange}
               label="Water surface 🌊"
@@ -53,8 +55,9 @@ const Temperature: React.FC = () => (
       <Grid xs={12}>
         <Controller
           name="temperature.water.bottom"
-          render={({ field: { value, onChange } }) => (
+          render={({ field: { value, onChange, name } }) => (
             <TemperatureSlider
+              name={name}
               value={value}
               onChange={onChange}
               label="Water bottom 🔽"
