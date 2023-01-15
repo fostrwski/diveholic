@@ -130,7 +130,7 @@ const Modal: React.FC<ModalProps> = ({ open, setOpen }) => {
           </Box>
 
           <Box mt={2}>
-            <RadioGroup row onChange={onRadioChange}>
+            <RadioGroup name="day" row onChange={onRadioChange}>
               <Grid container columns={7} sx={{ width: "100%" }}>
                 {weekDays.map((wd: string) => {
                   const weekDay = wd.slice(0, 2);
@@ -165,6 +165,7 @@ const Modal: React.FC<ModalProps> = ({ open, setOpen }) => {
                         variant="plain"
                         overlay
                         disableIcon
+                        data-cy={`datetimepicker-dayRadio-${dpDay.day}`}
                       />
                     </Avatar>
                   </Grid>
@@ -241,7 +242,7 @@ const Modal: React.FC<ModalProps> = ({ open, setOpen }) => {
             <MuiLink component="button" type="button" variant="plain" color="danger" onClick={handleModalClose}>
               Cancel
             </MuiLink>
-            <Button color="neutral" onClick={handleModalDone}>
+            <Button color="neutral" onClick={handleModalDone} data-cy="datetimepicker-submit">
               Done
             </Button>
           </Box>

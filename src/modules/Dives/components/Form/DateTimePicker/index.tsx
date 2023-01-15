@@ -14,11 +14,11 @@ import { useFormContext } from "react-hook-form";
 
 const Modal = dynamic(() => import("./Modal"));
 
-interface DatePickerProps {
+interface DateTimePickerProps {
   initialDate?: Date;
 }
 
-const DatePicker: React.FC<DatePickerProps> = ({ initialDate }) => {
+const DateTimePicker: React.FC<DatePickerProps> = ({ initialDate }) => {
   const [open, setOpen] = useState<boolean>(false);
   const {
     getValues,
@@ -63,6 +63,7 @@ const DatePicker: React.FC<DatePickerProps> = ({ initialDate }) => {
                       onClick={handleModalToggle}
                       sx={{ p: 0, fontWeigth: "lg" }}
                       aria-label="Edit date"
+                      data-cy="editDate"
                     >
                       Edit
                     </Link>
@@ -76,6 +77,7 @@ const DatePicker: React.FC<DatePickerProps> = ({ initialDate }) => {
                     color="neutral"
                     aria-label="Set date"
                     sx={{ p: 0, fontWeight: "lg" }}
+                    data-cy="setDate"
                   >
                     Click here to set
                   </Link>
@@ -93,4 +95,4 @@ const DatePicker: React.FC<DatePickerProps> = ({ initialDate }) => {
   );
 };
 
-export default DatePicker;
+export default DateTimePicker;

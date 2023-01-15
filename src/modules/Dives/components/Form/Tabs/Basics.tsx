@@ -6,18 +6,18 @@ import Grid from "@mui/joy/Grid";
 import Radio from "@mui/joy/Radio";
 import RadioGroup from "@mui/joy/RadioGroup";
 import TextField from "@mui/joy/TextField";
-import type { DiveFlattened } from "common/types";
+import type { Dive } from "common/types";
 import React from "react";
 import { Controller, useFormContext } from "react-hook-form";
 
-import DatePicker from "../DatePicker";
+import DateTimePicker from "../DateTimePicker";
 import type { FormFields } from "../types";
 import getDiveEmoji from "../utils/getDiveEmoji";
 import setNullOrNumber from "../utils/setNullOrNumber";
 
 const diveTypes: Array<{
   title: string;
-  value: DiveFlattened["type"];
+  value: Dive["type"];
   explanation: string;
 }> = [
   { title: "Boat", value: "boat", explanation: "Dive from the boat" },
@@ -34,7 +34,7 @@ const Basics: React.FC = () => {
 
   return (
     <>
-      <DatePicker />
+      <DateTimePicker />
 
       <Controller
         name="type"
