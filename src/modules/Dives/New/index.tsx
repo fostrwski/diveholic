@@ -4,7 +4,7 @@ import React from "react";
 import { useFormContext } from "react-hook-form";
 
 import Form from "../components/Form";
-import generateNewDiveObject from "../components/Form/utils/generateNewDiveObject";
+import type { FormFields } from "../components/Form/types";
 import Header from "./Header";
 
 interface NewProps {
@@ -12,19 +12,15 @@ interface NewProps {
 }
 
 const New: React.FC<NewProps> = ({ user }) => {
-  const { handleSubmit, getValues } = useFormContext();
+  const { handleSubmit, getValues } = useFormContext<FormFields>();
   const onSubmit = (data: any) => {
-    alert(JSON.stringify(data, null, 2));
+    console.log(JSON.stringify(data, null, 2));
   };
 
-  const unusedOnSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    // @ts-ignore
-    const diveObject = generateNewDiveObject(getValues());
-
+  const unusedOnSubmit = async (data: any) => {
     const { error } = await supabase
       .from("dives")
-      .insert({ user_id: user.id, ...diveObject });
+      .insert({ user_id: user.id, ...data });
     if (error) console.error(error);
   };
 
