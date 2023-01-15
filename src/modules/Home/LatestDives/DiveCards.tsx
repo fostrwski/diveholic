@@ -18,7 +18,7 @@ const DiveCards: React.FC<DiveCardsProps> = ({ dives }) => (
     ))}
 
     <NextLink href="/dives">
-      <Button variant="plain" fullWidth size="lg">
+      <Button variant="plain" color="neutral" fullWidth size="lg">
         See all
       </Button>
     </NextLink>
