@@ -35,34 +35,3 @@ export type Dive = {
   diveBuddy: string;
   notes: string;
 };
-
-// Copy of the Dive type for easier use in react state
-export type DiveFlattened = {
-  id?: number;
-  date: string;
-  locationCountryName: string;
-  locationCountryCode: string;
-  locationCountryFlagEmoji: string;
-  locationCity: string;
-  locationDiveCenter: string;
-  type: "boat" | "shore";
-  length: number | null;
-  units: "metric" | "imperial";
-  depthMax: number | null;
-  depthAverage: number | null;
-  weightsTaken: number;
-  weightsAmmount: "perfect" | "tooLittle" | "tooMuch";
-  water: "fresh" | "salt";
-  temperatureAir: number | null;
-  temperatureWaterSurface: number | null;
-  temperatureWaterBottom: number | null;
-  gearExposureProtectionType: string;
-  gearExposureProtectionThickness: number | null;
-  gearTanksCount: number | null;
-  gearTanksType: string;
-  gearBcd: string;
-  gearFins: string;
-  gearRegulator: string;
-  diveBuddy: string;
-  notes: string;
-};
