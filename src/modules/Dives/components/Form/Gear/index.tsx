@@ -10,13 +10,14 @@ import TextSeparator from "common/components/TextSeparator";
 import React, { useState } from "react";
 import { useFormContext } from "react-hook-form";
 
+import type { FormFields } from "../types";
 import setNullOrNumber from "../utils/setNullOrNumber";
 
 const Gear: React.FC = () => {
   const {
     register,
     formState: { errors }
-  } = useFormContext();
+  } = useFormContext<FormFields>();
   const [showMore, setShowMore] = useState<boolean>(false);
 
   const handleClick = () => {
@@ -39,16 +40,20 @@ const Gear: React.FC = () => {
       <Grid container spacing={2} justifyContent="space-between">
         <Grid xs={6}>
           <TextField
-            {...register("gearTanksCount", { setValueAs: setNullOrNumber })}
-            error={!!errors.gearTanksCount}
-            helperText={errors.gearTanksCount?.message?.toString()}
+            {...register("gear.tanks.count", { setValueAs: setNullOrNumber })}
+            error={!!errors.gear?.tanks?.count}
+            helperText={errors.gear?.tanks?.count?.message?.toString()}
             type="number"
             label="Count"
             startDecorator={<NumbersRounded />}
           />
         </Grid>
         <Grid xs={6}>
-          <TextField {...register("gearTanksType")} type="text" label="Type" />
+          <TextField
+            {...register("gear.tanks.type")}
+            type="text"
+            label="Type"
+          />
         </Grid>
       </Grid>
 
@@ -64,18 +69,18 @@ const Gear: React.FC = () => {
       <Grid container spacing={2} justifyContent="space-between">
         <Grid xs={6}>
           <TextField
-            {...register("gearExposureProtectionType")}
+            {...register("gear.exposureProtection.type")}
             type="text"
             label="Type"
           />
         </Grid>
         <Grid xs={6}>
           <TextField
-            {...register("gearExposureProtectionThickness", {
+            {...register("gear.exposureProtection.thickness", {
               setValueAs: setNullOrNumber
             })}
-            error={!!errors.gearExposureProtectionThickness}
-            helperText={errors.gearExposureProtectionThickness?.message?.toString()}
+            error={!!errors.gear?.exposureProtection?.thickness}
+            helperText={errors.gear?.exposureProtection?.thickness?.message?.toString()}
             type="number"
             label="Thickness"
             startDecorator={<LineWeightRounded />}

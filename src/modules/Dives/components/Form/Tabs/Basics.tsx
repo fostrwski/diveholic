@@ -11,6 +11,7 @@ import React from "react";
 import { Controller, useFormContext } from "react-hook-form";
 
 import DatePicker from "../DatePicker";
+import type { FormFields } from "../types";
 import getDiveEmoji from "../utils/getDiveEmoji";
 import setNullOrNumber from "../utils/setNullOrNumber";
 
@@ -29,7 +30,7 @@ const Basics: React.FC = () => {
     getValues,
     control,
     formState: { errors }
-  } = useFormContext();
+  } = useFormContext<FormFields>();
 
   return (
     <>
@@ -82,9 +83,9 @@ const Basics: React.FC = () => {
 
         <Grid xs={6}>
           <TextField
-            {...register("depthAverage", { setValueAs: setNullOrNumber })}
-            error={!!errors.depthAverage}
-            helperText={errors.depthAverage?.message?.toString()}
+            {...register("depth.average", { setValueAs: setNullOrNumber })}
+            error={!!errors.depth?.average}
+            helperText={errors.depth?.average?.message?.toString()}
             label="Average depth"
             type="number"
             endDecorator={getValues("units") === "metric" ? "m" : "ft"}
@@ -92,9 +93,9 @@ const Basics: React.FC = () => {
         </Grid>
         <Grid xs={6}>
           <TextField
-            {...register("depthMax", { setValueAs: setNullOrNumber })}
-            error={!!errors.depthMax}
-            helperText={errors.depthMax?.message?.toString()}
+            {...register("depth.max", { setValueAs: setNullOrNumber })}
+            error={!!errors.depth?.max}
+            helperText={errors.depth?.max?.message?.toString()}
             label="Max depth"
             type="number"
             endDecorator={getValues("units") === "metric" ? "m" : "ft"}

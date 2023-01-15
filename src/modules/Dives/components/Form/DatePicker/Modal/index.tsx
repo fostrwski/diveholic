@@ -19,6 +19,7 @@ import {
 } from "@rehookify/datepicker";
 import React, { Dispatch, SetStateAction, useState } from "react";
 import { useFormContext } from "react-hook-form";
+import type { FormFields } from "../../types";
 
 interface ModalProps {
   open: boolean;
@@ -34,7 +35,7 @@ const Modal: React.FC<ModalProps> = ({ open, setOpen }) => {
     }
   };
 
-  const { setValue, clearErrors } = useFormContext();
+  const { setValue, clearErrors } = useFormContext<FormFields>();
 
   const date = new Date();
   const [hours, setHours] = useState<number | "">(date.getHours());

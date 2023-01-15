@@ -11,6 +11,7 @@ import { useFormContext } from "react-hook-form";
 import Gear from "./Gear";
 import Tabs from "./Tabs";
 import Temperature from "./Temperature";
+import type { FormFields } from "./types";
 import getCountryCode from "./utils/getCountryCode";
 import getFlagEmoji from "./utils/getFlagEmoji";
 
@@ -19,19 +20,19 @@ interface FormProps {
 }
 
 const Form: React.FC<FormProps> = ({ onSubmit }) => {
-  const { setValue, watch, getValues, register } = useFormContext();
-  const watchLocationCountryName = watch("locationCountryName");
+  const { setValue, watch, getValues, register } = useFormContext<FormFields>();
+  const watchLocationCountryName = watch("location.country.name");
 
   useEffect(() => {
     const countryCode = getCountryCode(watchLocationCountryName);
     let flagEmoji = "";
     if (countryCode) {
       flagEmoji = getFlagEmoji(countryCode);
-      setValue("locationCountryCode", countryCode);
-      setValue("locationCountryFlagEmoji", flagEmoji);
+      setValue("location.country.code", countryCode);
+      setValue("location.country.flagEmoji", flagEmoji);
     } else {
       flagEmoji = "";
-      setValue("locationCountryFlagEmoji", flagEmoji);
+      setValue("location.country.flagEmoji", flagEmoji);
     }
   }, [getValues, setValue, watchLocationCountryName]);
 

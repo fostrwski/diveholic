@@ -6,6 +6,7 @@ import RadioGroup from "@mui/joy/RadioGroup";
 import Slider from "@mui/joy/Slider";
 import React from "react";
 import { Controller, useFormContext } from "react-hook-form";
+import type { FormFields } from "../types";
 
 import generateSliderMarks from "../utils/generateSliderMarks";
 
@@ -40,16 +41,16 @@ const waterTypes = [
 const sliderMarks = generateSliderMarks([0, 5, 10, 15, 20]);
 
 const Details: React.FC = () => {
-  const { setValue, getValues, control } = useFormContext();
+  const { setValue, getValues, control } = useFormContext<FormFields>();
 
   const onRadioChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     switch (e.target.value) {
       case "tooLittle":
-        return setValue("weightsAmmount", "tooLittle");
+        return setValue("weights.ammount", "tooLittle");
       case "tooMuch":
-        return setValue("weightsAmmount", "tooMuch");
+        return setValue("weights.ammount", "tooMuch");
       default:
-        return setValue("weightsAmmount", "perfect");
+        return setValue("weights.ammount", "perfect");
     }
   };
 
@@ -91,7 +92,7 @@ const Details: React.FC = () => {
           Weights ({getValues("units") === "metric" ? "kg" : "lbs"})
         </FormLabel>
         <Controller
-          name="weightsTaken"
+          name="weights.taken"
           control={control}
           render={({ field }) => (
             <Slider
@@ -106,7 +107,7 @@ const Details: React.FC = () => {
       </FormControl>
 
       <Controller
-        name="weightsAmmount"
+        name="weights.ammount"
         control={control}
         render={({ field }) => (
           <RadioGroup

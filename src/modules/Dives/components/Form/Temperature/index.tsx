@@ -21,7 +21,7 @@ const Temperature: React.FC = () => (
     <Grid container spacing={4} justifyContent="space-between" sx={{ px: 2 }}>
       <Grid xs={12}>
         <Controller
-          name="temperatureAir"
+          name="temperature.air"
           render={({ field: { value, onChange } }) => (
             <TemperatureSlider
               value={value}
@@ -36,7 +36,7 @@ const Temperature: React.FC = () => (
       </Grid>
       <Grid xs={12}>
         <Controller
-          name="temperatureWaterSurface"
+          name="temperature.water.surface"
           render={({ field: { value, onChange } }) => (
             <TemperatureSlider
               value={value}
@@ -52,7 +52,7 @@ const Temperature: React.FC = () => (
       </Grid>
       <Grid xs={12}>
         <Controller
-          name="temperatureWaterBottom"
+          name="temperature.water.bottom"
           render={({ field: { value, onChange } }) => (
             <TemperatureSlider
               value={value}

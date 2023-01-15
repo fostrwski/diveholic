@@ -1,9 +1,9 @@
 import FlagRounded from "@mui/icons-material/FlagRounded";
 import PlaceRounded from "@mui/icons-material/PlaceRounded";
 import PublicRounded from "@mui/icons-material/PublicRounded";
-import { FormHelperText } from "@mui/joy";
 import Autocomplete, { createFilterOptions } from "@mui/joy/Autocomplete";
 import FormControl from "@mui/joy/FormControl";
+import FormHelperText from "@mui/joy/FormHelperText";
 import FormLabel from "@mui/joy/FormLabel";
 import Grid from "@mui/joy/Grid";
 import Link from "@mui/joy/Link";
@@ -12,6 +12,7 @@ import { debounce } from "debounce";
 import React from "react";
 import { Controller, useFormContext } from "react-hook-form";
 
+import type { FormFields } from "../types";
 import listOfCountries from "../utils/listOfCountries";
 
 const Location: React.FC = () => {
@@ -19,18 +20,18 @@ const Location: React.FC = () => {
     register,
     watch,
     formState: { errors }
-  } = useFormContext();
-  const watchLocationCountryFlagEmoji = watch("locationCountryFlagEmoji");
+  } = useFormContext<FormFields>();
+  const watchLocationCountryFlagEmoji = watch("location.country.flagEmoji");
   const filterOptions = createFilterOptions({ limit: 20 });
 
   return (
     <>
       <Grid spacing={2} container>
         <Grid xs={6}>
-          <FormControl error={!!errors.locationCountryName}>
+          <FormControl error={!!errors.location?.country?.name}>
             <FormLabel>Country</FormLabel>
             <Controller
-              name="locationCountryName"
+              name="location.countryName"
               render={({ field }) => (
                 <Autocomplete
                   {...field}
@@ -46,7 +47,6 @@ const Location: React.FC = () => {
                     watchLocationCountryFlagEmoji || <PublicRounded />
                   }
                   freeSolo
-                  error={!!errors.locationCountryName}
                   filterOptions={filterOptions}
                   isOptionEqualToValue={(option, value) => option === value}
                   disableClearable
@@ -54,29 +54,29 @@ const Location: React.FC = () => {
               )}
             />
             <FormHelperText>
-              {errors.locationCountryName?.message?.toString()}
+              {errors.location?.country?.name?.message?.toString()}
             </FormHelperText>
           </FormControl>
         </Grid>
         <Grid xs={6}>
           <TextField
-            {...register("locationCity")}
+            {...register("location.city")}
             type="text"
             label="City"
             placeholder="Trogir"
-            helperText={errors.locationCity?.message?.toString()}
-            error={!!errors.locationCity}
+            helperText={errors.location?.city?.message?.toString()}
+            error={!!errors.location?.city}
           />
         </Grid>
         <Grid xs={12}>
           <TextField
-            {...register("locationDiveCenter")}
+            {...register("location.diveCenter")}
             type="text"
             label="Dive center"
             placeholder="Trogir dive center"
             startDecorator={<FlagRounded />}
-            helperText={errors.locationDiveCenter?.message?.toString()}
-            error={!!errors.locationDiveCenter}
+            helperText={errors.location?.diveCenter?.message?.toString()}
+            error={!!errors.location?.diveCenter}
           />
         </Grid>
       </Grid>
