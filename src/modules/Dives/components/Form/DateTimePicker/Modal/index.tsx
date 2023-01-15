@@ -63,7 +63,7 @@ const Modal: React.FC<ModalProps> = ({ open, setOpen }) => {
     const datetime = new Date(selectedDate);
     datetime.setHours(hours);
     datetime.setMinutes(minutes);
-    setValue("date", datetime);
+    setValue("date", datetime.toString());
     clearErrors("date");
     handleModalClose();
   };
