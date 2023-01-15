@@ -1,30 +1,50 @@
-import type { DiveFlattened } from "common/types";
+import type { Dive } from "common/types";
 
-const defaultValues: DiveFlattened = {
+const defaultValues: Dive = {
   date: "",
-  locationCountryName: "",
-  locationCountryCode: "",
-  locationCountryFlagEmoji: "",
-  locationCity: "",
-  locationDiveCenter: "",
-  length: null,
+  location: {
+    country: {
+      name: "",
+      code: "",
+      flagEmoji: ""
+    },
+    city: "",
+    diveCenter: ""
+  },
   type: "boat",
+  length: null,
   units: "metric",
-  depthMax: null,
-  depthAverage: null,
-  weightsTaken: 0,
-  weightsAmmount: "perfect",
+  depth: {
+    max: null,
+    average: null
+  },
+  weights: {
+    taken: 0,
+    ammount: "perfect"
+  },
   water: "fresh",
-  temperatureAir: null,
-  temperatureWaterSurface: null,
-  temperatureWaterBottom: null,
-  gearExposureProtectionType: "",
-  gearExposureProtectionThickness: null,
-  gearTanksCount: null,
-  gearTanksType: "",
-  gearBcd: "",
-  gearRegulator: "",
-  gearFins: "",
+  temperature: {
+    air: null,
+    water: {
+      surface: null,
+      bottom: null
+    }
+  },
+  gear: {
+    exposureProtection: {
+      type: "",
+      thickness: null
+    },
+
+    tanks: {
+      count: null,
+      type: ""
+    },
+
+    bcd: "",
+    regulator: "",
+    fins: ""
+  },
   diveBuddy: "",
   notes: ""
 };
