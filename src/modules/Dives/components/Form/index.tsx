@@ -70,7 +70,7 @@ const Form: React.FC<FormProps> = ({ onSubmit, submitted }) => {
         type="submit"
         color="success"
         size="lg"
-        startDecorator={submitted ? <SaveRounded /> : <DoneRounded />}
+        startDecorator={submitted ?  <DoneRounded /> : <SaveRounded />}
         sx={{ mt: 6 }}
         fullWidth
         onSubmit={onSubmit}
