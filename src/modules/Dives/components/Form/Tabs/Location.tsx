@@ -47,8 +47,8 @@ const Location: React.FC = () => {
                   }
                   error={!!errors.location?.country?.name}
                   filterOptions={filterOptions}
-                  isOptionEqualToValue={(option, value) => option === value}
                   disableClearable
+                  autoComplete
                   forcePopupIcon={false}
                 />
               )}
