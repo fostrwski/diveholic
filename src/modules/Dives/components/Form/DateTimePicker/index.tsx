@@ -63,7 +63,7 @@ const DateTimePicker: React.FC<DatePickerProps> = ({ initialDate }) => {
                       onClick={handleModalToggle}
                       sx={{ p: 0, fontWeigth: "lg" }}
                       aria-label="Edit date"
-                      data-cy="editDate"
+                      data-cy="editDateAndTime"
                     >
                       Edit
                     </Link>
@@ -77,7 +77,7 @@ const DateTimePicker: React.FC<DatePickerProps> = ({ initialDate }) => {
                     color="neutral"
                     aria-label="Set date"
                     sx={{ p: 0, fontWeight: "lg" }}
-                    data-cy="setDate"
+                    data-cy="setDateAndTime"
                   >
                     Click here to set
                   </Link>
