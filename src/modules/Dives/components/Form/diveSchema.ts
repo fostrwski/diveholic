@@ -1,7 +1,7 @@
 import type { Dive } from "common/types";
 import { number, object, setLocale, string } from "yup";
 
-import listOfCountries from "./listOfCountries";
+import listOfCountries from "./utils/listOfCountries";
 
 setLocale({
   mixed: {
@@ -29,14 +29,17 @@ const diveSchema = object({
   location: object({
     country: object({
       name: string().required(),
-      code: string<keyof listOfCountries>().required(),
+      // @ts-ignore
+      code: string<keyof typeof listOfCountries>().required(),
       flagEmoji: string().required()
     }),
     city: string().required(),
     diveCenter: string().required()
   }),
+  // @ts-ignore
   type: string<"shore" | "boat">().defined().required(),
   length: number().min(1, "Should be at least 1").nullable().required(),
+  // @ts-ignore
   units: string<"metric" | "imperial">().defined().required(),
   depth: object({
     average: number().min(1, "Should be at least 1").nullable(true),
@@ -44,8 +47,10 @@ const diveSchema = object({
   }),
   weights: object({
     taken: number().required(),
+    // @ts-ignore
     ammount: string<"perfect" | "tooLittle" | "tooMuch">().defined().required()
   }),
+  // @ts-ignore
   water: string<"fresh" | "salt">().defined().required(),
   temperature: object({
     air: number().nullable(),
