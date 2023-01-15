@@ -4,7 +4,7 @@ import DefaultLayout from "common/layouts/Default";
 import New from "modules/Dives/New";
 import defaultValues from "modules/Dives/components/Form/defaultValues";
 import type { FormFields } from "modules/Dives/components/Form/types";
-import diveSchema from "modules/Dives/components/Form/utils/diveSchema";
+import diveSchema from "modules/Dives/components/Form/diveSchema";
 import React from "react";
 import { FormProvider, useForm } from "react-hook-form";
 
