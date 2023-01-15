@@ -1,13 +1,13 @@
 import AddRounded from "@mui/icons-material/AddRounded";
 import ArrowForwardRounded from "@mui/icons-material/ArrowForwardRounded";
-import Box from "@mui/joy/Box";
 import Button from "@mui/joy/Button";
 import Modal from "@mui/joy/Modal";
 import ModalDialog from "@mui/joy/ModalDialog";
 import Typography from "@mui/joy/Typography";
 import { useRouter } from "next/router";
-import React, { type Dispatch } from "react";
+import React, { type Dispatch, type SetStateAction } from "react";
 import { useFormContext } from "react-hook-form";
+
 import type { FormFields } from "../components/Form/types";
 
 interface FormSubmittedModalProps {
@@ -19,7 +19,7 @@ const FormSubmittedModal: React.FC<FormSubmittedModalProps> = ({
   open,
   setOpen
 }) => {
-  const {reset} = useFormContext<FormFields>()
+  const { reset } = useFormContext<FormFields>();
   const router = useRouter();
 
   const handleModalClose = () => {
@@ -32,9 +32,9 @@ const FormSubmittedModal: React.FC<FormSubmittedModalProps> = ({
   };
 
   const handleAddAnotherDive = () => {
-    handleModalClose()
-    reset()
-  }
+    handleModalClose();
+    reset();
+  };
 
   return (
     <Modal
