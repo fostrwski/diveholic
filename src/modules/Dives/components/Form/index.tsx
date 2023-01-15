@@ -1,3 +1,4 @@
+import DoneRounded from "@mui/icons-material/DoneRounded";
 import SaveRounded from "@mui/icons-material/SaveRounded";
 import Box from "@mui/joy/Box";
 import Button from "@mui/joy/Button";
@@ -17,9 +18,10 @@ import getFlagEmoji from "./utils/getFlagEmoji";
 
 interface FormProps {
   onSubmit: () => void;
+  submitted: boolean;
 }
 
-const Form: React.FC<FormProps> = ({ onSubmit }) => {
+const Form: React.FC<FormProps> = ({ onSubmit, submitted }) => {
   const { setValue, watch, getValues, register } = useFormContext<FormFields>();
   const watchLocationCountryName = watch("location.country.name");
 
@@ -67,7 +69,7 @@ const Form: React.FC<FormProps> = ({ onSubmit }) => {
         type="submit"
         color="success"
         size="lg"
-        startDecorator={<SaveRounded />}
+        startDecorator={submitted ? <SaveRounded /> : <DoneRounded />}
         sx={{ mt: 6 }}
         fullWidth
         onSubmit={onSubmit}
