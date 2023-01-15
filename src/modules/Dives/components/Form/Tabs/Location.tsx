@@ -59,6 +59,7 @@ const Location: React.FC = () => {
               )}
             />
             <FormHelperText>
+             {/* TODO: add validation message when wrong country code  */}
               {errors.location?.country?.name?.message?.toString()}
             </FormHelperText>
           </FormControl>

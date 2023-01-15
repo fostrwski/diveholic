@@ -1,13 +1,7 @@
 import type { Dive } from "common/types";
-import {
-  type AnySchema,
-  type ObjectSchema,
-  SchemaOf,
-  number,
-  object,
-  setLocale,
-  string
-} from "yup";
+import { number, object, setLocale, string } from "yup";
+
+import listOfCountries from "./listOfCountries";
 
 setLocale({
   mixed: {
@@ -35,7 +29,7 @@ const diveSchema = object({
   location: object({
     country: object({
       name: string().required(),
-      code: string().required(),
+      code: string<keyof listOfCountries>().required(),
       flagEmoji: string().required()
     }),
     city: string().required(),
