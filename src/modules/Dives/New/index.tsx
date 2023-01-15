@@ -7,6 +7,7 @@ import { useFormContext } from "react-hook-form";
 
 import Form from "../components/Form";
 import type { FormFields } from "../components/Form/types";
+import FormSubmittedModal from "./FormSubmittedModal";
 import Header from "./Header";
 
 interface NewProps {
@@ -16,12 +17,11 @@ interface NewProps {
 const New: React.FC<NewProps> = ({ user }) => {
   const { handleSubmit } = useFormContext<FormFields>();
 
-  const router = useRouter()
+  const router = useRouter();
 
   const [submitted, setSubmitted] = useState<boolean>(false);
 
   const onSubmit = async (data: Dive) => {
-    setSubmitted(false);
     const { date, ...rest } = data;
     const timestamp = new Date(date).toISOString();
 
@@ -32,7 +32,6 @@ const New: React.FC<NewProps> = ({ user }) => {
     if (error) return console.error(error);
 
     setSubmitted(true);
-    router.push("/")
   };
 
   return (
@@ -40,6 +39,8 @@ const New: React.FC<NewProps> = ({ user }) => {
       <Header />
 
       <Form onSubmit={handleSubmit(onSubmit)} submitted={submitted} />
+
+      <FormSubmittedModal open={submitted} setOpen={setSubmitted} />
     </>
   );
 };
