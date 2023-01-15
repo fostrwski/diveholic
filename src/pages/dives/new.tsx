@@ -4,7 +4,7 @@ import DefaultLayout from "common/layouts/Default";
 import New from "modules/Dives/New";
 import defaultValues from "modules/Dives/components/Form/defaultValues";
 import type { FormFields } from "modules/Dives/components/Form/types";
-import validationSchema from "modules/Dives/components/Form/utils/validationSchema";
+import diveSchema from "modules/Dives/components/Form/utils/diveSchema";
 import React from "react";
 import { FormProvider, useForm } from "react-hook-form";
 
@@ -13,7 +13,7 @@ export const getServerSideProps = withPageAuth({ redirectTo: "/signin" });
 export default function NewPage({ user }: { user: User }) {
   const methods = useForm<FormFields>({
     defaultValues,
-    resolver: yupResolver(validationSchema)
+    resolver: yupResolver(diveSchema)
   });
 
   return (

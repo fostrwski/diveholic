@@ -1,12 +1,12 @@
 import { useUser } from "@supabase/auth-helpers-react";
-import type { Dive, DiveFlattened } from "common/types";
+import type { Dive } from "common/types";
 import { supabase } from "common/utils/supabaseClient";
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 import { useFormContext } from "react-hook-form";
 
 import Form from "../components/Form";
-import generateDiveFlattenedObject from "../components/Form/utils/generateDiveFlattenedObject";
+import type { FormFields } from "../components/Form/types";
 import Header from "./Header";
 
 const Edit: React.FC = () => {
@@ -14,7 +14,7 @@ const Edit: React.FC = () => {
   const router = useRouter();
   const { id: diveId } = router.query;
   const onSubmit = (data: any) => console.log(data);
-  const { handleSubmit } = useFormContext();
+  const { handleSubmit } = useFormContext<FormFields>();
 
   // useEffect(() => {
   //   const getDiveById = async () => {
