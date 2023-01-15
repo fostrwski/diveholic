@@ -101,14 +101,14 @@ const Gear: React.FC = () => {
           </Typography>
           <Grid container spacing={2} justifyContent="space-between">
             <Grid xs={6}>
-              <TextField {...register("gearBcd")} type="text" label="BCD" />
+              <TextField {...register("gear.bcd")} type="text" label="BCD" />
             </Grid>
             <Grid xs={6}>
-              <TextField {...register("gearFins")} type="text" label="Fins" />
+              <TextField {...register("gear.fins")} type="text" label="Fins" />
             </Grid>
             <Grid xs={6}>
               <TextField
-                {...register("gearRegulator")}
+                {...register("gear.regulator")}
                 type="text"
                 label="Regulator"
               />
