@@ -18,6 +18,7 @@ const New: React.FC<NewProps> = ({ user }) => {
   const onSubmit = async (data: Dive) => {
     const {date, ...rest} = data
     const timestamp = new Date(date).toISOString()
+
     const { error, status } = await supabase
       .from("dives")
       .insert({ userId: user.id, date: timestamp, ...rest });
