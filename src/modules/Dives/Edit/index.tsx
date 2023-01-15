@@ -37,7 +37,7 @@ const Edit: React.FC = () => {
     <>
       <Header />
 
-      <Form onSubmit={handleSubmit(onSubmit)} />
+      <Form onSubmit={handleSubmit(onSubmit)} submitted={false}/>
     </>
   );
 };
