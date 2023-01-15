@@ -36,11 +36,6 @@ const Location: React.FC = () => {
                 <Autocomplete
                   {...field}
                   options={Object.values(listOfCountries)}
-                  onInputChange={debounce(
-                    (_: React.BaseSyntheticEvent, data: string) =>
-                      field.onChange(data),
-                    500
-                  )}
                   onChange={debounce(
                     (_: React.BaseSyntheticEvent, data: string) =>
                       field.onChange(data),
@@ -50,16 +45,16 @@ const Location: React.FC = () => {
                   startDecorator={
                     watchLocationCountryFlagEmoji || <PublicRounded />
                   }
-                  freeSolo
                   error={!!errors.location?.country?.name}
                   filterOptions={filterOptions}
                   isOptionEqualToValue={(option, value) => option === value}
                   disableClearable
+                  forcePopupIcon={false}
                 />
               )}
             />
             <FormHelperText>
-             {/* TODO: add validation message when wrong country code  */}
+              {/* TODO: add validation message when wrong country code  */}
               {errors.location?.country?.name?.message?.toString()}
             </FormHelperText>
           </FormControl>
