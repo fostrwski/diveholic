@@ -11,9 +11,9 @@ describe("New dive form", () => {
     cy.getInputByName("type").check("shore");
 
     // Open datetimepicker
-    cy.getByDataCy("setDateAndTime").click();
-    cy.getByDataCy("datetimepicker-dayRadio-12").click();
-    cy.getByDataCy("datetimepicker-submit").click();
+    cy.getByDataCy("DateTimePicker-setDateAndTime").click();
+    cy.getByDataCy("DateTimePicker-dayRadio-12").click();
+    cy.getByDataCy("DateTimePicker-submit").click();
 
     cy.getInputByName("length").type("54");
     cy.getInputByName("depth.average").type("16");
@@ -23,6 +23,7 @@ describe("New dive form", () => {
     cy.get("button").contains("Location").click();
 
     cy.getInputByName("location.country.name").type("Croatia");
+    cy.get("li[data-option-index='0']").click();
     cy.getInputByName("location.city").type("Trogir");
     cy.getInputByName("location.diveCenter").type("Trogir dive center");
 
@@ -62,7 +63,9 @@ describe("New dive form", () => {
       "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat."
     );
 
-    cy.get("button").contains("Save").click()
+    cy.get("button").contains("Save").click();
+
+    cy.getByDataCy("New-FormSubmittedModal-continue").click()
   });
 });
 
