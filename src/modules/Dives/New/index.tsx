@@ -16,9 +16,11 @@ const New: React.FC<NewProps> = ({ user }) => {
   const { handleSubmit } = useFormContext<FormFields>();
 
   const onSubmit = async (data: Dive) => {
+    const {date, ...rest} = data
+    const timestamp = new Date(date).toISOString()
     const { error, status } = await supabase
       .from("dives")
-      .insert({ userId: user.id, ...data });
+      .insert({ userId: user.id, date: timestamp, ...rest });
     console.log(data)
     if (error) return console.error(error);
     if (status === 201) console.log("Created!")
