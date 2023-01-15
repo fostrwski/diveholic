@@ -6,8 +6,8 @@ import RadioGroup from "@mui/joy/RadioGroup";
 import Slider from "@mui/joy/Slider";
 import React from "react";
 import { Controller, useFormContext } from "react-hook-form";
-import type { FormFields } from "../types";
 
+import type { FormFields } from "../types";
 import generateSliderMarks from "../utils/generateSliderMarks";
 
 const weightsAmmount = [
