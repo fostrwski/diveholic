@@ -31,7 +31,7 @@ const Location: React.FC = () => {
           <FormControl error={!!errors.location?.country?.name}>
             <FormLabel>Country</FormLabel>
             <Controller
-              name="location.countryName"
+              name="location.country.name"
               render={({ field }) => (
                 <Autocomplete
                   {...field}
@@ -41,12 +41,17 @@ const Location: React.FC = () => {
                       field.onChange(data),
                     500
                   )}
-                  onChange={(_: any, data: string) => field.onChange(data)}
+                  onChange={debounce(
+                    (_: React.BaseSyntheticEvent, data: string) =>
+                      field.onChange(data),
+                    500
+                  )}
                   placeholder="Croatia"
                   startDecorator={
                     watchLocationCountryFlagEmoji || <PublicRounded />
                   }
                   freeSolo
+                  error={!!errors.location?.country?.name}
                   filterOptions={filterOptions}
                   isOptionEqualToValue={(option, value) => option === value}
                   disableClearable
