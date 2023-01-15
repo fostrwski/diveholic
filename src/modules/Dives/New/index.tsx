@@ -1,7 +1,7 @@
 import type { User } from "@supabase/auth-helpers-nextjs";
 import type { Dive } from "common/types";
 import { supabase } from "common/utils/supabaseClient";
-import React from "react";
+import React, { useState } from "react";
 import { useFormContext } from "react-hook-form";
 
 import Form from "../components/Form";
@@ -14,24 +14,26 @@ interface NewProps {
 
 const New: React.FC<NewProps> = ({ user }) => {
   const { handleSubmit } = useFormContext<FormFields>();
+  const [submitted, setSubmitted] = useState<boolean>(false);
 
   const onSubmit = async (data: Dive) => {
-    const {date, ...rest} = data
-    const timestamp = new Date(date).toISOString()
+    setSubmitted(false);
+    const { date, ...rest } = data;
+    const timestamp = new Date(date).toISOString();
 
     const { error, status } = await supabase
       .from("dives")
       .insert({ userId: user.id, date: timestamp, ...rest });
-    console.log(data)
+
     if (error) return console.error(error);
-    if (status === 201) console.log("Created!")
+    setSubmitted(true);
   };
 
   return (
     <>
       <Header />
 
-      <Form onSubmit={handleSubmit(onSubmit)} />
+      <Form onSubmit={handleSubmit(onSubmit)} submitted={submitted} />
     </>
   );
 };
