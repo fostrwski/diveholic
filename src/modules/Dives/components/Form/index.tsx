@@ -58,8 +58,8 @@ const Form: React.FC<FormProps> = ({ onSubmit }) => {
           {...register("notes")}
           minRows={4}
           variant="soft"
-          id="notes"
           placeholder="Describe what you saw, share your experience"
+          data-cy="notes"
         />
       </FormControl>
 
