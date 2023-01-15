@@ -26,6 +26,7 @@ const Form: React.FC<FormProps> = ({ onSubmit, submitted }) => {
   const watchLocationCountryName = watch("location.country.name");
 
   useEffect(() => {
+    // Try to assign country code and flag emoji on every location.country.name change
     const countryCode = getCountryCode(watchLocationCountryName);
     let flagEmoji = "";
     if (countryCode) {
