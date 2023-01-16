@@ -10,22 +10,22 @@ import React from "react";
 export const getServerSideProps = withPageAuth({
   redirectTo: "/signin",
   async getServerSideProps(ctx) {
-    const { data } = await supabaseServerClient(ctx)
+    const { data: dives } = await supabaseServerClient(ctx)
       .from<Dive>("dives")
       .select("*")
       .order("date", { ascending: false });
-    return { props: { data } };
+    return { props: { dives } };
   }
 });
 
 interface DivesPageProps {
-  data: Array<Dive>;
+  dives: Array<Dive>;
 }
 
-export default function DivesPage({ data }: DivesPageProps) {
+export default function DivesPage({ dives }: DivesPageProps) {
   return (
     <DefaultLayout>
-      <Dives data={data} />
+      <Dives data={dives} />
     </DefaultLayout>
   );
 }
