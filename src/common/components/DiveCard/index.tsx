@@ -59,7 +59,7 @@ const DiveCard: React.FC<DiveCardProps> = ({ dive }) => (
             variant="soft"
             startDecorator={dive.location.country.flagEmoji}
           >
-            {dive.location.city}, {dive.location.country.name}
+            {dive.location.city}
           </Chip>
         </Box>
       </CardContent>
