@@ -15,10 +15,14 @@ import TextField from "@mui/joy/TextField";
 import Typography from "@mui/joy/Typography";
 import {
   type DatePickerUserConfig,
-  useCalendars,
   useDatePicker
 } from "@rehookify/datepicker";
-import React, { Dispatch, SetStateAction, useState } from "react";
+import React, {
+  Dispatch,
+  SetStateAction,
+  useEffect,
+  useState
+} from "react";
 import { useFormContext } from "react-hook-form";
 
 import type { FormFields } from "../../types";
@@ -37,7 +41,7 @@ const Modal: React.FC<ModalProps> = ({ open, setOpen }) => {
     }
   };
 
-  const { setValue, clearErrors } = useFormContext<FormFields>();
+  const { setValue, clearErrors, getValues } = useFormContext<FormFields>();
 
   const date = new Date();
   const [hours, setHours] = useState<number | "">(date.getHours());
@@ -50,7 +54,19 @@ const Modal: React.FC<ModalProps> = ({ open, setOpen }) => {
     // @ts-ignore
   } = useDatePicker(config);
 
-  const selectedDate = selectedDates[0];
+  useEffect(() => {
+    const initialDate = getValues("date") ? new Date(getValues("date")) : "";
+
+    if (initialDate) {
+      setHours(initialDate.getHours());
+      setMinutes(initialDate.getMinutes());
+
+      initialDate.setHours(0, 0, 0, 0);
+      selectedDates[0] = initialDate;
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [getValues]);
 
   const { days, month, year } = calendars[0];
 
@@ -59,6 +75,8 @@ const Modal: React.FC<ModalProps> = ({ open, setOpen }) => {
   };
 
   const handleModalDone = () => {
+    const selectedDate = selectedDates[0];
+
     setError(false);
     if (!selectedDate || !hours || !minutes) return setError(true);
 
