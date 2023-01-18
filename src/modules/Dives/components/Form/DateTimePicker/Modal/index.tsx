@@ -15,10 +15,12 @@ import TextField from "@mui/joy/TextField";
 import Typography from "@mui/joy/Typography";
 import {
   type DatePickerUserConfig,
+  useCalendars,
   useDatePicker
 } from "@rehookify/datepicker";
 import React, { Dispatch, SetStateAction, useState } from "react";
 import { useFormContext } from "react-hook-form";
+
 import type { FormFields } from "../../types";
 
 interface ModalProps {
@@ -63,8 +65,11 @@ const Modal: React.FC<ModalProps> = ({ open, setOpen }) => {
     const datetime = new Date(selectedDate);
     datetime.setHours(hours);
     datetime.setMinutes(minutes);
+
     setValue("date", datetime.toString());
+
     clearErrors("date");
+
     handleModalClose();
   };
 
@@ -239,10 +244,20 @@ const Modal: React.FC<ModalProps> = ({ open, setOpen }) => {
               gap: 2
             }}
           >
-            <MuiLink component="button" type="button" variant="plain" color="danger" onClick={handleModalClose}>
+            <MuiLink
+              component="button"
+              type="button"
+              variant="plain"
+              color="danger"
+              onClick={handleModalClose}
+            >
               Cancel
             </MuiLink>
-            <Button color="neutral" onClick={handleModalDone} data-cy="DateTimePicker-submit">
+            <Button
+              color="neutral"
+              onClick={handleModalDone}
+              data-cy="DateTimePicker-submit"
+            >
               Done
             </Button>
           </Box>
