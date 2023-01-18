@@ -1,4 +1,5 @@
 import {
+  type User,
   supabaseServerClient,
   withPageAuth
 } from "@supabase/auth-helpers-nextjs";
@@ -22,22 +23,23 @@ export const getServerSideProps = withPageAuth({
 
     if (data == null) return { props: { dive: null } };
 
-    const initialValues = {...defaultValues, ...data[0]}
+    const initialValues = { ...defaultValues, ...data[0] };
 
     return { props: { initialValues } };
   }
 });
 
 interface EditPageProps {
+  user: User;
   initialValues: Dive;
 }
 
-export default function EditPage({ initialValues }: EditPageProps) {
+export default function EditPage({ user, initialValues }: EditPageProps) {
   const methods = useForm<FormFields>({ defaultValues: initialValues });
   return (
     <DefaultLayout>
       <FormProvider {...methods}>
-        <Edit />
+        <Edit user={user}/>
       </FormProvider>
     </DefaultLayout>
   );
