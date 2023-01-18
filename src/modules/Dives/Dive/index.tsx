@@ -21,17 +21,21 @@ import Loading from "./Loading";
 const Dive: React.FC = () => {
   const { user } = useUser();
   const router = useRouter();
+
   const [dive, setDive] = useState<DiveType | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
+
   const [error, setError] = useState<any>(null);
+
   const [diveNotFound, setDiveNotFound] = useState<boolean>(false);
+
   const { id: diveId } = router.query;
 
   const handleDiveDelete = async () => {
     const { error } = await supabase
       .from<DiveType>("dives")
       .delete()
-      .match({ id: diveId });
+      .eq("id", diveId as string);
 
     if (error) console.error(error);
 
@@ -63,7 +67,7 @@ const Dive: React.FC = () => {
     };
 
     if (user) getDive();
-  }, [user]);
+  }, [user, diveId]);
 
   const determineView = (): React.ReactElement => {
     if (error) {
