@@ -6,25 +6,24 @@ import React from "react";
 
 import CancelButton from "../components/CancelButton";
 
-const Header: React.FC = () => {
-  const router = useRouter();
-  const { id: diveId } = router.query;
+interface HeaderProps {
+  diveId: string;
+}
 
-  return (
-    <Box display="flex" justifyContent="space-between" alignItems="center">
-      <Chip
-        startDecorator={<EditRounded />}
-        endDecorator={`#${diveId}`}
-        variant="soft"
-        size="lg"
-        color="warning"
-      >
-        Edit dive
-      </Chip>
+const Header: React.FC<HeaderProps> = ({ diveId }) => (
+  <Box display="flex" justifyContent="space-between" alignItems="center">
+    <Chip
+      startDecorator={<EditRounded />}
+      endDecorator={`#${diveId}`}
+      variant="soft"
+      size="lg"
+      color="warning"
+    >
+      Edit dive
+    </Chip>
 
-      <CancelButton />
-    </Box>
-  );
-};
+    <CancelButton />
+  </Box>
+);
 
 export default Header;
