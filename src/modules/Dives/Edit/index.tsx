@@ -1,21 +1,45 @@
-import { useUser } from "@supabase/auth-helpers-react";
+import { type User, useUser } from "@supabase/auth-helpers-react";
+import type { Dive } from "common/types";
 import { supabase } from "common/utils/supabaseClient";
-import React from "react";
+import { useRouter } from "next/router";
+import React, { useState } from "react";
 import { useFormContext } from "react-hook-form";
 
 import Form from "../components/Form";
 import type { FormFields } from "../components/Form/types";
 import Header from "./Header";
 
-const Edit: React.FC = () => {
-  const onSubmit = (data: any) => console.log(data);
+interface EditProps {
+  user: User;
+}
+
+const Edit: React.FC<EditProps> = ({ user }) => {
+  const [submitted, setSubmitted] = useState<boolean>(false);
+
   const { handleSubmit } = useFormContext<FormFields>();
+
+  const router = useRouter();
+  const { id: diveId } = router.query;
+
+  const onSubmit = async (data: Dive) => {
+    const { date, ...rest } = data;
+    const timestamp = new Date(date).toISOString();
+
+    const { error } = await supabase
+      .from("dives")
+      .update({ userId: user.id, date: timestamp, ...rest })
+      .eq("id", diveId);
+
+    if (error) return console.error(error);
+
+    setSubmitted(true);
+  };
 
   return (
     <>
-      <Header />
+      <Header diveId={diveId as string} />
 
-      <Form onSubmit={handleSubmit(onSubmit)} submitted={false} />
+      <Form onSubmit={handleSubmit(onSubmit)} submitted={submitted} />
     </>
   );
 };
