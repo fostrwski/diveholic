@@ -136,6 +136,12 @@ const theme = extendTheme({
             [theme.getColorSchemeSelector("light")]: {
               backgroundColor: theme.palette.neutral[50]
             }
+          }),
+
+          ...(ownerState.variant === "soft" && {
+            [theme.getColorSchemeSelector("dark")]: {
+              backgroundColor: theme.palette.common.black
+            }
           })
         })
       }
