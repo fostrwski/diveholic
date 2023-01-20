@@ -2,6 +2,7 @@ import DownloadDoneRounded from "@mui/icons-material/DownloadDoneRounded";
 import DownloadRounded from "@mui/icons-material/DownloadRounded";
 import LineWeightRounded from "@mui/icons-material/LineWeightRounded";
 import NumbersRounded from "@mui/icons-material/NumbersRounded";
+import TitleRounded from "@mui/icons-material/TitleRounded";
 import Box from "@mui/joy/Box";
 import Button from "@mui/joy/Button";
 import Separator from "common/components/Separator";
@@ -36,7 +37,11 @@ const Details: React.FC<DetailsProps> = ({ dive }) => (
     <Section
       title="Exposure protection"
       details={[
-        { title: "Type", content: dive.gear.exposureProtection.type },
+        {
+          title: "Type",
+          icon: <TitleRounded />,
+          content: dive.gear.exposureProtection.type
+        },
         {
           title: "Thickness",
           content: dive.gear.exposureProtection.thickness,
@@ -54,7 +59,7 @@ const Details: React.FC<DetailsProps> = ({ dive }) => (
           icon: <NumbersRounded />
         },
 
-        { title: "Type", content: dive.gear.tanks.type }
+        { title: "Type", icon: <TitleRounded />, content: dive.gear.tanks.type }
       ]}
     />
 

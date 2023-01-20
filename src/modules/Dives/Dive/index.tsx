@@ -106,13 +106,14 @@ const Dive: React.FC = () => {
             </div>
 
             <div>
-              <Chip component="span" startDecorator={<FlagRounded />}>
+              <Chip size="lg" component="span" startDecorator={<FlagRounded />}>
                 {dive.location.diveCenter}
               </Chip>
             </div>
 
             <div>
               <Chip
+                size="lg"
                 startDecorator={<CalendarTodayRounded />}
                 component="span"
                 variant="outlined"

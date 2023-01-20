@@ -21,12 +21,10 @@ const BasicInformation: React.FC<BasicInformationProps> = ({ dive }) => (
     </Typography>
 
     <Sheet
-      variant="plain"
+variant="soft"
       sx={(theme) => ({
-        borderLeftWidth: theme.spacing(0.4),
-        borderLeftStyle: "solid",
-        borderTopLeftRadius: 0,
-        borderBottomLeftRadius: 0,
+        borderBottomWidth: theme.spacing(0.4),
+        borderBottomStyle: "solid",
 
         [theme.getColorSchemeSelector("light")]: {
           borderColor: "neutral.200"
