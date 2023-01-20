@@ -26,7 +26,7 @@ const DiveCardSkeletonLoader: React.FC = () => (
       <Chip size="sm" />
 
       <Box
-        mt={2}
+        mt={4}
         display="flex"
         gap={2}
         justifyContent="space-between"
