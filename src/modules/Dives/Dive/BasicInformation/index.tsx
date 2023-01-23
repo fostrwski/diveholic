@@ -99,7 +99,7 @@ const BasicInformation: React.FC<BasicInformationProps> = ({ dive }) => {
         Basic information
       </Typography>
 
-      <Grid container spacing={1}>
+      <Grid container spacing={1.2}>
         {basicInformation.map((basicInfo) => {
           if (!basicInfo) return;
           return (
