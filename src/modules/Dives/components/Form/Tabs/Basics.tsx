@@ -15,10 +15,7 @@ import type { FormFields } from "../types";
 import getDiveEmoji from "../utils/getDiveEmoji";
 import setNullOrNumber from "../utils/setNullOrNumber";
 
-const diveTypes: Array<{
-  title: string;
-  explanation: string;
-}> = [
+const diveTypes= [
   { title: "Boat", explanation: "Dive from the boat" },
   { title: "Shore", explanation: "Dive from the beach" }
 ];
@@ -57,7 +54,7 @@ const Basics: React.FC = () => {
 
                 <div>
                   <FormLabel>
-                    {diveType.title} {getDiveEmoji(diveType.title)}
+                    {diveType.title} {getDiveEmoji(diveType.title as Dive["type"])}
                   </FormLabel>
                   <FormHelperText>{diveType.explanation}</FormHelperText>
                 </div>
