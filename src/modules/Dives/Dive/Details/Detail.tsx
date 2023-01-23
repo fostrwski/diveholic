@@ -3,7 +3,7 @@ import Chip from "@mui/joy/Chip";
 import Typography from "@mui/joy/Typography";
 import React from "react";
 
-interface DetailProps {
+export interface DetailProps {
   title: string;
   content: string | number;
   icon: any;
