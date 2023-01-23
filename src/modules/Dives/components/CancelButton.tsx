@@ -7,7 +7,11 @@ import Typography from "@mui/joy/Typography";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 
-const CancelButton: React.FC = () => {
+interface CancelButtonProps {
+  redirectTo?: string;
+}
+
+const CancelButton: React.FC<CancelButtonProps> = ({ redirectTo }) => {
   const router = useRouter();
   const [open, setOpen] = useState<boolean>(false);
 
@@ -21,7 +25,7 @@ const CancelButton: React.FC = () => {
 
   const handleCancel = () => {
     handleModalClose();
-    router.push("/");
+    router.push(redirectTo || "");
   };
 
   return (
