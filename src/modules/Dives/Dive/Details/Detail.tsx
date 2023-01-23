@@ -1,36 +1,39 @@
-import Avatar from "@mui/joy/Avatar";
 import Box from "@mui/joy/Box";
-import Sheet from "@mui/joy/Sheet";
+import Chip from "@mui/joy/Chip";
 import Typography from "@mui/joy/Typography";
 import React from "react";
 
-export interface DetailProps {
+interface DetailProps {
   title: string;
-  content: React.ReactNode;
+  content: string | number;
+  icon: any;
   unit?: string;
-  icon?: React.ReactElement;
 }
 
-const Detail: React.FC<DetailProps> = ({ title, content, unit, icon }) => (
-  <Sheet
-    variant="soft"
-    sx={{ display: "flex", alignItems: "center", gap: 1.2, px: 0.8, py: 1.6 }}
-  >
-    {icon && (
-      <Avatar size="sm" variant="plain">
-        {icon}
-      </Avatar>
-    )}
-
-    <Box>
-      <Typography component="p" level="subtitle2">
-        {title}
-      </Typography>
-      <Typography component="p">
-        {content ? content + " " + unit : "Unknown"}
-      </Typography>
+const Detail: React.FC<DetailProps> = ({ title, content, icon, unit }) => (
+  <Typography level="h6" component="div">
+    <Box
+      sx={{
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        gap: 2,
+        width: "100%"
+      }}
+    >
+      <Typography component="span">{title}</Typography>
+      <Chip
+        size="lg"
+        variant="outlined"
+        startDecorator={icon}
+        endDecorator={unit || ""}
+      >
+        {typeof content === "string"
+          ? content.slice(0, 1).toUpperCase() + content.slice(1)
+          : content}
+      </Chip>
     </Box>
-  </Sheet>
+  </Typography>
 );
 
 export default Detail;

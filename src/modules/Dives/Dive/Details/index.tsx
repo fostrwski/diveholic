@@ -1,11 +1,7 @@
-import DownloadDoneRounded from "@mui/icons-material/DownloadDoneRounded";
-import DownloadRounded from "@mui/icons-material/DownloadRounded";
 import LineWeightRounded from "@mui/icons-material/LineWeightRounded";
 import NumbersRounded from "@mui/icons-material/NumbersRounded";
+import ScubaDivingRounded from "@mui/icons-material/ScubaDivingRounded";
 import TitleRounded from "@mui/icons-material/TitleRounded";
-import Box from "@mui/joy/Box";
-import Button from "@mui/joy/Button";
-import Separator from "common/components/Separator";
 import TextSeparator from "common/components/TextSeparator";
 import type { Dive } from "common/types";
 import React from "react";
@@ -18,21 +14,6 @@ interface DetailsProps {
 
 const Details: React.FC<DetailsProps> = ({ dive }) => (
   <>
-    <Section
-      details={[
-        {
-          title: "Avg. depth",
-          content: dive.depth.average,
-          icon: <DownloadDoneRounded />
-        },
-        {
-          title: "Max depth",
-          content: dive.depth.max,
-          icon: <DownloadRounded />
-        }
-      ]}
-    />
-
     <TextSeparator sx={{ mt: 8 }}>Gear</TextSeparator>
     <Section
       title="Exposure protection"
@@ -63,24 +44,18 @@ const Details: React.FC<DetailsProps> = ({ dive }) => (
       ]}
     />
 
-    <Box
-      sx={{
-        display: "flex",
-        alignItems: "center",
-        gap: 6,
-        mt: 6
-      }}
-    >
-      <Separator />
-      <Button
-        variant="plain"
-        size="sm"
-        color="neutral"
-        sx={{ whiteSpace: "nowrap" }}
-      >
-        See more
-      </Button>
-    </Box>
+    <Section
+      title="Other gear"
+      details={[
+        { title: "BCD", content: dive.gear.bcd, icon: <ScubaDivingRounded /> },
+        {
+          title: "Regulator",
+          content: dive.gear.regulator,
+          icon: <ScubaDivingRounded />
+        },
+        { title: "Fins", content: dive.gear.fins, icon: <ScubaDivingRounded /> }
+      ]}
+    />
   </>
 );
 
