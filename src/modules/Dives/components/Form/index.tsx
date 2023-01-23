@@ -1,4 +1,5 @@
 import DoneRounded from "@mui/icons-material/DoneRounded";
+import ErrorOutlineRounded from "@mui/icons-material/ErrorOutlineRounded";
 import SaveRounded from "@mui/icons-material/SaveRounded";
 import Box from "@mui/joy/Box";
 import Button from "@mui/joy/Button";
@@ -6,6 +7,7 @@ import FormControl from "@mui/joy/FormControl";
 import FormLabel from "@mui/joy/FormLabel";
 import TextField from "@mui/joy/TextField";
 import Textarea from "@mui/joy/Textarea";
+import Typography from "@mui/joy/Typography";
 import React, { useEffect } from "react";
 import { useFormContext } from "react-hook-form";
 
@@ -22,7 +24,13 @@ interface FormProps {
 }
 
 const Form: React.FC<FormProps> = ({ onSubmit, submitted }) => {
-  const { setValue, watch, getValues, register } = useFormContext<FormFields>();
+  const {
+    setValue,
+    watch,
+    getValues,
+    register,
+    formState: { errors }
+  } = useFormContext<FormFields>();
   const watchLocationCountryName = watch("location.country.name");
 
   useEffect(() => {
@@ -70,13 +78,25 @@ const Form: React.FC<FormProps> = ({ onSubmit, submitted }) => {
         type="submit"
         color="success"
         size="lg"
-        startDecorator={submitted ?  <DoneRounded /> : <SaveRounded />}
+        startDecorator={submitted ? <DoneRounded /> : <SaveRounded />}
         sx={{ mt: 6 }}
         fullWidth
         onSubmit={onSubmit}
       >
         Save
       </Button>
+
+      {/* Show error message when errors object is non-empty */}
+      {!(Object.keys(errors).length === 0) && (
+        <Typography
+          mt={4}
+          color="danger"
+          startDecorator={<ErrorOutlineRounded />}
+          sx={{display: "flex", alignItems: "flex-start"}}
+        >
+          Oops! Your form has some errors. Correct invalid fields and try again!
+        </Typography>
+      )}
     </Box>
   );
 };
