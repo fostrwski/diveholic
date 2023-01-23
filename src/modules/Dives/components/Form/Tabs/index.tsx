@@ -13,8 +13,7 @@ const Tabs: React.FC = () => (
     defaultValue={0}
     sx={{
       backgroundColor: "transparent",
-      px: 0
-      ,
+      px: 0,
       mt: 2
     }}
   >
