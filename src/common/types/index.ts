@@ -12,7 +12,7 @@ export type Dive = {
     city: string;
     diveCenter: string;
   };
-  type: "shore" | "boat";
+  type: "Shore" | "Boat";
   length: number | null;
   units: "metric" | "imperial";
   depth: {
@@ -23,7 +23,7 @@ export type Dive = {
     taken: number;
     ammount: "perfect" | "tooLittle" | "tooMuch";
   };
-  water: "fresh" | "salt";
+  water: "Fresh" | "Salt";
   temperature: {
     air: number | null;
     water: {

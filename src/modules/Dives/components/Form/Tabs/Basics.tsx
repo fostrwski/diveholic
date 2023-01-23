@@ -17,11 +17,10 @@ import setNullOrNumber from "../utils/setNullOrNumber";
 
 const diveTypes: Array<{
   title: string;
-  value: Dive["type"];
   explanation: string;
 }> = [
-  { title: "Boat", value: "boat", explanation: "Dive from the boat" },
-  { title: "Shore", value: "shore", explanation: "Dive from the beach" }
+  { title: "Boat", explanation: "Dive from the boat" },
+  { title: "Shore", explanation: "Dive from the beach" }
 ];
 
 const Basics: React.FC = () => {
@@ -54,11 +53,11 @@ const Basics: React.FC = () => {
                 sx={{ width: "100%", flexDirection: "row", gap: 2 }}
                 key={diveType.title}
               >
-                <Radio value={diveType.value} overlay size="lg" />
+                <Radio value={diveType.title} overlay size="lg" />
 
                 <div>
                   <FormLabel>
-                    {diveType.title} {getDiveEmoji(diveType.value)}
+                    {diveType.title} {getDiveEmoji(diveType.title)}
                   </FormLabel>
                   <FormHelperText>{diveType.explanation}</FormHelperText>
                 </div>

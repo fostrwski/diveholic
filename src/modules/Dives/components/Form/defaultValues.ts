@@ -11,7 +11,7 @@ const defaultValues: Dive = {
     city: "",
     diveCenter: ""
   },
-  type: "boat",
+  type: "Boat",
   length: null,
   units: "metric",
   depth: {
@@ -22,7 +22,7 @@ const defaultValues: Dive = {
     taken: 0,
     ammount: "perfect"
   },
-  water: "fresh",
+  water: "Fresh",
   temperature: {
     air: null,
     water: {

@@ -32,10 +32,9 @@ const waterTypes = [
   {
     title: "Fresh",
     icon: "🍃",
-    value: "fresh",
     examples: "Quarries, lakes, rivers"
   },
-  { title: "Salt", icon: "🧂", value: "salt", examples: "Seas, oceans" }
+  { title: "Salt", icon: "🧂", examples: "Seas, oceans" }
 ];
 
 const sliderMarks = generateSliderMarks([0, 5, 10, 15, 20]);
@@ -73,7 +72,7 @@ const Details: React.FC = () => {
                 sx={{ width: "100%", flexDirection: "row", gap: 2 }}
                 key={waterType.title}
               >
-                <Radio value={waterType.value} overlay size="lg" />
+                <Radio value={waterType.title} overlay size="lg" />
 
                 <div>
                   <FormLabel>

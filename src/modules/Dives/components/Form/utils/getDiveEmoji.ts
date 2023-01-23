@@ -1,8 +1,10 @@
-export default function getDiveEmoji(diveType: "boat" | "shore") {
+import type { Dive } from "common/types";
+
+export default function getDiveEmoji(diveType: Dive["type"]) {
   switch (diveType) {
-    case "boat":
+    case "Boat":
       return "🛥";
-    case "shore":
+    case "Shore":
       return "🏝";
     default:
       return "🤿";

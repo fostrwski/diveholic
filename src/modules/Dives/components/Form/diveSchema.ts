@@ -37,7 +37,7 @@ const diveSchema = object({
     diveCenter: string().required()
   }),
   // @ts-ignore
-  type: string<"shore" | "boat">().defined().required(),
+  type: string<Dive["type"]>().defined().required(),
   length: number().min(1, "Should be at least 1").nullable().required(),
   // @ts-ignore
   units: string<"metric" | "imperial">().defined().required(),
@@ -48,10 +48,10 @@ const diveSchema = object({
   weights: object({
     taken: number().required(),
     // @ts-ignore
-    ammount: string<"perfect" | "tooLittle" | "tooMuch">().defined().required()
+    ammount: string<Dive["weights"]["ammount"]>().defined().required()
   }),
   // @ts-ignore
-  water: string<"fresh" | "salt">().defined().required(),
+  water: string<Dive["water"]>().defined().required(),
   temperature: object({
     air: number().nullable(),
     water: object({
