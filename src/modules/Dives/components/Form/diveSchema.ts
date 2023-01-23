@@ -24,7 +24,6 @@ setLocale({
 });
 
 const diveSchema = object({
-  id: number().optional(),
   date: string().required(),
   location: object({
     country: object({
