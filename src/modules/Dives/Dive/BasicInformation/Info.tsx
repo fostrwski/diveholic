@@ -5,7 +5,7 @@ import React from "react";
 
 export interface InfoProps {
   title: string;
-  content: string;
+  content: string | number;
   unit?: string;
   icon?: React.ReactElement;
 }
@@ -17,7 +17,7 @@ const Info: React.FC<InfoProps> = ({ title, content, unit, icon }) => (
         {title}
       </Typography>
       <Typography component="p" endDecorator={content && unit ? unit : ""}>
-        {content ? content : "Unknown"}
+        {content}
       </Typography>
     </Box>
   </Sheet>
