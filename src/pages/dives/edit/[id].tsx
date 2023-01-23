@@ -10,6 +10,8 @@ import defaultValues from "modules/Dives/components/Form/defaultValues";
 import { FormFields } from "modules/Dives/components/Form/types";
 import React from "react";
 import { FormProvider, useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import diveSchema from "modules/Dives/components/Form/diveSchema";
 
 export const getServerSideProps = withPageAuth({
   redirectTo: "/signin",
@@ -35,7 +37,7 @@ interface EditPageProps {
 }
 
 export default function EditPage({ user, initialValues }: EditPageProps) {
-  const methods = useForm<FormFields>({ defaultValues: initialValues });
+  const methods = useForm<FormFields>({ defaultValues: initialValues, resolver: yupResolver(diveSchema) });
   return (
     <DefaultLayout>
       <FormProvider {...methods}>
