@@ -18,12 +18,12 @@ const Section: React.FC<SectionProps> = ({ title, details }) => (
         {title}
       </Typography>
     )}
-    <Grid container spacing={1}>
+    <Grid container spacing={1.2}>
       {details.map((detail) => (
         <Grid xs={12} key={detail.title}>
           <Detail
             title={detail.title}
-            content={detail.content}
+            content={detail.content ? detail.content : "Not specified"}
             icon={detail?.icon}
             unit={detail?.unit}
           />
