@@ -18,6 +18,7 @@ import BasicInformation from "./BasicInformation";
 import Details from "./Details";
 import Error from "./Error";
 import Loading from "./Loading";
+import Weather from "./Weather";
 
 const Dive: React.FC = () => {
   const { user } = useUser();
@@ -128,6 +129,10 @@ const Dive: React.FC = () => {
             <BasicInformation dive={dive} />
           </Box>
 
+          <Box mt={6}>
+            <Weather dive={dive}/>
+          </Box>
+
           <Box mt={4}>
             <Details dive={dive} />
           </Box>
@@ -157,7 +162,12 @@ const Dive: React.FC = () => {
             mt={8}
             textColor="GrayText"
             fontSize="xs"
-            sx={{ display: "flex", alignItems: "center", flexDirection: "column", gap: 1.2 }}
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              flexDirection: "column",
+              gap: 1.2
+            }}
           >
             <Chip size="sm" variant="outlined">
               Dive ID
