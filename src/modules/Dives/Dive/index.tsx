@@ -88,7 +88,7 @@ const Dive: React.FC = () => {
     if (dive) {
       return (
         <>
-          <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+          <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
             <div>
               <Chip
                 component="span"
