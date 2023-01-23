@@ -25,7 +25,7 @@ const CancelButton: React.FC<CancelButtonProps> = ({ redirectTo }) => {
 
   const handleCancel = () => {
     handleModalClose();
-    router.push(redirectTo || "");
+    router.push(redirectTo || "/");
   };
 
   return (
