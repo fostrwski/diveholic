@@ -9,7 +9,7 @@ const Header: React.FC = () => (
   <Box display="flex" justifyContent="space-between" alignItems="center">
     <Chip
       startDecorator={<AddRounded />}
-      variant="soft"
+      variant="outlined"
       size="lg"
       color="primary"
     >
