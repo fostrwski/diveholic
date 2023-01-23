@@ -55,7 +55,7 @@ const Weather: React.FC<WeatherProps> = ({ dive }) => {
                 {temperature.title} temperature
               </Typography>
 
-              <Box sx={{ display: "flex", gap: 2 }}>
+              <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
                 <LinearProgress
                   determinate
                   value={calculateProgressValue(
@@ -63,14 +63,12 @@ const Weather: React.FC<WeatherProps> = ({ dive }) => {
                     temperature.minValue,
                     temperature.maxValue
                   )}
+                  variant="outlined"
                   // @ts-ignore
                   color={temperature.color}
-                  sx={{
-                    "--LinearProgress-thickness": "18px"
-                  }}
                 />
 
-                <Typography>
+                <Typography fontWeight="md">
                   {temperature.value}
                   {dive.units === "metric" ? "°C" : "°F"}
                 </Typography>
