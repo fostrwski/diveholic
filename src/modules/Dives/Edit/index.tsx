@@ -37,7 +37,7 @@ const Edit: React.FC<EditProps> = ({ user }) => {
 
   return (
     <>
-      <Header />
+      <Header diveId={diveId} />
 
       <Form onSubmit={handleSubmit(onSubmit)} submitted={submitted} />
     </>
