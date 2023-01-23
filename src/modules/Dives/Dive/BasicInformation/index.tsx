@@ -33,9 +33,9 @@ const AmmountInformation: React.FC<AmmountInformationProps> = ({ ammount }) => {
   const getAmmountTip = () => {
     switch (ammount) {
       case "tooLittle":
-        return "Take more next time";
+        return "Take more weights next time";
       case "tooMuch":
-        return "Take less next time";
+        return "Take less weights next time";
       default:
     }
   };
