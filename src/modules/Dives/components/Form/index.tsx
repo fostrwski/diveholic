@@ -91,15 +91,19 @@ const Form: React.FC<FormProps> = ({ onSubmit, submitted }) => {
       {!(Object.keys(errors).length === 0) && (
         <Box
           sx={{
-            mt:6,
+            mt: 6,
             display: "flex",
             alignItems: "center",
             flexDirection: "column",
             gap: 1.2,
-            textAlign :"center"
+            textAlign: "center"
           }}
         >
-          <Chip color="danger" variant="outlined" startDecorator={<ErrorOutlineRounded />}>
+          <Chip
+            color="danger"
+            variant="outlined"
+            startDecorator={<ErrorOutlineRounded />}
+          >
             Error
           </Chip>
           <Typography color="danger" component="span">
