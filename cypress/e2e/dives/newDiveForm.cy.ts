@@ -8,12 +8,13 @@ describe("New dive form", () => {
     cy.visit("/dives/new");
 
     // Basics section
-    cy.getInputByName("type").check("shore");
-
+    
     // Open datetimepicker
     cy.getByDataCy("DateTimePicker-setDateAndTime").click();
     cy.getByDataCy("DateTimePicker-dayRadio-12").click();
     cy.getByDataCy("DateTimePicker-submit").click();
+
+    cy.getInputByName("type").check("Shore");
 
     cy.getInputByName("length").type("54");
     cy.getInputByName("depth.average").type("16");
@@ -30,7 +31,7 @@ describe("New dive form", () => {
     // Details section
     cy.get("button").contains("Details").click();
 
-    cy.getInputByName("water").check("salt");
+    cy.getInputByName("water").check("Salt");
     cy.getInputByName("weights.taken")
       .focus()
       .realType("{rightarrow}".repeat(7));
