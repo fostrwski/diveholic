@@ -5,7 +5,7 @@ import React from "react";
 
 export interface DetailProps {
   title: string;
-  content: string | number;
+  content: string | number | null;
   icon: any;
   unit?: string;
 }
