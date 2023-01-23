@@ -137,6 +137,7 @@ const Dive: React.FC = () => {
             fullWidth
             startDecorator={<EditRounded />}
             onClick={() => router.push(`/dives/edit/${diveId}`)}
+            variant="outlined"
           >
             Edit
           </Button>
@@ -146,6 +147,7 @@ const Dive: React.FC = () => {
             fullWidth
             startDecorator={<DeleteRounded />}
             onClick={handleDiveDelete}
+            variant="plain"
           >
             Delete
           </Button>
