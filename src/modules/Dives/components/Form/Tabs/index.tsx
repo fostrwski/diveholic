@@ -17,7 +17,7 @@ const Tabs: React.FC = () => (
       mt: 2
     }}
   >
-    <TabList sx={{ mb: 4 }}>
+    <TabList size="lg" sx={{ mb: 4 }}>
       <Tab>Basics</Tab>
       <Tab>Location</Tab>
       <Tab>Details</Tab>
