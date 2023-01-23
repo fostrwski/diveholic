@@ -27,7 +27,7 @@ const Temperature: React.FC = () => (
               name={name}
               value={value}
               onChange={onChange}
-              label="Air 💨"
+              label="Air"
               min={-30}
               max={50}
               marks={[-30, 15, 0, 25, 50]}
@@ -43,7 +43,7 @@ const Temperature: React.FC = () => (
               name={name}
               value={value}
               onChange={onChange}
-              label="Water surface 🌊"
+              label="Water surface"
               min={-30}
               max={40}
               color="primary"
@@ -60,7 +60,7 @@ const Temperature: React.FC = () => (
               name={name}
               value={value}
               onChange={onChange}
-              label="Water bottom 🔽"
+              label="Water bottom"
               min={-30}
               max={40}
               color="warning"
