@@ -5,25 +5,11 @@ import TextSeparator from "common/components/TextSeparator";
 import type { Dive } from "common/types";
 import React from "react";
 
+import calculateProgressValue from "./calculateProgressValue";
+
 interface WeatherProps {
   dive: Dive;
 }
-
-const calculateProgressValue = (
-  temperature: number,
-  minValue: number,
-  maxValue: number
-) => {
-  if (temperature === 0) return 0 + Math.abs(minValue);
-
-  if (temperature > 0)
-    return (
-      ((Math.abs(minValue) + temperature) / (Math.abs(minValue) + maxValue)) *
-      100
-    );
-
-  if (temperature < 0) return 0 + Math.abs(minValue) + temperature;
-};
 
 const Weather: React.FC<WeatherProps> = ({ dive }) => {
   const {
@@ -60,34 +46,38 @@ const Weather: React.FC<WeatherProps> = ({ dive }) => {
       <TextSeparator>Weather</TextSeparator>
 
       <Box sx={{ display: "flex", gap: 2, flexDirection: "column", mt: 4 }}>
-        {temperatures.map((temperature) => (
-          <Box key={temperature.title}>
-            <Typography level="subtitle1" mb={1.4}>
-              {temperature.title} temperature
-            </Typography>
+        {temperatures.map((temperature) => {
+          if (!temperature.value) return;
 
-            <Box sx={{ display: "flex", gap: 2 }}>
-              <LinearProgress
-                determinate
-                value={calculateProgressValue(
-                  temperature.value,
-                  temperature.minValue,
-                  temperature.maxValue
-                )}
-                // @ts-ignore
-                color={temperature.color}
-                sx={{
-                  "--LinearProgress-thickness": "18px"
-                }}
-              />
-
-              <Typography>
-                {temperature.value}
-                {dive.units === "metric" ? "°C" : "°F"}
+          return (
+            <Box key={temperature.title}>
+              <Typography level="subtitle1" mb={1.4}>
+                {temperature.title} temperature
               </Typography>
+
+              <Box sx={{ display: "flex", gap: 2 }}>
+                <LinearProgress
+                  determinate
+                  value={calculateProgressValue(
+                    temperature.value,
+                    temperature.minValue,
+                    temperature.maxValue
+                  )}
+                  // @ts-ignore
+                  color={temperature.color}
+                  sx={{
+                    "--LinearProgress-thickness": "18px"
+                  }}
+                />
+
+                <Typography>
+                  {temperature.value}
+                  {dive.units === "metric" ? "°C" : "°F"}
+                </Typography>
+              </Box>
             </Box>
-          </Box>
-        ))}
+          );
+        })}
       </Box>
     </>
   );
