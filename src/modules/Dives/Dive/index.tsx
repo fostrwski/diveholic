@@ -6,6 +6,7 @@ import PublicRounded from "@mui/icons-material/PublicRounded";
 import Box from "@mui/joy/Box";
 import Button from "@mui/joy/Button";
 import Chip from "@mui/joy/Chip";
+import Typography from "@mui/joy/Typography";
 import { useUser } from "@supabase/auth-helpers-react";
 import type { Dive as DiveType } from "common/types";
 import { formatDate, formatTime } from "common/utils/datetime/format";
@@ -151,6 +152,18 @@ const Dive: React.FC = () => {
           >
             Delete
           </Button>
+
+          <Typography
+            mt={8}
+            textColor="GrayText"
+            fontSize="xs"
+            sx={{ display: "flex", alignItems: "center", flexDirection: "column", gap: 1.2 }}
+          >
+            <Chip size="sm" variant="outlined">
+              Dive ID
+            </Chip>
+            {dive.id}
+          </Typography>
         </>
       );
     }
