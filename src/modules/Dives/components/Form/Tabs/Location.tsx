@@ -82,7 +82,13 @@ const Location: React.FC = () => {
         </Grid>
       </Grid>
 
-      <Link mt={4} startDecorator={<PlaceRounded />} color="info" disabled>
+      <Link
+        mt={4}
+        startDecorator={<PlaceRounded />}
+        color="info"
+        disabled
+        sx={{ float: "right" }}
+      >
         Use previous dive location
       </Link>
     </>
