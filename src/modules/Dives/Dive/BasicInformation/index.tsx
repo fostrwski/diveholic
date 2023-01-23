@@ -2,7 +2,6 @@ import DownloadDoneRounded from "@mui/icons-material/DownloadDoneRounded";
 import DownloadRounded from "@mui/icons-material/DownloadRounded";
 import ScaleRounded from "@mui/icons-material/ScaleRounded";
 import TimelapseRounded from "@mui/icons-material/TimelapseRounded";
-import TipsAndUpdatesRounded from "@mui/icons-material/TipsAndUpdatesRounded";
 import TitleRounded from "@mui/icons-material/TitleRounded";
 import WavesRounded from "@mui/icons-material/WavesRounded";
 import Box from "@mui/joy/Box";
@@ -53,7 +52,6 @@ const AmmountInformation: React.FC<AmmountInformationProps> = ({ ammount }) => {
       {getAmmountTip() && (
         <Chip
           color="warning"
-          startDecorator={<TipsAndUpdatesRounded />}
           variant="outlined"
         >
           {getAmmountTip()}
