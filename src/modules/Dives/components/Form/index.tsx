@@ -3,6 +3,7 @@ import ErrorOutlineRounded from "@mui/icons-material/ErrorOutlineRounded";
 import SaveRounded from "@mui/icons-material/SaveRounded";
 import Box from "@mui/joy/Box";
 import Button from "@mui/joy/Button";
+import Chip from "@mui/joy/Chip";
 import FormControl from "@mui/joy/FormControl";
 import FormLabel from "@mui/joy/FormLabel";
 import TextField from "@mui/joy/TextField";
@@ -88,14 +89,24 @@ const Form: React.FC<FormProps> = ({ onSubmit, submitted }) => {
 
       {/* Show error message when errors object is non-empty */}
       {!(Object.keys(errors).length === 0) && (
-        <Typography
-          mt={4}
-          color="danger"
-          startDecorator={<ErrorOutlineRounded />}
-          sx={{display: "flex", alignItems: "flex-start"}}
+        <Box
+          sx={{
+            mt:6,
+            display: "flex",
+            alignItems: "center",
+            flexDirection: "column",
+            gap: 1.2,
+            textAlign :"center"
+          }}
         >
-          Oops! Your form has some errors. Correct invalid fields and try again!
-        </Typography>
+          <Chip color="danger" variant="outlined" startDecorator={<ErrorOutlineRounded />}>
+            Error
+          </Chip>
+          <Typography color="danger" component="span">
+            Oops! Your form has some errors. Correct invalid fields and try
+            again!
+          </Typography>
+        </Box>
       )}
     </Box>
   );
