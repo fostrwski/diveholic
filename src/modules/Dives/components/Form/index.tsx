@@ -52,9 +52,9 @@ const Form: React.FC<FormProps> = ({ onSubmit, submitted }) => {
     <Box component="form" onSubmit={onSubmit}>
       <Tabs />
 
-      <Gear />
-
       <Temperature />
+
+      <Gear />
 
       <TextField
         {...register("diveBuddy")}

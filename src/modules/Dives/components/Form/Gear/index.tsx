@@ -27,7 +27,7 @@ const Gear: React.FC = () => {
 
   return (
     <>
-      <TextSeparator sx={{ mt: 8 }}>Gear</TextSeparator>
+      <TextSeparator sx={{ mt: 10 }}>Gear</TextSeparator>
 
       <Typography
         mb={2}
