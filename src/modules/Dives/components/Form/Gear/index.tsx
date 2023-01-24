@@ -1,10 +1,10 @@
 import AutoAwesomeRounded from "@mui/icons-material/AutoAwesomeRounded";
 import LineWeightRounded from "@mui/icons-material/LineWeightRounded";
 import NumbersRounded from "@mui/icons-material/NumbersRounded";
+import Box from "@mui/joy/Box";
 import Button from "@mui/joy/Button";
 import Grid from "@mui/joy/Grid";
 import MuiLink from "@mui/joy/Link";
-import Box from "@mui/joy/Box";
 import TextField from "@mui/joy/TextField";
 import Typography from "@mui/joy/Typography";
 import TextSeparator from "common/components/TextSeparator";
@@ -28,35 +28,6 @@ const Gear: React.FC = () => {
   return (
     <>
       <TextSeparator sx={{ mt: 8 }}>Gear</TextSeparator>
-
-      <Typography
-        mb={2}
-        mt={4}
-        component="p"
-        textColor="GrayText"
-        fontWeight="md"
-      >
-        Tanks
-      </Typography>
-      <Grid container spacing={2} justifyContent="space-between">
-        <Grid xs={6}>
-          <TextField
-            {...register("gear.tanks.count", { setValueAs: setNullOrNumber })}
-            error={!!errors.gear?.tanks?.count}
-            helperText={errors.gear?.tanks?.count?.message?.toString()}
-            type="number"
-            label="Count"
-            startDecorator={<NumbersRounded />}
-          />
-        </Grid>
-        <Grid xs={6}>
-          <TextField
-            {...register("gear.tanks.type")}
-            type="text"
-            label="Type"
-          />
-        </Grid>
-      </Grid>
 
       <Typography
         mb={2}
@@ -85,6 +56,35 @@ const Gear: React.FC = () => {
             type="number"
             label="Thickness"
             startDecorator={<LineWeightRounded />}
+          />
+        </Grid>
+      </Grid>
+
+      <Typography
+        mb={2}
+        mt={4}
+        component="p"
+        textColor="GrayText"
+        fontWeight="md"
+      >
+        Tanks
+      </Typography>
+      <Grid container spacing={2} justifyContent="space-between">
+        <Grid xs={6}>
+          <TextField
+            {...register("gear.tanks.count", { setValueAs: setNullOrNumber })}
+            error={!!errors.gear?.tanks?.count}
+            helperText={errors.gear?.tanks?.count?.message?.toString()}
+            type="number"
+            label="Count"
+            startDecorator={<NumbersRounded />}
+          />
+        </Grid>
+        <Grid xs={6}>
+          <TextField
+            {...register("gear.tanks.type")}
+            type="text"
+            label="Type"
           />
         </Grid>
       </Grid>
