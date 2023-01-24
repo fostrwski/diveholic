@@ -10,8 +10,7 @@ import Grid from "@mui/joy/Grid";
 import Typography from "@mui/joy/Typography";
 import type { Dive } from "common/types";
 import React from "react";
-
-import Info from "./Info";
+import InfoCard from "../components/InfoCard";
 
 interface AmmountInformationProps {
   ammount: Dive["weights"]["ammount"];
@@ -50,10 +49,7 @@ const AmmountInformation: React.FC<AmmountInformationProps> = ({ ammount }) => {
       </Chip>
 
       {getAmmountTip() && (
-        <Chip
-          color="warning"
-          variant="outlined"
-        >
+        <Chip color="warning" variant="outlined">
           {getAmmountTip()}
         </Chip>
       )}
@@ -65,8 +61,8 @@ interface BasicInformationProps {
   dive: Dive;
 }
 
-const BasicInformation: React.FC<BasicInformationProps> = ({ dive }) => {
-  const basicInformation = [
+const Basics: React.FC<BasicInformationProps> = ({ dive }) => {
+  const basics = [
     {
       title: "Type",
       value: dive.type,
@@ -98,11 +94,11 @@ const BasicInformation: React.FC<BasicInformationProps> = ({ dive }) => {
       </Typography>
 
       <Grid container spacing={1.2}>
-        {basicInformation.map((basicInfo) => {
+        {basics.map((basicInfo) => {
           if (!basicInfo) return;
           return (
             <Grid xs={6} key={basicInfo.title}>
-              <Info
+              <InfoCard
                 title={basicInfo.title}
                 content={basicInfo.value as string | number}
                 unit={basicInfo.unit}
@@ -118,7 +114,7 @@ const BasicInformation: React.FC<BasicInformationProps> = ({ dive }) => {
 
         {dive.depth.average && (
           <Grid xs={6}>
-            <Info
+            <InfoCard
               title="Depth avg."
               content={dive.depth.average}
               unit={dive.units === "metric" ? "m" : "ft"}
@@ -129,7 +125,7 @@ const BasicInformation: React.FC<BasicInformationProps> = ({ dive }) => {
 
         {dive.depth.max && (
           <Grid xs={6}>
-            <Info
+            <InfoCard
               title="Depth max"
               content={dive.depth.max}
               unit={dive.units === "metric" ? "m" : "ft"}
@@ -142,4 +138,4 @@ const BasicInformation: React.FC<BasicInformationProps> = ({ dive }) => {
   );
 };
 
-export default BasicInformation;
+export default Basics;

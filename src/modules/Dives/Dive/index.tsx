@@ -14,8 +14,8 @@ import { supabase } from "common/utils/supabaseClient";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 
-import BasicInformation from "./BasicInformation";
-import Details from "./Details";
+import Basics from "./Basics";
+import Gear from "./Gear";
 import Error from "./Error";
 import Loading from "./Loading";
 import Weather from "./Weather";
@@ -126,7 +126,7 @@ const Dive: React.FC = () => {
           </Box>
 
           <Box mt={6}>
-            <BasicInformation dive={dive} />
+            <Basics dive={dive} />
           </Box>
 
           <Box mt={6}>
@@ -134,7 +134,7 @@ const Dive: React.FC = () => {
           </Box>
 
           <Box mt={4}>
-            <Details dive={dive} />
+            <Gear dive={dive} />
           </Box>
 
           <Button

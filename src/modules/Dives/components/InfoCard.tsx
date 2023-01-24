@@ -3,14 +3,14 @@ import Sheet from "@mui/joy/Sheet";
 import Typography from "@mui/joy/Typography";
 import React from "react";
 
-export interface InfoProps {
+export interface InfoCardProps {
   title: string;
   content: string | number;
   unit?: string;
   icon?: React.ReactElement;
 }
 
-const Info: React.FC<InfoProps> = ({ title, content, unit, icon }) => (
+const InfoCard: React.FC<InfoCardProps> = ({ title, content, unit, icon }) => (
   <Sheet sx={{ display: "flex", alignItems: "center", gap: 2, px: 2, py: 1.4 }}>
     <Box>
       <Typography component="p" level="subtitle2" startDecorator={icon}>
@@ -23,4 +23,4 @@ const Info: React.FC<InfoProps> = ({ title, content, unit, icon }) => (
   </Sheet>
 );
 
-export default Info;
+export default InfoCard;

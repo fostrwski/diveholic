@@ -12,12 +12,12 @@ interface DetailsProps {
   dive: Dive;
 }
 
-const Details: React.FC<DetailsProps> = ({ dive }) => (
+const Gear: React.FC<DetailsProps> = ({ dive }) => (
   <>
     <TextSeparator sx={{ mt: 8 }}>Gear</TextSeparator>
     <Section
       title="Exposure protection"
-      details={[
+      content={[
         {
           title: "Type",
           icon: <TitleRounded />,
@@ -33,30 +33,42 @@ const Details: React.FC<DetailsProps> = ({ dive }) => (
 
     <Section
       title="Tanks"
-      details={[
+      content={[
         {
           title: "Count",
           content: dive.gear.tanks.count,
           icon: <NumbersRounded />
         },
 
-        { title: "Type", icon: <TitleRounded />, content: dive.gear.tanks.type }
+        {
+          title: "Type",
+          icon: <TitleRounded />,
+          content: dive.gear.tanks.type
+        }
       ]}
     />
 
     <Section
       title="Other gear"
-      details={[
-        { title: "BCD", content: dive.gear.bcd, icon: <ScubaDivingRounded /> },
+      content={[
+        {
+          title: "BCD",
+          content: dive.gear.bcd,
+          icon: <ScubaDivingRounded />
+        },
         {
           title: "Regulator",
           content: dive.gear.regulator,
           icon: <ScubaDivingRounded />
         },
-        { title: "Fins", content: dive.gear.fins, icon: <ScubaDivingRounded /> }
+        {
+          title: "Fins",
+          content: dive.gear.fins,
+          icon: <ScubaDivingRounded />
+        }
       ]}
     />
   </>
 );
 
-export default Details;
+export default Gear;
