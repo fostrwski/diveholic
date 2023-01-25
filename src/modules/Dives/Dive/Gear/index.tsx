@@ -7,6 +7,7 @@ import type { Dive } from "common/types";
 import React from "react";
 
 import Section from "./Section";
+import getValidInfoCards from "./getValidInfoCards";
 
 interface DetailsProps {
   dive: Dive;
@@ -17,7 +18,7 @@ const Gear: React.FC<DetailsProps> = ({ dive }) => (
     <TextSeparator sx={{ mt: 8 }}>Gear</TextSeparator>
     <Section
       title="Exposure protection"
-      content={[
+      infoCards={getValidInfoCards([
         {
           title: "Type",
           icon: <TitleRounded />,
@@ -25,32 +26,32 @@ const Gear: React.FC<DetailsProps> = ({ dive }) => (
         },
         {
           title: "Thickness",
-          content: dive.gear.exposureProtection.thickness,
+          content: dive.gear.exposureProtection.thickness || "",
           icon: <LineWeightRounded />
         }
-      ]}
+      ])}
     />
 
     <Section
       title="Tanks"
-      content={[
+      infoCards={getValidInfoCards([
         {
           title: "Count",
-          content: dive.gear.tanks.count,
+          content: dive.gear.tanks.count || "",
           icon: <NumbersRounded />
         },
 
         {
           title: "Type",
           icon: <TitleRounded />,
-          content: dive.gear.tanks.type
+          content: dive.gear.tanks.type || ""
         }
-      ]}
+      ])}
     />
 
     <Section
       title="Other gear"
-      content={[
+      infoCards={getValidInfoCards([
         {
           title: "BCD",
           content: dive.gear.bcd,
@@ -66,7 +67,7 @@ const Gear: React.FC<DetailsProps> = ({ dive }) => (
           content: dive.gear.fins,
           icon: <ScubaDivingRounded />
         }
-      ]}
+      ])}
     />
   </>
 );
