@@ -11,7 +11,7 @@ export interface InfoCardProps {
 }
 
 const InfoCard: React.FC<InfoCardProps> = ({ title, content, unit, icon }) => (
-  <Sheet sx={{ display: "flex", alignItems: "center", gap: 2, px: 2, py: 1.4 }}>
+  <Sheet variant="soft" sx={{ display: "flex", alignItems: "center", gap: 2, px: 2, py: 1.4 }}>
     <Box>
       <Typography component="p" level="subtitle2" startDecorator={icon}>
         {title}
