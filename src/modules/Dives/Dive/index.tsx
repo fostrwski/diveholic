@@ -8,15 +8,17 @@ import Button from "@mui/joy/Button";
 import Chip from "@mui/joy/Chip";
 import Typography from "@mui/joy/Typography";
 import { useUser } from "@supabase/auth-helpers-react";
+import Separator from "common/components/Separator";
 import type { Dive as DiveType } from "common/types";
 import { formatDate, formatTime } from "common/utils/datetime/format";
 import { supabase } from "common/utils/supabaseClient";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 
+import InfoCard from "../components/InfoCard";
 import Basics from "./Basics";
-import Gear from "./Gear";
 import Error from "./Error";
+import Gear from "./Gear";
 import Loading from "./Loading";
 import Weather from "./Weather";
 
@@ -130,12 +132,21 @@ const Dive: React.FC = () => {
           </Box>
 
           <Box mt={6}>
-            <Weather dive={dive}/>
+            <Weather dive={dive} />
           </Box>
 
           <Box mt={4}>
             <Gear dive={dive} />
           </Box>
+
+          {(dive.diveBuddy || dive.notes) && (
+            <Box mt={10}>
+              {dive.diveBuddy && (
+                <InfoCard title="Dive buddy" content={dive.diveBuddy} />
+              )}
+              {dive.notes && <InfoCard title="Notes" content={dive.notes} />}
+            </Box>
+          )}
 
           <Button
             sx={{ mt: 6 }}
