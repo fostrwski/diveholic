@@ -1,4 +1,4 @@
-import Box from "@mui/joy/Box";
+import HistoryRounded from "@mui/icons-material/HistoryRounded";
 import Grid from "@mui/joy/Grid";
 import Typography from "@mui/joy/Typography";
 import { useUser } from "@supabase/auth-helpers-react";
@@ -53,17 +53,14 @@ const LatestDives: React.FC = () => {
 
   return (
     <>
-        <Box
-          display="flex"
-          alignItems="center"
-          justifyContent="space-between"
-          gap={2}
-          mb={2}
-        >
-          <Typography level="h4" component="p">
-            Your dives
-          </Typography>
-        </Box>
+      <Typography
+        level="h4"
+        component="p"
+        startDecorator={<HistoryRounded />}
+        mb={2}
+      >
+        Your dives
+      </Typography>
 
       <Grid container gap={2}>
         {determineView()}

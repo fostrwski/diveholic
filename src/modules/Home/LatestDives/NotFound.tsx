@@ -5,8 +5,8 @@ import React from "react";
 
 const NotFound: React.FC = () => (
   <>
-    <Typography component="p" level="subtitle1">
-      It looks like you haven't logged any dives yet 🤭
+    <Typography component="p" level="subtitle1" textAlign="center">
+      It's empty here 😱 You probably haven't logged any dives yet
     </Typography>
 
     <NextLink href="/dives/new">

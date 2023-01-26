@@ -1,16 +1,19 @@
 import ErrorOutlineRounded from "@mui/icons-material/ErrorOutlineRounded";
+import Chip from "@mui/joy/Chip";
 import Typography from "@mui/joy/Typography";
 import React from "react";
 
 const Error: React.FC = () => (
   <Typography
-    component="p"
-    startDecorator={<ErrorOutlineRounded />}
     color="danger"
-    level="h6"
+    startDecorator={
+      <Chip variant="outlined" color="danger" size="sm">
+        Error
+      </Chip>
+    }
+    sx={{alignItems: "flex-start"}}
   >
-    {/* TODO: add helper text to refresh page */}
-    Something went wrong
+    Something went wrong. Try to refresh the page or contact support
   </Typography>
 );
 
