@@ -18,7 +18,7 @@ const ErrorMessage: React.FC<ErrorMessageProps> = ({ children, sx }) => (
       </Chip>
     }
     sx={{
-      alignItems: "flex-start",
+      alignItems: "start",
       ...sx
     }}
   >
