@@ -111,8 +111,8 @@ const Dive: React.FC = () => {
             <Typography
               fontWeight="lg"
               component="div"
-              startDecorator={<FlagRounded />}
-              sx={{ alignItems: "start" }}
+              startDecorator={<Chip size="sm" variant="outlined" color="primary" startDecorator={<FlagRounded />}>Dive center</Chip>}
+              sx={{alignItems: "self-start"}}
             >
               {dive.location.diveCenter}
             </Typography>
