@@ -112,7 +112,7 @@ const Dive: React.FC = () => {
               fontWeight="lg"
               component="div"
               startDecorator={<FlagRounded />}
-              sx={{ alignItems: "start"}}
+              sx={{ alignItems: "start" }}
             >
               {dive.location.diveCenter}
             </Typography>
@@ -134,7 +134,7 @@ const Dive: React.FC = () => {
             <Weather dive={dive} />
           </Box>
 
-          <Box mt={4}>
+          <Box mt={6}>
             <Gear dive={dive} />
           </Box>
 

@@ -13,63 +13,73 @@ interface DetailsProps {
   dive: Dive;
 }
 
-const Gear: React.FC<DetailsProps> = ({ dive }) => (
-  <>
-    <TextSeparator sx={{ mt: 8 }}>Gear</TextSeparator>
-    <Section
-      title="Exposure protection"
-      infoCards={getValidInfoCards([
-        {
-          title: "Type",
-          icon: <TitleRounded />,
-          content: dive.gear.exposureProtection.type
-        },
-        {
-          title: "Thickness",
-          content: dive.gear.exposureProtection.thickness || "",
-          icon: <LineWeightRounded />
-        }
-      ])}
-    />
+const Gear: React.FC<DetailsProps> = ({ dive }) => {
+  const exposureProtectionInfoCards = getValidInfoCards([
+    {
+      title: "Type",
+      icon: <TitleRounded />,
+      content: dive.gear.exposureProtection.type
+    },
+    {
+      title: "Thickness",
+      content: dive.gear.exposureProtection.thickness || "",
+      icon: <LineWeightRounded />
+    }
+  ]);
 
-    <Section
-      title="Tanks"
-      infoCards={getValidInfoCards([
-        {
-          title: "Count",
-          content: dive.gear.tanks.count || "",
-          icon: <NumbersRounded />
-        },
+  const tanksInfoCards = getValidInfoCards([
+    {
+      title: "Count",
+      content: dive.gear.tanks.count || "",
+      icon: <NumbersRounded />
+    },
 
-        {
-          title: "Type",
-          icon: <TitleRounded />,
-          content: dive.gear.tanks.type || ""
-        }
-      ])}
-    />
+    {
+      title: "Type",
+      icon: <TitleRounded />,
+      content: dive.gear.tanks.type || ""
+    }
+  ]);
 
-    <Section
-      title="Other gear"
-      infoCards={getValidInfoCards([
-        {
-          title: "BCD",
-          content: dive.gear.bcd,
-          icon: <ScubaDivingRounded />
-        },
-        {
-          title: "Regulator",
-          content: dive.gear.regulator,
-          icon: <ScubaDivingRounded />
-        },
-        {
-          title: "Fins",
-          content: dive.gear.fins,
-          icon: <ScubaDivingRounded />
-        }
-      ])}
-    />
-  </>
-);
+  const otherGearInfoCards = getValidInfoCards([
+    {
+      title: "BCD",
+      content: dive.gear.bcd,
+      icon: <ScubaDivingRounded />
+    },
+    {
+      title: "Regulator",
+      content: dive.gear.regulator,
+      icon: <ScubaDivingRounded />
+    },
+    {
+      title: "Fins",
+      content: dive.gear.fins,
+      icon: <ScubaDivingRounded />
+    }
+  ]);
+
+  if (
+    !exposureProtectionInfoCards.length &&
+    !tanksInfoCards.length &&
+    !otherGearInfoCards.length
+  )
+    return <></>;
+
+  return (
+    <>
+      <TextSeparator>Gear</TextSeparator>
+
+      <Section
+        title="Exposure protection"
+        infoCards={exposureProtectionInfoCards}
+      />
+
+      <Section title="Tanks" infoCards={tanksInfoCards} />
+
+      <Section title="Other gear" infoCards={otherGearInfoCards} />
+    </>
+  );
+};
 
 export default Gear;
