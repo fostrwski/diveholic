@@ -1,6 +1,5 @@
 import ChevronLeftRounded from "@mui/icons-material/ChevronLeftRounded";
 import ChevronRightRounded from "@mui/icons-material/ChevronRightRounded";
-import ErrorOutlineRounded from "@mui/icons-material/ErrorOutlineRounded";
 import Avatar from "@mui/joy/Avatar";
 import Box from "@mui/joy/Box";
 import Button from "@mui/joy/Button";
@@ -17,12 +16,8 @@ import {
   type DatePickerUserConfig,
   useDatePicker
 } from "@rehookify/datepicker";
-import React, {
-  Dispatch,
-  SetStateAction,
-  useEffect,
-  useState
-} from "react";
+import ErrorMessage from "common/components/ErrorMessage";
+import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { useFormContext } from "react-hook-form";
 
 import type { FormFields } from "../../types";
@@ -38,6 +33,10 @@ const Modal: React.FC<ModalProps> = ({ open, setOpen }) => {
   const config: DatePickerUserConfig = {
     locale: {
       weekday: "short"
+    },
+    dates: {
+      mode: "single",
+      toggle: false
     }
   };
 
@@ -55,16 +54,19 @@ const Modal: React.FC<ModalProps> = ({ open, setOpen }) => {
   } = useDatePicker(config);
 
   useEffect(() => {
-    const initialDate = getValues("date") ? new Date(getValues("date")) : "";
+    const setTime = () => {
+      const initialDate = getValues("date") ? new Date(getValues("date")) : "";
 
-    if (initialDate) {
-      setHours(initialDate.getHours());
-      setMinutes(initialDate.getMinutes());
+      if (initialDate) {
+        setHours(initialDate.getHours());
+        setMinutes(initialDate.getMinutes());
 
-      initialDate.setHours(0, 0, 0, 0);
-      selectedDates[0] = initialDate;
-    }
+        initialDate.setHours(0, 0, 0, 0);
+        selectedDates[0] = initialDate;
+      }
+    };
 
+    setTime();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [getValues]);
 
@@ -195,7 +197,7 @@ const Modal: React.FC<ModalProps> = ({ open, setOpen }) => {
                 ))}
               </Grid>
             </RadioGroup>
-
+sx
             <Box mt={4}>
               <Typography level="subtitle1" textAlign="center">
                 Time
@@ -244,13 +246,7 @@ const Modal: React.FC<ModalProps> = ({ open, setOpen }) => {
           </Box>
 
           {error && (
-            <Typography
-              startDecorator={<ErrorOutlineRounded />}
-              color="danger"
-              sx={{ mt: 3, fontWeight: "xl" }}
-            >
-              Select valid date and time
-            </Typography>
+            <ErrorMessage sx={{ mt: 4 }}>Invalid date or time</ErrorMessage>
           )}
 
           <Box
