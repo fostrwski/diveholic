@@ -16,6 +16,7 @@ const Error: React.FC<ErrorProps> = ({ error, customMessage, tip }) => (
     <Typography component="p" level="h4" color="danger" gutterBottom>
       Something went wrong
     </Typography>
+
     <Typography component="p" fontWeight="lg">
       {customMessage || error?.message}
     </Typography>
