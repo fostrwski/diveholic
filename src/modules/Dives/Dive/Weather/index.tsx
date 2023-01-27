@@ -41,6 +41,8 @@ const Weather: React.FC<WeatherProps> = ({ dive }) => {
     }
   ];
 
+  if (!air && !surface && !bottom) return <></>
+
   return (
     <>
       <TextSeparator>Weather</TextSeparator>
