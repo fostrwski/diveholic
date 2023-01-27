@@ -1,19 +1,20 @@
 import Chip from "@mui/joy/Chip";
 import Typography from "@mui/joy/Typography";
-import TypographyProps from "@mui/joy/Typography/TypographyProps";
+import { TypographyTypeMap } from "@mui/joy/Typography/TypographyProps";
 import React from "react";
 
-type TypographyPropsType = typeof TypographyProps;
+type TypographyProps = TypographyTypeMap["props"];
 
-interface ErrorMessageProps extends TypographyPropsType {
+interface ErrorMessageProps extends TypographyProps {
   children: React.ReactNode;
 }
 
 const ErrorMessage: React.FC<ErrorMessageProps> = ({ children, ...props }) => (
   <Typography
+    component="div"
     color="danger"
     startDecorator={
-      <Chip color="danger" size="sm">
+      <Chip color="danger" size="sm" variant="outlined">
         Error
       </Chip>
     }
