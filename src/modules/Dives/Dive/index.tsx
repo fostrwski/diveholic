@@ -8,7 +8,6 @@ import Button from "@mui/joy/Button";
 import Chip from "@mui/joy/Chip";
 import Typography from "@mui/joy/Typography";
 import { useUser } from "@supabase/auth-helpers-react";
-import Separator from "common/components/Separator";
 import type { Dive as DiveType } from "common/types";
 import { formatDate, formatTime } from "common/utils/datetime/format";
 import { supabase } from "common/utils/supabaseClient";
@@ -92,39 +91,39 @@ const Dive: React.FC = () => {
     if (dive) {
       return (
         <>
-          <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
-            <div>
-              <Chip
-                component="span"
-                size="lg"
-                startDecorator={
-                  dive.location.country.flagEmoji ? (
-                    dive.location.country.flagEmoji
-                  ) : (
-                    <PublicRounded />
-                  )
-                }
-              >
-                {dive.location.city}, {dive.location.country.name}
-              </Chip>
-            </div>
+          <Box sx={{ display: "flex", flexDirection: "column", gap: 1.2 }}>
+            <Typography
+              level="h5"
+              fontWeight="lg"
+              component="div"
+              sx={{ alignItems: "start" }}
+              startDecorator={
+                dive.location.country.flagEmoji ? (
+                  dive.location.country.flagEmoji
+                ) : (
+                  <PublicRounded />
+                )
+              }
+            >
+              {dive.location.city}, {dive.location.country.name}
+            </Typography>
 
-            <div>
-              <Chip size="lg" component="span" startDecorator={<FlagRounded />}>
-                {dive.location.diveCenter}
-              </Chip>
-            </div>
+            <Typography
+              fontWeight="lg"
+              component="div"
+              startDecorator={<FlagRounded />}
+              sx={{ alignItems: "start"}}
+            >
+              {dive.location.diveCenter}
+            </Typography>
 
-            <div>
-              <Chip
-                size="lg"
-                startDecorator={<CalendarTodayRounded />}
-                component="span"
-                variant="outlined"
-              >
-                {formatDate(dive.date)} at {formatTime(dive.date)}
-              </Chip>
-            </div>
+            <Typography
+              level="subtitle1"
+              component="div"
+              startDecorator={<CalendarTodayRounded />}
+            >
+              {formatDate(dive.date)} at {formatTime(dive.date)}
+            </Typography>
           </Box>
 
           <Box mt={6}>
@@ -140,7 +139,9 @@ const Dive: React.FC = () => {
           </Box>
 
           {(dive.diveBuddy || dive.notes) && (
-            <Box sx={{ mt: 8, display: "flex",flexDirection:"column", gap: 1.2 }}>
+            <Box
+              sx={{ mt: 8, display: "flex", flexDirection: "column", gap: 1.2 }}
+            >
               {dive.diveBuddy && (
                 <InfoCard title="Dive buddy" content={dive.diveBuddy} />
               )}

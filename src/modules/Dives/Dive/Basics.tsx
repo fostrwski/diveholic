@@ -10,6 +10,7 @@ import Grid from "@mui/joy/Grid";
 import Typography from "@mui/joy/Typography";
 import type { Dive } from "common/types";
 import React from "react";
+
 import InfoCard from "../components/InfoCard";
 
 interface AmmountInformationProps {
@@ -49,9 +50,16 @@ const AmmountInformation: React.FC<AmmountInformationProps> = ({ ammount }) => {
       </Chip>
 
       {getAmmountTip() && (
-        <Chip color="warning" variant="outlined">
+        <Typography
+          sx={{ alignItems: "start" }}
+          startDecorator={
+            <Chip variant="outlined" color="warning" size="sm">
+              Tip
+            </Chip>
+          }
+        >
           {getAmmountTip()}
-        </Chip>
+        </Typography>
       )}
     </Box>
   );
