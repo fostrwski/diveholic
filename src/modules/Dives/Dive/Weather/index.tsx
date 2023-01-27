@@ -17,6 +17,8 @@ const Weather: React.FC<WeatherProps> = ({ dive }) => {
     air
   } = dive.temperature;
 
+  if (!air && !surface && !bottom) return <></>;
+
   const temperatures = [
     {
       title: "Air",
@@ -40,8 +42,6 @@ const Weather: React.FC<WeatherProps> = ({ dive }) => {
       color: "warning"
     }
   ];
-
-  if (!air && !surface && !bottom) return <></>
 
   return (
     <>
