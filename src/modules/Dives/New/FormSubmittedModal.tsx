@@ -1,5 +1,4 @@
 import AddRounded from "@mui/icons-material/AddRounded";
-import ArrowForwardRounded from "@mui/icons-material/ArrowForwardRounded";
 import Button from "@mui/joy/Button";
 import Modal from "@mui/joy/Modal";
 import ModalDialog from "@mui/joy/ModalDialog";
@@ -58,7 +57,6 @@ const FormSubmittedModal: React.FC<FormSubmittedModalProps> = ({
         <Button
           color="success"
           fullWidth
-          endDecorator={<ArrowForwardRounded />}
           size="lg"
           onClick={handleContinue}
           data-cy="New-FormSubmittedModal-continue"
@@ -70,7 +68,7 @@ const FormSubmittedModal: React.FC<FormSubmittedModalProps> = ({
           color="neutral"
           variant="plain"
           fullWidth
-          endDecorator={<AddRounded />}
+          startDecorator={<AddRounded />}
           sx={{ mt: 2 }}
           onClick={handleAddAnotherDive}
         >
