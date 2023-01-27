@@ -109,7 +109,7 @@ const Dive: React.FC = () => {
             </Typography>
 
             <Typography
-              fontWeight="lg"
+              fontWeight="md"
               component="div"
               startDecorator={<Chip size="sm" variant="outlined" color="primary" startDecorator={<FlagRounded />}>Dive center</Chip>}
               sx={{alignItems: "self-start"}}
