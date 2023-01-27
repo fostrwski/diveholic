@@ -1,15 +1,14 @@
 import Chip from "@mui/joy/Chip";
 import Typography from "@mui/joy/Typography";
-import { TypographyTypeMap } from "@mui/joy/Typography/TypographyProps";
+import type { SxProps } from "@mui/system";
 import React from "react";
 
-type TypographyProps = TypographyTypeMap["props"];
-
-interface ErrorMessageProps extends TypographyProps {
+interface ErrorMessageProps {
   children: React.ReactNode;
+  sx?: SxProps;
 }
 
-const ErrorMessage: React.FC<ErrorMessageProps> = ({ children, ...props }) => (
+const ErrorMessage: React.FC<ErrorMessageProps> = ({ children, sx }) => (
   <Typography
     component="div"
     color="danger"
@@ -18,7 +17,10 @@ const ErrorMessage: React.FC<ErrorMessageProps> = ({ children, ...props }) => (
         Error
       </Chip>
     }
-    {...props}
+    sx={{
+      alignItems: "flex-start",
+      ...sx
+    }}
   >
     {children}
   </Typography>
