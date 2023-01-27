@@ -1,4 +1,4 @@
-import { type User, useUser } from "@supabase/auth-helpers-react";
+import { type User } from "@supabase/auth-helpers-react";
 import type { Dive } from "common/types";
 import { supabase } from "common/utils/supabaseClient";
 import { useRouter } from "next/router";
@@ -33,6 +33,8 @@ const Edit: React.FC<EditProps> = ({ user }) => {
     if (error) return console.error(error);
 
     setSubmitted(true);
+
+    router.push(`/dives/${diveId}`);
   };
 
   return (
