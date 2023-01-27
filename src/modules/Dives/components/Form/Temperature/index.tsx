@@ -13,8 +13,7 @@ const Temperature: React.FC = () => (
       mb={2}
       mt={4}
       component="p"
-      textColor="GrayText"
-      fontWeight="md"
+      level="subtitle1"
     >
       Temperature
     </Typography>

@@ -32,8 +32,7 @@ const Gear: React.FC = () => {
       <Typography
         mb={2}
         component="p"
-        textColor="GrayText"
-        fontWeight="md"
+        level="subtitle1"
         mt={4}
       >
         Exposure protection
@@ -63,9 +62,7 @@ const Gear: React.FC = () => {
       <Typography
         mb={2}
         mt={4}
-        component="p"
-        textColor="GrayText"
-        fontWeight="md"
+        level="subtitle1"
       >
         Tanks
       </Typography>
@@ -95,8 +92,7 @@ const Gear: React.FC = () => {
             mb={2}
             mt={4}
             component="p"
-            textColor="GrayText"
-            fontWeight="md"
+            level="subtitle1"
           >
             Other gear
           </Typography>
