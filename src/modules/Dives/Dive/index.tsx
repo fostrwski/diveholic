@@ -140,7 +140,7 @@ const Dive: React.FC = () => {
 
           {(dive.diveBuddy || dive.notes) && (
             <Box
-              sx={{ mt: 8, display: "flex", flexDirection: "column", gap: 1.2 }}
+              sx={{ mt: 6, display: "flex", flexDirection: "column", gap: 1.2 }}
             >
               {dive.diveBuddy && (
                 <InfoCard title="Dive buddy" content={dive.diveBuddy} />
