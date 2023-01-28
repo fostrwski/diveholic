@@ -54,7 +54,7 @@ const LatestDives: React.FC = () => {
   return (
     <>
       <Typography
-        level="h4"
+        level="h5"
         component="p"
         startDecorator={<HistoryRounded />}
         mb={2}
