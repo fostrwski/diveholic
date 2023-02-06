@@ -16,15 +16,17 @@ import PreviousDiveLocationButton from "./PreviousDiveLocationButton";
 
 const Location: React.FC = () => {
   const {
-    getValues,
     register,
+    watch,
     formState: { errors }
   } = useFormContext<FormFields>();
 
   const filterOptions = createFilterOptions({ limit: 20 });
+  const watchLocationCountryFlagEmoji = watch("location.country.flagEmoji");
 
   return (
     <>
+      {console.log(watchLocationCountryFlagEmoji)}
       <Grid spacing={2} container>
         <Grid xs={6}>
           <FormControl error={!!errors.location?.country?.name}>
@@ -42,7 +44,7 @@ const Location: React.FC = () => {
                   )}
                   placeholder="Croatia"
                   startDecorator={
-                    getValues("location.country.flagEmoji") || <PublicRounded />
+                    watchLocationCountryFlagEmoji || <PublicRounded />
                   }
                   error={!!errors.location?.country?.name}
                   filterOptions={filterOptions}

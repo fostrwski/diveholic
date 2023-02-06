@@ -14,7 +14,7 @@ const PreviousDiveLocationButton: React.FC = () => {
   const handleClick = () => {
     if (!data) return;
 
-    setValue("location", data.location)
+    setValue("location", data.location);
   };
 
   return (
