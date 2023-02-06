@@ -53,7 +53,7 @@ const AmmountInformation: React.FC<AmmountInformationProps> = ({ ammount }) => {
         <Typography
           sx={{ alignItems: "start" }}
           startDecorator={
-            <Chip variant="outlined" color="warning" size="sm">
+            <Chip variant="outlined" color="warning" size="sm" component="span">
               Tip
             </Chip>
           }
