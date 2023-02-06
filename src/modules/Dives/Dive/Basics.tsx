@@ -42,6 +42,7 @@ const AmmountInformation: React.FC<AmmountInformationProps> = ({ ammount }) => {
   return (
     <Box sx={{ display: "flex", gap: 1.2, flexWrap: "wrap" }}>
       <Chip
+        component="div"
         startDecorator={<ScaleRounded />}
         color={ammount === "perfect" ? "success" : "info"}
         variant="outlined"
@@ -51,6 +52,7 @@ const AmmountInformation: React.FC<AmmountInformationProps> = ({ ammount }) => {
 
       {getAmmountTip() && (
         <Typography
+          component="p"
           sx={{ alignItems: "start" }}
           startDecorator={
             <Chip variant="outlined" color="warning" size="sm" component="span">
