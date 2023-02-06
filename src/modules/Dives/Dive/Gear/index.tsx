@@ -2,6 +2,7 @@ import LineWeightRounded from "@mui/icons-material/LineWeightRounded";
 import NumbersRounded from "@mui/icons-material/NumbersRounded";
 import ScubaDivingRounded from "@mui/icons-material/ScubaDivingRounded";
 import TitleRounded from "@mui/icons-material/TitleRounded";
+import Box from "@mui/joy/Box";
 import TextSeparator from "common/components/TextSeparator";
 import type { Dive } from "common/types";
 import React from "react";
@@ -67,7 +68,7 @@ const Gear: React.FC<DetailsProps> = ({ dive }) => {
     return <></>;
 
   return (
-    <>
+    <Box mt={6}>
       <TextSeparator>Gear</TextSeparator>
 
       <Section
@@ -78,7 +79,7 @@ const Gear: React.FC<DetailsProps> = ({ dive }) => {
       <Section title="Tanks" infoCards={tanksInfoCards} />
 
       <Section title="Other gear" infoCards={otherGearInfoCards} />
-    </>
+    </Box>
   );
 };
 

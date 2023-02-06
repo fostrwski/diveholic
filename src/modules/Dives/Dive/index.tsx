@@ -111,8 +111,17 @@ const Dive: React.FC = () => {
             <Typography
               fontWeight="md"
               component="div"
-              startDecorator={<Chip size="sm" variant="outlined" color="primary" startDecorator={<FlagRounded />}>Dive center</Chip>}
-              sx={{alignItems: "self-start"}}
+              startDecorator={
+                <Chip
+                  size="sm"
+                  variant="outlined"
+                  color="primary"
+                  startDecorator={<FlagRounded />}
+                >
+                  Dive center
+                </Chip>
+              }
+              sx={{ alignItems: "self-start" }}
             >
               {dive.location.diveCenter}
             </Typography>
@@ -130,13 +139,9 @@ const Dive: React.FC = () => {
             <Basics dive={dive} />
           </Box>
 
-          <Box mt={6}>
-            <Weather dive={dive} />
-          </Box>
+          <Weather dive={dive} />
 
-          <Box mt={6}>
-            <Gear dive={dive} />
-          </Box>
+          <Gear dive={dive} />
 
           {(dive.diveBuddy || dive.notes) && (
             <Box
