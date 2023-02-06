@@ -43,8 +43,15 @@ const Modal: React.FC<ModalProps> = ({ open, setOpen }) => {
   const { setValue, clearErrors, getValues } = useFormContext<FormFields>();
 
   const date = new Date();
-  const [hours, setHours] = useState<number | "">(date.getHours());
-  const [minutes, setMinutes] = useState<number | "">(date.getMinutes());
+
+  const options: Intl.DateTimeFormatOptions = {
+    hour: "numeric",
+    minute: "numeric"
+  };
+
+  const [time, setTime] = useState<string>(
+    date.toLocaleTimeString(undefined, options)
+  );
 
   const {
     data: { selectedDates, calendars, weekDays },
@@ -57,13 +64,13 @@ const Modal: React.FC<ModalProps> = ({ open, setOpen }) => {
     const setTime = () => {
       const initialDate = getValues("date") ? new Date(getValues("date")) : "";
 
-      if (initialDate) {
-        setHours(initialDate.getHours());
-        setMinutes(initialDate.getMinutes());
+      if (!initialDate) return;
 
-        initialDate.setHours(0, 0, 0, 0);
-        selectedDates[0] = initialDate;
-      }
+      // @ts-ignore
+      setTime(initialDate.toLocaleTimeString(undefined, options));
+
+      initialDate.setHours(0, 0, 0, 0);
+      selectedDates[0] = initialDate;
     };
 
     setTime();
@@ -80,11 +87,12 @@ const Modal: React.FC<ModalProps> = ({ open, setOpen }) => {
     const selectedDate = selectedDates[0];
 
     setError(false);
-    if (!selectedDate || !hours || !minutes) return setError(true);
+    if (!selectedDate || !time) return setError(true);
 
     const datetime = new Date(selectedDate);
-    datetime.setHours(hours);
-    datetime.setMinutes(minutes);
+    const [hours, minutes] = time.split(":")
+    datetime.setHours(parseInt(hours,  10));
+    datetime.setMinutes(parseInt(minutes, 10));
 
     setValue("date", datetime.toString());
 
@@ -99,12 +107,9 @@ const Modal: React.FC<ModalProps> = ({ open, setOpen }) => {
     setDay(new Date(+year, +month - 1, +day));
   };
 
-  const onHoursChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setHours(parseInt(e.target.value, 10) || "");
-  };
-
-  const onMinutesChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setMinutes(parseInt(e.target.value, 10) || "");
+  const onTimeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const [hours, minutes] = e.target.value.split(":")
+    setTime(`${hours}:${minutes}`)
   };
 
   return (
@@ -203,7 +208,13 @@ const Modal: React.FC<ModalProps> = ({ open, setOpen }) => {
                 Time
               </Typography>
 
-              <TextField type="time" placeholder="Date" variant="outlined" />
+              <TextField
+                onChange={onTimeChange}
+                value={time}
+                type="time"
+                variant="outlined"
+                aria-label="Time"
+              />
             </Box>
           </Box>
 
