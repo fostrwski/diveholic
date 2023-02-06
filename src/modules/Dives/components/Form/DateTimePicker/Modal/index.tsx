@@ -197,51 +197,13 @@ const Modal: React.FC<ModalProps> = ({ open, setOpen }) => {
                 ))}
               </Grid>
             </RadioGroup>
-sx
+            sx
             <Box mt={4}>
-              <Typography level="subtitle1" textAlign="center">
+              <Typography level="subtitle1" textAlign="center" mb={1}>
                 Time
               </Typography>
-              <Box
-                sx={{
-                  mt: 1,
-                  display: "flex",
-                  flexDirection: "row",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  gap: 2
-                }}
-              >
-                <TextField
-                  type="number"
-                  value={hours}
-                  onChange={onHoursChange}
-                  sx={{
-                    width: 60,
-                    input: {
-                      textAlign: "center",
-                      fontSize: "md",
-                      fontWeight: "md"
-                    }
-                  }}
-                  aria-label="Hours"
-                />
-                <Typography level="h2">:</Typography>
-                <TextField
-                  type="number"
-                  value={minutes}
-                  onChange={onMinutesChange}
-                  sx={{
-                    width: 60,
-                    input: {
-                      textAlign: "center",
-                      fontSize: "md",
-                      fontWeight: "md"
-                    }
-                  }}
-                  aria-label="Minutes"
-                />
-              </Box>
+
+              <TextField type="time" placeholder="Date" variant="outlined" />
             </Box>
           </Box>
 
