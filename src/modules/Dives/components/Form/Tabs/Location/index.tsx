@@ -1,27 +1,26 @@
 import FlagRounded from "@mui/icons-material/FlagRounded";
-import PlaceRounded from "@mui/icons-material/PlaceRounded";
 import PublicRounded from "@mui/icons-material/PublicRounded";
 import Autocomplete, { createFilterOptions } from "@mui/joy/Autocomplete";
 import FormControl from "@mui/joy/FormControl";
 import FormHelperText from "@mui/joy/FormHelperText";
 import FormLabel from "@mui/joy/FormLabel";
 import Grid from "@mui/joy/Grid";
-import Link from "@mui/joy/Link";
 import TextField from "@mui/joy/TextField";
 import { debounce } from "debounce";
 import React from "react";
 import { Controller, useFormContext } from "react-hook-form";
 
-import type { FormFields } from "../types";
-import listOfCountries from "../utils/listOfCountries";
+import type { FormFields } from "../../types";
+import listOfCountries from "../../utils/listOfCountries";
+import PreviousDiveLocationButton from "./PreviousDiveLocationButton";
 
 const Location: React.FC = () => {
   const {
+    getValues,
     register,
-    watch,
     formState: { errors }
   } = useFormContext<FormFields>();
-  const watchLocationCountryFlagEmoji = watch("location.country.flagEmoji");
+
   const filterOptions = createFilterOptions({ limit: 20 });
 
   return (
@@ -43,7 +42,7 @@ const Location: React.FC = () => {
                   )}
                   placeholder="Croatia"
                   startDecorator={
-                    watchLocationCountryFlagEmoji || <PublicRounded />
+                    getValues("location.country.flagEmoji") || <PublicRounded />
                   }
                   error={!!errors.location?.country?.name}
                   filterOptions={filterOptions}
@@ -82,15 +81,7 @@ const Location: React.FC = () => {
         </Grid>
       </Grid>
 
-      <Link
-        mt={4}
-        startDecorator={<PlaceRounded />}
-        color="info"
-        disabled
-        sx={{ float: "right" }}
-      >
-        Use previous dive location
-      </Link>
+      <PreviousDiveLocationButton />
     </>
   );
 };

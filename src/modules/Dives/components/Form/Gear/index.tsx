@@ -29,12 +29,7 @@ const Gear: React.FC = () => {
     <>
       <TextSeparator sx={{ mt: 10 }}>Gear</TextSeparator>
 
-      <Typography
-        mb={2}
-        component="p"
-        level="subtitle1"
-        mt={4}
-      >
+      <Typography mb={2} component="p" level="subtitle1" mt={4}>
         Exposure protection
       </Typography>
       <Grid container spacing={2} justifyContent="space-between">
@@ -59,11 +54,7 @@ const Gear: React.FC = () => {
         </Grid>
       </Grid>
 
-      <Typography
-        mb={2}
-        mt={4}
-        level="subtitle1"
-      >
+      <Typography mb={2} mt={4} level="subtitle1">
         Tanks
       </Typography>
       <Grid container spacing={2} justifyContent="space-between">
@@ -88,12 +79,7 @@ const Gear: React.FC = () => {
 
       {showMore && (
         <>
-          <Typography
-            mb={2}
-            mt={4}
-            component="p"
-            level="subtitle1"
-          >
+          <Typography mb={2} mt={4} component="p" level="subtitle1">
             Other gear
           </Typography>
           <Grid container spacing={2} justifyContent="space-between">
@@ -124,11 +110,11 @@ const Gear: React.FC = () => {
         {showMore ? "Show less" : "Show more"}
       </Button>
 
-      <Box sx={{ textAlign: "right", mt: 4 }}>
-        <MuiLink color="info" startDecorator={<AutoAwesomeRounded />} disabled>
-          Use preset
-        </MuiLink>
-      </Box>
+      {/* <Box sx={{ textAlign: "right", mt: 4 }}> */}
+      {/*   <MuiLink color="info" startDecorator={<AutoAwesomeRounded />} disabled> */}
+      {/*     Use preset */}
+      {/*   </MuiLink> */}
+      {/* </Box> */}
     </>
   );
 };
