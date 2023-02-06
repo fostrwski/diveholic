@@ -27,27 +27,27 @@ interface ModalProps {
   setOpen: Dispatch<SetStateAction<boolean>>;
 }
 
+const options: Intl.DateTimeFormatOptions = {
+  hour: "numeric",
+  minute: "numeric"
+};
+
+const config: DatePickerUserConfig = {
+  locale: {
+    weekday: "short"
+  },
+  dates: {
+    mode: "single",
+    toggle: false
+  }
+};
+
 const Modal: React.FC<ModalProps> = ({ open, setOpen }) => {
   const [error, setError] = useState<boolean>(false);
-
-  const config: DatePickerUserConfig = {
-    locale: {
-      weekday: "short"
-    },
-    dates: {
-      mode: "single",
-      toggle: false
-    }
-  };
 
   const { setValue, clearErrors, getValues } = useFormContext<FormFields>();
 
   const date = new Date();
-
-  const options: Intl.DateTimeFormatOptions = {
-    hour: "numeric",
-    minute: "numeric"
-  };
 
   const [time, setTime] = useState<string>(
     date.toLocaleTimeString(undefined, options)
@@ -61,21 +61,16 @@ const Modal: React.FC<ModalProps> = ({ open, setOpen }) => {
   } = useDatePicker(config);
 
   useEffect(() => {
-    const setTime = () => {
-      const initialDate = getValues("date") ? new Date(getValues("date")) : "";
+    const initialDate = getValues("date") ? new Date(getValues("date")) : "";
 
-      if (!initialDate) return;
-
+    if (initialDate) {
       // @ts-ignore
       setTime(initialDate.toLocaleTimeString(undefined, options));
 
       initialDate.setHours(0, 0, 0, 0);
       selectedDates[0] = initialDate;
-    };
-
-    setTime();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [getValues]);
+    }
+  }, [getValues, selectedDates]);
 
   const { days, month, year } = calendars[0];
 
@@ -90,8 +85,8 @@ const Modal: React.FC<ModalProps> = ({ open, setOpen }) => {
     if (!selectedDate || !time) return setError(true);
 
     const datetime = new Date(selectedDate);
-    const [hours, minutes] = time.split(":")
-    datetime.setHours(parseInt(hours,  10));
+    const [hours, minutes] = time.split(":");
+    datetime.setHours(parseInt(hours, 10));
     datetime.setMinutes(parseInt(minutes, 10));
 
     setValue("date", datetime.toString());
@@ -108,8 +103,8 @@ const Modal: React.FC<ModalProps> = ({ open, setOpen }) => {
   };
 
   const onTimeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const [hours, minutes] = e.target.value.split(":")
-    setTime(`${hours}:${minutes}`)
+    const [hours, minutes] = e.target.value.split(":");
+    setTime(`${hours}:${minutes}`);
   };
 
   return (
