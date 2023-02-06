@@ -96,15 +96,6 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
             </MenuItem>
           </NextLink>
 
-          <NextLink href="/account">
-            <MenuItem>
-              <ListItemDecorator>
-                <SettingsRounded />
-              </ListItemDecorator>
-              Settings
-            </MenuItem>
-          </NextLink>
-
           <NextLink href="/api/auth/logout">
             <MenuItem>
               <ListItemDecorator>
