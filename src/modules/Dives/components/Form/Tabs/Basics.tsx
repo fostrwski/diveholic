@@ -15,7 +15,7 @@ import type { FormFields } from "../types";
 import getDiveEmoji from "../utils/getDiveEmoji";
 import setNullOrNumber from "../utils/setNullOrNumber";
 
-const diveTypes= [
+const diveTypes = [
   { title: "Boat", explanation: "Dive from the boat" },
   { title: "Shore", explanation: "Dive from the beach" }
 ];
@@ -50,13 +50,28 @@ const Basics: React.FC = () => {
                 sx={{ width: "100%", flexDirection: "row", gap: 2 }}
                 key={diveType.title}
               >
-                <Radio value={diveType.title} overlay size="lg" />
+                <Radio
+                  value={diveType.title}
+                  componentsProps={{
+                    input: { "aria-label": diveType.title }
+                  }}
+                  overlay
+                  size="lg"
+                />
 
                 <div>
                   <FormLabel>
-                    {diveType.title} {getDiveEmoji(diveType.title as Dive["type"])}
+                    {diveType.title}{" "}
+                    {getDiveEmoji(diveType.title as Dive["type"])}
                   </FormLabel>
-                  <FormHelperText>{diveType.explanation}</FormHelperText>
+                  <FormHelperText
+                    aria-label={`Select if you dove ${diveType.explanation
+                      .split(" ")
+                      .slice(1)
+                      .join(" ")}`}
+                  >
+                    {diveType.explanation}
+                  </FormHelperText>
                 </div>
               </FormControl>
             ))}

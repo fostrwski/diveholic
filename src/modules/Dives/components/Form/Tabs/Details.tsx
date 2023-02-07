@@ -12,17 +12,20 @@ import generateSliderMarks from "../utils/generateSliderMarks";
 
 const weightsAmmount = [
   {
-    title: "Perfect 👌🏼",
+    title: "Perfect",
+    icon: "👌🏼",
     value: "perfect",
-    helperText: "This ammount next time"
+    helperText: "This ammount of weights next time"
   },
   {
-    title: "Too little 👇🏼",
+    title: "Too little",
+    icon: "👇🏼",
     value: "tooLittle",
     helperText: "Take more weights next time"
   },
   {
-    title: "Too much 👆🏼",
+    title: "Too much",
+    icon: "👆🏼",
     value: "tooMuch",
     helperText: "Take less weights next time"
   }
@@ -66,19 +69,31 @@ const Details: React.FC = () => {
               gap: 2,
               width: "100%"
             }}
+            aria-label="Water type"
           >
             {waterTypes.map((waterType) => (
               <FormControl
                 sx={{ width: "100%", flexDirection: "row", gap: 2 }}
                 key={waterType.title}
               >
-                <Radio value={waterType.title} overlay size="lg" />
+                <Radio
+                  value={waterType.title}
+                  componentsProps={{
+                    input: { "aria-label": `${waterType.title} water` }
+                  }}
+                  overlay
+                  size="lg"
+                />
 
                 <div>
                   <FormLabel>
                     {waterType.title} water {waterType.icon}
                   </FormLabel>
-                  <FormHelperText>{waterType.examples}</FormHelperText>
+                  <FormHelperText
+                    aria-label={`Examples of such water are: ${waterType.examples}`}
+                  >
+                    {waterType.examples}
+                  </FormHelperText>
                 </div>
               </FormControl>
             ))}
@@ -113,10 +128,12 @@ const Details: React.FC = () => {
             {...field}
             sx={{ mt: 4, gap: 2 }}
             onChange={(e) => onRadioChange(e)}
+            aria-label="Weights ammount"
           >
             {weightsAmmount.map(
               (ammount: {
                 title: string;
+                icon: string;
                 value: string;
                 helperText: string;
               }) => (
@@ -124,9 +141,18 @@ const Details: React.FC = () => {
                   key={ammount.value}
                   sx={{ width: "100%", flexDirection: "row", gap: 2 }}
                 >
-                  <Radio overlay size="lg" value={ammount.value} />
+                  <Radio
+                    overlay
+                    size="lg"
+                    value={ammount.value}
+                    componentsProps={{
+                      input: { "aria-label": `${ammount.title}` }
+                    }}
+                  />
                   <div>
-                    <FormLabel>{ammount.title}</FormLabel>
+                    <FormLabel>
+                      {ammount.title} {ammount.icon}
+                    </FormLabel>
                     <FormHelperText>{ammount.helperText}</FormHelperText>
                   </div>
                 </FormControl>
