@@ -213,6 +213,7 @@ const Modal: React.FC<ModalProps> = ({ open, setOpen }) => {
                 type="time"
                 variant="outlined"
                 aria-label="Time"
+                data-cy="DateTimePicker-timeInput"
               />
             </Box>
           </Box>

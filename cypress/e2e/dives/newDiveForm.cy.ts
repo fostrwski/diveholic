@@ -8,10 +8,11 @@ describe("New dive form", () => {
     cy.visit("/dives/new");
 
     // Basics section
-    
+
     // Open datetimepicker
     cy.getByDataCy("DateTimePicker-setDateAndTime").click();
-    cy.getByDataCy("DateTimePicker-dayRadio-12").click();
+    cy.getByDataCy("DateTimePicker-dayRadio-12").first().click();
+    cy.getByDataCy("DateTimePicker-timeInput").type("21:37")
     cy.getByDataCy("DateTimePicker-submit").click();
 
     cy.getInputByName("type").check("Shore");
@@ -66,7 +67,7 @@ describe("New dive form", () => {
 
     cy.get("button").contains("Save").click();
 
-    cy.getByDataCy("New-FormSubmittedModal-continue").click()
+    cy.getByDataCy("New-FormSubmittedModal-continue").click();
   });
 });
 
