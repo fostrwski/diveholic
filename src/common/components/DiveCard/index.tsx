@@ -17,14 +17,21 @@ interface DiveCardProps {
 }
 
 const DiveCard: React.FC<DiveCardProps> = ({ dive }) => (
-  <NextLink href={`/dives/${dive.id}`}>
+  <NextLink href={`/dives/${dive.id}`} passHref>
     <Card
       sx={{
         display: "flex",
         gap: 2,
         flexDirection: "row",
-        cursor: "pointer"
+        cursor: "pointer",
+        textDecoration: "none"
       }}
+      component="a"
+      aria-label={`${dive.length} minute ${dive.type.toLowerCase()} dive in ${
+        dive.location.city
+      }, ${dive.location.country.name} on ${formatDate(
+        dive.date
+      )} at ${formatTime(dive.date)}`}
     >
       <Avatar color="neutral" size="lg">
         {getDiveEmoji(dive.type)}
