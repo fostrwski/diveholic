@@ -197,7 +197,6 @@ const Modal: React.FC<ModalProps> = ({ open, setOpen }) => {
                 ))}
               </Grid>
             </RadioGroup>
-            sx
             <Box mt={4}>
               <Typography level="subtitle1" textAlign="center" mb={1}>
                 Time
