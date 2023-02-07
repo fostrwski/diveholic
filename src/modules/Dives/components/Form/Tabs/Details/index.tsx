@@ -7,40 +7,7 @@ import Slider from "@mui/joy/Slider";
 import React from "react";
 import { Controller, useFormContext } from "react-hook-form";
 
-import type { FormFields } from "../types";
-import generateSliderMarks from "../utils/generateSliderMarks";
-
-const weightsAmmount = [
-  {
-    title: "Perfect",
-    icon: "👌🏼",
-    value: "perfect",
-    helperText: "This ammount of weights next time"
-  },
-  {
-    title: "Too little",
-    icon: "👇🏼",
-    value: "tooLittle",
-    helperText: "Take more weights next time"
-  },
-  {
-    title: "Too much",
-    icon: "👆🏼",
-    value: "tooMuch",
-    helperText: "Take less weights next time"
-  }
-];
-
-const waterTypes = [
-  {
-    title: "Fresh",
-    icon: "🍃",
-    examples: "Quarries, lakes, rivers"
-  },
-  { title: "Salt", icon: "🧂", examples: "Seas, oceans" }
-];
-
-const sliderMarks = generateSliderMarks([0, 5, 10, 15, 20]);
+import type { FormFields } from "../../types";
 
 const Details: React.FC = () => {
   const { setValue, getValues, control } = useFormContext<FormFields>();
