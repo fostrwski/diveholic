@@ -1,5 +1,6 @@
 import ChevronLeftRounded from "@mui/icons-material/ChevronLeftRounded";
 import ChevronRightRounded from "@mui/icons-material/ChevronRightRounded";
+import { Badge } from "@mui/joy";
 import Avatar from "@mui/joy/Avatar";
 import Box from "@mui/joy/Box";
 import Button from "@mui/joy/Button";
@@ -12,35 +13,20 @@ import Radio from "@mui/joy/Radio";
 import RadioGroup from "@mui/joy/RadioGroup";
 import TextField from "@mui/joy/TextField";
 import Typography from "@mui/joy/Typography";
-import {
-  type DatePickerUserConfig,
-  useDatePicker
-} from "@rehookify/datepicker";
+import { useDatePicker } from "@rehookify/datepicker";
 import ErrorMessage from "common/components/ErrorMessage";
 import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { useFormContext } from "react-hook-form";
 
 import type { FormFields } from "../../types";
+import config from "./config";
+import getDayRadioAriaLabel from "./getDayRadioAriaLabel";
+import options from "./options";
 
 interface ModalProps {
   open: boolean;
   setOpen: Dispatch<SetStateAction<boolean>>;
 }
-
-const options: Intl.DateTimeFormatOptions = {
-  hour: "numeric",
-  minute: "numeric"
-};
-
-const config: DatePickerUserConfig = {
-  locale: {
-    weekday: "short"
-  },
-  dates: {
-    mode: "single",
-    toggle: false
-  }
-};
 
 const Modal: React.FC<ModalProps> = ({ open, setOpen }) => {
   const [error, setError] = useState<boolean>(false);
@@ -108,11 +94,7 @@ const Modal: React.FC<ModalProps> = ({ open, setOpen }) => {
   };
 
   return (
-    <MuiModal
-      open={open}
-      onClose={handleModalClose}
-      aria-label="Select date and time"
-    >
+    <MuiModal open={open} onClose={handleModalClose}>
       <MuiModalDialog
         sx={{
           overflow: "scroll",
@@ -124,6 +106,7 @@ const Modal: React.FC<ModalProps> = ({ open, setOpen }) => {
           borderBottomRightRadius: 0
         }}
         layout="fullscreen"
+        aria-label="Select date and time"
       >
         <Box>
           <Box
@@ -137,6 +120,7 @@ const Modal: React.FC<ModalProps> = ({ open, setOpen }) => {
               color="neutral"
               variant="plain"
               {...previousMonthButton()}
+              aria-label="Previous month"
             >
               <ChevronLeftRounded />
             </IconButton>
@@ -149,7 +133,12 @@ const Modal: React.FC<ModalProps> = ({ open, setOpen }) => {
               </Typography>
             </Box>
 
-            <IconButton color="neutral" variant="plain" {...nextMonthButton()}>
+            <IconButton
+              color="neutral"
+              variant="plain"
+              {...nextMonthButton()}
+              aria-label="Next month"
+            >
               <ChevronRightRounded />
             </IconButton>
           </Box>
@@ -176,27 +165,43 @@ const Modal: React.FC<ModalProps> = ({ open, setOpen }) => {
 
                 {days.map((dpDay: any) => (
                   <Grid key={`${month}-${dpDay.date}`} xs={1}>
-                    <Avatar
+                    <Badge
+                      invisible={!dpDay.isToday}
                       size="sm"
-                      color="neutral"
-                      variant={dpDay.selected ? "soft" : "plain"}
+                      variant="soft"
+                      color="info"
+                      badgeInset="0 50%"
                     >
-                      <Radio
-                        value={dpDay.date}
-                        label={dpDay.day}
-                        disabled={!dpDay.inCurrentMonth}
+                      <Avatar
                         size="sm"
                         color="neutral"
-                        variant="plain"
-                        overlay
-                        disableIcon
-                        data-cy={`DateTimePicker-dayRadio-${dpDay.day}`}
-                      />
-                    </Avatar>
+                        variant={dpDay.selected ? "soft" : "plain"}
+                      >
+                        <Radio
+                          value={dpDay.date}
+                          label={dpDay.day}
+                          componentsProps={{
+                            input: {
+                              "aria-label": dpDay.inCurrentMonth
+                                ? getDayRadioAriaLabel(dpDay.day, month)
+                                : ""
+                            }
+                          }}
+                          disabled={!dpDay.inCurrentMonth}
+                          size="sm"
+                          color="neutral"
+                          variant="plain"
+                          overlay
+                          disableIcon
+                          data-cy={`DateTimePicker-dayRadio-${dpDay.day}`}
+                        />
+                      </Avatar>
+                    </Badge>
                   </Grid>
                 ))}
               </Grid>
             </RadioGroup>
+
             <Box mt={4}>
               <Typography level="subtitle1" textAlign="center" mb={1}>
                 Time
@@ -231,6 +236,7 @@ const Modal: React.FC<ModalProps> = ({ open, setOpen }) => {
               variant="plain"
               color="danger"
               onClick={handleModalClose}
+              aria-label="Cancel setting date and time"
             >
               Cancel
             </MuiLink>
@@ -238,6 +244,7 @@ const Modal: React.FC<ModalProps> = ({ open, setOpen }) => {
               color="neutral"
               onClick={handleModalDone}
               data-cy="DateTimePicker-submit"
+              aria-label="Save date and time"
             >
               Done
             </Button>
