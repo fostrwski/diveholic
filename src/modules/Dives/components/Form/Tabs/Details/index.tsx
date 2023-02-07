@@ -8,6 +8,9 @@ import React from "react";
 import { Controller, useFormContext } from "react-hook-form";
 
 import type { FormFields } from "../../types";
+import sliderMarks from "./sliderMarks";
+import waterTypes from "./waterTypes";
+import weightsAmmount from "./weightsAmmount";
 
 const Details: React.FC = () => {
   const { setValue, getValues, control } = useFormContext<FormFields>();
