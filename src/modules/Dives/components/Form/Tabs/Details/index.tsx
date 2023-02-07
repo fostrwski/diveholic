@@ -65,7 +65,7 @@ const Details: React.FC = () => {
                     {waterType.title} water {waterType.icon}
                   </FormLabel>
                   <FormHelperText
-                    aria-label={`Examples of such water are: ${waterType.examples}`}
+                    aria-label={`Select if you dove in ${waterType.title.toLowerCase()} water`}
                   >
                     {waterType.examples}
                   </FormHelperText>
@@ -136,7 +136,11 @@ const Details: React.FC = () => {
                     <FormLabel>
                       {ammount.title} {ammount.icon}
                     </FormLabel>
-                    <FormHelperText>{ammount.helperText}</FormHelperText>
+                    <FormHelperText
+                      aria-label={`Select if ${ammount.helperText.toLowerCase()}`}
+                    >
+                      {ammount.helperText}
+                    </FormHelperText>
                   </div>
                 </FormControl>
               )

@@ -3,19 +3,19 @@ const weightsAmmount = [
     title: "Perfect",
     icon: "👌🏼",
     value: "perfect",
-    helperText: "Take this ammount of weights next time"
+    helperText: "You took perfect ammount of weights",
   },
   {
     title: "Too little",
     icon: "👇🏼",
     value: "tooLittle",
-    helperText: "Take more weights next time"
+    helperText: "You didn't take enough weigths"
   },
   {
     title: "Too much",
     icon: "👆🏼",
     value: "tooMuch",
-    helperText: "Take less weights next time"
+    helperText: "You took too much weights"
   }
 ];
 

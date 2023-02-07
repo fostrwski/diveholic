@@ -44,6 +44,7 @@ const Basics: React.FC = () => {
               gap: 2,
               width: "100%"
             }}
+            aria-label="Dive type"
           >
             {diveTypes.map((diveType) => (
               <FormControl
