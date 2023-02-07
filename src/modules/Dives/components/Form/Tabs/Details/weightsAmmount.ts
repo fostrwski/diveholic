@@ -3,7 +3,7 @@ const weightsAmmount = [
     title: "Perfect",
     icon: "👌🏼",
     value: "perfect",
-    helperText: "This ammount of weights next time"
+    helperText: "Take this ammount of weights next time"
   },
   {
     title: "Too little",

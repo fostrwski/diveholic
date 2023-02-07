@@ -1,19 +1,24 @@
+import Box from "@mui/joy/Box";
 import FormControl from "@mui/joy/FormControl";
 import FormHelperText from "@mui/joy/FormHelperText";
 import FormLabel from "@mui/joy/FormLabel";
 import Radio from "@mui/joy/Radio";
 import RadioGroup from "@mui/joy/RadioGroup";
 import Slider from "@mui/joy/Slider";
+import Typography from "@mui/joy/Typography";
 import React from "react";
 import { Controller, useFormContext } from "react-hook-form";
 
 import type { FormFields } from "../../types";
+import getSliderAriaValueText from "./getSliderAriaValueText";
 import sliderMarks from "./sliderMarks";
 import waterTypes from "./waterTypes";
 import weightsAmmount from "./weightsAmmount";
 
 const Details: React.FC = () => {
-  const { setValue, getValues, control } = useFormContext<FormFields>();
+  const { setValue, getValues, watch, control } = useFormContext<FormFields>();
+
+  const watchWeightsTaken = watch("weights.taken");
 
   const onRadioChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     switch (e.target.value) {
@@ -72,22 +77,30 @@ const Details: React.FC = () => {
       />
 
       <FormControl sx={{ mt: 4, px: 2 }}>
-        <FormLabel>
-          Weights ({getValues("units") === "metric" ? "kg" : "lbs"})
-        </FormLabel>
-        <Controller
-          name="weights.taken"
-          control={control}
-          render={({ field }) => (
-            <Slider
-              {...field}
-              size="lg"
-              max={20}
-              valueLabelDisplay="auto"
-              marks={sliderMarks}
-            />
-          )}
-        />
+        <FormLabel>Weights</FormLabel>
+        <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+          <Controller
+            name="weights.taken"
+            control={control}
+            render={({ field }) => (
+              <Slider
+                {...field}
+                size="lg"
+                max={20}
+                valueLabelDisplay="auto"
+                marks={sliderMarks}
+                getAriaLabel={() => "Weights ammount during the dive"}
+                getAriaValueText={(value) =>
+                  getSliderAriaValueText(value, getValues("units"))
+                }
+              />
+            )}
+          />
+          <Typography>
+            {watchWeightsTaken}
+            {getValues("units") === "metric" ? "kg" : "lbs"}
+          </Typography>
+        </Box>
       </FormControl>
 
       <Controller
@@ -98,7 +111,7 @@ const Details: React.FC = () => {
             {...field}
             sx={{ mt: 4, gap: 2 }}
             onChange={(e) => onRadioChange(e)}
-            aria-label="Weights ammount"
+            aria-label="Rate weights ammount"
           >
             {weightsAmmount.map(
               (ammount: {
