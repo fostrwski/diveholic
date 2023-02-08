@@ -96,7 +96,7 @@ const Dive: React.FC = () => {
               level="h5"
               fontWeight="lg"
               component="div"
-              sx={{ alignItems: "flex-start", wordBreak: "break-all" }}
+              sx={{ alignItems: "start", wordBreak: "break-all" }}
               startDecorator={
                 dive.location.country.flagEmoji ? (
                   dive.location.country.flagEmoji

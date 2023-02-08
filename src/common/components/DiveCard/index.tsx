@@ -40,7 +40,7 @@ const DiveCard: React.FC<DiveCardProps> = ({ dive }) => (
           level="h6"
           fontWeight="lg"
           component="div"
-          sx={{ alignItems: "flex-start", wordBreak: "break-all" }}
+          sx={{ alignItems: "start", wordBreak: "break-all" }}
           startDecorator={
             dive.location.country.flagEmoji ? (
               dive.location.country.flagEmoji
