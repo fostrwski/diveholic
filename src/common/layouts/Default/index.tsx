@@ -1,6 +1,5 @@
 import DashboardRounded from "@mui/icons-material/DashboardRounded";
 import LogoutRounded from "@mui/icons-material/LogoutRounded";
-import SettingsRounded from "@mui/icons-material/SettingsRounded";
 import Box from "@mui/joy/Box";
 import Container from "@mui/joy/Container";
 import IconButton from "@mui/joy/IconButton";
