@@ -23,7 +23,10 @@ const DiveCard: React.FC<DiveCardProps> = ({ dive }) => (
       component="a"
       sx={{
         textDecoration: "none",
-        backgroundColor: "transparent"
+        backgroundColor: "transparent",
+        display: "flex",
+        flexDirection: "row",
+        gap: 2
       }}
       aria-label={`${dive.length} minute ${dive.type.toLowerCase()} dive in ${
         dive.location.city
@@ -31,53 +34,52 @@ const DiveCard: React.FC<DiveCardProps> = ({ dive }) => (
         dive.date
       )} at ${formatTime(dive.date)}`}
     >
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "row",
-          gap: 2
-        }}
-      >
-        <Avatar size="lg">{getDiveEmoji(dive.type)}</Avatar>
-        <Box>
-          <Typography
-            gutterBottom
-            level="h6"
-            fontWeight="lg"
-            component="div"
-            sx={{ alignItems: "flex-start", wordBreak: "break-all" }}
-            startDecorator={
-              dive.location.country.flagEmoji ? (
-                dive.location.country.flagEmoji
-              ) : (
-                <PublicRounded />
-              )
-            }
-          >
-            {dive.location.city}
-          </Typography>
-
-          <Typography
-            level="subtitle1"
-            component="div"
-            startDecorator={<CalendarTodayRounded />}
-            sx={{ alignItems: "flex-start" }}
-          >
-            {formatDate(dive.date)} at {formatTime(dive.date)}
-          </Typography>
-        </Box>
-      </Box>
-
-      <Box mt={2} sx={{ display: "flex", alignItems: "center", gap: 2 }}>
-        <Separator />
-
-        <Chip
-          variant="outlined"
-          startDecorator={<TimelapseRounded />}
-          color="info"
+      <Avatar size="lg">{getDiveEmoji(dive.type)}</Avatar>
+      <Box>
+        <Typography
+          level="h6"
+          fontWeight="lg"
+          component="div"
+          sx={{ alignItems: "flex-start", wordBreak: "break-all" }}
+          startDecorator={
+            dive.location.country.flagEmoji ? (
+              dive.location.country.flagEmoji
+            ) : (
+              <PublicRounded />
+            )
+          }
         >
-          {dive.length}min
-        </Chip>
+          {dive.location.city}
+        </Typography>
+
+        <Typography
+          level="subtitle1"
+          component="div"
+          startDecorator={<CalendarTodayRounded />}
+          sx={{ alignItems: "flex-start" }}
+        >
+          {formatDate(dive.date)} at {formatTime(dive.date)}
+        </Typography>
+
+        <Box
+          mt={2}
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            gap: 2,
+            width: "100%"
+          }}
+        >
+          <Separator />
+
+          <Chip
+            variant="outlined"
+            startDecorator={<TimelapseRounded />}
+            color="info"
+          >
+            {dive.length}min
+          </Chip>
+        </Box>
       </Box>
     </Card>
   </NextLink>
