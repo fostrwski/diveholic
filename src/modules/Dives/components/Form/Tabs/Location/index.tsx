@@ -26,7 +26,6 @@ const Location: React.FC = () => {
 
   return (
     <>
-      {console.log(watchLocationCountryFlagEmoji)}
       <Grid spacing={2} container>
         <Grid xs={6}>
           <FormControl error={!!errors.location?.country?.name}>
