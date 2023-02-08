@@ -75,6 +75,7 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
           onClick={handleOpenMenu}
           sx={{ fontWeight: "lg" }}
           color="neutral"
+          aria-label="Toggle menu"
         >
           {initials}
         </IconButton>
