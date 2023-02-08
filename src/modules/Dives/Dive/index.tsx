@@ -96,7 +96,7 @@ const Dive: React.FC = () => {
               level="h5"
               fontWeight="lg"
               component="div"
-              sx={{ alignItems: "start" }}
+              sx={{ alignItems: "flex-start", wordBreak: "break-all" }}
               startDecorator={
                 dive.location.country.flagEmoji ? (
                   dive.location.country.flagEmoji
@@ -121,7 +121,7 @@ const Dive: React.FC = () => {
                   Dive center
                 </Chip>
               }
-              sx={{ alignItems: "self-start" }}
+              sx={{ alignItems: "self-start", wordBreak: "break-all" }}
             >
               {dive.location.diveCenter}
             </Typography>
@@ -145,7 +145,7 @@ const Dive: React.FC = () => {
 
           {(dive.diveBuddy || dive.notes) && (
             <Box
-              sx={{ mt: 6, display: "flex", flexDirection: "column", gap: 1.2 }}
+              sx={{ mt: 4, display: "flex", flexDirection: "column", gap: 1.2 }}
             >
               {dive.diveBuddy && (
                 <InfoCard title="Dive buddy" content={dive.diveBuddy} />
