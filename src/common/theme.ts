@@ -13,6 +13,17 @@ const theme = extendTheme({
         }
       }
     },
+    JoyIconButton: {
+      styleOverrides: {
+        root: ({ ownerState, theme }) => ({
+          ...(ownerState.variant === "soft" && {
+            [theme.getColorSchemeSelector("light")]: {
+              backgroundColor: theme.palette.neutral[50]
+            }
+          })
+        })
+      }
+    },
     JoyLink: {
       defaultProps: {
         underline: "none",
@@ -77,8 +88,14 @@ const theme = extendTheme({
     },
     JoyMenu: {
       styleOverrides: {
-        root: ({ theme }) => ({
-          padding: theme.spacing(1)
+        root: ({ ownerState, theme }) => ({
+          padding: theme.spacing(1),
+
+          ...(ownerState.variant === "soft" && {
+            [theme.getColorSchemeSelector("light")]: {
+              backgroundColor: theme.palette.neutral[50]
+            }
+          })
         })
       }
     },
@@ -121,9 +138,15 @@ const theme = extendTheme({
     },
     JoyAvatar: {
       styleOverrides: {
-        root: {
-          borderRadius: "var(--joy-radius-sm)"
-        }
+        root: ({ ownerState, theme }) => ({
+          borderRadius: "var(--joy-radius-sm)",
+
+          ...(ownerState.variant === "soft" && {
+            [theme.getColorSchemeSelector("light")]: {
+              backgroundColor: theme.palette.neutral[50]
+            }
+          })
+        })
       }
     },
     JoySheet: {
