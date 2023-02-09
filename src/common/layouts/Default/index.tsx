@@ -65,7 +65,7 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
               layout="fixed"
               alt="Diver down flag"
             />
-            <Typography level="h3" component="div" fontWeight="lg">
+            <Typography level="h3" component="p" fontWeight="lg">
               Diveholic
             </Typography>
           </Box>
