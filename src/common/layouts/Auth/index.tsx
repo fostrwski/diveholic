@@ -27,7 +27,7 @@ const AuthLayout: React.FC<AuthLayoutProps> = ({ title, icon, children }) => (
         layout="fixed"
         alt="Diver down flag"
       />
-      <Typography level="h3" component="p">
+      <Typography level="h3" component="p" fontWeight="lg">
         Diveholic
       </Typography>
     </Box>
