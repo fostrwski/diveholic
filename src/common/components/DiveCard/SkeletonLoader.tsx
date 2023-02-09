@@ -2,7 +2,6 @@ import ScubaDivingRounded from "@mui/icons-material/ScubaDivingRounded";
 import Avatar from "@mui/joy/Avatar";
 import Box from "@mui/joy/Box";
 import Card from "@mui/joy/Card";
-import CardContent from "@mui/joy/CardContent";
 import Chip from "@mui/joy/Chip";
 import Separator from "common/components/Separator";
 import React from "react";
@@ -10,33 +9,35 @@ import React from "react";
 const DiveCardSkeletonLoader: React.FC = () => (
   <Card
     sx={{
-      width: {
-        xs: "100%",
-        md: "initial"
-      },
+      width: "100%",
+      textDecoration: "none",
+      backgroundColor: "transparent",
       display: "flex",
-      gap: 2,
-      flexDirection: "row"
+      flexDirection: "row",
+      gap: 2
     }}
   >
-    <Avatar color="neutral" size="lg">
+    <Avatar size="lg">
       <ScubaDivingRounded />
     </Avatar>
-    <CardContent>
-      <Chip size="sm" />
+    <Box width="100%">
+      <Chip size="sm" sx={{ width: "100%" }} />
+      <Chip size="sm" sx={{ width: "100%" }} />
 
       <Box
-        mt={4}
-        display="flex"
-        gap={2}
-        justifyContent="space-between"
-        alignItems="center"
+        mt={2}
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          gap: 2,
+          width: "100%"
+        }}
       >
         <Separator />
 
-        <Chip sx={{ width: "100%" }} />
+        <Chip sx={{ width: 128 }}></Chip>
       </Box>
-    </CardContent>
+    </Box>
   </Card>
 );
 
