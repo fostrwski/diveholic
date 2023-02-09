@@ -153,7 +153,7 @@ const SignIn: React.FC = () => {
           </Box>
 
           <NextLink href="/signup">
-            <Button color="neutral" fullWidth size="lg">
+            <Button color="neutral" type="button" fullWidth size="lg">
               Create account
             </Button>
           </NextLink>
