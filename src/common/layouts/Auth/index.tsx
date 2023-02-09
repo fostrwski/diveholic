@@ -14,12 +14,12 @@ const AuthLayout: React.FC<AuthLayoutProps> = ({ title, icon, children }) => (
   <Container
     component="main"
     sx={{
-      p: 4,
-      height: "100vh"
+      py:8,
+      px: 4
     }}
-    maxWidth="sm"
+    maxWidth="xs"
   >
-    <Box display="flex" alignItems="center" gap={1.2}>
+    <Box display="flex" alignItems="center" justifyContent="center" gap={1.2}>
       <Image
         src="/logo.svg"
         width={48}
@@ -32,7 +32,13 @@ const AuthLayout: React.FC<AuthLayoutProps> = ({ title, icon, children }) => (
       </Typography>
     </Box>
 
-    <Typography textColor="GrayText" level="h6" component="h1" mt={1}>
+    <Typography
+      textColor="GrayText"
+      level="h6"
+      component="h1"
+      mt={1}
+      textAlign="center"
+    >
       Dive log built for the modern age
     </Typography>
 

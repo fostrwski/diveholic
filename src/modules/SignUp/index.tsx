@@ -154,6 +154,7 @@ const SignUp: React.FC = () => {
         )}
 
         <Button
+          variant="solid"
           color={success ? "success" : "primary"}
           type="submit"
           size="lg"
