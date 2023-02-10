@@ -1,11 +1,10 @@
-import DownloadRounded from "@mui/icons-material/DownloadRounded";
-import Alert from "@mui/joy/Alert";
 import Box from "@mui/joy/Box";
 import Container from "@mui/joy/Container";
-import MuiLink from "@mui/joy/Link";
 import Typography from "@mui/joy/Typography";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
+
+import LearnHowToInstallButton from "./LearnHowToInstallButton";
 
 interface AuthLayoutProps {
   children: React.ReactNode;
@@ -25,28 +24,7 @@ const AuthLayout: React.FC<AuthLayoutProps> = ({ title, icon, children }) => {
 
   return (
     <>
-      {showLearnHowToInstall && (
-        <Alert
-          color="info"
-          size="sm"
-          sx={{ borderTopLeftRadius: 0, borderTopRightRadius: 0 }}
-        >
-          <MuiLink
-            startDecorator={<DownloadRounded />}
-            sx={{
-              mx: {
-                xs: "auto",
-                sm: "initial"
-              }
-            }}
-            color="info"
-            component="button"
-            fontWeight="lg"
-          >
-            Learn how to install Diveholic
-          </MuiLink>
-        </Alert>
-      )}
+      {showLearnHowToInstall && <LearnHowToInstallButton />}
 
       <Container
         component="main"
