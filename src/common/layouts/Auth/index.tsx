@@ -51,7 +51,7 @@ const AuthLayout: React.FC<AuthLayoutProps> = ({ title, icon, children }) => {
       <Container
         component="main"
         sx={{
-          py: 10,
+          py: showLearnHowToInstall ? 8 : 10,
           px: 4
         }}
         maxWidth="xs"
