@@ -77,7 +77,7 @@ const Dive: React.FC = () => {
       return (
         <Error
           error={error}
-          tip="Make sure you're connected to the internet and try reloading the page."
+          tip="Make sure you're connected to the internet and try refreshing the page."
         />
       );
     }
