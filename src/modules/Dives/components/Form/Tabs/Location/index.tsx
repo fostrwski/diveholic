@@ -29,7 +29,7 @@ const Location: React.FC = () => {
       <Grid spacing={2} container>
         <Grid xs={6}>
           <FormControl error={!!errors.location?.country?.name}>
-            <FormLabel>Country</FormLabel>
+            <FormLabel required>Country</FormLabel>
             <Controller
               name="location.country.name"
               render={({ field }) => (
@@ -67,6 +67,7 @@ const Location: React.FC = () => {
             placeholder="Trogir"
             helperText={errors.location?.city?.message?.toString()}
             error={!!errors.location?.city}
+            required
           />
         </Grid>
         <Grid xs={12}>
@@ -78,6 +79,7 @@ const Location: React.FC = () => {
             startDecorator={<FlagRounded />}
             helperText={errors.location?.diveCenter?.message?.toString()}
             error={!!errors.location?.diveCenter}
+            required
           />
         </Grid>
       </Grid>
