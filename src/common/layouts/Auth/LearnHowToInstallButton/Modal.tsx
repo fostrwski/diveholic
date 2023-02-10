@@ -24,7 +24,6 @@ const Modal: React.FC<ModalProps> = ({ open, setOpen }) => {
   return (
     <MuiModal open={open} onClose={handleClose}>
       <ModalDialog
-        layout="fullscreen"
         sx={{
           display: "flex",
           justifyContent: "space-between",
