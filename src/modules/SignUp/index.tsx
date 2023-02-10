@@ -10,10 +10,10 @@ import VisibilityRounded from "@mui/icons-material/VisibilityRounded";
 import Box from "@mui/joy/Box";
 import Button from "@mui/joy/Button";
 import IconButton from "@mui/joy/IconButton";
-import MuiLink from "@mui/joy/Link";
 import TextField from "@mui/joy/TextField";
 import Typography from "@mui/joy/Typography";
 import { useUser } from "@supabase/auth-helpers-react";
+import Separator from "common/components/Separator";
 import AuthLayout from "common/layouts/Auth";
 import { supabase } from "common/utils/supabaseClient";
 import NextLink from "next/link";
@@ -93,7 +93,7 @@ const SignUp: React.FC = () => {
         onSubmit={handleSubmit}
       >
         <TextField
-          placeholder="Email"
+          placeholder="joe@example.com"
           type="email"
           startDecorator={<AlternateEmailRounded />}
           onChange={onEmailChange}
@@ -103,7 +103,6 @@ const SignUp: React.FC = () => {
           label="Email"
         />
         <TextField
-          placeholder="Password"
           type={showPassword ? "text" : "password"}
           startDecorator={<KeyRounded />}
           onChange={onPasswordChange}
@@ -123,7 +122,7 @@ const SignUp: React.FC = () => {
           }
         />
         <TextField
-          placeholder="First name"
+          placeholder="Joe"
           type="text"
           startDecorator={<PersonRounded />}
           onChange={onFirstNameChange}
@@ -153,33 +152,44 @@ const SignUp: React.FC = () => {
           </Typography>
         )}
 
-        <Button
-          variant="solid"
-          color={success ? "success" : "primary"}
-          type="submit"
-          size="lg"
-          sx={{ mt: 2, width: "100%" }}
-          startDecorator={success ? <DoneRounded /> : <PersonAddRounded />}
-          disabled={loading}
-        >
-          Create account
-        </Button>
-      </Box>
+        <Box sx={{ mt: 4, display: "flex", flexDirection: "column", gap: 2.8 }}>
+          <Button
+            variant="solid"
+            color={success ? "success" : "primary"}
+            type="submit"
+            size="lg"
+            fullWidth
+            startDecorator={success ? <DoneRounded /> : <PersonAddRounded />}
+            disabled={loading}
+          >
+            Create account
+          </Button>
 
-      <Box
-        mt={8}
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          gap: 1
-        }}
-      >
-        <Typography component="p">Already have an account? </Typography>
+          <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+            <Separator />
+            <Typography
+              level="subtitle1"
+              fontSize="xs"
+              sx={{ whiteSpace: "nowrap", textTransform: "uppercase" }}
+            >
+              Already have an account?
+            </Typography>
+            <Separator />
+          </Box>
 
-        <NextLink href="/signin" passHref>
-          <MuiLink>Sign in</MuiLink>
-        </NextLink>
+          <NextLink href="/signin" passHref>
+            <Button
+              component="a"
+              color="neutral"
+              variant="plain"
+              type="button"
+              fullWidth
+              size="lg"
+            >
+              Sign in
+            </Button>
+          </NextLink>
+        </Box>
       </Box>
     </AuthLayout>
   );

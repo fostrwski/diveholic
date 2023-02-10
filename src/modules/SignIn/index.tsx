@@ -75,7 +75,7 @@ const SignIn: React.FC = () => {
     <AuthLayout>
       <Box mt={4} component="form" onSubmit={handleSubmit}>
         <TextField
-          placeholder="Email"
+          placeholder="joe@example.com"
           startDecorator={<AlternateEmailRounded />}
           type="email"
           onChange={onEmailChange}
@@ -87,7 +87,6 @@ const SignIn: React.FC = () => {
         />
         <TextField
           sx={{ mt: 2 }}
-          placeholder="Password"
           startDecorator={<KeyRounded />}
           type={showPassword ? "text" : "password"}
           onChange={onPasswordChange}
@@ -152,8 +151,15 @@ const SignIn: React.FC = () => {
             <Separator />
           </Box>
 
-          <NextLink href="/signup">
-            <Button color="neutral" type="button" fullWidth size="lg">
+          <NextLink href="/signup" passHref>
+            <Button
+              color="neutral"
+              variant="plain"
+              type="button"
+              fullWidth
+              size="lg"
+              component="a"
+            >
               Create account
             </Button>
           </NextLink>
