@@ -1,6 +1,8 @@
+import Box from "@mui/joy/Box";
 import FormControl from "@mui/joy/FormControl";
 import FormLabel from "@mui/joy/FormLabel";
 import MuiSlider from "@mui/joy/Slider";
+import Typography from "@mui/joy/Typography";
 import React, { type ComponentProps, useEffect, useState } from "react";
 
 import type { SliderMark } from "../types";
@@ -21,6 +23,8 @@ const TemperatureSlider: React.FC<TemperatureSliderProps> = ({
   marks,
   ...props
 }) => {
+  const { value, ...otherProps } = props;
+
   const [sliderMarks, setSliderMarks] = useState<Array<SliderMark>>([]);
   useEffect(() => {
     setSliderMarks(generateSliderMarks(marks));
@@ -29,15 +33,19 @@ const TemperatureSlider: React.FC<TemperatureSliderProps> = ({
   return (
     <FormControl>
       <FormLabel>{label}</FormLabel>
-      <MuiSlider
-        color={color}
-        size="lg"
-        min={min}
-        max={max}
-        marks={sliderMarks}
-        valueLabelDisplay="auto"
-        {...props}
-      />
+      <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+        <MuiSlider
+          color={color}
+          size="lg"
+          min={min}
+          max={max}
+          marks={sliderMarks}
+          valueLabelDisplay="auto"
+          value={value}
+          {...otherProps}
+        />
+        <Typography>{value}</Typography>
+      </Box>
     </FormControl>
   );
 };
