@@ -3,10 +3,13 @@ import FormControl from "@mui/joy/FormControl";
 import FormLabel from "@mui/joy/FormLabel";
 import MuiSlider from "@mui/joy/Slider";
 import Typography from "@mui/joy/Typography";
+import type { Dive } from "common/types";
 import React, { type ComponentProps, useEffect, useState } from "react";
+import { useFormContext } from "react-hook-form";
 
 import type { SliderMark } from "../types";
 import generateSliderMarks from "../utils/generateSliderMarks";
+import getSliderAriaValueText from "./getSliderAriaValueText";
 
 // Extends MuiSlider props but overrides 'marks' property
 interface TemperatureSliderProps
@@ -24,11 +27,14 @@ const TemperatureSlider: React.FC<TemperatureSliderProps> = ({
   ...props
 }) => {
   const { value, ...otherProps } = props;
+  const { watch } = useFormContext<Dive>();
 
   const [sliderMarks, setSliderMarks] = useState<Array<SliderMark>>([]);
   useEffect(() => {
     setSliderMarks(generateSliderMarks(marks));
   }, [marks]);
+
+  const watchUnits = watch("units");
 
   return (
     <FormControl>
@@ -43,8 +49,17 @@ const TemperatureSlider: React.FC<TemperatureSliderProps> = ({
           valueLabelDisplay="auto"
           value={value}
           {...otherProps}
+          getAriaLabel={() => `${label} temperature`}
+          getAriaValueText={(value) =>
+            getSliderAriaValueText(value, watchUnits)
+          }
         />
-        <Typography>{value}</Typography>
+
+        {value && (
+          <Typography fontSize="sm">
+            {value}°{watchUnits === "metric" ? "C" : "F"}
+          </Typography>
+        )}
       </Box>
     </FormControl>
   );
