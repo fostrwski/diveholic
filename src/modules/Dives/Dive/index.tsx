@@ -72,7 +72,7 @@ const Dive: React.FC = () => {
     if (user) getDive();
   }, [user, diveId]);
 
-  const determineView = (): React.ReactElement => {
+  const DetermineView: React.FC = () => {
     if (error) {
       return (
         <Error
@@ -198,7 +198,7 @@ const Dive: React.FC = () => {
     return <></>;
   };
 
-  return determineView();
+  return <DetermineView />;
 };
 
 export default Dive;

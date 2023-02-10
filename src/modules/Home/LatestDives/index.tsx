@@ -41,7 +41,7 @@ const LatestDives: React.FC = () => {
     if (user) getDives();
   }, [user]);
 
-  const determineView = () => {
+  const DetermineView: React.FC = () => {
     if (error) return <Error />;
 
     if (user && !loading && dives.length === 0) return <NotFound />;
@@ -63,7 +63,7 @@ const LatestDives: React.FC = () => {
       </Typography>
 
       <Grid container gap={2}>
-        {determineView()}
+        <DetermineView />
       </Grid>
     </>
   );
