@@ -1,6 +1,8 @@
+import Box from "@mui/joy/Box";
 import FormControl from "@mui/joy/FormControl";
 import FormLabel from "@mui/joy/FormLabel";
 import MuiSlider from "@mui/joy/Slider";
+import Typography from "@mui/joy/Typography";
 import type { Dive } from "common/types";
 import React, { type ComponentProps, useEffect, useState } from "react";
 import { useFormContext } from "react-hook-form";
@@ -37,18 +39,28 @@ const TemperatureSlider: React.FC<TemperatureSliderProps> = ({
   return (
     <FormControl>
       <FormLabel>{label}</FormLabel>
-      <MuiSlider
-        color={color}
-        size="lg"
-        min={min}
-        max={max}
-        marks={sliderMarks}
-        valueLabelDisplay="auto"
-        value={value}
-        {...otherProps}
-        getAriaLabel={() => `${label} temperature`}
-        getAriaValueText={(value) => getSliderAriaValueText(value, watchUnits)}
-      />
+      <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+        <MuiSlider
+          color={color}
+          size="lg"
+          min={min}
+          max={max}
+          marks={sliderMarks}
+          valueLabelDisplay="auto"
+          value={value}
+          {...otherProps}
+          getAriaLabel={() => `${label} temperature`}
+          getAriaValueText={(value) =>
+            getSliderAriaValueText(value, watchUnits)
+          }
+        />
+
+        {value && (
+          <Typography fontSize="sm">
+            {value}°{watchUnits === "metric" ? "C" : "F"}
+          </Typography>
+        )}
+      </Box>
     </FormControl>
   );
 };
