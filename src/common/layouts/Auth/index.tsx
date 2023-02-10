@@ -15,11 +15,11 @@ interface AuthLayoutProps {
 
 const AuthLayout: React.FC<AuthLayoutProps> = ({ title, icon, children }) => {
   const [showLearnHowToInstall, setShowLearnHowToInstall] =
-    useState<boolean>(true);
+    useState<boolean>(false);
 
   useEffect(() => {
-    if (window.matchMedia("(display-mode: standalone)").matches) {
-      setShowLearnHowToInstall(false);
+    if (!window.matchMedia("(display-mode: standalone)").matches) {
+      setShowLearnHowToInstall(true);
     }
   }, []);
 
