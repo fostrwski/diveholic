@@ -92,7 +92,7 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
               <ListItemDecorator>
                 <DashboardRounded />
               </ListItemDecorator>
-              Dashboard
+                Home
             </MenuItem>
           </NextLink>
 
