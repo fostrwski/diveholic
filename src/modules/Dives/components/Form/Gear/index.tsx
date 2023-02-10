@@ -38,6 +38,7 @@ const Gear: React.FC = () => {
             {...register("gear.exposureProtection.type")}
             type="text"
             label="Type"
+            aria-label="Exposure protection type"
           />
         </Grid>
         <Grid xs={6}>
@@ -50,6 +51,7 @@ const Gear: React.FC = () => {
             type="number"
             label="Thickness"
             startDecorator={<LineWeightRounded />}
+            aria-label="Exposure protection thickness"
           />
         </Grid>
       </Grid>
@@ -66,6 +68,7 @@ const Gear: React.FC = () => {
             type="number"
             label="Count"
             startDecorator={<NumbersRounded />}
+            aria-label="Tanks count"
           />
         </Grid>
         <Grid xs={6}>
@@ -73,6 +76,7 @@ const Gear: React.FC = () => {
             {...register("gear.tanks.type")}
             type="text"
             label="Type"
+            aria-label="Tanks type"
           />
         </Grid>
       </Grid>

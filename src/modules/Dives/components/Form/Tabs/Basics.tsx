@@ -90,6 +90,7 @@ const Basics: React.FC = () => {
             label="Length"
             endDecorator="min"
             startDecorator={<TimelapseRounded />}
+            aria-label="Length of the dive"
           />
         </Grid>
 
