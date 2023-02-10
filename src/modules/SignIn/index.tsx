@@ -73,7 +73,7 @@ const SignIn: React.FC = () => {
 
   return (
     <AuthLayout>
-      <Box mt={4} component="form" onSubmit={handleSubmit}>
+      <Box component="form" onSubmit={handleSubmit}>
         <TextField
           placeholder="joe@example.com"
           startDecorator={<AlternateEmailRounded />}
