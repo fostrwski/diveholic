@@ -16,6 +16,7 @@ import React, { useEffect, useState } from "react";
 
 import InfoCard from "../components/InfoCard";
 import Basics from "./Basics";
+import DeleteButton from "./DeleteButton";
 import Error from "./Error";
 import Gear from "./Gear";
 import Loading from "./Loading";
@@ -77,7 +78,7 @@ const Dive: React.FC = () => {
       return (
         <Error
           error={error}
-          tip="Make sure you're connected to the internet and try refreshing the page."
+          tip="Make sure you're connected to the internet and try refreshing the page"
         />
       );
     }
@@ -164,16 +165,8 @@ const Dive: React.FC = () => {
           >
             Edit
           </Button>
-          <Button
-            sx={{ mt: 2 }}
-            color="danger"
-            fullWidth
-            startDecorator={<DeleteRounded />}
-            onClick={handleDiveDelete}
-            variant="plain"
-          >
-            Delete
-          </Button>
+
+          <DeleteButton handleDiveDelete={handleDiveDelete} />
 
           <Typography
             mt={8}
