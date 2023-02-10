@@ -1,17 +1,13 @@
-import FollowTheSignsRounded from "@mui/icons-material/FollowTheSignsRounded";
 import InstallDesktopRounded from "@mui/icons-material/InstallDesktopRounded";
-import OpenInNewRounded from "@mui/icons-material/OpenInNewRounded";
 
 const desktopSteps = [
   {
-    content: "Open Diveholic using Chrome or other Chromium based browser",
-    icon: <OpenInNewRounded />
+    content: "Open Diveholic using Chrome or other Chromium based browser"
   },
   {
-    content: "At the top right of the address bar, click Install",
+    content: "At the top right of the address bar, click <b>Install</b>",
     icon: <InstallDesktopRounded />
-  },
-  { content: "Follow instructions", icon: <FollowTheSignsRounded /> }
+  }
 ];
 
 export default desktopSteps;

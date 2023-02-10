@@ -5,23 +5,28 @@ import React from "react";
 interface StepsProps {
   title: string;
   icon: React.ReactElement;
-  steps: Array<{ content: string; icon: React.ReactElement }>;
+  steps: Array<{ content: string; icon?: React.ReactElement }>;
 }
 
 const Steps: React.FC<StepsProps> = ({ title, icon, steps }) => (
   <Box mb={6}>
-    <Typography level="h5" startDecorator={icon} gutterBottom textColor="GrayText">
+    <Typography
+      level="h5"
+      startDecorator={icon}
+      gutterBottom
+      textColor="GrayText"
+    >
       {title}
     </Typography>
-    <Box component="ul" p={0} m={0}>
+    <Box component="ol" p={0} m={0} sx={{listStylePosition:"inside"}}>
       {steps.map((step) => (
         <Typography
           component="li"
-          sx={{ alignItems: "flex-start" }}
-          startDecorator={step.icon}
+          sx={{ alignItems: "flex-start",display:"list-item" }}
+          endDecorator={step?.icon}
           key={step.content}
         >
-          {step.content}
+          <span dangerouslySetInnerHTML={{ __html: step.content }} />
         </Typography>
       ))}
     </Box>
