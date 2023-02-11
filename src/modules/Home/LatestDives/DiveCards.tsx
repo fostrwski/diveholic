@@ -1,3 +1,4 @@
+import Box from "@mui/joy/Box";
 import Button from "@mui/joy/Button";
 import Grid from "@mui/joy/Grid";
 import DiveCard from "common/components/DiveCard";
@@ -17,15 +18,13 @@ const DiveCards: React.FC<DiveCardsProps> = ({ dives }) => (
       </Grid>
     ))}
 
-    <NextLink href="/dives">
-      <Button
-        variant="outlined"
-        color="neutral"
-        sx={{ borderRadius: 24, mx: "auto" }}
-      >
-        See all
-      </Button>
-    </NextLink>
+    <Box textAlign="center" mt={2}>
+      <NextLink href="/dives">
+        <Button variant="outlined" color="neutral" sx={{ borderRadius: 24 }}>
+          See all
+        </Button>
+      </NextLink>
+    </Box>
   </>
 );
 

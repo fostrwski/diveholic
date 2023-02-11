@@ -62,9 +62,7 @@ const LatestDives: React.FC = () => {
         Your dives
       </Typography>
 
-      <Grid container gap={2}>
-        <DetermineView />
-      </Grid>
+      <DetermineView />
     </>
   );
 };
