@@ -1,10 +1,8 @@
 import Apple from "@mui/icons-material/Apple";
 import DesktopMacRounded from "@mui/icons-material/DesktopMacRounded";
-import Box from "@mui/joy/Box";
 import Button from "@mui/joy/Button";
 import MuiModal from "@mui/joy/Modal";
 import ModalDialog from "@mui/joy/ModalDialog";
-import Typography from "@mui/joy/Typography";
 import React, { type Dispatch, type SetStateAction } from "react";
 
 import Steps from "./Steps";
@@ -29,6 +27,7 @@ const Modal: React.FC<ModalProps> = ({ open, setOpen }) => {
           justifyContent: "space-between",
           flexDirection: "column"
         }}
+        aria-label="Learn how to install Diveholic"
       >
         <div>
           <Steps title="iOS" icon={<Apple />} steps={iOSSteps} />
