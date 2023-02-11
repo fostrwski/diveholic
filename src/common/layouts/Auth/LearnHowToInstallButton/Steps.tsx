@@ -18,13 +18,14 @@ const Steps: React.FC<StepsProps> = ({ title, icon, steps }) => (
     >
       {title}
     </Typography>
-    <Box component="ol" p={0} m={0} sx={{listStylePosition:"inside"}}>
+    <Box component="ul" p={0} m={0} sx={{ listStylePosition: "inside" }}>
       {steps.map((step) => (
         <Typography
-          component="li"
-          sx={{ alignItems: "flex-start",display:"list-item" }}
-          endDecorator={step?.icon}
           key={step.content}
+          component="li"
+          sx={{ alignItems: "flex-start", display: "inline-flex" }}
+          endDecorator={step?.icon}
+          mb={0.8}
         >
           <span dangerouslySetInnerHTML={{ __html: step.content }} />
         </Typography>
