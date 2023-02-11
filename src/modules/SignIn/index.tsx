@@ -131,7 +131,6 @@ const SignIn: React.FC = () => {
         <Box sx={{ mt: 6, display: "flex", flexDirection: "column", gap: 2 }}>
           <Button
             type="submit"
-            variant="solid"
             color={success ? "success" : "primary"}
             size="lg"
             sx={{ mt: 2 }}

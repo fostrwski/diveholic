@@ -154,7 +154,6 @@ const SignUp: React.FC = () => {
 
         <Box sx={{ mt: 4, display: "flex", flexDirection: "column", gap: 2.8 }}>
           <Button
-            variant="solid"
             color={success ? "success" : "primary"}
             type="submit"
             size="lg"
