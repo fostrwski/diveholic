@@ -27,7 +27,7 @@ const DiveCard: React.FC<DiveCardProps> = ({ dive }) => (
         display: "flex",
         flexDirection: "row",
         gap: 2,
-        py: 1
+        py: 0.6
       }}
       aria-label={`${dive.length} minute ${dive.type.toLowerCase()} dive in ${
         dive.location.city
