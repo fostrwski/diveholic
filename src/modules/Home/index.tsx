@@ -29,7 +29,11 @@ const Home: React.FC<HomeProps> = ({ user, dives }) => (
       </Typography>
     ) : (
       <Typography level="h6" textColor="GrayText" component="h2">
-        You haven't logged any dives yet 😱
+        You{" "}
+        <Typography component="span" color="primary">
+          haven't logged any dives
+        </Typography>{" "}
+        yet 😱
       </Typography>
     )}
 
