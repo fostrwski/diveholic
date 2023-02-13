@@ -43,7 +43,7 @@ const Filters: React.FC<FiltersProps> = ({ dives, filters, setFilters }) => {
       >
         <Badge color="info" variant="outlined" badgeContent={filtersCount}>
           <Button
-            color="neutral"
+            color="info"
             variant="outlined"
             startDecorator={<FilterListRounded />}
             onClick={handleFiltersToggle}
