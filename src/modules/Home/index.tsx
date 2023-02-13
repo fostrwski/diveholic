@@ -19,10 +19,19 @@ const Home: React.FC<HomeProps> = ({ user, dives }) => (
       Hi {user.user_metadata.first_name} 🤿
     </Typography>
 
-    <Typography level="h6" textColor="GrayText" component="h2">
-      You've logged {dives?.length} {dives?.length === 1 ? "dive" : "dives"} so
-      far
-    </Typography>
+    {dives?.length ? (
+      <Typography level="h6" textColor="GrayText" component="h2">
+        You've logged{" "}
+        <Typography component="span" color="primary">
+          {dives.length} {dives.length === 1 ? "dive" : "dives"}
+        </Typography>{" "}
+        so far
+      </Typography>
+    ) : (
+      <Typography level="h6" textColor="GrayText" component="h2">
+        You haven't logged any dives yet 😱
+      </Typography>
+    )}
 
     <NextLink href="/dives/new" passHref>
       <Button
