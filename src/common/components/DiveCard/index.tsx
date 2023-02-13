@@ -75,7 +75,6 @@ const DiveCard: React.FC<DiveCardProps> = ({ dive }) => (
           <Chip
             variant="outlined"
             startDecorator={<TimelapseRounded />}
-            color="neutral"
           >
             {dive.length}min
           </Chip>
