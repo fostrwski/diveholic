@@ -10,8 +10,10 @@ import React from "react";
 export const getServerSideProps = withPageAuth({
   redirectTo: "/signin",
   async getServerSideProps(ctx) {
-    const { data } = await supabaseServerClient(ctx).from("dives").select("*");
-    return { props: { dives: data } };
+    const { data: dives } = await supabaseServerClient(ctx)
+      .from("dives")
+      .select("*");
+    return { props: { dives } };
   }
 });
 
