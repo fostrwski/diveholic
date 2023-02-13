@@ -1,4 +1,5 @@
 import Grid from "@mui/joy/Grid";
+import Typography from "@mui/joy/Typography";
 import { useUser } from "@supabase/auth-helpers-react";
 import DiveCard from "common/components/DiveCard";
 import type { Dive } from "common/types";
@@ -53,6 +54,10 @@ const Dives: React.FC = () => {
   return (
     <>
       <Filters dives={dives} filters={filters} setFilters={setFilters} />
+
+      <Typography mt={2} level="subtitle1">
+        Found {filteredDives.length} dives
+      </Typography>
 
       <Grid container sx={{ mt: 2 }}>
         {filteredDives.map((dive: Dive) => (
