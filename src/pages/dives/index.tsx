@@ -25,7 +25,7 @@ interface DivesPageProps {
 export default function DivesPage({ dives }: DivesPageProps) {
   return (
     <DefaultLayout>
-      <Dives data={dives} />
+      <Dives dives={dives} />
     </DefaultLayout>
   );
 }
