@@ -59,7 +59,7 @@ const LatestDives: React.FC = () => {
         startDecorator={<HistoryRounded />}
         mb={2}
       >
-        Your dives
+        Latest dives
       </Typography>
 
       <DetermineView />
