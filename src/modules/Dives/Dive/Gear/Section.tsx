@@ -1,9 +1,7 @@
 import Box from "@mui/joy/Box";
 import Grid from "@mui/joy/Grid";
 import Typography from "@mui/joy/Typography";
-import InfoCard, {
-  type InfoCardProps
-} from "modules/Dives/components/InfoCard";
+import InfoCard, { type InfoCardProps } from "common/components/InfoCard";
 import React from "react";
 
 interface SectionProps {

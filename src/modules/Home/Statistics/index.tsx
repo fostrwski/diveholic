@@ -3,9 +3,9 @@ import PublicRounded from "@mui/icons-material/PublicRounded";
 import TimelapseRounded from "@mui/icons-material/TimelapseRounded";
 import Grid from "@mui/joy/Grid";
 import Typography from "@mui/joy/Typography";
+import InfoCard from "common/components/InfoCard";
 import type { Dive } from "common/types";
 import getDiveEmoji from "modules/Dives/components/Form/utils/getDiveEmoji";
-import InfoCard from "modules/Dives/components/InfoCard";
 import React from "react";
 
 import getNumberOfBoatDives from "./getNumberOfBoatDives";

@@ -7,13 +7,13 @@ import Button from "@mui/joy/Button";
 import Chip from "@mui/joy/Chip";
 import Typography from "@mui/joy/Typography";
 import { useUser } from "@supabase/auth-helpers-react";
+import InfoCard from "common/components/InfoCard";
 import type { Dive as DiveType } from "common/types";
 import { formatDate, formatTime } from "common/utils/datetime/format";
 import { supabase } from "common/utils/supabaseClient";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 
-import InfoCard from "../components/InfoCard";
 import Basics from "./Basics";
 import DeleteButton from "./DeleteButton";
 import Error from "./Error";

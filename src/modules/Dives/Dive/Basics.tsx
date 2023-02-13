@@ -8,10 +8,9 @@ import Box from "@mui/joy/Box";
 import Chip from "@mui/joy/Chip";
 import Grid from "@mui/joy/Grid";
 import Typography from "@mui/joy/Typography";
+import InfoCard from "common/components/InfoCard";
 import type { Dive } from "common/types";
 import React from "react";
-
-import InfoCard from "../components/InfoCard";
 
 interface AmmountInformationProps {
   ammount: Dive["weights"]["ammount"];
