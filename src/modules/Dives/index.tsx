@@ -1,55 +1,61 @@
-import FilterListRounded from "@mui/icons-material/FilterListRounded";
-import Badge from "@mui/joy/Badge";
-import Box from "@mui/joy/Box";
-import Button from "@mui/joy/Button";
 import Grid from "@mui/joy/Grid";
+import { useUser } from "@supabase/auth-helpers-react";
 import DiveCard from "common/components/DiveCard";
 import type { Dive } from "common/types";
-import React, { useState } from "react";
+import { supabase } from "common/utils/supabaseClient";
+import React, { useEffect, useMemo, useState } from "react";
 
 import Filters from "./Filters";
+import filterDives from "./filterDives";
 
-interface DivesProps {
-  dives: Array<Dive>;
-}
+export type FiltersState = {
+  countryCodes: Array<string>;
+};
 
-const Dives: React.FC<DivesProps> = ({ dives }) => {
-  const [showFilters, setShowFilters] = useState<boolean>(false);
+const Dives: React.FC = () => {
+  const { user } = useUser();
+  const [dives, setDives] = useState<Array<Dive>>([]);
+  const [error, setError] = useState<boolean>();
+  const [loading, setLoading] = useState<boolean>(false);
 
-  const handleFiltersToggle = () => {
-    setShowFilters(!showFilters);
-  };
+  const [filters, setFilters] = useState<FiltersState>({
+    countryCodes: []
+  });
+
+  useEffect(() => {
+    const getDives = async () => {
+      setError(false);
+      setLoading(true);
+      const { data, error } = await supabase
+        .from<Dive>("dives")
+        .select("*")
+        .order("date", { ascending: false });
+
+      if (error) {
+        setError(true);
+        console.error(error);
+        return setLoading(false);
+      }
+
+      if (data) setDives(data);
+
+      setLoading(false);
+    };
+
+    if (user) getDives();
+  }, [user]);
+
+  const filteredDives = useMemo(
+    () => filterDives(dives, filters),
+    [dives, filters]
+  );
 
   return (
     <>
-      <Box
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          gap: 2
-        }}
-      >
-        <Badge color="info" variant="outlined" badgeContent={0}>
-          <Button
-            color="neutral"
-            variant="outlined"
-            startDecorator={<FilterListRounded />}
-            onClick={handleFiltersToggle}
-          >
-            Filters
-          </Button>
-        </Badge>
-
-        <Button color="neutral" variant="plain">
-          Sort
-        </Button>
-      </Box>
-
-      {showFilters && <Filters dives={dives} />}
+      <Filters dives={dives} filters={filters} setFilters={setFilters} />
 
       <Grid container sx={{ mt: 2 }}>
-        {dives.map((dive: Dive) => (
+        {filteredDives.map((dive: Dive) => (
           <Grid xs={12} key={dive.id}>
             <DiveCard dive={dive} />
           </Grid>

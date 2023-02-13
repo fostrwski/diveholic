@@ -1,85 +1,56 @@
-import { getCountryData } from "@franekostrowski/country-utils";
+import FilterListRounded from "@mui/icons-material/FilterListRounded";
+import Badge from "@mui/joy/Badge";
 import Box from "@mui/joy/Box";
-import Checkbox from "@mui/joy/Checkbox";
-import Chip from "@mui/joy/Chip";
-import Grid from "@mui/joy/Grid";
-import Typography from "@mui/joy/Typography";
+import Button from "@mui/joy/Button";
 import type { Dive } from "common/types";
-import React from "react";
+import React, { Dispatch, SetStateAction, useState } from "react";
+
+import type { FiltersState } from "../index";
+import Location from "./Location";
 
 interface FiltersProps {
   dives: Array<Dive>;
+  filters: FiltersState;
+  setFilters: Dispatch<SetStateAction<FiltersState>>;
 }
 
-function getDiveLocationCountryCodes(dives: Array<Dive>) {
-  type DiveLocation = {
-    [key: string]: number;
+const Filters: React.FC<FiltersProps> = ({ dives, filters, setFilters }) => {
+  const [showFilters, setShowFilters] = useState<boolean>(false);
+
+  const handleFiltersToggle = () => {
+    setShowFilters(!showFilters);
   };
-  const diveLocationCountryCodes: DiveLocation = {};
-
-  dives.forEach((dive) => {
-    // eslint-disable-next-line no-unused-expressions
-    dive.location.country.code in diveLocationCountryCodes
-      ? (diveLocationCountryCodes[dive.location.country.code] += 1)
-      : (diveLocationCountryCodes[dive.location.country.code] = 1);
-  });
-
-  return diveLocationCountryCodes;
-}
-
-const Filters: React.FC<FiltersProps> = ({ dives }) => {
-  const diveLocationCountryCodes = getDiveLocationCountryCodes(dives);
-  const diveLocations = Object.keys(diveLocationCountryCodes).map(
-    (diveLocationCountryCode) => ({
-      ...getCountryData(diveLocationCountryCode),
-      diveCount: diveLocationCountryCodes[diveLocationCountryCode]
-    })
-  );
 
   return (
-    <Grid container sx={{ mt: 2 }} spacing={2}>
-      <Grid xs={12} md={6}>
-        <Typography fontWeight="md" mb={1}>
-          Location
-        </Typography>
-        <Box
-          role="group"
-          sx={{
-            display: "flex",
-            gap: 0.8,
-            overflowX: "auto",
-            scrollBehavior: "smooth",
+    <>
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          gap: 2
+        }}
+      >
+        <Badge color="info" variant="outlined" badgeContent={0}>
+          <Button
+            color="neutral"
+            variant="outlined"
+            startDecorator={<FilterListRounded />}
+            onClick={handleFiltersToggle}
+          >
+            Filters
+          </Button>
+        </Badge>
 
-            "&::-webkit-scrollbar": {
-              display: "none"
-            }
-          }}
-        >
-          {diveLocations.map((diveLocationCountry) => (
-            <Chip
-              key={diveLocationCountry.code}
-              startDecorator={diveLocationCountry.flag}
-              variant="outlined"
-              endDecorator={`(${diveLocationCountry.diveCount})`}
-            >
-              <Checkbox
-                overlay
-                disableIcon
-                variant="plain"
-                label={diveLocationCountry.name}
-              />
-            </Chip>
-          ))}
-        </Box>
-      </Grid>
+        <Button color="neutral" variant="plain">
+          Sort
+        </Button>
+      </Box>
 
-      <Grid xs={12} md={6}>
-        <Typography fontWeight="md" mb={1}>
-          Date
-        </Typography>
-        <Box></Box>
-      </Grid>
-    </Grid>
+      {showFilters && (
+        <Location dives={dives} filters={filters} setFilters={setFilters} />
+      )}
+    </>
   );
 };
 
