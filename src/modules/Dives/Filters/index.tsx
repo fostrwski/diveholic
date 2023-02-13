@@ -3,7 +3,12 @@ import Badge from "@mui/joy/Badge";
 import Box from "@mui/joy/Box";
 import Button from "@mui/joy/Button";
 import type { Dive } from "common/types";
-import React, { Dispatch, SetStateAction, useState } from "react";
+import React, {
+  type Dispatch,
+  type SetStateAction,
+  useMemo,
+  useState
+} from "react";
 
 import type { FiltersState } from "../index";
 import Location from "./Location";
@@ -21,6 +26,11 @@ const Filters: React.FC<FiltersProps> = ({ dives, filters, setFilters }) => {
     setShowFilters(!showFilters);
   };
 
+  const filtersCount = useMemo(
+    () => filters.countryCodes.length,
+    [filters.countryCodes]
+  );
+
   return (
     <>
       <Box
@@ -31,7 +41,7 @@ const Filters: React.FC<FiltersProps> = ({ dives, filters, setFilters }) => {
           gap: 2
         }}
       >
-        <Badge color="info" variant="outlined" badgeContent={0}>
+        <Badge color="info" variant="outlined" badgeContent={filtersCount}>
           <Button
             color="neutral"
             variant="outlined"
