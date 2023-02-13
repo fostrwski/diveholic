@@ -7,7 +7,7 @@ export interface InfoCardProps {
   title: string;
   content: string | number;
   unit?: string;
-  icon?: React.ReactElement;
+  icon?: React.ReactElement | string;
 }
 
 const InfoCard: React.FC<InfoCardProps> = ({ title, content, unit, icon }) => (
@@ -16,7 +16,12 @@ const InfoCard: React.FC<InfoCardProps> = ({ title, content, unit, icon }) => (
     sx={{ display: "flex", alignItems: "center", gap: 2, px: 2, py: 1.4 }}
   >
     <Box>
-      <Typography component="p" level="subtitle2" startDecorator={icon}>
+      <Typography
+        component="p"
+        level="subtitle2"
+        sx={{ alignItems: typeof icon === "string" ? "" : "flex-start" }}
+        startDecorator={icon}
+      >
         {title}
       </Typography>
       <Typography component="p" endDecorator={content && unit ? unit : ""}>
