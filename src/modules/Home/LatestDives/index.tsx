@@ -9,7 +9,6 @@ import React, { useEffect, useState } from "react";
 import DiveCards from "./DiveCards";
 import Error from "./Error";
 import Loading from "./Loading";
-import NotFound from "./NotFound";
 
 const LatestDives: React.FC = () => {
   const { user } = useUser();
@@ -43,8 +42,6 @@ const LatestDives: React.FC = () => {
 
   const DetermineView: React.FC = () => {
     if (error) return <Error />;
-
-    if (user && !loading && dives.length === 0) return <NotFound />;
 
     if (user && loading) return <Loading />;
 
