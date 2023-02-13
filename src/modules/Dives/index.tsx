@@ -1,4 +1,5 @@
 import FilterListRounded from "@mui/icons-material/FilterListRounded";
+import Badge from "@mui/joy/Badge";
 import Box from "@mui/joy/Box";
 import Button from "@mui/joy/Button";
 import Grid from "@mui/joy/Grid";
@@ -9,10 +10,10 @@ import React, { useState } from "react";
 import Filters from "./Filters";
 
 interface DivesProps {
-  data: Array<Dive>;
+  dives: Array<Dive>;
 }
 
-const Dives: React.FC<DivesProps> = ({ data }) => {
+const Dives: React.FC<DivesProps> = ({ dives }) => {
   const [showFilters, setShowFilters] = useState<boolean>(false);
 
   const handleFiltersToggle = () => {
@@ -29,24 +30,26 @@ const Dives: React.FC<DivesProps> = ({ data }) => {
           gap: 2
         }}
       >
-        <Button
-          color="neutral"
-          variant="outlined"
-          startDecorator={<FilterListRounded />}
-          onClick={handleFiltersToggle}
-        >
-          Filters
-        </Button>
+        <Badge color="info" variant="outlined" badgeContent={0}>
+          <Button
+            color="neutral"
+            variant="outlined"
+            startDecorator={<FilterListRounded />}
+            onClick={handleFiltersToggle}
+          >
+            Filters
+          </Button>
+        </Badge>
 
         <Button color="neutral" variant="plain">
           Sort
         </Button>
       </Box>
 
-      {showFilters && <Filters />}
+      {showFilters && <Filters dives={dives} />}
 
       <Grid container sx={{ mt: 2 }}>
-        {data.map((dive: Dive) => (
+        {dives.map((dive: Dive) => (
           <Grid xs={12} key={dive.id}>
             <DiveCard dive={dive} />
           </Grid>
