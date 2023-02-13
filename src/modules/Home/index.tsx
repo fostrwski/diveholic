@@ -7,6 +7,7 @@ import NextLink from "next/link";
 import React from "react";
 
 import LatestDives from "./LatestDives";
+import Statistics from "./Statistics";
 
 interface HomeProps {
   user: User;
@@ -51,6 +52,10 @@ const Home: React.FC<HomeProps> = ({ user, dives }) => (
     <Grid container gap={6} mt={6}>
       <Grid xs={12}>
         <LatestDives />
+      </Grid>
+
+      <Grid xs={12}>
+        <Statistics dives={dives}/>
       </Grid>
     </Grid>
   </>
