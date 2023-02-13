@@ -54,7 +54,7 @@ const DiveCard: React.FC<DiveCardProps> = ({ dive }) => (
 
         <Typography
           level="subtitle1"
-          component="div"
+          component="p"
           startDecorator={<CalendarTodayRounded />}
           sx={{ alignItems: "flex-start" }}
         >
