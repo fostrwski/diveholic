@@ -109,6 +109,7 @@ const SignIn: React.FC = () => {
 
         {error && (
           <Typography
+            mt={2}
             color="danger"
             textAlign="left"
             startDecorator={<ErrorOutlineRounded />}
