@@ -14,7 +14,8 @@ const DiveCardSkeletonLoader: React.FC = () => (
       backgroundColor: "transparent",
       display: "flex",
       flexDirection: "row",
-      gap: 2
+      gap: 2,
+      py: 1
     }}
   >
     <Avatar size="lg">
