@@ -1,31 +1,16 @@
-import {
-  supabaseServerClient,
-  withPageAuth
-} from "@supabase/auth-helpers-nextjs";
+import { withPageAuth } from "@supabase/auth-helpers-nextjs";
 import DefaultLayout from "common/layouts/Default";
-import type { Dive } from "common/types";
 import Dives from "modules/Dives";
 import React from "react";
 
 export const getServerSideProps = withPageAuth({
-  redirectTo: "/signin",
-  async getServerSideProps(ctx) {
-    const { data: dives } = await supabaseServerClient(ctx)
-      .from<Dive>("dives")
-      .select("*")
-      .order("date", { ascending: false });
-    return { props: { dives } };
-  }
+  redirectTo: "/signin"
 });
 
-interface DivesPageProps {
-  dives: Array<Dive>;
-}
-
-export default function DivesPage({ dives }: DivesPageProps) {
+export default function DivesPage() {
   return (
     <DefaultLayout>
-      <Dives dives={dives} />
+      <Dives />
     </DefaultLayout>
   );
 }
