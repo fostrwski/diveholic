@@ -3,6 +3,7 @@ import Button from "@mui/joy/Button";
 import Modal from "@mui/joy/Modal";
 import ModalDialog from "@mui/joy/ModalDialog";
 import Typography from "@mui/joy/Typography";
+import NextLink from "next/link";
 import { useRouter } from "next/router";
 import React, { type Dispatch, type SetStateAction } from "react";
 import { useFormContext } from "react-hook-form";
@@ -19,7 +20,6 @@ const FormSubmittedModal: React.FC<FormSubmittedModalProps> = ({
   setOpen
 }) => {
   const { reset } = useFormContext<FormFields>();
-  const router = useRouter();
 
   const handleModalClose = () => {
     setOpen(false);
@@ -27,7 +27,6 @@ const FormSubmittedModal: React.FC<FormSubmittedModalProps> = ({
 
   const handleContinue = () => {
     handleModalClose();
-    router.replace("/");
   };
 
   const handleAddAnotherDive = () => {
@@ -54,15 +53,17 @@ const FormSubmittedModal: React.FC<FormSubmittedModalProps> = ({
           Your dive has been saved! What'd you want to do next?
         </Typography>
 
-        <Button
-          color="success"
-          fullWidth
-          size="lg"
-          onClick={handleContinue}
-          data-cy="New-FormSubmittedModal-continue"
-        >
-          Continue
-        </Button>
+        <NextLink href="/" passHref>
+          <Button
+            component="a"
+            color="success"
+            fullWidth
+            size="lg"
+            data-cy="New-FormSubmittedModal-continue"
+          >
+            Continue
+          </Button>
+        </NextLink>
 
         <Button
           color="neutral"
