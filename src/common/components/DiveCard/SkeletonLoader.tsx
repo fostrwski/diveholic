@@ -22,8 +22,8 @@ const DiveCardSkeletonLoader: React.FC = () => (
       <ScubaDivingRounded />
     </Avatar>
     <Box width="100%">
-      <Chip size="sm" sx={{ width: "100%" }} />
-      <Chip size="sm" sx={{ width: "100%" }} />
+      <Chip size="sm" sx={{ width: "100%", borderRadius: 6 }} />
+      <Chip size="sm" sx={{ width: "100%", borderRadius: 6 }} />
 
       <Box
         mt={2}
