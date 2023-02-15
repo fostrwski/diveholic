@@ -22,6 +22,7 @@ const Home: React.FC<HomeProps> = ({ user, dives }) => {
 
   useEffect(() => {
     router.replace(router.asPath);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
