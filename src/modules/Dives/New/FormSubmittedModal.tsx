@@ -26,8 +26,7 @@ const FormSubmittedModal: React.FC<FormSubmittedModalProps> = ({
   };
 
   const handleContinue = () => {
-    handleModalClose();
-    router.push("/").then(() => router.replace("/"));
+    router.push("/");
   };
 
   const handleAddAnotherDive = () => {
