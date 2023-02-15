@@ -72,11 +72,11 @@ const DateTimePicker: React.FC<DateTimePickerProps> = ({ initialDate }) => {
                   <Link
                     component="button"
                     type="button"
+                    color="neutral"
                     onClick={handleModalToggle}
                     level="h5"
-                    color="neutral"
                     aria-label="Set date"
-                    sx={{ p: 0, fontWeight: "lg" }}
+                    sx={{ p: 0, fontWeight: "xl" }}
                     data-cy="DateTimePicker-setDateAndTime"
                   >
                     Click here to set
