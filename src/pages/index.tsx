@@ -12,7 +12,8 @@ export const getServerSideProps = withPageAuth({
   async getServerSideProps(ctx) {
     const { data: dives } = await supabaseServerClient(ctx)
       .from("dives")
-      .select("*");
+      .select("*")
+      .order("date", { ascending: false });
     return { props: { dives } };
   }
 });
