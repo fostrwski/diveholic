@@ -42,7 +42,7 @@ const Dive: React.FC = () => {
 
     if (error) console.error(error);
 
-    router.push("/");
+    router.push("/", undefined, { unstable_skipClientCache: true });
   };
 
   useEffect(() => {
