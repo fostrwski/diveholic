@@ -34,9 +34,7 @@ const Edit: React.FC<EditProps> = ({ user }) => {
 
     setSubmitted(true);
 
-    router.push(`/dives/${diveId}`, undefined, {
-      unstable_skipClientCache: true
-    });
+    router.push(`/dives/${diveId}`);
   };
 
   return (

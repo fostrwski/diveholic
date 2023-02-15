@@ -27,7 +27,7 @@ const FormSubmittedModal: React.FC<FormSubmittedModalProps> = ({
 
   const handleContinue = () => {
     handleModalClose();
-    router.push("/", undefined, { unstable_skipClientCache: true });
+    router.push("/");
   };
 
   const handleAddAnotherDive = () => {
