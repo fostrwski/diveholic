@@ -2,50 +2,32 @@ import AddRounded from "@mui/icons-material/AddRounded";
 import Button from "@mui/joy/Button";
 import Grid from "@mui/joy/Grid";
 import Typography from "@mui/joy/Typography";
-import { useUser } from "@supabase/auth-helpers-react";
+import type { User } from "@supabase/supabase-js";
 import type { Dive } from "common/types";
-import { supabase } from "common/utils/supabaseClient";
 import NextLink from "next/link";
-import React, { useEffect, useMemo, useState } from "react";
+import { useRouter } from "next/router";
+import React, { useEffect, useMemo } from "react";
 
 import LatestDives from "./LatestDives";
 import Statistics from "./Statistics";
 
-const Home: React.FC = () => {
-  const { user, isLoading: userLoading } = useUser();
-  const [dives, setDives] = useState<Array<Dive>>([]);
-  const [error, setError] = useState<boolean>();
-  const [loading, setLoading] = useState<boolean>(false);
+interface HomeProps {
+  user: User;
+  dives: Array<Dive>;
+}
+
+const Home: React.FC<HomeProps> = ({ user, dives }) => {
+  const router = useRouter();
+  const divesCount = useMemo(() => dives.length, [dives.length]);
 
   useEffect(() => {
-    const getDives = async () => {
-      setError(false);
-      setLoading(true);
-      const { data, error } = await supabase
-        .from<Dive>("dives")
-        .select("*")
-        .order("date", { ascending: false });
-
-      if (error) {
-        setError(true);
-        console.error(error);
-        return setLoading(false);
-      }
-
-      if (data) setDives(data);
-
-      setLoading(false);
-    };
-
-    if (user) getDives();
-  }, [user]);
-
-  const divesCount = useMemo(() => dives.length, [dives.length]);
+    router.replace(router.asPath);
+  }, [router]);
 
   return (
     <>
       <Typography level="h4" component="h1">
-        Hey {userLoading ? "there" : user?.user_metadata.first_name} 🤿
+        Hi {user.user_metadata.first_name} 🤿
       </Typography>
 
       <Typography level="h6" textColor="GrayText" component="h2">
@@ -81,14 +63,12 @@ const Home: React.FC = () => {
 
       <Grid container gap={6} mt={6}>
         <Grid xs={12}>
-          <LatestDives dives={dives} loading={loading} />
+          <LatestDives dives={dives} />
         </Grid>
 
-        {!loading && (
-          <Grid xs={12}>
-            <Statistics dives={dives} />
-          </Grid>
-        )}
+        <Grid xs={12}>
+          <Statistics dives={dives} />
+        </Grid>
       </Grid>
     </>
   );

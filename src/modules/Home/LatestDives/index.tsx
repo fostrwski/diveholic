@@ -7,10 +7,9 @@ import DiveCards from "./DiveCards";
 
 interface LatestDivesProps {
   dives: Array<Dive>;
-  loading: boolean;
 }
 
-const LatestDives: React.FC<LatestDivesProps> = ({ dives, loading }) => (
+const LatestDives: React.FC<LatestDivesProps> = ({ dives }) => (
   <>
     <Typography
       level="h5"
@@ -21,7 +20,7 @@ const LatestDives: React.FC<LatestDivesProps> = ({ dives, loading }) => (
       Latest dives
     </Typography>
 
-    <DiveCards dives={dives.slice(0, 2)} loading={loading} />
+    <DiveCards dives={dives.slice(0, 2)} />
   </>
 );
 
