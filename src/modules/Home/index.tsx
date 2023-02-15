@@ -5,8 +5,7 @@ import Typography from "@mui/joy/Typography";
 import type { User } from "@supabase/supabase-js";
 import type { Dive } from "common/types";
 import NextLink from "next/link";
-import { useRouter } from "next/router";
-import React, { useEffect, useMemo } from "react";
+import React, { useMemo } from "react";
 
 import LatestDives from "./LatestDives";
 import Statistics from "./Statistics";
@@ -17,13 +16,7 @@ interface HomeProps {
 }
 
 const Home: React.FC<HomeProps> = ({ user, dives }) => {
-  const router = useRouter();
   const divesCount = useMemo(() => dives.length, [dives.length]);
-
-  useEffect(() => {
-    router.replace(router.asPath);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [router]);
 
   return (
     <>
