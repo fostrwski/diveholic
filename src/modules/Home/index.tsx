@@ -22,7 +22,7 @@ const Home: React.FC<HomeProps> = ({ user, dives }) => {
 
   useEffect(() => {
     router.replace(router.asPath);
-  }, [router]);
+  }, []);
 
   return (
     <>
