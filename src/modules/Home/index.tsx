@@ -4,7 +4,7 @@ import Grid from "@mui/joy/Grid";
 import Typography from "@mui/joy/Typography";
 import { User } from "@supabase/auth-helpers-nextjs";
 import NextLink from "next/link";
-import React, { useMemo } from "react";
+import React, { useEffect, useMemo } from "react";
 
 import LatestDives from "./LatestDives";
 import Statistics from "./Statistics";
@@ -16,6 +16,10 @@ interface HomeProps {
 
 const Home: React.FC<HomeProps> = ({ user, dives }) => {
   const divesCount = useMemo(() => dives.length, [dives]);
+
+  useEffect(() => {
+    console.log(dives);
+  }, [dives]);
 
   return (
     <>
