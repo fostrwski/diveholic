@@ -11,8 +11,7 @@ import { useUser } from "@supabase/auth-helpers-react";
 import generateInitials from "common/utils/generateInitials";
 import Image from "next/image";
 import NextLink from "next/link";
-import { useRouter } from "next/router";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 interface DefaultLayoutProps {
   children: React.ReactNode;
@@ -29,20 +28,6 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
       setInitials(generateInitials(firstName));
     }
   }, [user]);
-
-  const router = useRouter();
-
-  const handleRouteChangeComplete = useMemo(() => (url: string) => {
-    if (url === "/") router.replace("/");
-  }, [router])
-
-  useEffect(() => {
-    router.events.on("routeChangeComplete", handleRouteChangeComplete);
-
-    return () => {
-      router.events.off("routeChangeComplete", handleRouteChangeComplete);
-    };
-  }, [router, handleRouteChangeComplete]);
 
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
