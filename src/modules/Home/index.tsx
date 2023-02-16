@@ -6,6 +6,7 @@ import Grid from "@mui/joy/Grid";
 import IconButton from "@mui/joy/IconButton";
 import Typography from "@mui/joy/Typography";
 import type { User } from "@supabase/supabase-js";
+import NoDivesFound from "common/components/NoDivesFound";
 import type { Dive } from "common/types";
 import NextLink from "next/link";
 import { useRouter } from "next/router";
@@ -31,7 +32,7 @@ const Home: React.FC<HomeProps> = ({ user, dives }) => {
       </Typography>
 
       <Typography level="h6" textColor="GrayText" component="h2">
-        {dives?.length ? (
+        {divesCount ? (
           <>
             You've logged{" "}
             <Typography component="span" color="primary">
@@ -75,20 +76,26 @@ const Home: React.FC<HomeProps> = ({ user, dives }) => {
         </IconButton>
       </Box>
 
-      <Grid
-        container
-        columnSpacing={{ xs: 0, sm: 2 }}
-        gap={{ xs: 6, sm: 0 }}
-        mt={6}
-      >
-        <Grid xs={12} sm={6} md={8}>
-          <LatestDives dives={dives} />
-        </Grid>
+      {divesCount ? (
+        <Grid
+          container
+          columnSpacing={{ xs: 0, sm: 2 }}
+          gap={{ xs: 6, sm: 0 }}
+          mt={6}
+        >
+          <Grid xs={12} sm={6} md={8}>
+            <LatestDives dives={dives} />
+          </Grid>
 
-        <Grid xs={12} sm={6} md={4}>
-          <Statistics dives={dives} />
+          <Grid xs={12} sm={6} md={4}>
+            <Statistics dives={dives} />
+          </Grid>
         </Grid>
-      </Grid>
+      ) : (
+        <Box mt={6}>
+          <NoDivesFound />
+        </Box>
+      )}
     </>
   );
 };
