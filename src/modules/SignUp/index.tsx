@@ -63,7 +63,11 @@ const SignUp: React.FC = () => {
           }
         }
       );
-      if (error) return setError(error.message);
+      if (error) {
+        console.error(error);
+        return setError(error.message);
+      }
+
       setSuccess(true);
     } catch (error: any) {
       console.error(error.error_description || error.message);
