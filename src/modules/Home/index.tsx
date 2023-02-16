@@ -1,10 +1,14 @@
 import AddRounded from "@mui/icons-material/AddRounded";
+import RefreshRounded from "@mui/icons-material/RefreshRounded";
+import Box from "@mui/joy/Box";
 import Button from "@mui/joy/Button";
 import Grid from "@mui/joy/Grid";
+import IconButton from "@mui/joy/IconButton";
 import Typography from "@mui/joy/Typography";
 import type { User } from "@supabase/supabase-js";
 import type { Dive } from "common/types";
 import NextLink from "next/link";
+import { useRouter } from "next/router";
 import React, { useMemo } from "react";
 
 import LatestDives from "./LatestDives";
@@ -16,6 +20,8 @@ interface HomeProps {
 }
 
 const Home: React.FC<HomeProps> = ({ user, dives }) => {
+  const router = useRouter();
+
   const divesCount = useMemo(() => dives.length, [dives]);
 
   return (
@@ -44,16 +50,30 @@ const Home: React.FC<HomeProps> = ({ user, dives }) => {
         )}
       </Typography>
 
-      <NextLink href="/dives/new" passHref>
-        <Button
-          sx={{ mt: 2 }}
-          startDecorator={<AddRounded />}
-          component="a"
-          size="lg"
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          gap: 2,
+          mt: 2
+        }}
+      >
+        <NextLink href="/dives/new" passHref>
+          <Button startDecorator={<AddRounded />} component="a" size="lg">
+            Log dive
+          </Button>
+        </NextLink>
+
+        <IconButton
+          color="neutral"
+          size="sm"
+          variant="plain"
+          onClick={() => router.replace("/")}
         >
-          Log dive
-        </Button>
-      </NextLink>
+          <RefreshRounded />
+        </IconButton>
+      </Box>
 
       <Grid container gap={6} mt={6}>
         <Grid xs={12}>
