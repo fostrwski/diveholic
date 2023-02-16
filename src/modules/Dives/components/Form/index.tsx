@@ -1,3 +1,4 @@
+import { getCountryCode, getCountryFlag } from "@franekostrowski/country-utils";
 import DoneRounded from "@mui/icons-material/DoneRounded";
 import ErrorOutlineRounded from "@mui/icons-material/ErrorOutlineRounded";
 import SaveRounded from "@mui/icons-material/SaveRounded";
@@ -16,8 +17,6 @@ import Gear from "./Gear";
 import Tabs from "./Tabs";
 import Temperature from "./Temperature";
 import type { FormFields } from "./types";
-import getCountryCode from "./utils/getCountryCode";
-import getFlagEmoji from "./utils/getFlagEmoji";
 
 interface FormProps {
   onSubmit: () => void;
@@ -39,7 +38,7 @@ const Form: React.FC<FormProps> = ({ onSubmit, submitted }) => {
     const countryCode = getCountryCode(watchLocationCountryName);
     let flagEmoji = "";
     if (countryCode) {
-      flagEmoji = getFlagEmoji(countryCode);
+      flagEmoji = getCountryFlag(countryCode);
       setValue("location.country.code", countryCode);
       setValue("location.country.flagEmoji", flagEmoji);
     } else {
