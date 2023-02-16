@@ -15,7 +15,10 @@ export default class MyDocument extends Document {
           />
 
           <link rel="apple-touch-icon" href="/pwa/apple-icon-180.png" />
-
+          <meta
+            name="apple-mobile-web-app-status-bar-style"
+            content="black-translucent"
+          />
           <meta name="apple-mobile-web-app-capable" content="yes" />
 
           <link
