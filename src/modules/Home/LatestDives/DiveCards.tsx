@@ -1,6 +1,6 @@
+import { Grid } from "@mui/joy";
 import Box from "@mui/joy/Box";
 import Button from "@mui/joy/Button";
-import Grid from "@mui/joy/Grid";
 import DiveCard from "common/components/DiveCard";
 import type { Dive } from "common/types";
 import NextLink from "next/link";
@@ -12,11 +12,13 @@ interface DiveCardsProps {
 
 const DiveCards: React.FC<DiveCardsProps> = ({ dives }) => (
   <>
-    {dives.map((dive: Dive) => (
-      <Grid xs={12} lg={4} key={dive.id}>
-        <DiveCard dive={dive} />
-      </Grid>
-    ))}
+    <Grid container rowSpacing={{ xs: 0, md: 2 }}>
+      {dives.map((dive: Dive) => (
+        <Grid key={dive.id} xs={12} md={6}>
+          <DiveCard dive={dive} />
+        </Grid>
+      ))}
+    </Grid>
 
     <Box textAlign="center" mt={2}>
       <NextLink href="/dives">

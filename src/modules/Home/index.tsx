@@ -75,12 +75,17 @@ const Home: React.FC<HomeProps> = ({ user, dives }) => {
         </IconButton>
       </Box>
 
-      <Grid container gap={6} mt={6}>
-        <Grid xs={12}>
+      <Grid
+        container
+        columnSpacing={{ xs: 0, sm: 2 }}
+        gap={{ xs: 6, sm: 0 }}
+        mt={6}
+      >
+        <Grid xs={12} sm={6} md={8}>
           <LatestDives dives={dives} />
         </Grid>
 
-        <Grid xs={12}>
+        <Grid xs={12} sm={6} md={4}>
           <Statistics dives={dives} />
         </Grid>
       </Grid>
