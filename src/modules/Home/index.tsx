@@ -23,8 +23,6 @@ interface HomeProps {
 const Home: React.FC<HomeProps> = ({ user, dives }) => {
   const router = useRouter();
 
-  const divesCount = useMemo(() => dives.length, [dives]);
-
   return (
     <>
       <Typography level="h4" component="h1">
@@ -32,11 +30,11 @@ const Home: React.FC<HomeProps> = ({ user, dives }) => {
       </Typography>
 
       <Typography level="h6" textColor="GrayText" component="h2">
-        {divesCount ? (
+        {dives.length ? (
           <>
             You've logged{" "}
             <Typography component="span" color="primary">
-              {divesCount} {divesCount === 1 ? "dive" : "dives"}
+              {dives.length} {dives.length === 1 ? "dive" : "dives"}
             </Typography>{" "}
             so far
           </>
@@ -76,7 +74,7 @@ const Home: React.FC<HomeProps> = ({ user, dives }) => {
         </IconButton>
       </Box>
 
-      {divesCount ? (
+      {dives.length ? (
         <Grid
           container
           columnSpacing={{ xs: 0, sm: 2 }}
