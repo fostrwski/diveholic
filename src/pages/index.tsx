@@ -27,7 +27,7 @@ interface HomePageProps {
 export default function HomePage({ user, dives }: HomePageProps) {
   return (
     <DefaultLayout>
-      <Home user={user} dives={dives} />
+      <Home user={user} initialDives={dives} />
     </DefaultLayout>
   );
 }
