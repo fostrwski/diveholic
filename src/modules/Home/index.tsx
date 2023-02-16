@@ -4,39 +4,19 @@ import Grid from "@mui/joy/Grid";
 import Typography from "@mui/joy/Typography";
 import type { User } from "@supabase/supabase-js";
 import type { Dive } from "common/types";
-import { supabase } from "common/utils/supabaseClient";
 import NextLink from "next/link";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useMemo } from "react";
 
 import LatestDives from "./LatestDives";
 import Statistics from "./Statistics";
 
 interface HomeProps {
   user: User;
-  initialDives: Array<Dive>;
+  dives: Array<Dive>;
 }
 
-const Home: React.FC<HomeProps> = ({ user, initialDives }) => {
-  const [dives, setDives] = useState<Array<Dive>>(initialDives);
-
-  useEffect(() => {
-    const getDives = async () => {
-      const { data } = await supabase
-        .from<Dive>("dives")
-        .select("*")
-        .order("date", { ascending: false });
-
-      if (data === dives) return;
-
-      if (!data) return setDives([]);
-
-      setDives(data);
-    };
-
-    getDives();
-  }, [dives]);
-
-  const divesCount = useMemo(() => dives.length, [dives.length]);
+const Home: React.FC<HomeProps> = ({ user, dives }) => {
+  const divesCount = useMemo(() => dives.length, [dives]);
 
   return (
     <>
