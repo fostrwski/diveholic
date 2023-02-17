@@ -154,7 +154,7 @@ const SignIn: React.FC = () => {
           <NextLink href="/signup" passHref>
             <Button
               color="neutral"
-              variant="plain"
+              variant="outlined"
               type="button"
               fullWidth
               size="lg"

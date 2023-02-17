@@ -17,7 +17,12 @@ const LearnHowToInstallButton: React.FC = () => {
       <Alert
         color="info"
         size="sm"
-        sx={{ borderTopLeftRadius: 0, borderTopRightRadius: 0 }}
+        sx={{
+          borderTopLeftRadius: 0,
+          borderTopRightRadius: 0,
+          position: "absolute",
+          inset: "auto 0"
+        }}
       >
         <MuiLink
           startDecorator={<DownloadRounded />}

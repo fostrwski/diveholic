@@ -23,14 +23,18 @@ const AuthLayout: React.FC<AuthLayoutProps> = ({ title, icon, children }) => {
   }, []);
 
   return (
-    <>
+    <Box height="100vh">
       {showLearnHowToInstall && <LearnHowToInstallButton />}
 
       <Container
         component="main"
         sx={{
-          py: showLearnHowToInstall ? 8 : 10,
-          px: 4
+          py: 10,
+          px: 4,
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          minHeight: "100%"
         }}
         maxWidth="xs"
       >
@@ -70,7 +74,7 @@ const AuthLayout: React.FC<AuthLayoutProps> = ({ title, icon, children }) => {
 
         <Box mt={2}>{children}</Box>
       </Container>
-    </>
+    </Box>
   );
 };
 

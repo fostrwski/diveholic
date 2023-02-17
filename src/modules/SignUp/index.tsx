@@ -185,7 +185,7 @@ const SignUp: React.FC = () => {
             <Button
               component="a"
               color="neutral"
-              variant="plain"
+              variant="outlined"
               type="button"
               fullWidth
               size="lg"
