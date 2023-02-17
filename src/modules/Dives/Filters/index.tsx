@@ -1,7 +1,12 @@
 import FilterListRounded from "@mui/icons-material/FilterListRounded";
+import KeyboardArrowDownRounded from "@mui/icons-material/KeyboardArrowDownRounded";
+import KeyboardArrowUpRounded from "@mui/icons-material/KeyboardArrowUpRounded";
 import Badge from "@mui/joy/Badge";
 import Box from "@mui/joy/Box";
 import Button from "@mui/joy/Button";
+import ListItemDecorator from "@mui/joy/ListItemDecorator";
+import Menu from "@mui/joy/Menu";
+import MenuItem from "@mui/joy/MenuItem";
 import type { Dive } from "common/types";
 import React, {
   type Dispatch,
@@ -17,10 +22,42 @@ interface FiltersProps {
   dives: Array<Dive>;
   filters: FiltersState;
   setFilters: Dispatch<SetStateAction<FiltersState>>;
+  sortBy: string;
+  setSortBy: Dispatch<SetStateAction<string>>;
 }
 
-const Filters: React.FC<FiltersProps> = ({ dives, filters, setFilters }) => {
+const sortingOptions = [
+  {
+    title: "Latest dives",
+    value: "dateDescending",
+    startDecorator: <KeyboardArrowDownRounded />
+  },
+  {
+    title: "Oldest dives",
+    value: "dateAscending",
+    startDecorator: <KeyboardArrowUpRounded />
+  },
+];
+
+const Filters: React.FC<FiltersProps> = ({
+  dives,
+  filters,
+  setFilters,
+  sortBy,
+  setSortBy
+}) => {
   const [showFilters, setShowFilters] = useState<boolean>(false);
+
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+
+  const handleCloseMenu = () => {
+    setAnchorEl(null);
+  };
+
+  const handleOpenMenu = (e: any) => {
+    setAnchorEl(e.currentTarget);
+  };
 
   const handleFiltersToggle = () => {
     setShowFilters(!showFilters);
@@ -52,7 +89,29 @@ const Filters: React.FC<FiltersProps> = ({ dives, filters, setFilters }) => {
           </Button>
         </Badge>
 
-        <Button color="neutral" variant="plain">
+        <Menu
+          open={open}
+          anchorEl={anchorEl}
+          onClose={handleCloseMenu}
+          placement="bottom-end"
+          variant="plain"
+          size="sm"
+        >
+          {sortingOptions.map((sortingOption) => (
+            <MenuItem
+              key={sortingOption.title}
+              color={sortBy === sortingOption.value ? "info" : "neutral"}
+              onClick={() => setSortBy(sortingOption.value)}
+            >
+              <ListItemDecorator>
+                {sortingOption.startDecorator}
+              </ListItemDecorator>
+              {sortingOption.title}
+            </MenuItem>
+          ))}
+        </Menu>
+
+        <Button color="neutral" variant="plain" onClick={handleOpenMenu}>
           Sort
         </Button>
       </Box>

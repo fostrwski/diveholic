@@ -19,6 +19,8 @@ const Dives: React.FC = () => {
   const [error, setError] = useState<boolean>();
   const [loading, setLoading] = useState<boolean>(false);
 
+  const [sortBy, setSortBy] = useState<string>("dateDescending");
+
   const [filters, setFilters] = useState<FiltersState>({
     countryCodes: []
   });
@@ -30,7 +32,7 @@ const Dives: React.FC = () => {
       const { data, error } = await supabase
         .from<Dive>("dives")
         .select("*")
-        .order("date", { ascending: false });
+        .order("date", { ascending: sortBy === "dateAscending" });
 
       if (error) {
         setError(true);
@@ -44,7 +46,7 @@ const Dives: React.FC = () => {
     };
 
     if (user) getDives();
-  }, [user]);
+  }, [user, sortBy]);
 
   const filteredDives = useMemo(
     () => filterDives(dives, filters),
@@ -53,7 +55,13 @@ const Dives: React.FC = () => {
 
   return (
     <>
-      <Filters dives={dives} filters={filters} setFilters={setFilters} />
+      <Filters
+        dives={dives}
+        filters={filters}
+        setFilters={setFilters}
+        sortBy={sortBy}
+        setSortBy={setSortBy}
+      />
 
       <Typography mt={2} level="subtitle1">
         Found {filteredDives.length} dives
@@ -61,7 +69,7 @@ const Dives: React.FC = () => {
 
       <Grid container sx={{ mt: 2 }}>
         {filteredDives.map((dive: Dive) => (
-          <Grid xs={12} key={dive.id}>
+          <Grid xs={12} md={4} key={dive.id}>
             <DiveCard dive={dive} />
           </Grid>
         ))}
