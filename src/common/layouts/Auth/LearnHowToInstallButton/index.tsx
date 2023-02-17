@@ -30,11 +30,11 @@ const LearnHowToInstallButton: React.FC = () => {
             mx: {
               xs: "auto",
               sm: "initial"
-            }
+            },
           }}
           color="info"
           component="button"
-          fontWeight="lg"
+          fontWeight="xl"
           onClick={handleModalToggle}
         >
           Learn how to install Diveholic
