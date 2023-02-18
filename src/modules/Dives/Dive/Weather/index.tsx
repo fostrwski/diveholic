@@ -44,7 +44,7 @@ const Weather: React.FC<WeatherProps> = ({ dive }) => {
   ];
 
   return (
-    <Box mt={6}>
+    <>
       <TextSeparator>Weather</TextSeparator>
 
       <Box sx={{ display: "flex", gap: 2, flexDirection: "column", mt: 4 }}>
@@ -79,7 +79,7 @@ const Weather: React.FC<WeatherProps> = ({ dive }) => {
           );
         })}
       </Box>
-    </Box>
+    </>
   );
 };
 

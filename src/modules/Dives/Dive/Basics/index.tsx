@@ -44,7 +44,7 @@ const Basics: React.FC<BasicInformationProps> = ({ dive }) => {
 
   return (
     <>
-      <Typography component="p" mb={2} level="subtitle1">
+      <Typography component="p" mb={{ xs: 2, sm: 0 }} level="subtitle1">
         Basic information
       </Typography>
 

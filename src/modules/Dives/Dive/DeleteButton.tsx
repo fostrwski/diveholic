@@ -24,13 +24,13 @@ const DeleteButton: React.FC<DeleteButtonProps> = ({ handleDiveDelete }) => {
   return (
     <>
       <Button
-        sx={{ mt: 2 }}
         color="danger"
-        fullWidth
         startDecorator={<DeleteRounded />}
         onClick={handleModalToggle}
         variant="plain"
         aria-label="Delete dive"
+        size="lg"
+        sx={{ width: { xs: "100%", sm: "initial" } }}
       >
         Delete
       </Button>

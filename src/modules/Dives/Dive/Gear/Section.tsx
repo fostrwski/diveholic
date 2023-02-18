@@ -1,4 +1,3 @@
-import Box from "@mui/joy/Box";
 import Grid from "@mui/joy/Grid";
 import Typography from "@mui/joy/Typography";
 import InfoCard, { type InfoCardProps } from "common/components/InfoCard";
@@ -13,9 +12,9 @@ const Section: React.FC<SectionProps> = ({ title, infoCards }) => {
   if (infoCards.length === 0) return <></>;
 
   return (
-    <Box mt={4}>
+    <>
       {title && (
-        <Typography mb={2} component="p" level="subtitle1">
+        <Typography mb={{xs:2, sm:0}} component="p" level="subtitle1">
           {title}
         </Typography>
       )}
@@ -31,7 +30,7 @@ const Section: React.FC<SectionProps> = ({ title, infoCards }) => {
           </Grid>
         ))}
       </Grid>
-    </Box>
+    </>
   );
 };
 

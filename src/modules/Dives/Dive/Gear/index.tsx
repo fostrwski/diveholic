@@ -2,7 +2,7 @@ import LineWeightRounded from "@mui/icons-material/LineWeightRounded";
 import NumbersRounded from "@mui/icons-material/NumbersRounded";
 import ScubaDivingRounded from "@mui/icons-material/ScubaDivingRounded";
 import TitleRounded from "@mui/icons-material/TitleRounded";
-import Box from "@mui/joy/Box";
+import Grid from "@mui/joy/Grid";
 import TextSeparator from "common/components/TextSeparator";
 import type { Dive } from "common/types";
 import React from "react";
@@ -68,18 +68,30 @@ const Gear: React.FC<DetailsProps> = ({ dive }) => {
     return <></>;
 
   return (
-    <Box mt={6}>
+    <>
       <TextSeparator>Gear</TextSeparator>
 
-      <Section
-        title="Exposure protection"
-        infoCards={exposureProtectionInfoCards}
-      />
+      <Grid
+        container
+        sx={{ mt: { xs: 4, sm: 2 }, gap: { xs: 2, sm: 0 } }}
+        spacing="initial"
+      >
+        <Grid xs={12} sm={6}>
+          <Section
+            title="Exposure protection"
+            infoCards={exposureProtectionInfoCards}
+          />
+        </Grid>
 
-      <Section title="Tanks" infoCards={tanksInfoCards} />
+        <Grid xs={12} sm={6}>
+          <Section title="Tanks" infoCards={tanksInfoCards} />
+        </Grid>
 
-      <Section title="Other gear" infoCards={otherGearInfoCards} />
-    </Box>
+        <Grid xs={12} sm={6}>
+          <Section title="Other gear" infoCards={otherGearInfoCards} />
+        </Grid>
+      </Grid>
+    </>
   );
 };
 
