@@ -100,14 +100,20 @@ const DiveView: React.FC<DiveViewProps> = ({ dive }) => {
           <Gear dive={dive} />
         </Grid>
 
-        <Grid xs={12} sm={6}>
+        <Grid xs={12}>
           {(dive.diveBuddy || dive.notes) && (
-            <>
+            <Box
+              sx={{
+                display: "flex",
+                gap: 2,
+                flexDirection: { xs: "column", sm: "row" }
+              }}
+            >
               {dive.diveBuddy && (
                 <InfoCard title="Dive buddy" content={dive.diveBuddy} />
               )}
               {dive.notes && <InfoCard title="Notes" content={dive.notes} />}
-            </>
+            </Box>
           )}
         </Grid>
       </Grid>
