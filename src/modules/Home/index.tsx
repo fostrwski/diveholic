@@ -30,7 +30,7 @@ const Home: React.FC<HomeProps> = ({ user, dives }) => {
       </Typography>
 
       <Typography level="h6" textColor="GrayText" component="h2">
-        {dives.length ? (
+        {dives?.length ? (
           <>
             You've logged{" "}
             <Typography component="span" color="primary">
@@ -74,7 +74,7 @@ const Home: React.FC<HomeProps> = ({ user, dives }) => {
         </IconButton>
       </Box>
 
-      {dives.length ? (
+      {dives?.length ? (
         <Grid
           container
           columnSpacing={{ xs: 0, sm: 2 }}
