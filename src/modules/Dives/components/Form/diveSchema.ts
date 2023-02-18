@@ -1,7 +1,6 @@
+import { listOfCountries } from "@franekostrowski/country-utils";
 import type { Dive } from "common/types";
 import { number, object, setLocale, string } from "yup";
-
-import listOfCountries from "./utils/listOfCountries";
 
 setLocale({
   mixed: {
