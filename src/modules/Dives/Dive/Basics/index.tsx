@@ -4,67 +4,13 @@ import ScaleRounded from "@mui/icons-material/ScaleRounded";
 import TimelapseRounded from "@mui/icons-material/TimelapseRounded";
 import TitleRounded from "@mui/icons-material/TitleRounded";
 import WavesRounded from "@mui/icons-material/WavesRounded";
-import Box from "@mui/joy/Box";
-import Chip from "@mui/joy/Chip";
 import Grid from "@mui/joy/Grid";
 import Typography from "@mui/joy/Typography";
 import InfoCard from "common/components/InfoCard";
 import type { Dive } from "common/types";
 import React from "react";
 
-interface AmmountInformationProps {
-  ammount: Dive["weights"]["ammount"];
-}
-
-const AmmountInformation: React.FC<AmmountInformationProps> = ({ ammount }) => {
-  const getAmmountText = () => {
-    switch (ammount) {
-      case "tooLittle":
-        return "Too little weights";
-      case "tooMuch":
-        return "Too much weights";
-      default:
-        return "Perfect weights ammount";
-    }
-  };
-
-  const getAmmountTip = () => {
-    switch (ammount) {
-      case "tooLittle":
-        return "Take more weights next time";
-      case "tooMuch":
-        return "Take less weights next time";
-      default:
-    }
-  };
-
-  return (
-    <Box sx={{ display: "flex", gap: 1.2, flexWrap: "wrap" }}>
-      <Chip
-        component="div"
-        startDecorator={<ScaleRounded />}
-        color={ammount === "perfect" ? "success" : "info"}
-        variant="outlined"
-      >
-        {getAmmountText()}
-      </Chip>
-
-      {getAmmountTip() && (
-        <Typography
-          component="p"
-          sx={{ alignItems: "start" }}
-          startDecorator={
-            <Chip variant="outlined" color="warning" size="sm" component="span">
-              Tip
-            </Chip>
-          }
-        >
-          {getAmmountTip()}
-        </Typography>
-      )}
-    </Box>
-  );
-};
+import AmmountInformation from "./AmmountInformation";
 
 interface BasicInformationProps {
   dive: Dive;
