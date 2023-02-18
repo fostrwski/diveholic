@@ -13,7 +13,14 @@ export interface InfoCardProps {
 const InfoCard: React.FC<InfoCardProps> = ({ title, content, unit, icon }) => (
   <Sheet
     variant="soft"
-    sx={{ display: "flex", alignItems: "center", gap: 2, px: 2, py: 1.4 }}
+    sx={{
+      width: "100%",
+      display: "flex",
+      alignItems: "center",
+      gap: 2,
+      px: 2,
+      py: 1.4
+    }}
   >
     <Box>
       <Typography
