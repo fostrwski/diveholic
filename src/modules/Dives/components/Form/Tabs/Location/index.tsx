@@ -1,3 +1,4 @@
+import { listOfCountries } from "@franekostrowski/country-utils";
 import FlagRounded from "@mui/icons-material/FlagRounded";
 import PublicRounded from "@mui/icons-material/PublicRounded";
 import Autocomplete, { createFilterOptions } from "@mui/joy/Autocomplete";
@@ -11,7 +12,6 @@ import React from "react";
 import { Controller, useFormContext } from "react-hook-form";
 
 import type { FormFields } from "../../types";
-import listOfCountries from "../../utils/listOfCountries";
 import PreviousDiveLocationButton from "./PreviousDiveLocationButton";
 
 const Location: React.FC = () => {
