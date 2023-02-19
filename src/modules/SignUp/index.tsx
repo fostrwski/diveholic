@@ -89,75 +89,76 @@ const SignUp: React.FC = () => {
 
   return (
     <AuthLayout title="Create account" icon={<PersonAddRounded />}>
-      <Box
-        component="form"
-        display="flex"
-        flexDirection="column"
-        gap={2}
-        onSubmit={handleSubmit}
-      >
-        <TextField
-          placeholder="joe@example.com"
-          type="email"
-          startDecorator={<AlternateEmailRounded />}
-          onChange={onEmailChange}
-          value={email}
-          size="lg"
-          required
-          label="Email"
-        />
-        <TextField
-          type={showPassword ? "text" : "password"}
-          startDecorator={<KeyRounded />}
-          onChange={onPasswordChange}
-          value={password}
-          size="lg"
-          required
-          label="Password"
-          endDecorator={
-            <IconButton
-              aria-label="Toggle password visibility"
-              color="neutral"
-              variant="plain"
-              onClick={handleShowPassword}
+      <form onSubmit={handleSubmit}>
+        <Box display="flex" flexDirection="column" gap={2}>
+          <TextField
+            placeholder="joe@example.com"
+            type="email"
+            startDecorator={<AlternateEmailRounded />}
+            onChange={onEmailChange}
+            value={email}
+            size="lg"
+            required
+            label="Email"
+          />
+          <TextField
+            type={showPassword ? "text" : "password"}
+            startDecorator={<KeyRounded />}
+            onChange={onPasswordChange}
+            value={password}
+            size="lg"
+            required
+            label="Password"
+            endDecorator={
+              <IconButton
+                aria-label="Toggle password visibility"
+                color="neutral"
+                variant="plain"
+                onClick={handleShowPassword}
+              >
+                {showPassword ? (
+                  <VisibilityOffRounded />
+                ) : (
+                  <VisibilityRounded />
+                )}
+              </IconButton>
+            }
+          />
+          <TextField
+            placeholder="Joe"
+            type="text"
+            startDecorator={<PersonRounded />}
+            onChange={onFirstNameChange}
+            value={firstName}
+            size="lg"
+            required
+            label="First name"
+          />
+
+          {success && (
+            <Typography
+              color="success"
+              textAlign="left"
+              startDecorator={<SendRounded />}
+              sx={{ alignItems: "flex-start" }}
             >
-              {showPassword ? <VisibilityOffRounded /> : <VisibilityRounded />}
-            </IconButton>
-          }
-        />
-        <TextField
-          placeholder="Joe"
-          type="text"
-          startDecorator={<PersonRounded />}
-          onChange={onFirstNameChange}
-          value={firstName}
-          size="lg"
-          required
-          label="First name"
-        />
+              Confirmation link was sent to your email
+            </Typography>
+          )}
 
-        {success && (
-          <Typography
-            color="success"
-            textAlign="left"
-            startDecorator={<SendRounded />}
-          >
-            Confirmation link was sent to your email
-          </Typography>
-        )}
+          {error && (
+            <Typography
+              color="danger"
+              textAlign="left"
+              startDecorator={<ErrorOutlineRounded />}
+              sx={{ alignItems: "flex-start" }}
+            >
+              {error}
+            </Typography>
+          )}
+        </Box>
 
-        {error && (
-          <Typography
-            mt={2}
-            color="danger"
-            textAlign="left"
-            startDecorator={<ErrorOutlineRounded />}
-          >
-            {error}
-          </Typography>
-        )}
-
-        <Box sx={{ mt: 4, display: "flex", flexDirection: "column", gap: 2.8 }}>
+        <Box sx={{ mt: 8, display: "flex", flexDirection: "column", gap: 2.8 }}>
           <Button
             color={success ? "success" : "primary"}
             type="submit"
@@ -194,7 +195,7 @@ const SignUp: React.FC = () => {
             </Button>
           </NextLink>
         </Box>
-      </Box>
+      </form>
     </AuthLayout>
   );
 };

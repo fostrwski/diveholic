@@ -73,7 +73,7 @@ const SignIn: React.FC = () => {
 
   return (
     <AuthLayout>
-      <Box component="form" onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <TextField
           placeholder="joe@example.com"
           startDecorator={<AlternateEmailRounded />}
@@ -164,7 +164,7 @@ const SignIn: React.FC = () => {
             </Button>
           </NextLink>
         </Box>
-      </Box>
+      </form>
     </AuthLayout>
   );
 };
