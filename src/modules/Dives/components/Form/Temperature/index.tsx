@@ -8,13 +8,8 @@ import TemperatureSlider from "./Slider";
 
 const Temperature: React.FC = () => (
   <>
-    <TextSeparator sx={{ mt: 8 }}>Weather</TextSeparator>
-    <Typography
-      mb={2}
-      mt={4}
-      component="p"
-      level="subtitle1"
-    >
+    <TextSeparator>Weather</TextSeparator>
+    <Typography mb={2} mt={4} component="p" level="subtitle1">
       Temperature
     </Typography>
     <Grid container spacing={4} justifyContent="space-between" sx={{ px: 2 }}>

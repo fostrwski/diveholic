@@ -27,7 +27,7 @@ const Gear: React.FC = () => {
 
   return (
     <>
-      <TextSeparator sx={{ mt: 10 }}>Gear</TextSeparator>
+      <TextSeparator>Gear</TextSeparator>
 
       <Typography mb={2} component="p" level="subtitle1" mt={4}>
         Exposure protection

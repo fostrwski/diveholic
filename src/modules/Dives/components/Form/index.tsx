@@ -7,6 +7,7 @@ import Button from "@mui/joy/Button";
 import Chip from "@mui/joy/Chip";
 import FormControl from "@mui/joy/FormControl";
 import FormLabel from "@mui/joy/FormLabel";
+import Grid from "@mui/joy/Grid";
 import TextField from "@mui/joy/TextField";
 import Textarea from "@mui/joy/Textarea";
 import Typography from "@mui/joy/Typography";
@@ -49,38 +50,53 @@ const Form: React.FC<FormProps> = ({ onSubmit, submitted }) => {
 
   return (
     <Box component="form" onSubmit={onSubmit}>
-      <Tabs />
+      <Grid
+        container
+        columnSpacing={{ xs: 0, sm: 8 }}
+        sx={{ gap: { xs: 8, sm: 0 }, rowGap: { sm: 8 } }}
+      >
+        <Grid xs={12} sm={6}>
+          <Tabs />
+        </Grid>
 
-      <Temperature />
+        <Grid xs={12} sm={6}>
+          <Temperature />
+        </Grid>
 
-      <Gear />
+        <Grid xs={12} sm={6}>
+          <Gear />
+        </Grid>
 
-      <TextField
-        {...register("diveBuddy")}
-        type="text"
-        label="Dive buddy"
-        placeholder="Joe Doe"
-        sx={{ mt: 8 }}
-      />
+        <Grid xs={12} sm={6}>
+          <TextField
+            {...register("diveBuddy")}
+            type="text"
+            label="Dive buddy"
+            placeholder="Joe Doe"
+          />
 
-      <FormControl sx={{ mt: 6 }}>
-        <FormLabel>Notes</FormLabel>
-        <Textarea
-          {...register("notes")}
-          minRows={4}
-          variant="soft"
-          placeholder="Describe what you saw, share your experience"
-          data-cy="notes"
-        />
-      </FormControl>
+          <FormControl sx={{ mt: 4 }}>
+            <FormLabel>Notes</FormLabel>
+            <Textarea
+              {...register("notes")}
+              minRows={4}
+              variant="soft"
+              placeholder="Describe what you saw, share your experience"
+              data-cy="notes"
+            />
+          </FormControl>
+        </Grid>
+      </Grid>
 
       <Button
         type="submit"
         color="success"
         size="lg"
         startDecorator={submitted ? <DoneRounded /> : <SaveRounded />}
-        sx={{ mt: 6 }}
-        fullWidth
+        sx={{
+          mt: 6,
+          width: { xs: "100%", sm: "initial" }
+        }}
         onSubmit={onSubmit}
       >
         Save
