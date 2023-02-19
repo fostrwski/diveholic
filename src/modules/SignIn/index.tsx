@@ -113,6 +113,7 @@ const SignIn: React.FC = () => {
             color="danger"
             textAlign="left"
             startDecorator={<ErrorOutlineRounded />}
+            sx={{ alignItems: "flex-start" }}
           >
             {error}
           </Typography>
