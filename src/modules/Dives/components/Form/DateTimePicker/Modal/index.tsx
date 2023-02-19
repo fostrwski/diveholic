@@ -104,6 +104,8 @@ const Modal: React.FC<ModalProps> = ({ open, setOpen }) => {
           borderRadius: "xl",
           borderBottomLeftRadius: 0,
           borderBottomRightRadius: 0
+          ,
+          width: {xs: "100%", sm:"25%"}
         }}
         layout="fullscreen"
         aria-label="Select date and time"
