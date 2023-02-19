@@ -46,7 +46,7 @@ const Home: React.FC = () => {
   }, [user]);
 
   const DetermineView: React.FC = () => {
-    if (error) return <Box mt={2}>Error</Box>;
+    if (user && error) return <Box mt={2}>Error</Box>;
 
     if (dives.length && !loading)
       return (
@@ -66,7 +66,7 @@ const Home: React.FC = () => {
         </Grid>
       );
 
-    if (!loading && !dives.length)
+    if (user && !dives.length)
       return (
         <Box mt={6}>
           <NoDivesFound />

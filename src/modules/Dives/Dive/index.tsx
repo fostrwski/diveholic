@@ -4,9 +4,9 @@ import { supabase } from "common/utils/supabaseClient";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 
+import Loading from "../components/Loading";
 import DiveView from "./DiveView";
 import Error from "./Error";
-import Loading from "./Loading";
 
 const Dive: React.FC = () => {
   const { user } = useUser();
@@ -58,8 +58,6 @@ const Dive: React.FC = () => {
       );
     }
 
-    if (user && loading) return <Loading />;
-
     if (user && diveNotFound) {
       return <Error error={error} customMessage="This dive does not exist" />;
     }
@@ -68,7 +66,7 @@ const Dive: React.FC = () => {
       return <DiveView dive={dive} />;
     }
 
-    return <></>;
+    return <Loading />;
   };
 
   return <DetermineView />;

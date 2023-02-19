@@ -2,11 +2,13 @@ import Grid from "@mui/joy/Grid";
 import Typography from "@mui/joy/Typography";
 import { useUser } from "@supabase/auth-helpers-react";
 import DiveCard from "common/components/DiveCard";
+import NoDivesFound from "common/components/NoDivesFound";
 import type { Dive } from "common/types";
 import { supabase } from "common/utils/supabaseClient";
 import React, { useEffect, useMemo, useState } from "react";
 
 import Filters from "./Filters";
+import Loading from "./components/Loading";
 import filterDives from "./filterDives";
 
 export type FiltersState = {
@@ -53,29 +55,38 @@ const Dives: React.FC = () => {
     [dives, filters]
   );
 
-  return (
-    <>
-      <Filters
-        dives={dives}
-        filters={filters}
-        setFilters={setFilters}
-        sortBy={sortBy}
-        setSortBy={setSortBy}
-      />
+  const DetermineView: React.FC = () => {
+    if (user && !dives.length) return <NoDivesFound />;
 
-      <Typography mt={2} level="subtitle1">
-        Found {filteredDives.length} dives
-      </Typography>
+    if (dives.length && !loading)
+      return (
+        <>
+          <Filters
+            dives={dives}
+            filters={filters}
+            setFilters={setFilters}
+            sortBy={sortBy}
+            setSortBy={setSortBy}
+          />
 
-      <Grid container sx={{ mt: 2 }}>
-        {filteredDives.map((dive: Dive) => (
-          <Grid xs={12} md={4} key={dive.id}>
-            <DiveCard dive={dive} />
+          <Typography mt={2} level="subtitle1">
+            Found {filteredDives.length} dives
+          </Typography>
+
+          <Grid container sx={{ mt: 2 }}>
+            {filteredDives.map((dive: Dive) => (
+              <Grid xs={12} md={4} key={dive.id}>
+                <DiveCard dive={dive} />
+              </Grid>
+            ))}
           </Grid>
-        ))}
-      </Grid>
-    </>
-  );
+        </>
+      );
+
+    return <Loading />;
+  };
+
+  return <DetermineView />;
 };
 
 export default Dives;
