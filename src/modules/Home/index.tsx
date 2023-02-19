@@ -1,36 +1,93 @@
 import AddRounded from "@mui/icons-material/AddRounded";
 import RefreshRounded from "@mui/icons-material/RefreshRounded";
+import { CircularProgress } from "@mui/joy";
 import Box from "@mui/joy/Box";
 import Button from "@mui/joy/Button";
 import Grid from "@mui/joy/Grid";
-import IconButton from "@mui/joy/IconButton";
 import Typography from "@mui/joy/Typography";
+import { useUser } from "@supabase/auth-helpers-react";
 import type { User } from "@supabase/supabase-js";
 import NoDivesFound from "common/components/NoDivesFound";
 import type { Dive } from "common/types";
+import { supabase } from "common/utils/supabaseClient";
 import NextLink from "next/link";
-import { useRouter } from "next/router";
-import React, { useMemo } from "react";
+import React, { useEffect, useState } from "react";
 
 import LatestDives from "./LatestDives";
 import Statistics from "./Statistics";
 
-interface HomeProps {
-  user: User;
-  dives: Array<Dive>;
-}
+const Home: React.FC = () => {
+  const { user } = useUser();
+  const [dives, setDives] = useState<Array<Dive>>([]);
+  const [error, setError] = useState<boolean>();
+  const [loading, setLoading] = useState<boolean>(false);
 
-const Home: React.FC<HomeProps> = ({ user, dives }) => {
-  const router = useRouter();
+  useEffect(() => {
+    const getDives = async () => {
+      setError(false);
+      setLoading(true);
+      const { data, error } = await supabase
+        .from<Dive>("dives")
+        .select("*")
+        .order("date", { ascending: false });
+
+      if (error) {
+        setError(true);
+        console.error(error);
+        return setLoading(false);
+      }
+
+      if (data) setDives(data);
+
+      setLoading(false);
+    };
+
+    if (user) getDives();
+  }, [user]);
+
+  const DetermineView: React.FC = () => {
+    if (error) return <Box mt={2}>Error</Box>;
+
+    if (dives.length && !loading)
+      return (
+        <Grid
+          container
+          columnSpacing={{ xs: 0, sm: 2 }}
+          gap={{ xs: 6, sm: 0 }}
+          mt={6}
+        >
+          <Grid xs={12} sm={6} md={8}>
+            <LatestDives dives={dives} />
+          </Grid>
+
+          <Grid xs={12} sm={6} md={4}>
+            <Statistics dives={dives} />
+          </Grid>
+        </Grid>
+      );
+
+    if (!loading && !dives.length)
+      return (
+        <Box mt={6}>
+          <NoDivesFound />
+        </Box>
+      );
+
+    return <></>;
+  };
 
   return (
     <>
-      <Typography level="h4" component="h1">
-        Hi {user.user_metadata.first_name} 🤿
+      <Typography
+        level="h4"
+        component="h1"
+        endDecorator={loading ? <CircularProgress size="sm" /> : ""}
+      >
+        Hi {user?.user_metadata.first_name || "there"} 🤿
       </Typography>
 
       <Typography level="h6" textColor="GrayText" component="h2">
-        {dives?.length ? (
+        {dives.length ? (
           <>
             You've logged{" "}
             <Typography component="span" color="primary">
@@ -63,37 +120,9 @@ const Home: React.FC<HomeProps> = ({ user, dives }) => {
             Log dive
           </Button>
         </NextLink>
-
-        <IconButton
-          color="neutral"
-          size="sm"
-          variant="plain"
-          onClick={() => router.replace("/")}
-        >
-          <RefreshRounded />
-        </IconButton>
       </Box>
 
-      {dives?.length ? (
-        <Grid
-          container
-          columnSpacing={{ xs: 0, sm: 2 }}
-          gap={{ xs: 6, sm: 0 }}
-          mt={6}
-        >
-          <Grid xs={12} sm={6} md={8}>
-            <LatestDives dives={dives} />
-          </Grid>
-
-          <Grid xs={12} sm={6} md={4}>
-            <Statistics dives={dives} />
-          </Grid>
-        </Grid>
-      ) : (
-        <Box mt={6}>
-          <NoDivesFound />
-        </Box>
-      )}
+      <DetermineView />
     </>
   );
 };
