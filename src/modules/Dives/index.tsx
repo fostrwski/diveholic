@@ -56,7 +56,7 @@ const Dives: React.FC = () => {
   );
 
   const DetermineView: React.FC = () => {
-    if (user && !dives.length) return <NoDivesFound />;
+    if (user && !dives.length && !loading) return <NoDivesFound />;
 
     if (dives.length && !loading)
       return (
