@@ -3,13 +3,19 @@ import Alert from "@mui/joy/Alert";
 import Box from "@mui/joy/Box";
 import Button from "@mui/joy/Button";
 import Typography from "@mui/joy/Typography";
+import initGA from "common/utils/ga";
+import Cookies from "js-cookie";
 import React from "react";
 
-interface CookieConsentProps {
-  handleAccept: () => void;
-}
+const CookieConsent: React.FC = () => {
+  const handleAccept = () => {
+    if (!process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS)
+      return console.error("Google analytics id not specified");
 
-const CookieConsent: React.FC<CookieConsentProps> = ({ handleAccept }) => {
+    Cookies.set("CookieConsent", "true");
+    initGA(process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS);
+  };
+
   return (
     <Alert
       sx={{
