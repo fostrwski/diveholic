@@ -1,6 +1,7 @@
 import Box from "@mui/joy/Box";
 import Container from "@mui/joy/Container";
 import Typography from "@mui/joy/Typography";
+import CookieConsent from "common/components/CookieConsent";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 
@@ -74,6 +75,8 @@ const AuthLayout: React.FC<AuthLayoutProps> = ({ title, icon, children }) => {
 
         <Box mt={2}>{children}</Box>
       </Container>
+
+      <CookieConsent />
     </Box>
   );
 };
