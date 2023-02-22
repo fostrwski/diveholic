@@ -22,11 +22,13 @@
     "@supabase/auth-helpers-nextjs": "^0.2.5",
     "@supabase/auth-helpers-react": "^0.2.3",
     "@supabase/supabase-js": "^1.35.4",
+    "@use-cookie-consent/react": "^0.3.7",
     "debounce": "^1.2.1",
     "next": "12.2.2",
     "next-pwa": "^5.6.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-ga4": "^2.0.0",
     "react-hook-form": "^7.40.0",
     "yup": "^0.32.11"
   },
