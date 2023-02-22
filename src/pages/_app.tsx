@@ -10,7 +10,8 @@ import { useEffect } from "react";
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
-    if (!Cookies.get("CookieConsent")) return;
+    if (!Cookies.get("Analytics") || Cookies.get("Analytics") === "declined")
+      return;
 
     if (!process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS) return;
 

@@ -11,15 +11,20 @@ const CookieConsent: React.FC = () => {
   const [showCookieConsent, setShowCookieConsent] = useState<boolean>(false);
 
   useEffect(() => {
-    setShowCookieConsent(!Cookies.get("CookieConsent"));
+    setShowCookieConsent(!Cookies.get("Analytics"));
   }, []);
 
   const handleAccept = () => {
     if (!process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS)
       return console.error("Google analytics id not specified");
 
-    Cookies.set("CookieConsent", "true");
+    Cookies.set("Analytics", "accepted");
     initGA(process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS);
+    setShowCookieConsent(false);
+  };
+
+  const handleDecline = () => {
+    Cookies.set("Analytics", "declined");
     setShowCookieConsent(false);
   };
 
@@ -84,6 +89,7 @@ const CookieConsent: React.FC = () => {
           tabIndex={1}
           size="sm"
           aria-label="Decline cookies"
+          onClick={handleDecline}
         >
           Decline
         </Button>
