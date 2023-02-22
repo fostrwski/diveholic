@@ -27,6 +27,7 @@ const CookieConsent: React.FC = () => {
 
   return (
     <Alert
+      aria-label="Cookie consent"
       sx={{
         zIndex: 100,
         position: "fixed",
@@ -74,10 +75,10 @@ const CookieConsent: React.FC = () => {
           width: "100%"
         }}
       >
-        <Button variant="plain" color="neutral" fullWidth tabIndex={1} size="sm">
+        <Button variant="plain" color="neutral" fullWidth tabIndex={1} size="sm" aria-label="Decline cookies">
           Decline
         </Button>
-        <Button color="success" fullWidth onClick={handleAccept} tabIndex={2} size="sm">
+        <Button color="success" fullWidth onClick={handleAccept} tabIndex={2} size="sm" aria-label="Accept cookies">
           Accept
         </Button>
       </Box>
