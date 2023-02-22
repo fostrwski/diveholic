@@ -58,12 +58,14 @@ const CookieConsent: React.FC = () => {
           component="p"
           startDecorator={<SecurityRounded />}
           sx={{ alignItems: "flex-start", fontWeight: "xl" }}
+          gutterBottom
         >
           We care about your privacy
         </Typography>
-        <Typography mt={2} textColor="GrayText" fontSize="xs">
-          This web application uses cookies 🍪 We'd like to use analytics to
-          track app usage. Everything is opt-in! If you don't accept it now, cookies will be declined.
+        <Typography textColor="GrayText" fontSize="xs">
+          This web application uses cookies 🍪 <br /> We'd like to use analytics
+          to track app usage. Everything is opt-in! If you don't accept it now,
+          cookies won't be created.
         </Typography>
       </div>
 
@@ -75,10 +77,24 @@ const CookieConsent: React.FC = () => {
           width: "100%"
         }}
       >
-        <Button variant="plain" color="neutral" fullWidth tabIndex={1} size="sm" aria-label="Decline cookies">
+        <Button
+          variant="plain"
+          color="neutral"
+          fullWidth
+          tabIndex={1}
+          size="sm"
+          aria-label="Decline cookies"
+        >
           Decline
         </Button>
-        <Button color="success" fullWidth onClick={handleAccept} tabIndex={2} size="sm" aria-label="Accept cookies">
+        <Button
+          color="success"
+          fullWidth
+          onClick={handleAccept}
+          tabIndex={2}
+          size="sm"
+          aria-label="Accept cookies"
+        >
           Accept
         </Button>
       </Box>
