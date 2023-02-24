@@ -33,7 +33,7 @@ const CookieConsent: React.FC = () => {
   return (
     <Alert
       aria-label="Cookie consent"
-      sx={{
+      sx={(theme) => ({
         zIndex: 100,
         position: "fixed",
         inset: (theme) => ({
@@ -45,14 +45,20 @@ const CookieConsent: React.FC = () => {
         left: {
           sm: "auto"
         },
-        bgcolor: (theme) => theme.palette.common.black,
         display: "flex",
         flexDirection: "column",
         alignItems: "start",
         px: 4,
         gap: 4,
-        maxWidth: 360
-      }}
+        maxWidth: 360,
+        [theme.getColorSchemeSelector("light")]: {
+          bgcolor: theme.palette.neutral[50]
+        },
+
+        [theme.getColorSchemeSelector("dark")]: {
+          bgcolor: theme.palette.common.black
+        }
+      })}
       size="lg"
       variant="plain"
       color="neutral"
