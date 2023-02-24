@@ -50,12 +50,12 @@ const Location: React.FC<LocationProps> = ({ dives, filters, setFilters }) => {
         </Typography>
         <Box
           role="group"
+          aria-label="Dive location"
           sx={{
             display: "flex",
             gap: 0.8,
             overflowX: "auto",
             scrollBehavior: "smooth",
-
             "&::-webkit-scrollbar": {
               display: "none"
             }

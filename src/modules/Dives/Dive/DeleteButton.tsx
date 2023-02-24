@@ -36,16 +36,16 @@ const DeleteButton: React.FC<DeleteButtonProps> = ({ handleDiveDelete }) => {
       </Button>
 
       <Modal
-        aria-labelledby="modal-title"
-        aria-describedby="modal-description"
+        aria-labelledby="modalTitle"
+        aria-describedby="modalDescription"
         open={open}
         onClose={handleModalClose}
       >
         <ModalDialog>
-          <Typography level="h4" component="p" id="modal-title" gutterBottom>
+          <Typography level="h4" component="p" id="modalTitle" gutterBottom>
             Delete dive
           </Typography>
-          <Typography level="subtitle1" component="p" id="modal-description">
+          <Typography level="subtitle1" component="p" id="modalDescription">
             Are you sure? You won't be able to revert this action
           </Typography>
 

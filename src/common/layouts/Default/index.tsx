@@ -51,6 +51,7 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
       >
         <NextLink href="/" passHref>
           <Box
+            aria-label="Return to the home page"
             component="a"
             display="flex"
             justifyContent="center"

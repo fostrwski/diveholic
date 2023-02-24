@@ -36,7 +36,7 @@ const sortingOptions = [
     title: "Oldest dives",
     value: "dateAscending",
     startDecorator: <KeyboardArrowUpRounded />
-  },
+  }
 ];
 
 const Filters: React.FC<FiltersProps> = ({
@@ -78,47 +78,60 @@ const Filters: React.FC<FiltersProps> = ({
           gap: 2
         }}
       >
+        <Button
+          color="neutral"
+          variant="plain"
+          onClick={handleOpenMenu}
+          size="sm"
+          aria-controls={open ? "sortingOptions" : undefined}
+          aria-haspopup="true"
+          aria-expanded={open ? "true" : undefined}
+        >
+          {sortBy === "dateDescending" ? "Latest dives" : "Oldest dives"}
+        </Button>
+
         <Badge color="info" variant="outlined" badgeContent={filtersCount}>
           <Button
             color="info"
             variant="outlined"
             startDecorator={<FilterListRounded />}
             onClick={handleFiltersToggle}
+            aria-controls="filters"
+            aria-expanded={showFilters}
           >
             Filters
           </Button>
         </Badge>
-
-        <Menu
-          open={open}
-          anchorEl={anchorEl}
-          onClose={handleCloseMenu}
-          placement="bottom-end"
-          variant="plain"
-          size="sm"
-        >
-          {sortingOptions.map((sortingOption) => (
-            <MenuItem
-              key={sortingOption.title}
-              color={sortBy === sortingOption.value ? "info" : "neutral"}
-              onClick={() => setSortBy(sortingOption.value)}
-            >
-              <ListItemDecorator>
-                {sortingOption.startDecorator}
-              </ListItemDecorator>
-              {sortingOption.title}
-            </MenuItem>
-          ))}
-        </Menu>
-
-        <Button color="neutral" variant="plain" onClick={handleOpenMenu}>
-          Sort
-        </Button>
       </Box>
 
-      {showFilters && (
-        <Location dives={dives} filters={filters} setFilters={setFilters} />
-      )}
+      <Menu
+        open={open}
+        anchorEl={anchorEl}
+        onClose={handleCloseMenu}
+        placement="bottom-end"
+        variant="plain"
+        size="sm"
+        id="sortingOptions"
+      >
+        {sortingOptions.map((sortingOption) => (
+          <MenuItem
+            key={sortingOption.title}
+            color={sortBy === sortingOption.value ? "info" : "neutral"}
+            onClick={() => setSortBy(sortingOption.value)}
+          >
+            <ListItemDecorator>
+              {sortingOption.startDecorator}
+            </ListItemDecorator>
+            {sortingOption.title}
+          </MenuItem>
+        ))}
+      </Menu>
+
+      <div id="filters">
+        {showFilters && (
+          <Location dives={dives} filters={filters} setFilters={setFilters} />
+        )}
+      </div>
     </>
   );
 };
