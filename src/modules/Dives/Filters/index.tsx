@@ -87,7 +87,7 @@ const Filters: React.FC<FiltersProps> = ({
           aria-haspopup="true"
           aria-expanded={open ? "true" : undefined}
         >
-          {sortBy === "dateDescending" ? "Latest dives" : "Oldest dives"}
+          Sort
         </Button>
 
         <Badge color="info" variant="outlined" badgeContent={filtersCount}>
