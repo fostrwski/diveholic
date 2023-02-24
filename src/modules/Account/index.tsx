@@ -42,7 +42,7 @@ const Account: React.FC = () => {
 
   return (
     <>
-      <Box mb={4} width="100%">
+      <Box mb={6} width="100%">
         <Typography
           startDecorator={<PersonRounded />}
           level="h4"
@@ -56,7 +56,6 @@ const Account: React.FC = () => {
           label="Email"
           startDecorator={<AlternateEmailRounded />}
           endDecorator={<EditRounded />}
-          variant="soft"
           value={newEmail}
           type="email"
           sx={{ mb: 2 }}
@@ -66,7 +65,6 @@ const Account: React.FC = () => {
           label="First name"
           startDecorator={<PersonRounded />}
           endDecorator={<EditRounded />}
-          variant="soft"
           value={newFirstName}
         />
 
@@ -74,8 +72,10 @@ const Account: React.FC = () => {
           <Button
             startDecorator={<DoneRounded />}
             color="success"
+            variant="outlined"
             sx={{ mt: 4 }}
             disabled
+            fullWidth
           >
             Save
           </Button>
