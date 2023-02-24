@@ -56,7 +56,7 @@ const TemperatureSlider: React.FC<TemperatureSliderProps> = ({
         />
 
         {value && (
-          <Typography fontSize="sm">
+          <Typography fontSize="sm" sx={{ width: "10%" }}>
             {value}°{watchUnits === "metric" ? "C" : "F"}
           </Typography>
         )}
