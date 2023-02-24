@@ -12,19 +12,14 @@ import RadioGroup from "@mui/joy/RadioGroup";
 import TextField from "@mui/joy/TextField";
 import Typography from "@mui/joy/Typography";
 import { useColorScheme } from "@mui/joy/styles";
-import { User } from "@supabase/auth-helpers-nextjs";
+import { useUser } from "@supabase/auth-helpers-react";
 import React, { useEffect, useState } from "react";
 
-interface AccountProps {
-  user: User;
-}
+const Account: React.FC = () => {
+  const { user } = useUser();
 
-const Account: React.FC<AccountProps> = ({ user }) => {
-  const { email } = user;
-  const { first_name: firstName } = user.user_metadata;
-
-  const [newFirstName, _setNewFirstName] = useState<string>(firstName);
-  const [newEmail, _setNewEmail] = useState<string>(email!);
+  const [newFirstName, setNewFirstName] = useState<string>("");
+  const [newEmail, setNewEmail] = useState<string>("");
 
   const { mode, setMode } = useColorScheme();
   const [mounted, setMounted] = useState<boolean>(false);
@@ -32,6 +27,13 @@ const Account: React.FC<AccountProps> = ({ user }) => {
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  useEffect(() => {
+    if (!user) return;
+
+    setNewEmail(user.email as string);
+    setNewFirstName(user.user_metadata.first_name as string);
+  }, [user]);
 
   const onRadioChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     // @ts-ignore
