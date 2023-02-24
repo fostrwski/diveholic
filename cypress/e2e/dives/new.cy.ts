@@ -1,18 +1,17 @@
-describe("New dive form", () => {
+describe("New dive", () => {
   beforeEach(() => {
     cy.viewport("iphone-x");
     cy.signIn(1);
+    cy.visit("/dives/new");
   });
 
   it("Creates new dive", () => {
-    cy.visit("/dives/new");
-
     // Basics section
 
     // Open datetimepicker
     cy.getByDataCy("DateTimePicker-setDateAndTime").click();
     cy.getByDataCy("DateTimePicker-dayRadio-12").first().click();
-    cy.getByDataCy("DateTimePicker-timeInput").type("21:37")
+    cy.getByDataCy("DateTimePicker-timeInput").type("21:37");
     cy.getByDataCy("DateTimePicker-submit").click();
 
     cy.getInputByName("type").check("Shore");
