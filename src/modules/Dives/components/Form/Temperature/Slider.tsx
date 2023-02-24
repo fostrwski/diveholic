@@ -39,7 +39,14 @@ const TemperatureSlider: React.FC<TemperatureSliderProps> = ({
   return (
     <FormControl>
       <FormLabel>{label}</FormLabel>
-      <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          gap: 2,
+          justifyContent: "space-between"
+        }}
+      >
         <MuiSlider
           color={color}
           size="lg"
@@ -55,7 +62,7 @@ const TemperatureSlider: React.FC<TemperatureSliderProps> = ({
           }
         />
 
-        {value && (
+        {value !== null && (
           <Typography fontSize="sm" sx={{ width: "10%" }}>
             {value}°{watchUnits === "metric" ? "C" : "F"}
           </Typography>
