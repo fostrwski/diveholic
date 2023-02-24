@@ -11,6 +11,7 @@ import InfoCard from "common/components/InfoCard";
 import type { Dive } from "common/types";
 import { formatDate, formatTime } from "common/utils/datetime/format";
 import { supabase } from "common/utils/supabaseClient";
+import NextLink from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
 
@@ -127,16 +128,19 @@ const DiveView: React.FC<DiveViewProps> = ({ dive }) => {
           gap: 2
         }}
       >
-        <Button
-          color="warning"
-          startDecorator={<EditRounded />}
-          onClick={() => router.push(`/dives/edit/${dive.id}`)}
-          variant="outlined"
-          size="lg"
-          sx={{ width: { xs: "100%", sm: "initial" } }}
-        >
-          Edit
-        </Button>
+        <NextLink href={`/dives/edit/${dive.id}`} passHref>
+          <Button
+            component="a"
+            color="warning"
+            startDecorator={<EditRounded />}
+            variant="outlined"
+            size="lg"
+            sx={{ width: { xs: "100%", sm: "initial" } }}
+            aria-label="Edit dive"
+          >
+            Edit
+          </Button>
+        </NextLink>
 
         <DeleteButton handleDiveDelete={handleDiveDelete} />
       </Box>

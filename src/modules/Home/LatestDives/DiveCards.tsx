@@ -23,7 +23,7 @@ const DiveCards: React.FC<DiveCardsProps> = ({ dives }) => (
 
     <Box textAlign="center" mt={2}>
       <NextLink href="/dives">
-        <Button variant="outlined" color="neutral" sx={{ borderRadius: 24 }}>
+        <Button variant="outlined" color="neutral" sx={{ borderRadius: 24 }} aria-label="See more dives">
           See more
         </Button>
       </NextLink>
