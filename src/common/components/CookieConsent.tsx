@@ -37,7 +37,7 @@ const CookieConsent: React.FC = () => {
         zIndex: 100,
         position: "fixed",
         inset: (theme) => ({
-          xs: `${theme.spacing(2)}`
+          xs: `${theme.spacing(4, 2)}`
         }),
         top: {
           xs: "auto"
