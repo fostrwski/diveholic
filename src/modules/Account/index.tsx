@@ -7,12 +7,17 @@ import DoneRounded from "@mui/icons-material/DoneRounded";
 import EditRounded from "@mui/icons-material/EditRounded";
 import Box from "@mui/joy/Box";
 import Button from "@mui/joy/Button";
+import FormControl from "@mui/joy/FormControl";
+import FormHelperText from "@mui/joy/FormHelperText";
+import FormLabel from "@mui/joy/FormLabel";
 import Radio from "@mui/joy/Radio";
 import RadioGroup from "@mui/joy/RadioGroup";
+import Switch from "@mui/joy/Switch";
 import TextField from "@mui/joy/TextField";
 import Typography from "@mui/joy/Typography";
 import { useColorScheme } from "@mui/joy/styles";
 import { useUser } from "@supabase/auth-helpers-react";
+import Cookies from "js-cookie";
 import React, { useEffect, useState } from "react";
 
 const Account: React.FC = () => {
@@ -23,9 +28,11 @@ const Account: React.FC = () => {
 
   const { mode, setMode } = useColorScheme();
   const [mounted, setMounted] = useState<boolean>(false);
+  const [analyticsChecked, setAnalyticsChecked] = useState<boolean>(false);
 
   useEffect(() => {
     setMounted(true);
+    setAnalyticsChecked(Cookies.get("Analytics") === "accepted");
   }, []);
 
   useEffect(() => {
@@ -46,7 +53,7 @@ const Account: React.FC = () => {
         <Typography
           startDecorator={<PersonRounded />}
           level="h4"
-          component="div"
+          component="p"
           mb={2}
         >
           Account
@@ -82,21 +89,50 @@ const Account: React.FC = () => {
         </Box>
       </Box>
 
-      <Typography level="h4" startDecorator={<TuneRounded />}>
+      <Typography level="h5" startDecorator={<TuneRounded />}>
         Preferences
       </Typography>
 
       {mounted && (
-        <>
-          <Typography level="h5" my={2}>
-            Mode
-          </Typography>
-          <RadioGroup row value={mode} onChange={onRadioChange}>
-            <Radio value="system" label="System" />
-            <Radio value="light" label="Light" />
-            <Radio value="dark" label="Dark" />
-          </RadioGroup>
-        </>
+        <Box sx={{ display: "flex", flexDirection: "column", gap: 4, mt: 2 }}>
+          <div>
+            <Typography level="subtitle1" mb={1}>
+              Color mode
+            </Typography>
+            <RadioGroup row value={mode} onChange={onRadioChange}>
+              <Radio value="system" label="System" />
+              <Radio value="light" label="Light" />
+              <Radio value="dark" label="Dark" />
+            </RadioGroup>
+          </div>
+
+          <FormControl
+            orientation="horizontal"
+            sx={{ width: 300, justifyContent: "space-between", gap: 2 }}
+          >
+            <div>
+              <FormLabel>Analytics</FormLabel>
+              <FormHelperText sx={{ mt: 0 }}>
+                We use Google Analytics to track app usage
+              </FormHelperText>
+            </div>
+            {/* @ts-ignore */}
+            <Switch
+              checked={analyticsChecked}
+              onChange={(event) => setAnalyticsChecked(event.target.checked)}
+              color={analyticsChecked ? "success" : "neutral"}
+              variant="soft"
+              endDecorator={analyticsChecked ? "On" : "Off"}
+              slotProps={{
+                endDecorator: {
+                  sx: {
+                    minWidth: 24
+                  }
+                }
+              }}
+            />
+          </FormControl>
+        </Box>
       )}
     </>
   );

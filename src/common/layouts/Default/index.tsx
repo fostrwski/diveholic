@@ -1,5 +1,6 @@
 import DashboardRounded from "@mui/icons-material/DashboardRounded";
 import LogoutRounded from "@mui/icons-material/LogoutRounded";
+import PersonRounded from "@mui/icons-material/PersonRounded";
 import Box from "@mui/joy/Box";
 import Container from "@mui/joy/Container";
 import IconButton from "@mui/joy/IconButton";
@@ -88,8 +89,8 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
           variant="plain"
           placement="bottom-end"
         >
-          <NextLink href="/">
-            <MenuItem>
+          <NextLink href="/" passHref>
+            <MenuItem component="a">
               <ListItemDecorator>
                 <DashboardRounded />
               </ListItemDecorator>
@@ -97,8 +98,17 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
             </MenuItem>
           </NextLink>
 
-          <NextLink href="/api/auth/logout">
-            <MenuItem>
+          <NextLink href="/account" passHref>
+            <MenuItem component="a">
+              <ListItemDecorator>
+                <PersonRounded />
+              </ListItemDecorator>
+              Account
+            </MenuItem>
+          </NextLink>
+
+          <NextLink href="/api/auth/logout" passHref>
+            <MenuItem component="a">
               <ListItemDecorator>
                 <LogoutRounded />
               </ListItemDecorator>
