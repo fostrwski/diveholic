@@ -47,6 +47,13 @@ const Account: React.FC = () => {
     setMode(e.target.value);
   };
 
+  const onSwitchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setAnalyticsChecked(e.target.checked);
+
+    if (e.target.checked) return Cookies.set("Analytics", "accepted");
+    Cookies.set("Analytics", "declined");
+  };
+
   return (
     <>
       <Box mb={6} width="100%">
@@ -119,7 +126,7 @@ const Account: React.FC = () => {
             {/* @ts-ignore */}
             <Switch
               checked={analyticsChecked}
-              onChange={(event) => setAnalyticsChecked(event.target.checked)}
+              onChange={onSwitchChange}
               color={analyticsChecked ? "success" : "neutral"}
               variant="soft"
               endDecorator={analyticsChecked ? "On" : "Off"}
