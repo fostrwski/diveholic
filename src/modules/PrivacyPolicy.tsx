@@ -1,10 +1,12 @@
+import SecurityRounded from "@mui/icons-material/SecurityRounded";
 import Box from "@mui/joy/Box";
+import Container from "@mui/joy/Container";
 import Typography from "@mui/joy/Typography";
 import Image from "next/image";
 import React from "react";
 
 const PrivacyPolicy: React.FC = () => (
-  <>
+  <Container component="main" sx={{ py: 10, px: 4 }} maxWidth="md">
     <Box display="flex" alignItems="center" justifyContent="center" gap={1.2}>
       <Image
         src="/logo.svg"
@@ -29,7 +31,13 @@ const PrivacyPolicy: React.FC = () => (
       Dive log built for the modern age
     </Typography>
 
-    <Typography level="h4" component="h1">
+    <Typography
+      level="h4"
+      component="h1"
+      color="info"
+      startDecorator={<SecurityRounded />}
+      sx={{ alignItems: "flex-start" }}
+    >
       Privacy Policy for Diveholic
     </Typography>
 
@@ -283,7 +291,7 @@ const PrivacyPolicy: React.FC = () => (
       If you have any questions or suggestions about our Privacy Policy, do not
       hesitate to contact us.
     </p>
-  </>
+  </Container>
 );
 
 export default PrivacyPolicy;
