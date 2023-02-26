@@ -1,8 +1,37 @@
+import Box from "@mui/joy/Box";
+import Typography from "@mui/joy/Typography";
+import Image from "next/image";
 import React from "react";
 
 const PrivacyPolicy: React.FC = () => (
   <>
-    <h1>Privacy Policy for Diveholic</h1>
+    <Box display="flex" alignItems="center" justifyContent="center" gap={1.2}>
+      <Image
+        src="/logo.svg"
+        width={48}
+        height={34}
+        layout="fixed"
+        alt="Diver down flag"
+      />
+      <Typography level="h3" component="p" fontWeight="lg">
+        Diveholic
+      </Typography>
+    </Box>
+
+    <Typography
+      textColor="GrayText"
+      level="h6"
+      component="p"
+      mt={1}
+      mb={3}
+      textAlign="center"
+    >
+      Dive log built for the modern age
+    </Typography>
+
+    <Typography variant="h4" component="h1">
+      Privacy Policy for Diveholic
+    </Typography>
 
     <p>
       At Diveholic, accessible from https://diveholic.netlify.app, one of our
@@ -23,14 +52,18 @@ const PrivacyPolicy: React.FC = () => (
       information collected offline or via channels other than this website.
     </p>
 
-    <h2>Consent</h2>
+    <Typography variant="h5" component="h2">
+      Consent
+    </Typography>
 
     <p>
       By using our website, you hereby consent to our Privacy Policy and agree
       to its terms.
     </p>
 
-    <h2>Information we collect</h2>
+    <Typography variant="h5" component="h2">
+      Information we collect
+    </Typography>
 
     <p>
       The personal information that you are asked to provide, and the reasons
@@ -49,7 +82,9 @@ const PrivacyPolicy: React.FC = () => (
       telephone number.
     </p>
 
-    <h2>How we use your information</h2>
+    <Typography variant="h5" component="h2">
+      How we use your information
+    </Typography>
 
     <p>We use the information we collect in various ways, including to:</p>
 
@@ -68,7 +103,9 @@ const PrivacyPolicy: React.FC = () => (
       <li>Find and prevent fraud</li>
     </ul>
 
-    <h2>Log Files</h2>
+    <Typography variant="h5" component="h2">
+      Log Files
+    </Typography>
 
     <p>
       Diveholic follows a standard procedure of using log files. These files log
@@ -82,7 +119,9 @@ const PrivacyPolicy: React.FC = () => (
       website, and gathering demographic information.
     </p>
 
-    <h2>Cookies and Web Beacons</h2>
+    <Typography variant="h5" component="h2">
+      Cookies and Web Beacons
+    </Typography>
 
     <p>
       Like any other website, Diveholic uses 'cookies'. These cookies are used
@@ -92,7 +131,9 @@ const PrivacyPolicy: React.FC = () => (
       on visitors' browser type and/or other information.
     </p>
 
-    <h2>Advertising Partners Privacy Policies</h2>
+    <Typography variant="h5" component="h2">
+      Advertising Partners Privacy Policies
+    </Typography>
 
     <p>
       You may consult this list to find the Privacy Policy for each of the
@@ -114,7 +155,9 @@ const PrivacyPolicy: React.FC = () => (
       are used by third-party advertisers.
     </p>
 
-    <h2>Third Party Privacy Policies</h2>
+    <Typography variant="h5" component="h2">
+      Third Party Privacy Policies
+    </Typography>
 
     <p>
       Diveholic's Privacy Policy does not apply to other advertisers or
@@ -130,7 +173,9 @@ const PrivacyPolicy: React.FC = () => (
       web browsers, it can be found at the browsers' respective websites.
     </p>
 
-    <h2>CCPA Privacy Rights (Do Not Sell My Personal Information)</h2>
+    <Typography variant="h5" component="h2">
+      CCPA Privacy Rights (Do Not Sell My Personal Information)
+    </Typography>
 
     <p>
       Under the CCPA, among other rights, California consumers have the right
@@ -154,7 +199,9 @@ const PrivacyPolicy: React.FC = () => (
       like to exercise any of these rights, please contact us.
     </p>
 
-    <h2>GDPR Data Protection Rights</h2>
+    <Typography variant="h5" component="h2">
+      GDPR Data Protection Rights
+    </Typography>
 
     <p>
       We would like to make sure you are fully aware of all of your data
@@ -191,7 +238,9 @@ const PrivacyPolicy: React.FC = () => (
       like to exercise any of these rights, please contact us.
     </p>
 
-    <h2>Children's Information</h2>
+    <Typography variant="h5" component="h2">
+      Children's Information
+    </Typography>
 
     <p>
       Another part of our priority is adding protection for children while using
@@ -207,7 +256,9 @@ const PrivacyPolicy: React.FC = () => (
       such information from our records.
     </p>
 
-    <h2>Changes to This Privacy Policy</h2>
+    <Typography variant="h5" component="h2">
+      Changes to This Privacy Policy
+    </Typography>
 
     <p>
       We may update our Privacy Policy from time to time. Thus, we advise you to
@@ -224,7 +275,9 @@ const PrivacyPolicy: React.FC = () => (
       .
     </p>
 
-    <h2>Contact Us</h2>
+    <Typography variant="h5" component="h2">
+      Contact Us
+    </Typography>
 
     <p>
       If you have any questions or suggestions about our Privacy Policy, do not
