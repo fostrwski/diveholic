@@ -1,15 +1,15 @@
 import TuneRounded from "@mui/icons-material/TuneRounded";
 import Box from "@mui/joy/Box";
-import Switch from "@mui/joy/Switch";
 import FormControl from "@mui/joy/FormControl";
 import FormHelperText from "@mui/joy/FormHelperText";
+import FormLabel from "@mui/joy/FormLabel";
+import Radio from "@mui/joy/Radio";
+import RadioGroup from "@mui/joy/RadioGroup";
+import Switch from "@mui/joy/Switch";
 import Typography from "@mui/joy/Typography";
 import { useColorScheme } from "@mui/joy/styles";
 import Cookies from "js-cookie";
 import React, { useEffect, useState } from "react";
-import Radio from "@mui/joy/Radio";
-import FormLabel from "@mui/joy/FormLabel";
-import RadioGroup from "@mui/joy/RadioGroup";
 
 const Preferences: React.FC = () => {
   const { mode, setMode } = useColorScheme();
@@ -42,7 +42,12 @@ const Preferences: React.FC = () => {
           <Typography level="subtitle1" mb={1}>
             Color mode
           </Typography>
-          <RadioGroup row value={mode} onChange={onRadioChange}>
+          <RadioGroup
+            row
+            value={mode}
+            onChange={onRadioChange}
+            aria-label="Color mode"
+          >
             <Radio value="system" label="System" />
             <Radio value="light" label="Light" />
             <Radio value="dark" label="Dark" />
