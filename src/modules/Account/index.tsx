@@ -1,12 +1,15 @@
-import AlternateEmailRounded from "@mui/icons-material/AlternateEmailRounded"
-import PersonRounded from "@mui/icons-material/PersonRounded"
+import AlternateEmailRounded from "@mui/icons-material/AlternateEmailRounded";
 import DoneRounded from "@mui/icons-material/DoneRounded";
 import EditRounded from "@mui/icons-material/EditRounded";
+import PersonRounded from "@mui/icons-material/PersonRounded";
+import SecurityRounded from "@mui/icons-material/SecurityRounded";
 import Box from "@mui/joy/Box";
 import Button from "@mui/joy/Button";
+import Link from "@mui/joy/Link";
 import TextField from "@mui/joy/TextField";
 import Typography from "@mui/joy/Typography";
 import { useUser } from "@supabase/auth-helpers-react";
+import NextLink from "next/link";
 import React, { useEffect, useState } from "react";
 
 import Preferences from "./Preferences";
@@ -73,6 +76,18 @@ const Account: React.FC = () => {
       </Box>
 
       {mounted && <Preferences />}
+
+      <Box sx={{ mt: 6 }}>
+        <NextLink href="/privacy-policy" passHref>
+          <Link
+            color="info"
+            sx={{ fontSize: "sm" }}
+            startDecorator={<SecurityRounded />}
+          >
+            Privacy policy
+          </Link>
+        </NextLink>
+      </Box>
     </>
   );
 };
