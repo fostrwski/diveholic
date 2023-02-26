@@ -29,7 +29,7 @@ const PrivacyPolicy: React.FC = () => (
       Dive log built for the modern age
     </Typography>
 
-    <Typography variant="h4" component="h1">
+    <Typography level="h4" component="h1">
       Privacy Policy for Diveholic
     </Typography>
 
@@ -52,7 +52,7 @@ const PrivacyPolicy: React.FC = () => (
       information collected offline or via channels other than this website.
     </p>
 
-    <Typography variant="h5" component="h2">
+    <Typography level="h5" component="h2">
       Consent
     </Typography>
 
@@ -61,7 +61,7 @@ const PrivacyPolicy: React.FC = () => (
       to its terms.
     </p>
 
-    <Typography variant="h5" component="h2">
+    <Typography level="h5" component="h2">
       Information we collect
     </Typography>
 
@@ -82,7 +82,7 @@ const PrivacyPolicy: React.FC = () => (
       telephone number.
     </p>
 
-    <Typography variant="h5" component="h2">
+    <Typography level="h5" component="h2">
       How we use your information
     </Typography>
 
@@ -103,7 +103,7 @@ const PrivacyPolicy: React.FC = () => (
       <li>Find and prevent fraud</li>
     </ul>
 
-    <Typography variant="h5" component="h2">
+    <Typography level="h5" component="h2">
       Log Files
     </Typography>
 
@@ -119,7 +119,7 @@ const PrivacyPolicy: React.FC = () => (
       website, and gathering demographic information.
     </p>
 
-    <Typography variant="h5" component="h2">
+    <Typography level="h5" component="h2">
       Cookies and Web Beacons
     </Typography>
 
@@ -131,7 +131,7 @@ const PrivacyPolicy: React.FC = () => (
       on visitors' browser type and/or other information.
     </p>
 
-    <Typography variant="h5" component="h2">
+    <Typography level="h5" component="h2">
       Advertising Partners Privacy Policies
     </Typography>
 
@@ -155,7 +155,7 @@ const PrivacyPolicy: React.FC = () => (
       are used by third-party advertisers.
     </p>
 
-    <Typography variant="h5" component="h2">
+    <Typography level="h5" component="h2">
       Third Party Privacy Policies
     </Typography>
 
@@ -173,7 +173,7 @@ const PrivacyPolicy: React.FC = () => (
       web browsers, it can be found at the browsers' respective websites.
     </p>
 
-    <Typography variant="h5" component="h2">
+    <Typography level="h5" component="h2">
       CCPA Privacy Rights (Do Not Sell My Personal Information)
     </Typography>
 
@@ -199,7 +199,7 @@ const PrivacyPolicy: React.FC = () => (
       like to exercise any of these rights, please contact us.
     </p>
 
-    <Typography variant="h5" component="h2">
+    <Typography level="h5" component="h2">
       GDPR Data Protection Rights
     </Typography>
 
@@ -238,7 +238,7 @@ const PrivacyPolicy: React.FC = () => (
       like to exercise any of these rights, please contact us.
     </p>
 
-    <Typography variant="h5" component="h2">
+    <Typography level="h5" component="h2">
       Children's Information
     </Typography>
 
@@ -256,7 +256,7 @@ const PrivacyPolicy: React.FC = () => (
       such information from our records.
     </p>
 
-    <Typography variant="h5" component="h2">
+    <Typography level="h5" component="h2">
       Changes to This Privacy Policy
     </Typography>
 
@@ -275,7 +275,7 @@ const PrivacyPolicy: React.FC = () => (
       .
     </p>
 
-    <Typography variant="h5" component="h2">
+    <Typography level="h5" component="h2">
       Contact Us
     </Typography>
 
