@@ -80,7 +80,7 @@ const Filters: React.FC<FiltersProps> = ({
       >
         <Button
           color="neutral"
-          variant="plain"
+          variant="outlined"
           onClick={handleOpenMenu}
           size="sm"
           aria-controls={open ? "sortingOptions" : undefined}
