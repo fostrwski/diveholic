@@ -73,7 +73,7 @@ const CookieConsent: React.FC = () => {
         >
           We care about your privacy
         </Typography>
-        <Typography textColor="GrayText" fontSize="xs">
+        <Typography fontSize="xs">
           This web application uses cookies 🍪 <br /> We'd like to use analytics
           to track app usage. Everything is opt-in! If you don't accept it now,
           cookies won't be created.
