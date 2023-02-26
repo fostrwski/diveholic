@@ -115,7 +115,6 @@ const Account: React.FC = () => {
         <TextField
           onChange={onEmailChange}
           label="Email"
-          variant="plain"
           startDecorator={<AlternateEmailRounded />}
           value={newEmail}
           type="email"
@@ -148,7 +147,6 @@ const Account: React.FC = () => {
 
         <TextField
           onChange={onFirstNameChange}
-          variant="plain"
           label="First name"
           startDecorator={<PersonRounded />}
           value={newFirstName}
