@@ -159,7 +159,7 @@ const SignUp: React.FC = () => {
               <Typography level="body2">
                 Read our
                 <NextLink href="/privacy-policy" passHref>
-                  <Link color="info" target="blank">
+                  <Link color="info">
                     privacy policy
                   </Link>
                 </NextLink>
