@@ -1,3 +1,4 @@
+import PersonRounded from "@mui/icons-material/PersonRounded";
 import Box from "@mui/joy/Box";
 import Container from "@mui/joy/Container";
 import IconButton from "@mui/joy/IconButton";
@@ -5,7 +6,6 @@ import Typography from "@mui/joy/Typography";
 import { useUser } from "@supabase/auth-helpers-react";
 import generateInitials from "common/utils/generateInitials";
 import Cookies from "js-cookie";
-import PersonRounded from "@mui/icons-material/PersonRounded"
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import NextLink from "next/link";
@@ -95,7 +95,7 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
 
           <IconButton
             onClick={handleOpenMenu}
-            sx={{ fontWeight: "lg" }}
+            sx={{ fontWeight: "lg", fontSize: "xl" }}
             color="neutral"
             aria-label="Toggle menu"
           >
