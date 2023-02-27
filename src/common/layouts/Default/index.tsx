@@ -1,18 +1,15 @@
-import DashboardRounded from "@mui/icons-material/DashboardRounded";
-import LogoutRounded from "@mui/icons-material/LogoutRounded";
-import PersonRounded from "@mui/icons-material/PersonRounded";
 import Box from "@mui/joy/Box";
 import Container from "@mui/joy/Container";
 import IconButton from "@mui/joy/IconButton";
-import ListItemDecorator from "@mui/joy/ListItemDecorator";
-import Menu from "@mui/joy/Menu";
-import MenuItem from "@mui/joy/MenuItem";
 import Typography from "@mui/joy/Typography";
 import { useUser } from "@supabase/auth-helpers-react";
 import generateInitials from "common/utils/generateInitials";
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import NextLink from "next/link";
 import React, { useEffect, useState } from "react";
+
+const Menu = dynamic(() => import("./Menu"));
 
 interface DefaultLayoutProps {
   children: React.ReactNode;
@@ -82,40 +79,7 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
           {initials}
         </IconButton>
 
-        <Menu
-          anchorEl={anchorEl}
-          open={open}
-          onClose={handleCloseMenu}
-          variant="plain"
-          placement="bottom-end"
-        >
-          <NextLink href="/" passHref>
-            <MenuItem component="a">
-              <ListItemDecorator>
-                <DashboardRounded />
-              </ListItemDecorator>
-              Home
-            </MenuItem>
-          </NextLink>
-
-          <NextLink href="/account" passHref>
-            <MenuItem component="a">
-              <ListItemDecorator>
-                <PersonRounded />
-              </ListItemDecorator>
-              Account
-            </MenuItem>
-          </NextLink>
-
-          <NextLink href="/api/auth/logout" passHref>
-            <MenuItem component="a">
-              <ListItemDecorator>
-                <LogoutRounded />
-              </ListItemDecorator>
-              Sign out
-            </MenuItem>
-          </NextLink>
-        </Menu>
+        <Menu open={open} anchorEl={anchorEl} onClose={handleCloseMenu} />
       </Box>
 
       <Box component="main" sx={{ minHeight: "100vh" }}>

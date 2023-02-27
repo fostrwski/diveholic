@@ -2,10 +2,13 @@ import Box from "@mui/joy/Box";
 import Container from "@mui/joy/Container";
 import Typography from "@mui/joy/Typography";
 import CookieConsent from "common/components/CookieConsent";
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 
-import LearnHowToInstallButton from "./LearnHowToInstallButton";
+const LearnHowToInstallButton = dynamic(
+  () => import("./LearnHowToInstallButton")
+);
 
 interface AuthLayoutProps {
   children: React.ReactNode;

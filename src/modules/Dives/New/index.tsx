@@ -1,13 +1,15 @@
 import type { User } from "@supabase/auth-helpers-nextjs";
 import type { Dive } from "common/types";
 import { supabase } from "common/utils/supabaseClient";
+import dynamic from "next/dynamic";
 import React, { useState } from "react";
 import { useFormContext } from "react-hook-form";
 
 import Form from "../components/Form";
 import type { FormFields } from "../components/Form/types";
-import FormSubmittedModal from "./FormSubmittedModal";
 import Header from "./Header";
+
+const FormSubmittedModal = dynamic(() => import("./FormSubmittedModal"));
 
 interface NewProps {
   user: User;
