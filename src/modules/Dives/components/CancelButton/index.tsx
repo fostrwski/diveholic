@@ -42,7 +42,7 @@ const CancelButton: React.FC<CancelButtonProps> = ({ redirectTo }) => {
 
       <Modal
         open={open}
-        handleClose={handleClose}
+        handleClose={handleModalClose}
         handleCancel={handleCancel}
       />
     </>
