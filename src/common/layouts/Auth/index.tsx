@@ -2,13 +2,8 @@ import Box from "@mui/joy/Box";
 import Container from "@mui/joy/Container";
 import Typography from "@mui/joy/Typography";
 import CookieConsent from "common/components/CookieConsent";
-import dynamic from "next/dynamic";
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
-
-const LearnHowToInstallButton = dynamic(
-  () => import("./LearnHowToInstallButton")
-);
+import React from "react";
 
 interface AuthLayoutProps {
   children: React.ReactNode;
@@ -16,20 +11,8 @@ interface AuthLayoutProps {
   icon?: React.ReactElement;
 }
 
-const AuthLayout: React.FC<AuthLayoutProps> = ({ title, icon, children }) => {
-  const [showLearnHowToInstall, setShowLearnHowToInstall] =
-    useState<boolean>(false);
-
-  useEffect(() => {
-    if (!window.matchMedia("(display-mode: standalone)").matches) {
-      setShowLearnHowToInstall(true);
-    }
-  }, []);
-
-  return (
+const AuthLayout: React.FC<AuthLayoutProps> = ({ title, icon, children }) => (
     <Box height="100vh">
-      {showLearnHowToInstall && <LearnHowToInstallButton />}
-
       <Container
         component="main"
         sx={{
@@ -82,6 +65,5 @@ const AuthLayout: React.FC<AuthLayoutProps> = ({ title, icon, children }) => {
       <CookieConsent />
     </Box>
   );
-};
 
 export default AuthLayout;

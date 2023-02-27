@@ -4,12 +4,16 @@ import IconButton from "@mui/joy/IconButton";
 import Typography from "@mui/joy/Typography";
 import { useUser } from "@supabase/auth-helpers-react";
 import generateInitials from "common/utils/generateInitials";
+import Cookies from "js-cookie";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import NextLink from "next/link";
 import React, { useEffect, useState } from "react";
 
 const Menu = dynamic(() => import("./Menu"));
+const LearnHowToInstallButton = dynamic(
+  () => import("./LearnHowToInstallButton")
+);
 
 interface DefaultLayoutProps {
   children: React.ReactNode;
@@ -38,56 +42,75 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
     setAnchorEl(e.currentTarget);
   };
 
+  const [showLearnHowToInstall, setShowLearnHowToInstall] =
+    useState<boolean>(false);
+
+  useEffect(() => {
+    if (
+      !window.matchMedia("(display-mode: standalone)").matches &&
+      !Cookies.get("LearnedHowToInstall")
+    ) {
+      setShowLearnHowToInstall(true);
+    }
+  }, []);
+
   return (
-    <Container sx={{ px: 4, py: 2 }}>
-      <Box
-        component="nav"
-        mb={2}
-        py={2}
-        display="flex"
-        justifyContent="space-between"
-      >
-        <NextLink href="/" passHref>
-          <Box
-            aria-label="Return to the home page"
-            component="a"
-            display="flex"
-            justifyContent="center"
-            alignItems="center"
-            gap={1.2}
-            sx={{ textDecoration: "none" }}
-          >
-            <Image
-              src="/logo.svg"
-              width={48}
-              height={34}
-              layout="fixed"
-              alt="Diver down flag"
-            />
-            <Typography level="h3" component="p" fontWeight="lg">
-              Diveholic
-            </Typography>
-          </Box>
-        </NextLink>
-
-        <IconButton
-          onClick={handleOpenMenu}
-          sx={{ fontWeight: "lg" }}
-          color="neutral"
-          aria-label="Toggle menu"
+    <>
+      {showLearnHowToInstall && (
+        <LearnHowToInstallButton
+          setShowLearnHowToInstall={setShowLearnHowToInstall}
+        />
+      )}
+      <Container sx={{ px: 4, py: 2 }}>
+        <Box
+          component="nav"
+          mb={2}
+          py={2}
+          display="flex"
+          justifyContent="space-between"
         >
-          {initials}
-        </IconButton>
+          <NextLink href="/" passHref>
+            <Box
+              aria-label="Return to the home page"
+              component="a"
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+              gap={1.2}
+              sx={{ textDecoration: "none" }}
+            >
+              <Image
+                src="/logo.svg"
+                width={48}
+                height={34}
+                layout="fixed"
+                alt="Diver down flag"
+              />
+              <Typography level="h3" component="p" fontWeight="lg">
+                Diveholic
+              </Typography>
+            </Box>
+          </NextLink>
 
-        <Menu open={open} anchorEl={anchorEl} onClose={handleCloseMenu} />
-      </Box>
+          <IconButton
+            onClick={handleOpenMenu}
+            sx={{ fontWeight: "lg" }}
+            color="neutral"
+            aria-label="Toggle menu"
+          >
+            {initials}
+          </IconButton>
 
-      <Box component="main" sx={{ minHeight: "100vh" }}>
-        {children}
-      </Box>
+          <Menu open={open} anchorEl={anchorEl} onClose={handleCloseMenu} />
+        </Box>
 
-      <Box component="footer" py={6} />
-    </Container>
+        <Box component="main" sx={{ minHeight: "100vh" }}>
+          {children}
+        </Box>
+
+        <Box component="footer" py={6} />
+      </Container>
+    </>
   );
 };
 
