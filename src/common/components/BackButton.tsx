@@ -11,7 +11,8 @@ const BackButton: React.FC<BackButtonProps> = ({ to }) => (
   <NextLink href={to} passHref>
     <Button
       component="a"
-      sx={{ mb: 2 }}
+      sx={{ mb: {xs: 2, sm: 4} }}
+      size="sm"
       variant="plain"
       startDecorator={<ChevronLeftRounded />}
     >
