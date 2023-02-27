@@ -1,6 +1,7 @@
 import Grid from "@mui/joy/Grid";
 import Typography from "@mui/joy/Typography";
 import { useUser } from "@supabase/auth-helpers-react";
+import BackButton from "common/components/BackButton";
 import DiveCard from "common/components/DiveCard";
 import NoDivesFound from "common/components/NoDivesFound";
 import type { Dive } from "common/types";
@@ -61,6 +62,7 @@ const Dives: React.FC = () => {
     if (dives.length && !loading)
       return (
         <>
+          <BackButton to="/" />
           <Filters
             dives={dives}
             filters={filters}
