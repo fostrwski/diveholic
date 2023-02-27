@@ -7,6 +7,7 @@ import Button from "@mui/joy/Button";
 import Chip from "@mui/joy/Chip";
 import Grid from "@mui/joy/Grid";
 import Typography from "@mui/joy/Typography";
+import BackButton from "common/components/BackButton";
 import InfoCard from "common/components/InfoCard";
 import type { Dive } from "common/types";
 import { formatDate, formatTime } from "common/utils/datetime/format";
@@ -40,6 +41,8 @@ const DiveView: React.FC<DiveViewProps> = ({ dive }) => {
 
   return (
     <>
+      <BackButton to="/" />
+
       <Box sx={{ display: "flex", flexDirection: "column", gap: 1.2 }}>
         <Typography
           level="h5"

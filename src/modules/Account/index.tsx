@@ -6,11 +6,11 @@ import SaveRounded from "@mui/icons-material/SaveRounded";
 import SecurityRounded from "@mui/icons-material/SecurityRounded";
 import { IconButton } from "@mui/joy";
 import Box from "@mui/joy/Box";
-import Button from "@mui/joy/Button";
 import Link from "@mui/joy/Link";
 import TextField from "@mui/joy/TextField";
 import Typography from "@mui/joy/Typography";
 import { useUser } from "@supabase/auth-helpers-react";
+import BackButton from "common/components/BackButton";
 import { supabase } from "common/utils/supabaseClient";
 import NextLink from "next/link";
 import React, { useEffect, useState } from "react";
@@ -102,6 +102,8 @@ const Account: React.FC = () => {
 
   return (
     <>
+      <BackButton to="/" />
+
       <Box mb={6} width="100%">
         <Typography
           startDecorator={<PersonRounded />}
