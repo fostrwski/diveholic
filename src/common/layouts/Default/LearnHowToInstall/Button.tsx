@@ -13,7 +13,7 @@ interface LearnedHowToInstallProps {
   setShowLearnHowToInstall: Dispatch<SetStateAction<boolean>>;
 }
 
-const LearnHowToInstallButton: React.FC<LearnedHowToInstallProps> = ({
+const Button: React.FC<LearnedHowToInstallProps> = ({
   setShowLearnHowToInstall
 }) => {
   const [open, setOpen] = useState<boolean>(false);
@@ -72,4 +72,4 @@ const LearnHowToInstallButton: React.FC<LearnedHowToInstallProps> = ({
   );
 };
 
-export default LearnHowToInstallButton;
+export default Button;

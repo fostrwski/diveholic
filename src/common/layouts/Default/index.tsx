@@ -12,7 +12,7 @@ import React, { useEffect, useState } from "react";
 
 const Menu = dynamic(() => import("./Menu"));
 const LearnHowToInstallButton = dynamic(
-  () => import("./LearnHowToInstallButton")
+  () => import("./LearnHowToInstall/Button")
 );
 
 interface DefaultLayoutProps {
