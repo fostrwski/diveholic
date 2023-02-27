@@ -4,12 +4,17 @@ import ErrorOutlineRounded from "@mui/icons-material/ErrorOutlineRounded";
 import KeyRounded from "@mui/icons-material/KeyRounded";
 import PersonAddRounded from "@mui/icons-material/PersonAddRounded";
 import PersonRounded from "@mui/icons-material/PersonRounded";
+import SecurityRounded from "@mui/icons-material/SecurityRounded";
 import SendRounded from "@mui/icons-material/SendRounded";
 import VisibilityOffRounded from "@mui/icons-material/VisibilityOffRounded";
 import VisibilityRounded from "@mui/icons-material/VisibilityRounded";
 import Box from "@mui/joy/Box";
 import Button from "@mui/joy/Button";
+import Checkbox from "@mui/joy/Checkbox";
+import FormControl from "@mui/joy/FormControl";
+import FormHelperText from "@mui/joy/FormHelperText";
 import IconButton from "@mui/joy/IconButton";
+import Link from "@mui/joy/Link";
 import TextField from "@mui/joy/TextField";
 import Typography from "@mui/joy/Typography";
 import { useUser } from "@supabase/auth-helpers-react";
@@ -48,12 +53,16 @@ const SignUp: React.FC = () => {
   const [success, setSuccess] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
 
+  const [agreeToPrivacyPolicy, setAgreeToPrivacyPolicy] =
+    useState<boolean>(false);
+
   const handleSignUp = async (email: string, password: string) => {
     try {
       setLoading(true);
       setSuccess(false);
       setError("");
-      if (!email || !password || !firstName) return setLoading(false);
+      if (!email || !password || !firstName || !agreeToPrivacyPolicy)
+        return setLoading(false);
 
       const { error } = await supabase.auth.signUp(
         { email, password },
@@ -85,6 +94,10 @@ const SignUp: React.FC = () => {
 
   const handleShowPassword = () => {
     setShowPassword(!showPassword);
+  };
+
+  const onCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setAgreeToPrivacyPolicy(!agreeToPrivacyPolicy);
   };
 
   return (
@@ -135,16 +148,25 @@ const SignUp: React.FC = () => {
             label="First name"
           />
 
-          {success && (
-            <Typography
-              color="success"
-              textAlign="left"
-              startDecorator={<SendRounded />}
-              sx={{ alignItems: "flex-start" }}
-            >
-              Confirmation link was sent to your email
-            </Typography>
-          )}
+          <FormControl size="sm">
+            <Checkbox
+              label="I have read and agree to the privacy policy"
+              onChange={onCheckboxChange}
+              checked={agreeToPrivacyPolicy}
+              required
+            />
+
+            <FormHelperText>
+              <Typography level="body2">
+                Read our
+                <NextLink href="/privacy-policy" passHref>
+                  <Link color="info" target="blank">
+                    privacy policy
+                  </Link>
+                </NextLink>
+              </Typography>
+            </FormHelperText>
+          </FormControl>
 
           {error && (
             <Typography
@@ -156,9 +178,20 @@ const SignUp: React.FC = () => {
               {error}
             </Typography>
           )}
+
+          {success && (
+            <Typography
+              color="success"
+              textAlign="left"
+              startDecorator={<SendRounded />}
+              sx={{ alignItems: "flex-start" }}
+            >
+              Confirmation link was sent to your email
+            </Typography>
+          )}
         </Box>
 
-        <Box sx={{ mt: 8, display: "flex", flexDirection: "column", gap: 2.8 }}>
+        <Box sx={{ mt: 4, display: "flex", flexDirection: "column", gap: 2.8 }}>
           <Button
             color={success ? "success" : "primary"}
             type="submit"
