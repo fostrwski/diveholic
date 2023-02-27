@@ -1,5 +1,5 @@
 import ChevronLeftRounded from "@mui/icons-material/ChevronLeftRounded";
-import Button from "@mui/joy/Button";
+import Link from "@mui/joy/Link";
 import NextLink from "next/link";
 import React from "react";
 
@@ -9,15 +9,9 @@ interface BackButtonProps {
 
 const BackButton: React.FC<BackButtonProps> = ({ to }) => (
   <NextLink href={to} passHref>
-    <Button
-      component="a"
-      sx={{ mb: {xs: 2, sm: 4} }}
-      size="sm"
-      variant="plain"
-      startDecorator={<ChevronLeftRounded />}
-    >
+    <Link sx={{ mb: { xs: 2, sm: 4 } }} startDecorator={<ChevronLeftRounded />}>
       Go back
-    </Button>
+    </Link>
   </NextLink>
 );
 
