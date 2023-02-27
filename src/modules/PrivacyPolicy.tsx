@@ -2,6 +2,7 @@ import SecurityRounded from "@mui/icons-material/SecurityRounded";
 import Box from "@mui/joy/Box";
 import Container from "@mui/joy/Container";
 import Typography from "@mui/joy/Typography";
+import BackButton from "common/components/BackButton";
 import Image from "next/image";
 import React from "react";
 
@@ -30,6 +31,8 @@ const PrivacyPolicy: React.FC = () => (
     >
       Dive log built for the modern age
     </Typography>
+
+    <BackButton to="/" />
 
     <Typography
       level="h4"
