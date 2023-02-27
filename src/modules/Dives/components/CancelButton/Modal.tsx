@@ -13,16 +13,16 @@ interface ModalProps {
 
 const Modal: React.FC<ModalProps> = ({ open, handleClose, handleCancel }) => (
   <MuiModal
-    aria-labelledby="modal-title"
-    aria-describedby="modal-description"
+    aria-labelledby="modalTitle"
+    aria-describedby="modalDescription"
     open={open}
     onClose={handleClose}
   >
     <ModalDialog>
-      <Typography level="h4" component="p" id="modal-title" gutterBottom>
+      <Typography level="h4" component="p" id="modalTitle" gutterBottom>
         Cancel
       </Typography>
-      <Typography level="subtitle1" component="p" id="modal-description">
+      <Typography level="subtitle1" component="p" id="modalDescription">
         Are you sure? You won't be able to restore the progress
       </Typography>
 

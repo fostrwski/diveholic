@@ -37,17 +37,17 @@ const FormSubmittedModal: React.FC<FormSubmittedModalProps> = ({
   return (
     <Modal
       aria-label="Form successfully submitted"
-      aria-describedby="modal-description"
+      aria-describedby="modalDescription"
       open={open}
     >
       <ModalDialog>
-        <Typography level="h4" component="p" id="modal-title" gutterBottom>
+        <Typography level="h4" component="p" id="modalTitle" gutterBottom>
           Success
         </Typography>
         <Typography
           level="subtitle1"
           component="p"
-          id="modal-description"
+          id="modalDescription"
           mb={4}
         >
           Your dive has been saved! What'd you want to do next?
