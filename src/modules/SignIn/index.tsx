@@ -130,7 +130,7 @@ const SignIn: React.FC = () => {
         {/*   </MuiLink> */}
         {/* </div> */}
 
-        <Box sx={{ mt: 6, display: "flex", flexDirection: "column", gap: 2 }}>
+        <Box sx={{ mt: 4, display: "flex", flexDirection: "column", gap: 2 }}>
           <Button
             type="submit"
             color={success ? "success" : "primary"}
