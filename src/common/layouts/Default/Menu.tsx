@@ -2,7 +2,7 @@ import DashboardRounded from "@mui/icons-material/DashboardRounded";
 import LogoutRounded from "@mui/icons-material/LogoutRounded";
 import PersonRounded from "@mui/icons-material/PersonRounded";
 import ListItemDecorator from "@mui/joy/ListItemDecorator";
-import MuiMenu, { MenuProps } from "@mui/joy/Menu";
+import MuiMenu, { type MenuProps } from "@mui/joy/Menu";
 import MenuItem from "@mui/joy/MenuItem";
 import NextLink from "next/link";
 import React from "react";
