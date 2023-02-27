@@ -5,6 +5,7 @@ import Typography from "@mui/joy/Typography";
 import { useUser } from "@supabase/auth-helpers-react";
 import generateInitials from "common/utils/generateInitials";
 import Cookies from "js-cookie";
+import PersonRounded from "@mui/icons-material/PersonRounded"
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import NextLink from "next/link";
@@ -98,7 +99,7 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
             color="neutral"
             aria-label="Toggle menu"
           >
-            {initials}
+            {initials || <PersonRounded />}
           </IconButton>
 
           <Menu open={open} anchorEl={anchorEl} onClose={handleCloseMenu} />
