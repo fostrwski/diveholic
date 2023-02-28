@@ -126,6 +126,7 @@ const Account: React.FC = () => {
           endDecorator={
             newEmail !== user.email && (
               <IconButton
+              aria-label="Save new email"
                 color="success"
                 variant="soft"
                 onClick={handleUpdateEmail}
@@ -156,6 +157,7 @@ const Account: React.FC = () => {
           endDecorator={
             newFirstName !== user.user_metadata.first_name && (
               <IconButton
+              aria-label="Save new first name"
                 color="success"
                 variant="soft"
                 onClick={handleUpdateFirstName}
