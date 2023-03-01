@@ -1,6 +1,7 @@
 import { type User } from "@supabase/auth-helpers-react";
 import type { Dive } from "common/types";
 import { supabase } from "common/utils/supabaseClient";
+import { NextSeo } from "next-seo";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { useFormContext } from "react-hook-form";
@@ -39,6 +40,8 @@ const Edit: React.FC<EditProps> = ({ user }) => {
 
   return (
     <>
+      <NextSeo title="Edit dive" description="Edit existing dive" noindex />
+
       <Header diveId={diveId as string} />
 
       <Form onSubmit={handleSubmit(onSubmit)} submitted={submitted} />

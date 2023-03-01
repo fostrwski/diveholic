@@ -12,6 +12,7 @@ import Typography from "@mui/joy/Typography";
 import { useUser } from "@supabase/auth-helpers-react";
 import BackButton from "common/components/BackButton";
 import { supabase } from "common/utils/supabaseClient";
+import { NextSeo } from "next-seo";
 import NextLink from "next/link";
 import React, { useEffect, useState } from "react";
 import { string } from "yup";
@@ -102,6 +103,8 @@ const Account: React.FC = () => {
 
   return (
     <>
+      <NextSeo title="Account" noindex />
+
       <BackButton to="/" />
 
       <Box mb={6} width="100%">
@@ -126,7 +129,7 @@ const Account: React.FC = () => {
           endDecorator={
             newEmail !== user.email && (
               <IconButton
-              aria-label="Save new email"
+                aria-label="Save new email"
                 color="success"
                 variant="soft"
                 onClick={handleUpdateEmail}
@@ -157,7 +160,7 @@ const Account: React.FC = () => {
           endDecorator={
             newFirstName !== user.user_metadata.first_name && (
               <IconButton
-              aria-label="Save new first name"
+                aria-label="Save new first name"
                 color="success"
                 variant="soft"
                 onClick={handleUpdateFirstName}

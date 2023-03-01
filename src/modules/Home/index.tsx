@@ -10,6 +10,7 @@ import type { User } from "@supabase/supabase-js";
 import NoDivesFound from "common/components/NoDivesFound";
 import type { Dive } from "common/types";
 import { supabase } from "common/utils/supabaseClient";
+import { NextSeo } from "next-seo";
 import NextLink from "next/link";
 import React, { useEffect, useState } from "react";
 
@@ -78,6 +79,12 @@ const Home: React.FC = () => {
 
   return (
     <>
+      <NextSeo
+        title="Diveholic - dive log built for the modern age"
+        titleTemplate=""
+        description="Online dive log built for the modern age. Beautiful, accessible, open source"
+      />
+
       <Typography
         level="h4"
         component="h1"

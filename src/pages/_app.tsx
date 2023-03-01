@@ -5,8 +5,11 @@ import theme from "common/theme";
 import initGA from "common/utils/ga";
 import { supabase } from "common/utils/supabaseClient";
 import Cookies from "js-cookie";
+import { DefaultSeo } from "next-seo";
 import type { AppProps } from "next/app";
 import { useEffect } from "react";
+
+import SEO from "../../next-seo.config";
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
@@ -26,6 +29,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         disableTransitionOnChange
       >
         <CssBaseline />
+        <DefaultSeo {...SEO} />
         <Component {...pageProps} />
       </CssVarsProvider>
     </UserProvider>

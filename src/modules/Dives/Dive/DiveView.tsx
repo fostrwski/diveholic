@@ -12,6 +12,7 @@ import InfoCard from "common/components/InfoCard";
 import type { Dive } from "common/types";
 import { formatDate, formatTime } from "common/utils/datetime/format";
 import { supabase } from "common/utils/supabaseClient";
+import { NextSeo } from "next-seo";
 import NextLink from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
@@ -41,6 +42,8 @@ const DiveView: React.FC<DiveViewProps> = ({ dive }) => {
 
   return (
     <>
+      <NextSeo title="Dive lookup" description="Read about your dive" noindex />
+
       <BackButton to="/" />
 
       <Box sx={{ display: "flex", flexDirection: "column", gap: 1.2 }}>

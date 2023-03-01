@@ -6,6 +6,7 @@ import DiveCard from "common/components/DiveCard";
 import NoDivesFound from "common/components/NoDivesFound";
 import type { Dive } from "common/types";
 import { supabase } from "common/utils/supabaseClient";
+import { NextSeo } from "next-seo";
 import React, { useEffect, useMemo, useState } from "react";
 
 import Filters from "./Filters";
@@ -62,6 +63,8 @@ const Dives: React.FC = () => {
     if (dives.length && !loading)
       return (
         <>
+          <NextSeo title="Logged dives" description="Lookup your logged dives" noindex />
+
           <BackButton to="/" />
           <Filters
             dives={dives}

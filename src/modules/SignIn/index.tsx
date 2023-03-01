@@ -16,6 +16,7 @@ import { useUser } from "@supabase/auth-helpers-react";
 import Separator from "common/components/Separator";
 import AuthLayout from "common/layouts/Auth";
 import { supabase } from "common/utils/supabaseClient";
+import { NextSeo } from "next-seo";
 import NextLink from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
@@ -72,101 +73,112 @@ const SignIn: React.FC = () => {
   };
 
   return (
-    <AuthLayout>
-      <form onSubmit={handleSubmit}>
-        <TextField
-          placeholder="joe@example.com"
-          startDecorator={<AlternateEmailRounded />}
-          type="email"
-          onChange={onEmailChange}
-          value={email}
-          size="lg"
-          label="Email"
-          required
-          data-cy="email"
-        />
-        <TextField
-          sx={{ mt: 2 }}
-          startDecorator={<KeyRounded />}
-          type={showPassword ? "text" : "password"}
-          onChange={onPasswordChange}
-          value={password}
-          size="lg"
-          required
-          label="Password"
-          data-cy="password"
-          endDecorator={
-            <IconButton
-              aria-label="Toggle password visibility"
-              color="neutral"
-              variant="plain"
-              onClick={handleShowPassword}
-            >
-              {showPassword ? <VisibilityOffRounded /> : <VisibilityRounded />}
-            </IconButton>
-          }
-        />
+    <>
+      <NextSeo
+        title="Sign in"
+        description="Sign in to your Diveholic account"
+      />
 
-        {error && (
-          <Typography
-            mt={2}
-            color="danger"
-            textAlign="left"
-            startDecorator={<ErrorOutlineRounded />}
-            sx={{ alignItems: "flex-start" }}
-          >
-            {error}
-          </Typography>
-        )}
-
-        {/* <div> */}
-        {/*   <MuiLink */}
-        {/*     sx={{ float: "right" }} */}
-        {/*     endDecorator={<LockResetRounded />} */}
-        {/*     component="button" */}
-        {/*     type="button" */}
-        {/*   > */}
-        {/*     Restore password */}
-        {/*   </MuiLink> */}
-        {/* </div> */}
-
-        <Box sx={{ mt: 4, display: "flex", flexDirection: "column", gap: 2 }}>
-          <Button
-            type="submit"
-            color={success ? "success" : "primary"}
+      <AuthLayout>
+        <form onSubmit={handleSubmit}>
+          <TextField
+            placeholder="joe@example.com"
+            startDecorator={<AlternateEmailRounded />}
+            type="email"
+            onChange={onEmailChange}
+            value={email}
             size="lg"
+            label="Email"
+            required
+            data-cy="email"
+          />
+          <TextField
             sx={{ mt: 2 }}
-            startDecorator={success ? <DoneRounded /> : <LoginRounded />}
-            disabled={loading}
-            data-cy="submit"
-            fullWidth
-          >
-            Sign in
-          </Button>
+            startDecorator={<KeyRounded />}
+            type={showPassword ? "text" : "password"}
+            onChange={onPasswordChange}
+            value={password}
+            size="lg"
+            required
+            label="Password"
+            data-cy="password"
+            endDecorator={
+              <IconButton
+                aria-label="Toggle password visibility"
+                color="neutral"
+                variant="plain"
+                onClick={handleShowPassword}
+              >
+                {showPassword ? (
+                  <VisibilityOffRounded />
+                ) : (
+                  <VisibilityRounded />
+                )}
+              </IconButton>
+            }
+          />
 
-          <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
-            <Separator />
-            <Typography level="subtitle1" fontSize="xs">
-              OR
-            </Typography>
-            <Separator />
-          </Box>
-
-          <NextLink href="/signup" passHref>
-            <Button
-              color="neutral"
-              variant="plain"
-              type="button"
-              fullWidth
-              size="lg"
-              component="a"
+          {error && (
+            <Typography
+              mt={2}
+              color="danger"
+              textAlign="left"
+              startDecorator={<ErrorOutlineRounded />}
+              sx={{ alignItems: "flex-start" }}
             >
-              Create account
+              {error}
+            </Typography>
+          )}
+
+          {/* <div> */}
+          {/*   <MuiLink */}
+          {/*     sx={{ float: "right" }} */}
+          {/*     endDecorator={<LockResetRounded />} */}
+          {/*     component="button" */}
+          {/*     type="button" */}
+          {/*   > */}
+          {/*     Restore password */}
+          {/*   </MuiLink> */}
+          {/* </div> */}
+
+          <Box sx={{ mt: 4, display: "flex", flexDirection: "column", gap: 2 }}>
+            <Button
+              type="submit"
+              color={success ? "success" : "primary"}
+              size="lg"
+              sx={{ mt: 2 }}
+              startDecorator={success ? <DoneRounded /> : <LoginRounded />}
+              disabled={loading}
+              data-cy="submit"
+              fullWidth
+            >
+              Sign in
             </Button>
-          </NextLink>
-        </Box>
-      </form>
-    </AuthLayout>
+
+            <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+              <Separator />
+              <Typography level="subtitle1" fontSize="xs">
+                OR
+              </Typography>
+              <Separator />
+            </Box>
+
+            <NextLink href="/signup" passHref>
+              <Button
+                color="neutral"
+                variant="plain"
+                type="button"
+                fullWidth
+                size="lg"
+                component="a"
+              >
+                Create account
+              </Button>
+            </NextLink>
+          </Box>
+        </form>
+      </AuthLayout>
+    </>
   );
 };
 
