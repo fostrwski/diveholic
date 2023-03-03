@@ -76,78 +76,80 @@ const Details: React.FC = () => {
         )}
       />
 
-      <FormControl sx={{ mt: 4, px: 2 }}>
-        <FormLabel>Weights</FormLabel>
-        <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
-          <Controller
-            name="weights.taken"
-            control={control}
-            render={({ field }) => (
-              <Slider
-                {...field}
-                size="lg"
-                max={20}
-                valueLabelDisplay="auto"
-                marks={sliderMarks}
-                getAriaLabel={() => "Weights ammount during the dive"}
-                getAriaValueText={(value) =>
-                  getSliderAriaValueText(value, getValues("units"))
-                }
-              />
-            )}
-          />
-          <Typography>
-            {watchWeightsTaken}
-            {getValues("units") === "metric" ? "kg" : "lbs"}
-          </Typography>
-        </Box>
-      </FormControl>
+      <div role="group" aria-labelledby="weightsLabel">
+        <FormControl sx={{ mt: 4, px: 2 }}>
+          <FormLabel id="weightsLabel">Weights</FormLabel>
+          <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+            <Controller
+              name="weights.taken"
+              control={control}
+              render={({ field }) => (
+                <Slider
+                  {...field}
+                  size="lg"
+                  max={20}
+                  valueLabelDisplay="auto"
+                  marks={sliderMarks}
+                  getAriaLabel={() => "Weights ammount during the dive"}
+                  getAriaValueText={(value) =>
+                    getSliderAriaValueText(value, getValues("units"))
+                  }
+                />
+              )}
+            />
+            <Typography>
+              {watchWeightsTaken}
+              {getValues("units") === "metric" ? "kg" : "lbs"}
+            </Typography>
+          </Box>
+        </FormControl>
 
-      <Controller
-        name="weights.ammount"
-        control={control}
-        render={({ field }) => (
-          <RadioGroup
-            {...field}
-            sx={{ mt: 4, gap: 2 }}
-            onChange={(e) => onRadioChange(e)}
-            aria-label="Rate weights ammount"
-          >
-            {weightsAmmount.map(
-              (ammount: {
-                title: string;
-                icon: string;
-                value: string;
-                helperText: string;
-              }) => (
-                <FormControl
-                  key={ammount.value}
-                  sx={{ width: "100%", flexDirection: "row", gap: 2 }}
-                >
-                  <Radio
-                    overlay
-                    size="lg"
-                    value={ammount.value}
-                    componentsProps={{
-                      input: { "aria-label": `${ammount.title}` }
-                    }}
-                  />
-                  <div>
-                    <FormLabel>
-                      {ammount.title} {ammount.icon}
-                    </FormLabel>
-                    <FormHelperText
-                      aria-label={`Select if ${ammount.helperText.toLowerCase()}`}
-                    >
-                      {ammount.helperText}
-                    </FormHelperText>
-                  </div>
-                </FormControl>
-              )
-            )}
-          </RadioGroup>
-        )}
-      />
+        <Controller
+          name="weights.ammount"
+          control={control}
+          render={({ field }) => (
+            <RadioGroup
+              {...field}
+              sx={{ mt: 4, gap: 2 }}
+              onChange={(e) => onRadioChange(e)}
+              aria-label="Rate weights ammount"
+            >
+              {weightsAmmount.map(
+                (ammount: {
+                  title: string;
+                  icon: string;
+                  value: string;
+                  helperText: string;
+                }) => (
+                  <FormControl
+                    key={ammount.value}
+                    sx={{ width: "100%", flexDirection: "row", gap: 2 }}
+                  >
+                    <Radio
+                      overlay
+                      size="lg"
+                      value={ammount.value}
+                      componentsProps={{
+                        input: { "aria-label": `${ammount.title}` }
+                      }}
+                    />
+                    <div>
+                      <FormLabel>
+                        {ammount.title} {ammount.icon}
+                      </FormLabel>
+                      <FormHelperText
+                        aria-label={`Select if ${ammount.helperText.toLowerCase()}`}
+                      >
+                        {ammount.helperText}
+                      </FormHelperText>
+                    </div>
+                  </FormControl>
+                )
+              )}
+            </RadioGroup>
+          )}
+        />
+      </div>
     </>
   );
 };

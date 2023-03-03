@@ -29,16 +29,27 @@ const Gear: React.FC = () => {
     <>
       <TextSeparator>Gear</TextSeparator>
 
-      <Typography mb={2} component="p" level="subtitle1" mt={4}>
+      <Typography
+        mb={2}
+        component="p"
+        level="subtitle1"
+        mt={4}
+        id="exposureProtectionLabel"
+      >
         Exposure protection
       </Typography>
-      <Grid container spacing={2} justifyContent="space-between">
+      <Grid
+        container
+        spacing={2}
+        justifyContent="space-between"
+        role="group"
+        aria-labelledby="exposureProtectionLabel"
+      >
         <Grid xs={6}>
           <TextField
             {...register("gear.exposureProtection.type")}
             type="text"
             label="Type"
-            aria-label="Exposure protection type"
           />
         </Grid>
         <Grid xs={6}>
@@ -51,15 +62,20 @@ const Gear: React.FC = () => {
             type="number"
             label="Thickness"
             startDecorator={<LineWeightRounded />}
-            aria-label="Exposure protection thickness"
           />
         </Grid>
       </Grid>
 
-      <Typography mb={2} mt={4} level="subtitle1">
+      <Typography mb={2} mt={4} level="subtitle1" id="tanksLabel">
         Tanks
       </Typography>
-      <Grid container spacing={2} justifyContent="space-between">
+      <Grid
+        container
+        spacing={2}
+        justifyContent="space-between"
+        role="group"
+        aria-labelledby="tanksLabel"
+      >
         <Grid xs={6}>
           <TextField
             {...register("gear.tanks.count", { setValueAs: setNullOrNumber })}
@@ -68,7 +84,6 @@ const Gear: React.FC = () => {
             type="number"
             label="Count"
             startDecorator={<NumbersRounded />}
-            aria-label="Tanks count"
           />
         </Grid>
         <Grid xs={6}>
@@ -76,17 +91,28 @@ const Gear: React.FC = () => {
             {...register("gear.tanks.type")}
             type="text"
             label="Type"
-            aria-label="Tanks type"
           />
         </Grid>
       </Grid>
 
       {showMore && (
         <>
-          <Typography mb={2} mt={4} component="p" level="subtitle1">
+          <Typography
+            mb={2}
+            mt={4}
+            component="p"
+            level="subtitle1"
+            id="otherGearLabel"
+          >
             Other gear
           </Typography>
-          <Grid container spacing={2} justifyContent="space-between">
+          <Grid
+            container
+            spacing={2}
+            justifyContent="space-between"
+            role="group"
+            aria-labelledby="otherGearLabel"
+          >
             <Grid xs={6}>
               <TextField {...register("gear.bcd")} type="text" label="BCD" />
             </Grid>
