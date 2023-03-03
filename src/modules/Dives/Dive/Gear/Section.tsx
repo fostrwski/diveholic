@@ -14,7 +14,7 @@ const Section: React.FC<SectionProps> = ({ title, infoCards }) => {
   return (
     <>
       {title && (
-        <Typography mb={{xs:2, sm:0}} component="p" level="subtitle1">
+        <Typography mb={{ xs: 2, sm: 0 }} component="p" level="subtitle1">
           {title}
         </Typography>
       )}

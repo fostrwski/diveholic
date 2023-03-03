@@ -92,16 +92,20 @@ const DiveView: React.FC<DiveViewProps> = ({ dive }) => {
 
       <Grid
         container
-        sx={{ mt: 6, gap: { xs: 2, sm: 0 } }}
+        sx={{ mt: 6, gap: { xs: 6, sm: 0 } }}
         spacing={{ xs: 0, sm: 4 }}
       >
         <Grid xs={12} sm={6}>
           <Basics dive={dive} />
         </Grid>
 
-        <Grid xs={12} sm={6}>
-          <Weather dive={dive} />
-        </Grid>
+        {(dive.temperature.air ||
+          dive.temperature.water.bottom ||
+          dive.temperature.water.surface) && (
+          <Grid xs={12} sm={6}>
+            <Weather dive={dive} />
+          </Grid>
+        )}
 
         <Grid xs={12}>
           <Gear dive={dive} />
@@ -113,7 +117,8 @@ const DiveView: React.FC<DiveViewProps> = ({ dive }) => {
               sx={{
                 display: "flex",
                 gap: 2,
-                flexDirection: { xs: "column", sm: "row" }
+                flexDirection: { xs: "column", sm: "row" },
+                mb: 6
               }}
             >
               {dive.diveBuddy && (
