@@ -191,6 +191,7 @@ const Account: React.FC = () => {
       <Box
         sx={{
           mt: 6,
+          gap:1.2,
           display: "flex",
           flexDirection: { xs: "column", sm: "row" },
           justifyContent: "space-between"
