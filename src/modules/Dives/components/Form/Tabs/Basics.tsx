@@ -17,7 +17,8 @@ import setNullOrNumber from "../utils/setNullOrNumber";
 
 const diveTypes = [
   { title: "Boat", explanation: "Dive from the boat" },
-  { title: "Shore", explanation: "Dive from the beach" }
+  { title: "Shore", explanation: "Dive from the beach" },
+  { title: "Pool", explanation: "Dive in the swimming pool" }
 ];
 
 const Basics: React.FC = () => {
@@ -38,7 +39,6 @@ const Basics: React.FC = () => {
         render={({ field }) => (
           <RadioGroup
             {...field}
-            row
             sx={{
               mt: 4,
               gap: 2,
