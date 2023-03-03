@@ -9,6 +9,7 @@ import getDiveEmoji from "modules/Dives/components/Form/utils/getDiveEmoji";
 import React from "react";
 
 import getNumberOfBoatDives from "./getNumberOfBoatDives";
+import getNumberOfPoolDives from "./getNumberOfPoolDives";
 import getNumberOfShoreDives from "./getNumberOfShoreDives";
 import getTotalDivesLength from "./getTotalDivesLength";
 
@@ -53,6 +54,14 @@ const Statistics: React.FC<StatisticsProps> = ({ dives }) => (
           title="Shore dives"
           icon={getDiveEmoji("Shore")}
           content={getNumberOfShoreDives(dives)}
+        />
+      </Grid>
+
+      <Grid xs={6}>
+        <InfoCard
+          title="Pool dives"
+          icon={getDiveEmoji("Pool")}
+          content={getNumberOfPoolDives(dives)}
         />
       </Grid>
     </Grid>
