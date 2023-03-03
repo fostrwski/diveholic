@@ -24,7 +24,7 @@ setLocale({
 
 const diveSchema = object({
   date: string().required(),
-  number: number().nullable(),
+  number: number().nullable().positive("Should be a positive number"),
   location: object({
     country: object({
       name: string().required(),
