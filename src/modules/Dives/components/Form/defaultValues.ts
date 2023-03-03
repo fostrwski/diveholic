@@ -9,7 +9,7 @@ const defaultValues: Dive = {
       flagEmoji: ""
     },
     city: "",
-    diveCenter: ""
+    diveSpot: ""
   },
   type: "Boat",
   length: null,

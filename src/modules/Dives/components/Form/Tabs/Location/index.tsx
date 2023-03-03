@@ -72,13 +72,12 @@ const Location: React.FC = () => {
         </Grid>
         <Grid xs={12}>
           <TextField
-            {...register("location.diveCenter")}
+            {...register("location.diveSpot")}
             type="text"
-            label="Dive center"
-            placeholder="Trogir dive center"
+            label="Dive spot"
             startDecorator={<FlagRounded />}
-            helperText={errors.location?.diveCenter?.message?.toString()}
-            error={!!errors.location?.diveCenter}
+            helperText={errors.location?.diveSpot?.message?.toString()}
+            error={!!errors.location?.diveSpot}
             required
           />
         </Grid>

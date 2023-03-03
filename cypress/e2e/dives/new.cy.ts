@@ -26,7 +26,7 @@ describe("New dive", () => {
     cy.getInputByName("location.country.name").type("Croatia");
     cy.get("li[data-option-index='0']").click();
     cy.getInputByName("location.city").type("Trogir");
-    cy.getInputByName("location.diveCenter").type("Trogir dive center");
+    cy.getInputByName("location.diveSpot").type("Trogir dive spot");
 
     // Details section
     cy.get("button").contains("Details").click();

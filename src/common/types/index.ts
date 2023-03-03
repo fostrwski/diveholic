@@ -10,7 +10,7 @@ export type Dive = {
       flagEmoji: string;
     };
     city: string;
-    diveCenter: string;
+    diveSpot: string;
   };
   type: "Shore" | "Boat" | "Pool";
   length: number | null;

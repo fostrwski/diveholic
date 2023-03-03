@@ -73,12 +73,12 @@ const DiveView: React.FC<DiveViewProps> = ({ dive }) => {
               color="primary"
               startDecorator={<FlagRounded />}
             >
-              Dive center
+            Dive spot
             </Chip>
           }
           sx={{ alignItems: "self-start", wordBreak: "break-all" }}
         >
-          {dive.location.diveCenter}
+          {dive.location.diveSpot}
         </Typography>
 
         <Typography

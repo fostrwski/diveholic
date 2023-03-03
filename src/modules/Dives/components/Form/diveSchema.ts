@@ -32,7 +32,7 @@ const diveSchema = object({
       flagEmoji: string().required()
     }),
     city: string().required(),
-    diveCenter: string().required()
+    diveSpot: string().required()
   }),
   // @ts-ignore
   type: string<Dive["type"]>().defined().required(),
