@@ -217,7 +217,7 @@ const Account: React.FC = () => {
         startDecorator={<EmailRounded />}
         sx={{ mt: 4, fontSize: "sm" ,color:"GrayText"}}
       >
-        Contact me at diveholic@franciszek.dev
+        Contact us at diveholic@franciszek.dev
       </Typography>
     </Box>
   );
