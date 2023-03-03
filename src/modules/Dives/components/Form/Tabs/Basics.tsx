@@ -1,3 +1,4 @@
+import NumbersRounded from "@mui/icons-material/NumbersRounded";
 import TimelapseRounded from "@mui/icons-material/TimelapseRounded";
 import FormControl from "@mui/joy/FormControl";
 import FormHelperText from "@mui/joy/FormHelperText";
@@ -113,6 +114,16 @@ const Basics: React.FC = () => {
             label="Max depth"
             type="number"
             endDecorator={getValues("units") === "metric" ? "m" : "ft"}
+          />
+        </Grid>
+        <Grid xs={6}>
+          <TextField
+            {...register("number", { setValueAs: setNullOrNumber })}
+            error={!!errors.number?.message?.toString()}
+            helperText={errors.number?.message?.toString() || "Fill if you use your own index"}
+            label="Dive number"
+            type="number"
+            startDecorator={<NumbersRounded />}
           />
         </Grid>
       </Grid>

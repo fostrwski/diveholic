@@ -3,6 +3,7 @@ import type Gear from "./gear";
 export type Dive = {
   id?: number;
   date: string;
+  number: number | null;
   location: {
     country: {
       name: string;

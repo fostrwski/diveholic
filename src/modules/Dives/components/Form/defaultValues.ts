@@ -2,6 +2,7 @@ import type { Dive } from "common/types";
 
 const defaultValues: Dive = {
   date: "",
+  number: null,
   location: {
     country: {
       name: "",
