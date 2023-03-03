@@ -92,7 +92,7 @@ const DiveView: React.FC<DiveViewProps> = ({ dive }) => {
 
       <Grid
         container
-        sx={{ mt: 6, gap: { xs: 6, sm: 0 } }}
+        sx={{ mt: 6, gap: { xs: 2, sm: 0 } }}
         spacing={{ xs: 0, sm: 4 }}
       >
         <Grid xs={12} sm={6}>
@@ -127,7 +127,6 @@ const DiveView: React.FC<DiveViewProps> = ({ dive }) => {
 
       <Box
         sx={{
-          mt: 6,
           display: "flex",
           flexDirection: { xs: "column", sm: "row" },
           justifyContent: "flex-end",
