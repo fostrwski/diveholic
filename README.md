@@ -1,5 +1,3 @@
-# In development ⚙️ I'm building it mobile first so the desktop version looks horrible at the moment 😬
-
 # `Diveholic 🤿`
 
 Web based dive log made with all the best practices regarding user experience, accessibility and usability kept in mind. Fully open source :)
