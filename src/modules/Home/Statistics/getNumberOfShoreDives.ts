@@ -4,7 +4,7 @@ export default function getNumberOfShoreDives(dives: Array<Dive>) {
   let numberOfShoreDives = 0;
 
   dives.forEach((dive) => {
-    if (dive.type === "Boat") return;
+    if (dive.type !== "Shore") return;
     numberOfShoreDives += 1;
   });
 

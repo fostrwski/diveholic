@@ -4,7 +4,7 @@ export default function getNumberOfPoolDives(dives: Array<Dive>) {
   let numberOfPoolDives = 0;
 
   dives.forEach((dive) => {
-    if (dive.type === "Pool") return;
+    if (dive.type !== "Pool") return;
     numberOfPoolDives += 1;
   });
 
