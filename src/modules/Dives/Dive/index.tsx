@@ -1,6 +1,7 @@
 import { useUser } from "@supabase/auth-helpers-react";
 import type { Dive as DiveType } from "common/types";
 import { supabase } from "common/utils/supabaseClient";
+import { NextSeo } from "next-seo";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 
@@ -69,7 +70,13 @@ const Dive: React.FC = () => {
     return <Loading />;
   };
 
-  return <DetermineView />;
+  return (
+    <>
+      <NextSeo title="Dive lookup" description="Read about your dive" noindex />
+
+      <DetermineView />
+    </>
+  );
 };
 
 export default Dive;
