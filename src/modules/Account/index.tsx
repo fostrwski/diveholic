@@ -1,6 +1,8 @@
 import AlternateEmailRounded from "@mui/icons-material/AlternateEmailRounded";
 import CheckCircleOutlineRounded from "@mui/icons-material/CheckCircleOutlineRounded";
 import EditRounded from "@mui/icons-material/EditRounded";
+import EmailRounded from "@mui/icons-material/EmailRounded";
+import GitHub from "@mui/icons-material/GitHub";
 import PersonRounded from "@mui/icons-material/PersonRounded";
 import SaveRounded from "@mui/icons-material/SaveRounded";
 import SecurityRounded from "@mui/icons-material/SecurityRounded";
@@ -102,7 +104,7 @@ const Account: React.FC = () => {
   if (!user) return <></>;
 
   return (
-    <>
+    <Box maxWidth="sm">
       <NextSeo title="Account" noindex />
 
       <BackButton to="/" />
@@ -186,18 +188,37 @@ const Account: React.FC = () => {
 
       {mounted && <Preferences />}
 
-      <Box sx={{ mt: 6 }}>
+      <Box
+        sx={{
+          mt: 6,
+          display: "flex",
+          flexDirection: { xs: "column", sm: "row" },
+          justifyContent: "space-between"
+        }}
+      >
+        <Link
+          href="https://github.com/franekostrowski/diveholic"
+          target="blank"
+          startDecorator={<GitHub />}
+          color="neutral"
+        >
+          GitHub repository
+        </Link>
+
         <NextLink href="/privacy-policy" passHref>
-          <Link
-            color="info"
-            sx={{ fontSize: "sm" }}
-            startDecorator={<SecurityRounded />}
-          >
+          <Link color="info" startDecorator={<SecurityRounded />}>
             Privacy policy
           </Link>
         </NextLink>
       </Box>
-    </>
+
+      <Typography
+        startDecorator={<EmailRounded />}
+        sx={{ mt: 4, fontSize: "sm" ,color:"GrayText"}}
+      >
+        Contact me at diveholic@franciszek.dev
+      </Typography>
+    </Box>
   );
 };
 
