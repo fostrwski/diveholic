@@ -13,7 +13,7 @@ interface AmmountInformationProps {
 }
 
 const AmmountInformation: React.FC<AmmountInformationProps> = ({ ammount }) => (
-  <Box sx={{ display: "flex", gap: 1.2, flexWrap: "wrap" }}>
+  <Box sx={{ display: "flex", alignItems:"center", gap: 1.2, flexWrap: "wrap" }}>
     <Chip
       component="div"
       startDecorator={<ScaleRounded />}
