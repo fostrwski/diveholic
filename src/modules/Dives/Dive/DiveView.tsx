@@ -1,6 +1,7 @@
 import CalendarTodayRounded from "@mui/icons-material/CalendarTodayRounded";
 import EditRounded from "@mui/icons-material/EditRounded";
 import FlagRounded from "@mui/icons-material/FlagRounded";
+import NumbersRounded from "@mui/icons-material/NumbersRounded";
 import PublicRounded from "@mui/icons-material/PublicRounded";
 import Box from "@mui/joy/Box";
 import Button from "@mui/joy/Button";
@@ -47,6 +48,17 @@ const DiveView: React.FC<DiveViewProps> = ({ dive }) => {
       <BackButton to="/" />
 
       <Box sx={{ display: "flex", flexDirection: "column", gap: 1.2 }}>
+        {dive.number && (
+          <div>
+            <Typography
+              startDecorator={<NumbersRounded />}
+              fontWeight="lg"
+              textColor="GrayText"
+            >
+              Dive number {dive.number}
+            </Typography>
+          </div>
+        )}
         <Typography
           level="h5"
           fontWeight="lg"
@@ -73,7 +85,7 @@ const DiveView: React.FC<DiveViewProps> = ({ dive }) => {
               color="primary"
               startDecorator={<FlagRounded />}
             >
-            Dive spot
+              Dive spot
             </Chip>
           }
           sx={{ alignItems: "self-start", wordBreak: "break-all" }}
