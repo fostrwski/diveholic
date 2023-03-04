@@ -88,6 +88,8 @@ const Form: React.FC<FormProps> = ({ onSubmit, submitted }) => {
         </Grid>
       </Grid>
 
+        <Box sx={{textAlign: {sm: "right"}}}> 
+
       <Button
         type="submit"
         color="success"
@@ -95,12 +97,13 @@ const Form: React.FC<FormProps> = ({ onSubmit, submitted }) => {
         startDecorator={submitted ? <DoneRounded /> : <SaveRounded />}
         sx={{
           mt: 6,
-          width: { xs: "100%", sm: "initial" }
+          width: { xs: "100%", sm: "initial" },
         }}
         onSubmit={onSubmit}
       >
         Save
       </Button>
+      </Box>
 
       {/* Show error message when errors object is non-empty */}
       {!(Object.keys(errors).length === 0) && (
