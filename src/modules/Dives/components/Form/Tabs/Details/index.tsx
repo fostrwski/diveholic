@@ -97,8 +97,8 @@ const Details: React.FC = () => {
                 />
               )}
             />
-            <Typography>
-              {watchWeightsTaken}
+            <Typography sx={{ whiteSpace: "nowrap" }}>
+              {watchWeightsTaken}{" "}
               {getValues("units") === "metric" ? "kg" : "lbs"}
             </Typography>
           </Box>
