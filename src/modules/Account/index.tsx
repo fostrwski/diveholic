@@ -191,31 +191,35 @@ const Account: React.FC = () => {
       <Box
         sx={{
           mt: 6,
-          gap:1.2,
+          gap: 1.2,
           display: "flex",
           flexDirection: { xs: "column", sm: "row" },
           justifyContent: "space-between"
         }}
       >
-        <Link
-          href="https://github.com/franekostrowski/diveholic"
-          target="blank"
-          startDecorator={<GitHub />}
-          color="neutral"
-        >
-          GitHub repository
-        </Link>
-
-        <NextLink href="/privacy-policy" passHref>
-          <Link color="info" startDecorator={<SecurityRounded />}>
-            Privacy policy
+        <div>
+          <Link
+            href="https://github.com/franekostrowski/diveholic"
+            target="blank"
+            startDecorator={<GitHub />}
+            color="neutral"
+          >
+            GitHub repository
           </Link>
-        </NextLink>
+        </div>
+
+        <div>
+          <NextLink href="/privacy-policy" passHref>
+            <Link color="info" startDecorator={<SecurityRounded />}>
+              Privacy policy
+            </Link>
+          </NextLink>
+        </div>
       </Box>
 
       <Typography
         startDecorator={<EmailRounded />}
-        sx={{ mt: 4, fontSize: "sm" ,color:"GrayText"}}
+        sx={{ mt: 4, fontSize: "sm", color: "GrayText" }}
       >
         Contact us at diveholic@franciszek.dev
       </Typography>
