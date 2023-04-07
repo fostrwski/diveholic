@@ -32,6 +32,8 @@ function diveGearEmpty(gear: Dive["gear"]) {
 
     if (typeof item === "object")
       return Object.values(item).every((x) => x === null || x === "");
+
+    return true;
   });
 
   return empty;
