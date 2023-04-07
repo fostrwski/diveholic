@@ -26,6 +26,17 @@ interface DiveViewProps {
   dive: Dive;
 }
 
+function diveGearEmpty(gear: Dive["gear"]) {
+  const empty = Object.values(gear).every((item) => {
+    if (typeof item === "string") return item === "";
+
+    if (typeof item === "object")
+      return Object.values(item).every((x) => x === null || x === "");
+  });
+
+  return empty;
+}
+
 const DiveView: React.FC<DiveViewProps> = ({ dive }) => {
   const router = useRouter();
 
@@ -116,12 +127,16 @@ const DiveView: React.FC<DiveViewProps> = ({ dive }) => {
           </Grid>
         )}
 
-        <Grid xs={12}>
-          <Gear dive={dive} />
-        </Grid>
+        {diveGearEmpty(dive.gear) ? (
+          " "
+        ) : (
+          <Grid xs={12}>
+            <Gear dive={dive} />
+          </Grid>
+        )}
 
-        <Grid xs={12}>
-          {(dive.diveBuddy || dive.notes) && (
+        {(dive.diveBuddy || dive.notes) && (
+          <Grid xs={12}>
             <Box
               sx={{
                 display: "flex",
@@ -135,8 +150,8 @@ const DiveView: React.FC<DiveViewProps> = ({ dive }) => {
               )}
               {dive.notes && <InfoCard title="Notes" content={dive.notes} />}
             </Box>
-          )}
-        </Grid>
+          </Grid>
+        )}
       </Grid>
 
       <Box
