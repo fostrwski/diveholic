@@ -2,7 +2,7 @@
 
 Web based dive log made with all the best practices regarding user experience, accessibility and usability kept in mind. Fully open source :)
 
-(It's built mobile first, the desktop experience isn't quite polished yet!)
+⚠️ Diveholic is built mobile first, the desktop experience isn't quite polished yet!
 
 ## Back story
 
