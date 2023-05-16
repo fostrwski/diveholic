@@ -15,8 +15,10 @@ const CookieConsent: React.FC = () => {
   }, []);
 
   const handleAccept = () => {
-    if (!process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS)
-      return console.error("Google analytics id not specified");
+    if (!process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS) {
+      console.error("Google analytics id not specified");
+      return;
+    }
 
     Cookies.set("Analytics", "accepted");
     initGA(process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS);

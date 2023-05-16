@@ -34,12 +34,14 @@ const Dive: React.FC = () => {
       if (error) {
         setError(error);
         console.error(error);
-        return setLoading(false);
+        setLoading(false);
+        return;
       }
 
       if (data && data.length > 0) {
         setDive(data[0]);
-        return setLoading(false);
+        setLoading(false);
+        return;
       }
 
       setDiveNotFound(true);

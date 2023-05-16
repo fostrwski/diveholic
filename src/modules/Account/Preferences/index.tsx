@@ -27,7 +27,11 @@ const Preferences: React.FC = () => {
   const onSwitchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setAnalyticsChecked(e.target.checked);
 
-    if (e.target.checked) return Cookies.set("Analytics", "accepted");
+    if (e.target.checked) {
+      Cookies.set("Analytics", "accepted");
+      return;
+    }
+
     Cookies.set("Analytics", "declined");
   };
 

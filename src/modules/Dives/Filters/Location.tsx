@@ -28,13 +28,15 @@ const Location: React.FC<LocationProps> = ({ dives, filters, setFilters }) => {
   const onCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const countryCode = e.target.defaultValue;
 
-    if (filters.countryCodes.includes(countryCode))
-      return setFilters((previousFilters) => ({
+    if (filters.countryCodes.includes(countryCode)) {
+      setFilters((previousFilters) => ({
         ...previousFilters,
         countryCodes: previousFilters.countryCodes.filter(
           (item) => item !== countryCode
         )
       }));
+      return;
+    }
 
     setFilters((previousFilters) => ({
       ...previousFilters,

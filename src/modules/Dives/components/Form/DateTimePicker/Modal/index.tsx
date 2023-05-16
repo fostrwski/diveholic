@@ -68,7 +68,10 @@ const Modal: React.FC<ModalProps> = ({ open, setOpen }) => {
     const selectedDate = selectedDates[0];
 
     setError(false);
-    if (!selectedDate || !time) return setError(true);
+    if (!selectedDate || !time) {
+      setError(true);
+      return;
+    }
 
     const datetime = new Date(selectedDate);
     const [hours, minutes] = time.split(":");
@@ -103,9 +106,8 @@ const Modal: React.FC<ModalProps> = ({ open, setOpen }) => {
           pb: 8,
           borderRadius: "xl",
           borderBottomLeftRadius: 0,
-          borderBottomRightRadius: 0
-          ,
-          width: {xs: "100%", sm:"25%"}
+          borderBottomRightRadius: 0,
+          width: { xs: "100%", sm: "25%" }
         }}
         layout="fullscreen"
         aria-label="Select date and time"

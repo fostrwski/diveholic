@@ -23,11 +23,13 @@ const Details: React.FC = () => {
   const onRadioChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     switch (e.target.value) {
       case "tooLittle":
-        return setValue("weights.ammount", "tooLittle");
+        setValue("weights.ammount", "tooLittle");
+        break;
       case "tooMuch":
-        return setValue("weights.ammount", "tooMuch");
+        setValue("weights.ammount", "tooMuch");
+        break;
       default:
-        return setValue("weights.ammount", "perfect");
+        setValue("weights.ammount", "perfect");
     }
   };
 

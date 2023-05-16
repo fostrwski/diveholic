@@ -61,8 +61,10 @@ const SignUp: React.FC = () => {
       setLoading(true);
       setSuccess(false);
       setError("");
-      if (!email || !password || !firstName || !agreeToPrivacyPolicy)
-        return setLoading(false);
+      if (!email || !password || !firstName || !agreeToPrivacyPolicy) {
+        setLoading(false);
+        return;
+      }
 
       const { error } = await supabase.auth.signUp(
         { email, password },
@@ -74,7 +76,8 @@ const SignUp: React.FC = () => {
       );
       if (error) {
         console.error(error);
-        return setError(error.message);
+        setError(error.message);
+        return;
       }
 
       setSuccess(true);

@@ -63,11 +63,17 @@ const Account: React.FC = () => {
     const emailSchema = string().email().required();
     const emailCorrect = await emailSchema.isValid(newEmail);
 
-    if (!emailCorrect) return setEmailError("Incorrect email");
+    if (!emailCorrect) {
+      setEmailError("Incorrect email");
+      return;
+    }
 
     const { data, error } = await supabase.auth.update({ email: newEmail });
 
-    if (error) return console.error(error);
+    if (error) {
+      console.error(error);
+      return;
+    }
 
     // Display alert for 10 seconds
     setEmailToBeConfirmed(data?.new_email as string);
@@ -88,13 +94,19 @@ const Account: React.FC = () => {
     const firstNameSchema = string().required();
     const firstNameCorrect = await firstNameSchema.isValid(newFirstName);
 
-    if (!firstNameCorrect) return setFirstNameError("Incorrect first name");
+    if (!firstNameCorrect) {
+      setFirstNameError("Incorrect first name");
+      return;
+    }
 
     const { data, error } = await supabase.auth.update({
       data: { first_name: newFirstName }
     });
 
-    if (error) return console.error(error);
+    if (error) {
+      console.error(error);
+      return;
+    }
 
     setFirstNameSuccess(true);
     await delay(10000);

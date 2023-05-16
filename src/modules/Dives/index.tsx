@@ -41,7 +41,8 @@ const Dives: React.FC = () => {
       if (error) {
         setError(true);
         console.error(error);
-        return setLoading(false);
+        setLoading(false);
+        return;
       }
 
       if (data) setDives(data);
@@ -63,7 +64,11 @@ const Dives: React.FC = () => {
     if (dives.length && !loading)
       return (
         <>
-          <NextSeo title="Logged dives" description="Lookup your logged dives" noindex />
+          <NextSeo
+            title="Logged dives"
+            description="Lookup your logged dives"
+            noindex
+          />
 
           <BackButton to="/" />
           <Filters
