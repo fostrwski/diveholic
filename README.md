@@ -1,4 +1,4 @@
-![Home and dive - mobile view](https://github.com/franekostrowski/diveholic/blob/main/screenshots/home-and-dive-mobile-view.png)
+![Hero](https://github.com/franekostrowski/diveholic/blob/main/screenshots/hero.png)
 
 # `Diveholic 🤿`
 
