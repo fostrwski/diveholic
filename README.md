@@ -4,7 +4,7 @@
 
 Web based dive log made with all the best practices regarding user experience, accessibility and usability kept in mind. Fully open source :)
 
-🔴 Live application: https://breedaholic.netlify.app
+🔴 Live application: https://diveholic.netlify.app
 
 ⚠️ Diveholic is built mobile first, the desktop experience isn't quite polished yet!
 
