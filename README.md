@@ -1,3 +1,5 @@
+![Home and dive - mobile view](https://github.com/franekostrowski/diveholic/blob/main/screenshots/home-and-dive-mobile-view.png)
+
 # `Diveholic 🤿`
 
 Web based dive log made with all the best practices regarding user experience, accessibility and usability kept in mind. Fully open source :)
