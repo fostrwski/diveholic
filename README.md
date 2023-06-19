@@ -2,11 +2,15 @@
 
 # `Diveholic 🤿`
 
-Web based dive log made with all the best practices regarding user experience, accessibility and usability kept in mind. Fully open source :)
+Web based dive log - application to save your latest dives to help you track progress in your scuba diving career. Made with all the best practices regarding user experience, accessibility and usability kept in mind. Fully open source :)
+
+⚠️ Diveholic is built mobile first, the desktop experience isn't quite polished yet!
 
 🔴 Live application: https://diveholic.netlify.app
 
-⚠️ Diveholic is built mobile first, the desktop experience isn't quite polished yet!
+## You can sign in with these demo credentials to see how the app works:
+- Email: diveholic@franciszek.dev
+- Password: Demo123
 
 ## Back story
 
