@@ -12,6 +12,14 @@ Web based dive log - application to save your latest dives to help you track pro
 - Email: diveholic@franciszek.dev
 - Password: Demo123
 
+## Features
+- Sign up, sign in
+- Create new dive
+- Display logged dives
+- Update dive
+- Delete dive
+- Edit account settings and app preferences
+
 ## Back story
 
 I've been searching for an excellent dive log for use on my diving trips, but without much success. All of them were clunky, outdated, had bad user interface and experience. I gave up and started this project with one simple goal in mind: to take all my knowledge and experience and create the best dive log I'm able to.
