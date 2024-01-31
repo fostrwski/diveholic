@@ -1,7 +1,7 @@
 export default function calculateProgressValue(
   temperature: number,
   minValue: number,
-  maxValue: number
+  maxValue: number,
 ) {
   if (temperature === 0) return 0 + Math.abs(minValue);
 

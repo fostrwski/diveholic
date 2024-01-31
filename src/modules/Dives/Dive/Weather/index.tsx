@@ -1,11 +1,11 @@
-import Box from "@mui/joy/Box";
-import LinearProgress from "@mui/joy/LinearProgress";
-import Typography from "@mui/joy/Typography";
-import TextSeparator from "common/components/TextSeparator";
-import type { Dive } from "common/types";
-import React from "react";
+import Box from '@mui/joy/Box';
+import LinearProgress from '@mui/joy/LinearProgress';
+import Typography from '@mui/joy/Typography';
+import TextSeparator from 'common/components/TextSeparator';
+import type { Dive } from 'common/types';
+import React from 'react';
 
-import calculateProgressValue from "./calculateProgressValue";
+import calculateProgressValue from './calculateProgressValue';
 
 interface WeatherProps {
   dive: Dive;
@@ -14,40 +14,40 @@ interface WeatherProps {
 const Weather: React.FC<WeatherProps> = ({ dive }) => {
   const {
     water: { surface, bottom },
-    air
+    air,
   } = dive.temperature;
 
   if (!air && !surface && !bottom) return <></>;
 
   const temperatures = [
     {
-      title: "Air",
+      title: 'Air',
       value: air,
       minValue: -30,
       maxValue: 50,
-      color: "neutral"
+      color: 'neutral',
     },
     {
-      title: "Water surface",
+      title: 'Water surface',
       value: surface,
       minValue: -30,
       maxValue: 40,
-      color: "primary"
+      color: 'primary',
     },
     {
-      title: "Water bottom",
+      title: 'Water bottom',
       value: bottom,
       minValue: -30,
       maxValue: 40,
-      color: "warning"
-    }
+      color: 'warning',
+    },
   ];
 
   return (
     <>
       <TextSeparator>Weather</TextSeparator>
 
-      <Box sx={{ display: "flex", gap: 2, flexDirection: "column", mt: 4 }}>
+      <Box sx={{ display: 'flex', gap: 2, flexDirection: 'column', mt: 4 }}>
         {temperatures.map((temperature) => {
           if (!temperature.value) return;
 
@@ -57,13 +57,13 @@ const Weather: React.FC<WeatherProps> = ({ dive }) => {
                 {temperature.title} temperature
               </Typography>
 
-              <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
                 <LinearProgress
                   determinate
                   value={calculateProgressValue(
                     temperature.value,
                     temperature.minValue,
-                    temperature.maxValue
+                    temperature.maxValue,
                   )}
                   variant="outlined"
                   // @ts-ignore
@@ -72,7 +72,7 @@ const Weather: React.FC<WeatherProps> = ({ dive }) => {
 
                 <Typography fontWeight="md">
                   {temperature.value}
-                  {dive.units === "metric" ? "°C" : "°F"}
+                  {dive.units === 'metric' ? '°C' : '°F'}
                 </Typography>
               </Box>
             </Box>

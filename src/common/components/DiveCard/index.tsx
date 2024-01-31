@@ -1,17 +1,17 @@
-import CalendarTodayRounded from "@mui/icons-material/CalendarTodayRounded";
-import PublicRounded from "@mui/icons-material/PublicRounded";
-import TimelapseRounded from "@mui/icons-material/TimelapseRounded";
-import Avatar from "@mui/joy/Avatar";
-import Box from "@mui/joy/Box";
-import Card from "@mui/joy/Card";
-import Chip from "@mui/joy/Chip";
-import Typography from "@mui/joy/Typography";
-import Separator from "common/components/Separator";
-import type { Dive } from "common/types";
-import { formatDate, formatTime } from "common/utils/datetime/format";
-import getDiveEmoji from "modules/Dives/components/Form/utils/getDiveEmoji";
-import NextLink from "next/link";
-import React from "react";
+import CalendarTodayRounded from '@mui/icons-material/CalendarTodayRounded';
+import PublicRounded from '@mui/icons-material/PublicRounded';
+import TimelapseRounded from '@mui/icons-material/TimelapseRounded';
+import Avatar from '@mui/joy/Avatar';
+import Box from '@mui/joy/Box';
+import Card from '@mui/joy/Card';
+import Chip from '@mui/joy/Chip';
+import Typography from '@mui/joy/Typography';
+import Separator from 'common/components/Separator';
+import type { Dive } from 'common/types';
+import { formatDate, formatTime } from 'common/utils/datetime/format';
+import getDiveEmoji from 'modules/Dives/components/Form/utils/getDiveEmoji';
+import NextLink from 'next/link';
+import React from 'react';
 
 interface DiveCardProps {
   dive: Dive;
@@ -22,17 +22,17 @@ const DiveCard: React.FC<DiveCardProps> = ({ dive }) => (
     <Card
       component="a"
       sx={{
-        textDecoration: "none",
-        backgroundColor: "transparent",
-        display: "flex",
-        flexDirection: "row",
+        textDecoration: 'none',
+        backgroundColor: 'transparent',
+        display: 'flex',
+        flexDirection: 'row',
         gap: 2,
-        py: 0.6
+        py: 0.6,
       }}
       aria-label={`${dive.length} minute ${dive.type.toLowerCase()} dive in ${
         dive.location.city
       }, ${dive.location.country.name} on ${formatDate(
-        dive.date
+        dive.date,
       )} at ${formatTime(dive.date)}`}
     >
       <Avatar size="lg">{getDiveEmoji(dive.type)}</Avatar>
@@ -41,7 +41,7 @@ const DiveCard: React.FC<DiveCardProps> = ({ dive }) => (
           level="h6"
           fontWeight="lg"
           component="div"
-          sx={{ alignItems: "start", wordBreak: "break-all" }}
+          sx={{ alignItems: 'start', wordBreak: 'break-all' }}
           startDecorator={
             dive.location.country.flagEmoji ? (
               dive.location.country.flagEmoji
@@ -57,7 +57,7 @@ const DiveCard: React.FC<DiveCardProps> = ({ dive }) => (
           level="subtitle1"
           component="p"
           startDecorator={<CalendarTodayRounded />}
-          sx={{ alignItems: "flex-start" }}
+          sx={{ alignItems: 'flex-start' }}
         >
           {formatDate(dive.date)} at {formatTime(dive.date)}
         </Typography>
@@ -65,10 +65,10 @@ const DiveCard: React.FC<DiveCardProps> = ({ dive }) => (
         <Box
           mt={2}
           sx={{
-            display: "flex",
-            alignItems: "center",
+            display: 'flex',
+            alignItems: 'center',
             gap: 2,
-            width: "100%"
+            width: '100%',
           }}
         >
           <Separator />

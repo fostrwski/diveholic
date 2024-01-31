@@ -1,37 +1,37 @@
-import CalendarTodayRounded from "@mui/icons-material/CalendarTodayRounded";
-import EditRounded from "@mui/icons-material/EditRounded";
-import FlagRounded from "@mui/icons-material/FlagRounded";
-import NumbersRounded from "@mui/icons-material/NumbersRounded";
-import PublicRounded from "@mui/icons-material/PublicRounded";
-import Box from "@mui/joy/Box";
-import Button from "@mui/joy/Button";
-import Chip from "@mui/joy/Chip";
-import Grid from "@mui/joy/Grid";
-import Typography from "@mui/joy/Typography";
-import BackButton from "common/components/BackButton";
-import InfoCard from "common/components/InfoCard";
-import type { Dive } from "common/types";
-import { formatDate, formatTime } from "common/utils/datetime/format";
-import { supabase } from "common/utils/supabaseClient";
-import NextLink from "next/link";
-import { useRouter } from "next/router";
-import React from "react";
+import CalendarTodayRounded from '@mui/icons-material/CalendarTodayRounded';
+import EditRounded from '@mui/icons-material/EditRounded';
+import FlagRounded from '@mui/icons-material/FlagRounded';
+import NumbersRounded from '@mui/icons-material/NumbersRounded';
+import PublicRounded from '@mui/icons-material/PublicRounded';
+import Box from '@mui/joy/Box';
+import Button from '@mui/joy/Button';
+import Chip from '@mui/joy/Chip';
+import Grid from '@mui/joy/Grid';
+import Typography from '@mui/joy/Typography';
+import BackButton from 'common/components/BackButton';
+import InfoCard from 'common/components/InfoCard';
+import type { Dive } from 'common/types';
+import { formatDate, formatTime } from 'common/utils/datetime/format';
+import { supabase } from 'common/utils/supabaseClient';
+import NextLink from 'next/link';
+import { useRouter } from 'next/router';
+import React from 'react';
 
-import Basics from "./Basics";
-import DeleteButton from "./DeleteButton";
-import Gear from "./Gear";
-import Weather from "./Weather";
+import Basics from './Basics';
+import DeleteButton from './DeleteButton';
+import Gear from './Gear';
+import Weather from './Weather';
 
 interface DiveViewProps {
   dive: Dive;
 }
 
-function diveGearEmpty(gear: Dive["gear"]) {
+function diveGearEmpty(gear: Dive['gear']) {
   const empty = Object.values(gear).every((item) => {
-    if (typeof item === "string") return item === "";
+    if (typeof item === 'string') return item === '';
 
-    if (typeof item === "object")
-      return Object.values(item).every((x) => x === null || x === "");
+    if (typeof item === 'object')
+      return Object.values(item).every((x) => x === null || x === '');
 
     return true;
   });
@@ -44,20 +44,20 @@ const DiveView: React.FC<DiveViewProps> = ({ dive }) => {
 
   const handleDiveDelete = async () => {
     const { error } = await supabase
-      .from<Dive>("dives")
+      .from<Dive>('dives')
       .delete()
-      .eq("id", dive.id);
+      .eq('id', dive.id);
 
     if (error) console.error(error);
 
-    router.push("/");
+    router.push('/');
   };
 
   return (
     <>
       <BackButton to="/" />
 
-      <Box sx={{ display: "flex", flexDirection: "column", gap: 1.2 }}>
+      <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.2 }}>
         {dive.number && (
           <div>
             <Typography
@@ -73,7 +73,7 @@ const DiveView: React.FC<DiveViewProps> = ({ dive }) => {
           level="h5"
           fontWeight="lg"
           component="div"
-          sx={{ alignItems: "start", wordBreak: "break-all" }}
+          sx={{ alignItems: 'start', wordBreak: 'break-all' }}
           startDecorator={
             dive.location.country.flagEmoji ? (
               dive.location.country.flagEmoji
@@ -98,7 +98,7 @@ const DiveView: React.FC<DiveViewProps> = ({ dive }) => {
               Dive spot
             </Chip>
           }
-          sx={{ alignItems: "self-start", wordBreak: "break-all" }}
+          sx={{ alignItems: 'self-start', wordBreak: 'break-all' }}
         >
           {dive.location.diveSpot}
         </Typography>
@@ -130,7 +130,7 @@ const DiveView: React.FC<DiveViewProps> = ({ dive }) => {
         )}
 
         {diveGearEmpty(dive.gear) ? (
-          " "
+          ' '
         ) : (
           <Grid xs={12}>
             <Gear dive={dive} />
@@ -141,10 +141,10 @@ const DiveView: React.FC<DiveViewProps> = ({ dive }) => {
           <Grid xs={12}>
             <Box
               sx={{
-                display: "flex",
+                display: 'flex',
                 gap: 2,
-                flexDirection: { xs: "column", sm: "row" },
-                mb: 6
+                flexDirection: { xs: 'column', sm: 'row' },
+                mb: 6,
               }}
             >
               {dive.diveBuddy && (
@@ -158,10 +158,10 @@ const DiveView: React.FC<DiveViewProps> = ({ dive }) => {
 
       <Box
         sx={{
-          display: "flex",
-          flexDirection: { xs: "column", sm: "row" },
-          justifyContent: "flex-end",
-          gap: 2
+          display: 'flex',
+          flexDirection: { xs: 'column', sm: 'row' },
+          justifyContent: 'flex-end',
+          gap: 2,
         }}
       >
         <NextLink href={`/dives/edit/${dive.id}`} passHref>
@@ -171,7 +171,7 @@ const DiveView: React.FC<DiveViewProps> = ({ dive }) => {
             startDecorator={<EditRounded />}
             variant="outlined"
             size="lg"
-            sx={{ width: { xs: "100%", sm: "initial" } }}
+            sx={{ width: { xs: '100%', sm: 'initial' } }}
             aria-label="Edit dive"
           >
             Edit
@@ -186,10 +186,10 @@ const DiveView: React.FC<DiveViewProps> = ({ dive }) => {
         textColor="GrayText"
         fontSize="xs"
         sx={{
-          display: "flex",
-          alignItems: "center",
-          flexDirection: "column",
-          gap: 1.2
+          display: 'flex',
+          alignItems: 'center',
+          flexDirection: 'column',
+          gap: 1.2,
         }}
       >
         <Chip size="sm" variant="outlined">

@@ -1,20 +1,20 @@
-import Tab from "@mui/joy/Tab";
-import TabList from "@mui/joy/TabList";
-import TabPanel from "@mui/joy/TabPanel";
-import MuiTabs from "@mui/joy/Tabs";
-import React from "react";
+import Tab from '@mui/joy/Tab';
+import TabList from '@mui/joy/TabList';
+import TabPanel from '@mui/joy/TabPanel';
+import MuiTabs from '@mui/joy/Tabs';
+import React from 'react';
 
-import Basics from "./Basics";
-import Details from "./Details";
-import Location from "./Location";
+import Basics from './Basics';
+import Details from './Details';
+import Location from './Location';
 
 const Tabs: React.FC = () => (
   <MuiTabs
     defaultValue={0}
     sx={{
-      backgroundColor: "transparent",
+      backgroundColor: 'transparent',
       px: 0,
-      mt: 2
+      mt: 2,
     }}
   >
     <TabList size="lg" sx={{ mb: 4 }}>

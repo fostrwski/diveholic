@@ -1,53 +1,53 @@
-import type { Dive } from "common/types";
+import type { Dive } from 'common/types';
 
 const defaultValues: Dive = {
-  date: "",
+  date: '',
   number: null,
   location: {
     country: {
-      name: "",
-      code: "",
-      flagEmoji: ""
+      name: '',
+      code: '',
+      flagEmoji: '',
     },
-    city: "",
-    diveSpot: ""
+    city: '',
+    diveSpot: '',
   },
-  type: "Boat",
+  type: 'Boat',
   length: null,
-  units: "metric",
+  units: 'metric',
   depth: {
     max: null,
-    average: null
+    average: null,
   },
   weights: {
     taken: 0,
-    ammount: "perfect"
+    ammount: 'perfect',
   },
-  water: "Fresh",
+  water: 'Fresh',
   temperature: {
     air: null,
     water: {
       surface: null,
-      bottom: null
-    }
+      bottom: null,
+    },
   },
   gear: {
     exposureProtection: {
-      type: "",
-      thickness: null
+      type: '',
+      thickness: null,
     },
 
     tanks: {
       count: null,
-      type: ""
+      type: '',
     },
 
-    bcd: "",
-    regulator: "",
-    fins: ""
+    bcd: '',
+    regulator: '',
+    fins: '',
   },
-  diveBuddy: "",
-  notes: ""
+  diveBuddy: '',
+  notes: '',
 };
 
 export default defaultValues;

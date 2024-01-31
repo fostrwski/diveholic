@@ -1,14 +1,14 @@
-import CheckBoxRounded from "@mui/icons-material/CheckBoxRounded";
-import ClearRounded from "@mui/icons-material/ClearRounded";
-import Box from "@mui/joy/Box";
-import Button from "@mui/joy/Button";
-import Checkbox from "@mui/joy/Checkbox";
-import Grid from "@mui/joy/Grid";
-import Typography from "@mui/joy/Typography";
-import React from "react";
+import CheckBoxRounded from '@mui/icons-material/CheckBoxRounded';
+import ClearRounded from '@mui/icons-material/ClearRounded';
+import Box from '@mui/joy/Box';
+import Button from '@mui/joy/Button';
+import Checkbox from '@mui/joy/Checkbox';
+import Grid from '@mui/joy/Grid';
+import Typography from '@mui/joy/Typography';
+import React from 'react';
 
 const Checklist: React.FC = () => {
-  const gear = ["BP/w", "Regulators", "Fins", "Mask", "Wetsuit"];
+  const gear = ['BP/w', 'Regulators', 'Fins', 'Mask', 'Wetsuit'];
 
   return (
     <>

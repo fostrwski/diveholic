@@ -1,10 +1,10 @@
-import CloseRounded from "@mui/icons-material/CloseRounded";
-import Button from "@mui/joy/Button";
-import dynamic from "next/dynamic";
-import { useRouter } from "next/router";
-import React, { useState } from "react";
+import CloseRounded from '@mui/icons-material/CloseRounded';
+import Button from '@mui/joy/Button';
+import dynamic from 'next/dynamic';
+import { useRouter } from 'next/router';
+import React, { useState } from 'react';
 
-const Modal = dynamic(() => import("./Modal"));
+const Modal = dynamic(() => import('./Modal'));
 
 interface CancelButtonProps {
   redirectTo?: string;
@@ -24,7 +24,7 @@ const CancelButton: React.FC<CancelButtonProps> = ({ redirectTo }) => {
 
   const handleCancel = () => {
     handleModalClose();
-    router.push(redirectTo || "/");
+    router.push(redirectTo || '/');
   };
 
   return (

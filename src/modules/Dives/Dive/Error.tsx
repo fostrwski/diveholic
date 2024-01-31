@@ -1,7 +1,7 @@
-import ErrorOutlineRounded from "@mui/icons-material/ErrorOutlineRounded";
-import Box from "@mui/joy/Box";
-import Typography from "@mui/joy/Typography";
-import React from "react";
+import ErrorOutlineRounded from '@mui/icons-material/ErrorOutlineRounded';
+import Box from '@mui/joy/Box';
+import Typography from '@mui/joy/Typography';
+import React from 'react';
 
 interface ErrorProps {
   error: any;
@@ -17,12 +17,12 @@ const Error: React.FC<ErrorProps> = ({ error, customMessage, tip }) => (
       color="danger"
       gutterBottom
       startDecorator={<ErrorOutlineRounded />}
-      sx={{alignItems:"flex-start"}}
+      sx={{ alignItems: 'flex-start' }}
     >
       Something went wrong
     </Typography>
 
-    <Typography component="p" fontWeight="lg" sx={{ wordBreak: "break-all" }}>
+    <Typography component="p" fontWeight="lg" sx={{ wordBreak: 'break-all' }}>
       {customMessage || error?.message}
     </Typography>
 

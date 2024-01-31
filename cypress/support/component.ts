@@ -1,6 +1,6 @@
-import { mount } from "cypress/react18";
+import { mount } from 'cypress/react18';
 
-import "./commands";
+import './commands';
 
 /* eslint-disable no-unused-vars */
 declare global {
@@ -12,4 +12,4 @@ declare global {
 }
 /* eslint-enable no-unused-vars */
 
-Cypress.Commands.add("mount", mount);
+Cypress.Commands.add('mount', mount);

@@ -1,16 +1,16 @@
-import type { User } from "@supabase/auth-helpers-nextjs";
-import type { Dive } from "common/types";
-import { supabase } from "common/utils/supabaseClient";
-import { NextSeo } from "next-seo";
-import dynamic from "next/dynamic";
-import React, { useState } from "react";
-import { useFormContext } from "react-hook-form";
+import type { User } from '@supabase/auth-helpers-nextjs';
+import type { Dive } from 'common/types';
+import { supabase } from 'common/utils/supabaseClient';
+import { NextSeo } from 'next-seo';
+import dynamic from 'next/dynamic';
+import React, { useState } from 'react';
+import { useFormContext } from 'react-hook-form';
 
-import Form from "../components/Form";
-import type { FormFields } from "../components/Form/types";
-import Header from "./Header";
+import Form from '../components/Form';
+import type { FormFields } from '../components/Form/types';
+import Header from './Header';
 
-const FormSubmittedModal = dynamic(() => import("./FormSubmittedModal"));
+const FormSubmittedModal = dynamic(() => import('./FormSubmittedModal'));
 
 interface NewProps {
   user: User;
@@ -26,7 +26,7 @@ const New: React.FC<NewProps> = ({ user }) => {
     const timestamp = new Date(date).toISOString();
 
     const { error } = await supabase
-      .from("dives")
+      .from('dives')
       .insert({ userId: user.id, date: timestamp, ...rest });
 
     if (error) return console.error(error);

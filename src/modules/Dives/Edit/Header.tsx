@@ -1,9 +1,9 @@
-import EditRounded from "@mui/icons-material/EditRounded";
-import Box from "@mui/joy/Box";
-import Chip from "@mui/joy/Chip";
-import React from "react";
+import EditRounded from '@mui/icons-material/EditRounded';
+import Box from '@mui/joy/Box';
+import Chip from '@mui/joy/Chip';
+import React from 'react';
 
-import CancelButton from "../components/CancelButton";
+import CancelButton from '../components/CancelButton';
 
 interface HeaderProps {
   diveId: string;

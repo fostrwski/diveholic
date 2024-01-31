@@ -1,19 +1,19 @@
-import Box from "@mui/joy/Box";
-import FormControl from "@mui/joy/FormControl";
-import FormLabel from "@mui/joy/FormLabel";
-import MuiSlider from "@mui/joy/Slider";
-import Typography from "@mui/joy/Typography";
-import type { Dive } from "common/types";
-import React, { type ComponentProps, useEffect, useState } from "react";
-import { useFormContext } from "react-hook-form";
+import Box from '@mui/joy/Box';
+import FormControl from '@mui/joy/FormControl';
+import FormLabel from '@mui/joy/FormLabel';
+import MuiSlider from '@mui/joy/Slider';
+import Typography from '@mui/joy/Typography';
+import type { Dive } from 'common/types';
+import React, { type ComponentProps, useEffect, useState } from 'react';
+import { useFormContext } from 'react-hook-form';
 
-import type { SliderMark } from "../types";
-import generateSliderMarks from "../utils/generateSliderMarks";
-import getSliderAriaValueText from "./getSliderAriaValueText";
+import type { SliderMark } from '../types';
+import generateSliderMarks from '../utils/generateSliderMarks';
+import getSliderAriaValueText from './getSliderAriaValueText';
 
 // Extends MuiSlider props but overrides 'marks' property
 interface TemperatureSliderProps
-  extends Omit<ComponentProps<typeof MuiSlider>, "marks"> {
+  extends Omit<ComponentProps<typeof MuiSlider>, 'marks'> {
   label: string;
   marks: Array<number>;
 }
@@ -34,17 +34,17 @@ const TemperatureSlider: React.FC<TemperatureSliderProps> = ({
     setSliderMarks(generateSliderMarks(marks));
   }, [marks]);
 
-  const watchUnits = watch("units");
+  const watchUnits = watch('units');
 
   return (
     <FormControl>
       <FormLabel>{label}</FormLabel>
       <Box
         sx={{
-          display: "flex",
-          alignItems: "center",
+          display: 'flex',
+          alignItems: 'center',
           gap: 2,
-          justifyContent: "space-between"
+          justifyContent: 'space-between',
         }}
       >
         <MuiSlider
@@ -63,8 +63,8 @@ const TemperatureSlider: React.FC<TemperatureSliderProps> = ({
         />
 
         {value !== null && (
-          <Typography fontSize="sm" sx={{ width: "10%" }}>
-            {value}°{watchUnits === "metric" ? "C" : "F"}
+          <Typography fontSize="sm" sx={{ width: '10%' }}>
+            {value}°{watchUnits === 'metric' ? 'C' : 'F'}
           </Typography>
         )}
       </Box>

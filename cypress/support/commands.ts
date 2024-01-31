@@ -1,26 +1,26 @@
 /* global JQuery */
-import "cypress-real-events";
+import 'cypress-real-events';
 
-Cypress.Commands.add("signIn", (testUserId) => {
+Cypress.Commands.add('signIn', (testUserId) => {
   cy.session(`Test user ${testUserId}`, () => {
-    cy.visit("/signin");
-    cy.log("Filling out email");
-    cy.getByDataCy("email").type(Cypress.env(`test_user_${testUserId}_email`));
-    cy.log("Filling out password");
-    cy.getByDataCy("password").type(
-      Cypress.env(`test_user_${testUserId}_password`)
+    cy.visit('/signin');
+    cy.log('Filling out email');
+    cy.getByDataCy('email').type(Cypress.env(`test_user_${testUserId}_email`));
+    cy.log('Filling out password');
+    cy.getByDataCy('password').type(
+      Cypress.env(`test_user_${testUserId}_password`),
     );
-    cy.getByDataCy("submit").click();
+    cy.getByDataCy('submit').click();
     cy.contains(`Hi ${Cypress.env(`test_user_${testUserId}_firstname`)}`);
   });
 });
 
-Cypress.Commands.add("getByDataCy", (dataCy) =>
-  cy.get(`[data-cy='${dataCy}']`)
+Cypress.Commands.add('getByDataCy', (dataCy) =>
+  cy.get(`[data-cy='${dataCy}']`),
 );
 
-Cypress.Commands.add("getInputByName", (name) =>
-  cy.get(`input[name='${name}']`)
+Cypress.Commands.add('getInputByName', (name) =>
+  cy.get(`input[name='${name}']`),
 );
 
 /* eslint-disable no-unused-vars */

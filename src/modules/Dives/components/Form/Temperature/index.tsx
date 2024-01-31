@@ -1,10 +1,10 @@
-import Grid from "@mui/joy/Grid";
-import Typography from "@mui/joy/Typography";
-import TextSeparator from "common/components/TextSeparator";
-import React from "react";
-import { Controller } from "react-hook-form";
+import Grid from '@mui/joy/Grid';
+import Typography from '@mui/joy/Typography';
+import TextSeparator from 'common/components/TextSeparator';
+import React from 'react';
+import { Controller } from 'react-hook-form';
 
-import TemperatureSlider from "./Slider";
+import TemperatureSlider from './Slider';
 
 const Temperature: React.FC = () => (
   <>

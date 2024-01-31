@@ -1,6 +1,6 @@
 const options: Intl.DateTimeFormatOptions = {
-  hour: "numeric",
-  minute: "numeric"
+  hour: 'numeric',
+  minute: 'numeric',
 };
 
-export default options
+export default options;

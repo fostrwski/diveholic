@@ -1,19 +1,19 @@
-import AddRounded from "@mui/icons-material/AddRounded";
-import { CircularProgress } from "@mui/joy";
-import Box from "@mui/joy/Box";
-import Button from "@mui/joy/Button";
-import Grid from "@mui/joy/Grid";
-import Typography from "@mui/joy/Typography";
-import { useUser } from "@supabase/auth-helpers-react";
-import NoDivesFound from "common/components/NoDivesFound";
-import type { Dive } from "common/types";
-import { supabase } from "common/utils/supabaseClient";
-import { NextSeo } from "next-seo";
-import NextLink from "next/link";
-import React, { useEffect, useState } from "react";
+import AddRounded from '@mui/icons-material/AddRounded';
+import { CircularProgress } from '@mui/joy';
+import Box from '@mui/joy/Box';
+import Button from '@mui/joy/Button';
+import Grid from '@mui/joy/Grid';
+import Typography from '@mui/joy/Typography';
+import { useUser } from '@supabase/auth-helpers-react';
+import NoDivesFound from 'common/components/NoDivesFound';
+import type { Dive } from 'common/types';
+import { supabase } from 'common/utils/supabaseClient';
+import { NextSeo } from 'next-seo';
+import NextLink from 'next/link';
+import React, { useEffect, useState } from 'react';
 
-import LatestDives from "./LatestDives";
-import Statistics from "./Statistics";
+import LatestDives from './LatestDives';
+import Statistics from './Statistics';
 
 const Home: React.FC = () => {
   const { user } = useUser();
@@ -26,9 +26,9 @@ const Home: React.FC = () => {
       setError(false);
       setLoading(true);
       const { data, error } = await supabase
-        .from<Dive>("dives")
-        .select("*")
-        .order("date", { ascending: false });
+        .from<Dive>('dives')
+        .select('*')
+        .order('date', { ascending: false });
 
       if (error) {
         setError(true);
@@ -86,26 +86,26 @@ const Home: React.FC = () => {
       <Typography
         level="h4"
         component="h1"
-        endDecorator={loading ? <CircularProgress size="sm" /> : ""}
+        endDecorator={loading ? <CircularProgress size="sm" /> : ''}
       >
-        Hi {user?.user_metadata.first_name || "there"} 🤿
+        Hi {user?.user_metadata.first_name || 'there'} 🤿
       </Typography>
 
       <Typography level="h6" textColor="GrayText" component="h2">
         {dives.length ? (
           <>
-            You've logged{" "}
+            You've logged{' '}
             <Typography component="span" color="primary">
-              {dives.length} {dives.length === 1 ? "dive" : "dives"}
-            </Typography>{" "}
+              {dives.length} {dives.length === 1 ? 'dive' : 'dives'}
+            </Typography>{' '}
             so far
           </>
         ) : (
           <>
-            You{" "}
+            You{' '}
             <Typography component="span" color="primary">
               haven't logged any dives
-            </Typography>{" "}
+            </Typography>{' '}
             yet 😱
           </>
         )}
@@ -113,11 +113,11 @@ const Home: React.FC = () => {
 
       <Box
         sx={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
           gap: 2,
-          mt: 2
+          mt: 2,
         }}
       >
         <NextLink href="/dives/new" passHref>

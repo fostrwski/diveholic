@@ -1,10 +1,10 @@
-import SecurityRounded from "@mui/icons-material/SecurityRounded";
-import Box from "@mui/joy/Box";
-import Container from "@mui/joy/Container";
-import Typography from "@mui/joy/Typography";
-import BackButton from "common/components/BackButton";
-import Image from "next/image";
-import React from "react";
+import SecurityRounded from '@mui/icons-material/SecurityRounded';
+import Box from '@mui/joy/Box';
+import Container from '@mui/joy/Container';
+import Typography from '@mui/joy/Typography';
+import BackButton from 'common/components/BackButton';
+import Image from 'next/image';
+import React from 'react';
 
 const PrivacyPolicy: React.FC = () => (
   <Container component="main" sx={{ py: 10, px: 4 }} maxWidth="md">
@@ -39,7 +39,7 @@ const PrivacyPolicy: React.FC = () => (
       component="h1"
       color="info"
       startDecorator={<SecurityRounded />}
-      sx={{ alignItems: "flex-start" }}
+      sx={{ alignItems: 'flex-start' }}
     >
       Privacy Policy for Diveholic
     </Typography>
@@ -175,7 +175,7 @@ const PrivacyPolicy: React.FC = () => (
       websites. Thus, we are advising you to consult the respective Privacy
       Policies of these third-party ad servers for more detailed information. It
       may include their practices and instructions about how to opt-out of
-      certain options.{" "}
+      certain options.{' '}
     </p>
 
     <p>
@@ -279,7 +279,7 @@ const PrivacyPolicy: React.FC = () => (
     </p>
 
     <p>
-      Our Privacy Policy was created with the help of the{" "}
+      Our Privacy Policy was created with the help of the{' '}
       <a href="https://www.termsfeed.com/privacy-policy-generator/">
         TermsFeed Privacy Policy Generator
       </a>

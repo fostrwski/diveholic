@@ -1,8 +1,8 @@
-const withPWA = require("next-pwa")({
-  dest: "public",
+const withPWA = require('next-pwa')({
+  dest: 'public',
   register: true,
   skipWaiting: true,
-  disable: process.env.NODE_ENV === "development"
+  disable: process.env.NODE_ENV === 'development',
 });
 
 module.exports = withPWA({
@@ -10,6 +10,6 @@ module.exports = withPWA({
   swcMinify: true,
   images: {
     dangerouslyAllowSVG: true,
-    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;"
-  }
+    contentSecurityPolicy: 'default-src "self"; script-src "none"; sandbox;',
+  },
 });

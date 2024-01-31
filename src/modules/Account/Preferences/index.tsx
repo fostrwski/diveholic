@@ -1,15 +1,15 @@
-import TuneRounded from "@mui/icons-material/TuneRounded";
-import Box from "@mui/joy/Box";
-import FormControl from "@mui/joy/FormControl";
-import FormHelperText from "@mui/joy/FormHelperText";
-import FormLabel from "@mui/joy/FormLabel";
-import Radio from "@mui/joy/Radio";
-import RadioGroup from "@mui/joy/RadioGroup";
-import Switch from "@mui/joy/Switch";
-import Typography from "@mui/joy/Typography";
-import { useColorScheme } from "@mui/joy/styles";
-import Cookies from "js-cookie";
-import React, { useEffect, useState } from "react";
+import TuneRounded from '@mui/icons-material/TuneRounded';
+import Box from '@mui/joy/Box';
+import FormControl from '@mui/joy/FormControl';
+import FormHelperText from '@mui/joy/FormHelperText';
+import FormLabel from '@mui/joy/FormLabel';
+import Radio from '@mui/joy/Radio';
+import RadioGroup from '@mui/joy/RadioGroup';
+import Switch from '@mui/joy/Switch';
+import Typography from '@mui/joy/Typography';
+import { useColorScheme } from '@mui/joy/styles';
+import Cookies from 'js-cookie';
+import React, { useEffect, useState } from 'react';
 
 const Preferences: React.FC = () => {
   const { mode, setMode } = useColorScheme();
@@ -21,18 +21,18 @@ const Preferences: React.FC = () => {
   };
 
   useEffect(() => {
-    setAnalyticsChecked(Cookies.get("Analytics") === "accepted");
+    setAnalyticsChecked(Cookies.get('Analytics') === 'accepted');
   }, []);
 
   const onSwitchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setAnalyticsChecked(e.target.checked);
 
     if (e.target.checked) {
-      Cookies.set("Analytics", "accepted");
+      Cookies.set('Analytics', 'accepted');
       return;
     }
 
-    Cookies.set("Analytics", "declined");
+    Cookies.set('Analytics', 'declined');
   };
 
   return (
@@ -41,7 +41,7 @@ const Preferences: React.FC = () => {
         Preferences
       </Typography>
 
-      <Box sx={{ display: "flex", flexDirection: "column", gap: 4, mt: 2 }}>
+      <Box sx={{ display: 'flex', flexDirection: 'column', gap: 4, mt: 2 }}>
         <div>
           <Typography level="subtitle1" mb={1}>
             Color mode
@@ -60,7 +60,7 @@ const Preferences: React.FC = () => {
 
         <FormControl
           orientation="horizontal"
-          sx={{ width: 300, justifyContent: "space-between", gap: 2 }}
+          sx={{ width: 300, justifyContent: 'space-between', gap: 2 }}
         >
           <div>
             <FormLabel>Analytics</FormLabel>
@@ -72,15 +72,15 @@ const Preferences: React.FC = () => {
           <Switch
             checked={analyticsChecked}
             onChange={onSwitchChange}
-            color={analyticsChecked ? "success" : "neutral"}
+            color={analyticsChecked ? 'success' : 'neutral'}
             variant="soft"
-            endDecorator={analyticsChecked ? "On" : "Off"}
+            endDecorator={analyticsChecked ? 'On' : 'Off'}
             slotProps={{
               endDecorator: {
                 sx: {
-                  minWidth: 24
-                }
-              }
+                  minWidth: 24,
+                },
+              },
             }}
           />
         </FormControl>

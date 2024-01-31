@@ -1,7 +1,7 @@
-import Grid from "@mui/joy/Grid";
-import Typography from "@mui/joy/Typography";
-import InfoCard, { type InfoCardProps } from "common/components/InfoCard";
-import React from "react";
+import Grid from '@mui/joy/Grid';
+import Typography from '@mui/joy/Typography';
+import InfoCard, { type InfoCardProps } from 'common/components/InfoCard';
+import React from 'react';
 
 interface SectionProps {
   title?: string;
@@ -23,7 +23,7 @@ const Section: React.FC<SectionProps> = ({ title, infoCards }) => {
           <Grid xs={6} key={infoCard.title}>
             <InfoCard
               title={infoCard.title}
-              content={infoCard.content || "Not specified"}
+              content={infoCard.content || 'Not specified'}
               icon={infoCard?.icon}
               unit={infoCard?.unit}
             />

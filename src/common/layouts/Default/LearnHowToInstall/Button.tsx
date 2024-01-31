@@ -1,20 +1,20 @@
-import CloseRounded from "@mui/icons-material/CloseRounded";
-import DownloadRounded from "@mui/icons-material/DownloadRounded";
-import Alert from "@mui/joy/Alert";
-import Container from "@mui/joy/Container";
-import IconButton from "@mui/joy/IconButton";
-import MuiLink from "@mui/joy/Link";
-import Cookies from "js-cookie";
-import React, { type Dispatch, type SetStateAction, useState } from "react";
+import CloseRounded from '@mui/icons-material/CloseRounded';
+import DownloadRounded from '@mui/icons-material/DownloadRounded';
+import Alert from '@mui/joy/Alert';
+import Container from '@mui/joy/Container';
+import IconButton from '@mui/joy/IconButton';
+import MuiLink from '@mui/joy/Link';
+import Cookies from 'js-cookie';
+import React, { type Dispatch, type SetStateAction, useState } from 'react';
 
-import Modal from "./Modal";
+import Modal from './Modal';
 
 interface LearnedHowToInstallProps {
   setShowLearnHowToInstall: Dispatch<SetStateAction<boolean>>;
 }
 
 const Button: React.FC<LearnedHowToInstallProps> = ({
-  setShowLearnHowToInstall
+  setShowLearnHowToInstall,
 }) => {
   const [open, setOpen] = useState<boolean>(false);
 
@@ -23,7 +23,7 @@ const Button: React.FC<LearnedHowToInstallProps> = ({
   };
 
   const handleCloseLearnHowToInstall = () => {
-    Cookies.set("LearnedHowToInstall", "true");
+    Cookies.set('LearnedHowToInstall', 'true');
     setShowLearnHowToInstall(false);
   };
 
@@ -36,18 +36,18 @@ const Button: React.FC<LearnedHowToInstallProps> = ({
       >
         <Container
           sx={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center"
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
           }}
         >
           <MuiLink
             startDecorator={<DownloadRounded />}
             sx={{
               mx: {
-                xs: "auto",
-                sm: "initial"
-              }
+                xs: 'auto',
+                sm: 'initial',
+              },
             }}
             color="info"
             component="button"

@@ -1,10 +1,10 @@
-import { Grid } from "@mui/joy";
-import Box from "@mui/joy/Box";
-import Button from "@mui/joy/Button";
-import DiveCard from "common/components/DiveCard";
-import type { Dive } from "common/types";
-import NextLink from "next/link";
-import React from "react";
+import { Grid } from '@mui/joy';
+import Box from '@mui/joy/Box';
+import Button from '@mui/joy/Button';
+import DiveCard from 'common/components/DiveCard';
+import type { Dive } from 'common/types';
+import NextLink from 'next/link';
+import React from 'react';
 
 interface DiveCardsProps {
   dives: Array<Dive>;

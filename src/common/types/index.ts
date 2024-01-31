@@ -1,4 +1,4 @@
-import type Gear from "./gear";
+import type Gear from './gear';
 
 export type Dive = {
   id?: number;
@@ -13,18 +13,18 @@ export type Dive = {
     city: string;
     diveSpot: string;
   };
-  type: "Shore" | "Boat" | "Pool";
+  type: 'Shore' | 'Boat' | 'Pool';
   length: number | null;
-  units: "metric" | "imperial";
+  units: 'metric' | 'imperial';
   depth: {
     max: number | null;
     average: number | null;
   };
   weights: {
     taken: number;
-    ammount: "perfect" | "tooLittle" | "tooMuch";
+    ammount: 'perfect' | 'tooLittle' | 'tooMuch';
   };
-  water: "Fresh" | "Salt";
+  water: 'Fresh' | 'Salt';
   temperature: {
     air: number | null;
     water: {

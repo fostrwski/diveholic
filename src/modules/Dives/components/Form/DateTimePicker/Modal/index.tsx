@@ -1,27 +1,27 @@
-import ChevronLeftRounded from "@mui/icons-material/ChevronLeftRounded";
-import ChevronRightRounded from "@mui/icons-material/ChevronRightRounded";
-import { Badge } from "@mui/joy";
-import Avatar from "@mui/joy/Avatar";
-import Box from "@mui/joy/Box";
-import Button from "@mui/joy/Button";
-import Grid from "@mui/joy/Grid";
-import IconButton from "@mui/joy/IconButton";
-import MuiLink from "@mui/joy/Link";
-import MuiModal from "@mui/joy/Modal";
-import MuiModalDialog from "@mui/joy/ModalDialog";
-import Radio from "@mui/joy/Radio";
-import RadioGroup from "@mui/joy/RadioGroup";
-import TextField from "@mui/joy/TextField";
-import Typography from "@mui/joy/Typography";
-import { useDatePicker } from "@rehookify/datepicker";
-import ErrorMessage from "common/components/ErrorMessage";
-import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
-import { useFormContext } from "react-hook-form";
+import ChevronLeftRounded from '@mui/icons-material/ChevronLeftRounded';
+import ChevronRightRounded from '@mui/icons-material/ChevronRightRounded';
+import { Badge } from '@mui/joy';
+import Avatar from '@mui/joy/Avatar';
+import Box from '@mui/joy/Box';
+import Button from '@mui/joy/Button';
+import Grid from '@mui/joy/Grid';
+import IconButton from '@mui/joy/IconButton';
+import MuiLink from '@mui/joy/Link';
+import MuiModal from '@mui/joy/Modal';
+import MuiModalDialog from '@mui/joy/ModalDialog';
+import Radio from '@mui/joy/Radio';
+import RadioGroup from '@mui/joy/RadioGroup';
+import TextField from '@mui/joy/TextField';
+import Typography from '@mui/joy/Typography';
+import { useDatePicker } from '@rehookify/datepicker';
+import ErrorMessage from 'common/components/ErrorMessage';
+import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import { useFormContext } from 'react-hook-form';
 
-import type { FormFields } from "../../types";
-import config from "./config";
-import getDayRadioAriaLabel from "./getDayRadioAriaLabel";
-import options from "./options";
+import type { FormFields } from '../../types';
+import config from './config';
+import getDayRadioAriaLabel from './getDayRadioAriaLabel';
+import options from './options';
 
 interface ModalProps {
   open: boolean;
@@ -36,18 +36,18 @@ const Modal: React.FC<ModalProps> = ({ open, setOpen }) => {
   const date = new Date();
 
   const [time, setTime] = useState<string>(
-    date.toLocaleTimeString(undefined, options)
+    date.toLocaleTimeString(undefined, options),
   );
 
   const {
     data: { selectedDates, calendars, weekDays },
     propGetters: { nextMonthButton, previousMonthButton },
-    actions: { setDay }
+    actions: { setDay },
     // @ts-ignore
   } = useDatePicker(config);
 
   useEffect(() => {
-    const initialDate = getValues("date") ? new Date(getValues("date")) : "";
+    const initialDate = getValues('date') ? new Date(getValues('date')) : '';
 
     if (initialDate) {
       // @ts-ignore
@@ -74,25 +74,25 @@ const Modal: React.FC<ModalProps> = ({ open, setOpen }) => {
     }
 
     const datetime = new Date(selectedDate);
-    const [hours, minutes] = time.split(":");
+    const [hours, minutes] = time.split(':');
     datetime.setHours(parseInt(hours, 10));
     datetime.setMinutes(parseInt(minutes, 10));
 
-    setValue("date", datetime.toString());
+    setValue('date', datetime.toString());
 
-    clearErrors("date");
+    clearErrors('date');
 
     handleModalClose();
   };
 
   const onRadioChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const [day, month, year] = e.target.value.split("/");
+    const [day, month, year] = e.target.value.split('/');
     // Convert strings to ints
     setDay(new Date(+year, +month - 1, +day));
   };
 
   const onTimeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const [hours, minutes] = e.target.value.split(":");
+    const [hours, minutes] = e.target.value.split(':');
     setTime(`${hours}:${minutes}`);
   };
 
@@ -100,14 +100,14 @@ const Modal: React.FC<ModalProps> = ({ open, setOpen }) => {
     <MuiModal open={open} onClose={handleModalClose}>
       <MuiModalDialog
         sx={{
-          overflow: "scroll",
-          maxHeight: "92%",
-          top: "unset",
+          overflow: 'scroll',
+          maxHeight: '92%',
+          top: 'unset',
           pb: 8,
-          borderRadius: "xl",
+          borderRadius: 'xl',
           borderBottomLeftRadius: 0,
           borderBottomRightRadius: 0,
-          width: { xs: "100%", sm: "25%" }
+          width: { xs: '100%', sm: '25%' },
         }}
         layout="fullscreen"
         aria-label="Select date and time"
@@ -115,9 +115,9 @@ const Modal: React.FC<ModalProps> = ({ open, setOpen }) => {
         <Box>
           <Box
             sx={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center"
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
             }}
           >
             <IconButton
@@ -129,7 +129,7 @@ const Modal: React.FC<ModalProps> = ({ open, setOpen }) => {
               <ChevronLeftRounded />
             </IconButton>
 
-            <Box sx={{ textAlign: "center" }}>
+            <Box sx={{ textAlign: 'center' }}>
               <Typography level="subtitle1">{year}</Typography>
 
               <Typography level="h5" component="p">
@@ -149,7 +149,7 @@ const Modal: React.FC<ModalProps> = ({ open, setOpen }) => {
 
           <Box mt={2}>
             <RadioGroup name="day" row onChange={onRadioChange}>
-              <Grid container columns={7} sx={{ width: "100%" }}>
+              <Grid container columns={7} sx={{ width: '100%' }}>
                 {weekDays.map((wd: string) => {
                   const weekDay = wd.slice(0, 2);
 
@@ -159,7 +159,7 @@ const Modal: React.FC<ModalProps> = ({ open, setOpen }) => {
                         size="sm"
                         color="primary"
                         variant="plain"
-                        sx={{ fontWeight: "xl" }}
+                        sx={{ fontWeight: 'xl' }}
                       >
                         {weekDay}
                       </Avatar>
@@ -179,17 +179,17 @@ const Modal: React.FC<ModalProps> = ({ open, setOpen }) => {
                       <Avatar
                         size="sm"
                         color="neutral"
-                        variant={dpDay.selected ? "soft" : "plain"}
+                        variant={dpDay.selected ? 'soft' : 'plain'}
                       >
                         <Radio
                           value={dpDay.date}
                           label={dpDay.day}
                           componentsProps={{
                             input: {
-                              "aria-label": dpDay.inCurrentMonth
+                              'aria-label': dpDay.inCurrentMonth
                                 ? getDayRadioAriaLabel(dpDay.day, month)
-                                : ""
-                            }
+                                : '',
+                            },
                           }}
                           disabled={!dpDay.inCurrentMonth}
                           size="sm"
@@ -228,11 +228,11 @@ const Modal: React.FC<ModalProps> = ({ open, setOpen }) => {
 
           <Box
             sx={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
               mt: 4,
-              gap: 2
+              gap: 2,
             }}
           >
             <MuiLink

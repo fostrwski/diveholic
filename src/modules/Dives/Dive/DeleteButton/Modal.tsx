@@ -1,9 +1,9 @@
-import Box from "@mui/joy/Box";
-import Button from "@mui/joy/Button";
-import MuiModal from "@mui/joy/Modal";
-import ModalDialog from "@mui/joy/ModalDialog";
-import Typography from "@mui/joy/Typography";
-import React from "react";
+import Box from '@mui/joy/Box';
+import Button from '@mui/joy/Button';
+import MuiModal from '@mui/joy/Modal';
+import ModalDialog from '@mui/joy/ModalDialog';
+import Typography from '@mui/joy/Typography';
+import React from 'react';
 
 interface ModalProps {
   open: boolean;
@@ -14,7 +14,7 @@ interface ModalProps {
 const Modal: React.FC<ModalProps> = ({
   open,
   handleClose,
-  handleDiveDelete
+  handleDiveDelete,
 }) => (
   <MuiModal
     aria-labelledby="modalTitle"
@@ -30,7 +30,7 @@ const Modal: React.FC<ModalProps> = ({
         Are you sure? You won't be able to revert this action
       </Typography>
 
-      <Box sx={{ mt: 4, display: "flex", gap: 2 }}>
+      <Box sx={{ mt: 4, display: 'flex', gap: 2 }}>
         <Button color="danger" fullWidth onClick={handleDiveDelete}>
           Yes
         </Button>

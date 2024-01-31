@@ -1,10 +1,10 @@
-describe("Sign in form", () => {
+describe('Sign in form', () => {
   beforeEach(() => {
-    cy.viewport("iphone-x");
-    cy.visit("/");
+    cy.viewport('iphone-x');
+    cy.visit('/');
   });
 
-  it("Signs in", () => {
+  it('Signs in', () => {
     cy.signIn(1);
   });
 });

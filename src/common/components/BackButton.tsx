@@ -1,7 +1,7 @@
-import ChevronLeftRounded from "@mui/icons-material/ChevronLeftRounded";
-import Link from "@mui/joy/Link";
-import NextLink from "next/link";
-import React from "react";
+import ChevronLeftRounded from '@mui/icons-material/ChevronLeftRounded';
+import Link from '@mui/joy/Link';
+import NextLink from 'next/link';
+import React from 'react';
 
 interface BackButtonProps {
   to: string;

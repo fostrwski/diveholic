@@ -9,10 +9,12 @@ Web based dive log - application to save your latest dives to help you track pro
 🔴 Live application: https://diveholic.netlify.app
 
 ## You can sign in with these demo credentials to see how the app works:
+
 - Email: diveholic@franciszek.dev
 - Password: Demo123
 
 ## Features
+
 - Sign up, sign in
 - Create new dive
 - Display logged dives

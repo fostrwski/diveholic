@@ -1,32 +1,32 @@
-import SecurityRounded from "@mui/icons-material/SecurityRounded";
-import Alert from "@mui/joy/Alert";
-import Box from "@mui/joy/Box";
-import Button from "@mui/joy/Button";
-import Typography from "@mui/joy/Typography";
-import initGA from "common/utils/ga";
-import Cookies from "js-cookie";
-import React, { useEffect, useState } from "react";
+import SecurityRounded from '@mui/icons-material/SecurityRounded';
+import Alert from '@mui/joy/Alert';
+import Box from '@mui/joy/Box';
+import Button from '@mui/joy/Button';
+import Typography from '@mui/joy/Typography';
+import initGA from 'common/utils/ga';
+import Cookies from 'js-cookie';
+import React, { useEffect, useState } from 'react';
 
 const CookieConsent: React.FC = () => {
   const [showCookieConsent, setShowCookieConsent] = useState<boolean>(false);
 
   useEffect(() => {
-    setShowCookieConsent(!Cookies.get("Analytics"));
+    setShowCookieConsent(!Cookies.get('Analytics'));
   }, []);
 
   const handleAccept = () => {
     if (!process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS) {
-      console.error("Google analytics id not specified");
+      console.error('Google analytics id not specified');
       return;
     }
 
-    Cookies.set("Analytics", "accepted");
+    Cookies.set('Analytics', 'accepted');
     initGA(process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS);
     setShowCookieConsent(false);
   };
 
   const handleDecline = () => {
-    Cookies.set("Analytics", "declined");
+    Cookies.set('Analytics', 'declined');
     setShowCookieConsent(false);
   };
 
@@ -37,29 +37,29 @@ const CookieConsent: React.FC = () => {
       aria-label="Cookie consent"
       sx={(theme) => ({
         zIndex: 100,
-        position: "fixed",
+        position: 'fixed',
         inset: (theme) => ({
-          xs: `${theme.spacing(4, 2)}`
+          xs: `${theme.spacing(4, 2)}`,
         }),
         top: {
-          xs: "auto"
+          xs: 'auto',
         },
         left: {
-          sm: "auto"
+          sm: 'auto',
         },
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "start",
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'start',
         px: 4,
         gap: 4,
         maxWidth: 360,
-        [theme.getColorSchemeSelector("light")]: {
-          bgcolor: theme.palette.neutral[50]
+        [theme.getColorSchemeSelector('light')]: {
+          bgcolor: theme.palette.neutral[50],
         },
 
-        [theme.getColorSchemeSelector("dark")]: {
-          bgcolor: theme.palette.common.black
-        }
+        [theme.getColorSchemeSelector('dark')]: {
+          bgcolor: theme.palette.common.black,
+        },
       })}
       size="lg"
       variant="plain"
@@ -70,7 +70,7 @@ const CookieConsent: React.FC = () => {
           level="h6"
           component="p"
           startDecorator={<SecurityRounded />}
-          sx={{ alignItems: "flex-start", fontWeight: "xl" }}
+          sx={{ alignItems: 'flex-start', fontWeight: 'xl' }}
           gutterBottom
         >
           We care about your privacy
@@ -84,10 +84,10 @@ const CookieConsent: React.FC = () => {
 
       <Box
         sx={{
-          display: "flex",
+          display: 'flex',
           gap: 2,
-          justifyContent: "space-between",
-          width: "100%"
+          justifyContent: 'space-between',
+          width: '100%',
         }}
       >
         <Button

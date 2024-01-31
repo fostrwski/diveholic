@@ -2,6 +2,6 @@
   "importOrder": ["^components/(.*)$", "^[./]"],
   "importOrderSeparation": true,
   "importOrderSortSpecifiers": true,
-  "singleQuote": false,
-  "trailingComma": "none"
+  "singleQuote": true,
+  "trailingComma": "all"
 }

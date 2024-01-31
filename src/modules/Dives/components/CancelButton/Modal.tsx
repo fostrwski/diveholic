@@ -1,9 +1,9 @@
-import Box from "@mui/joy/Box";
-import Button from "@mui/joy/Button";
-import MuiModal from "@mui/joy/Modal";
-import ModalDialog from "@mui/joy/ModalDialog";
-import Typography from "@mui/joy/Typography";
-import React from "react";
+import Box from '@mui/joy/Box';
+import Button from '@mui/joy/Button';
+import MuiModal from '@mui/joy/Modal';
+import ModalDialog from '@mui/joy/ModalDialog';
+import Typography from '@mui/joy/Typography';
+import React from 'react';
 
 interface ModalProps {
   open: boolean;
@@ -26,7 +26,7 @@ const Modal: React.FC<ModalProps> = ({ open, handleClose, handleCancel }) => (
         Are you sure? You won't be able to restore the progress
       </Typography>
 
-      <Box sx={{ mt: 4, display: "flex", gap: 2 }}>
+      <Box sx={{ mt: 4, display: 'flex', gap: 2 }}>
         <Button color="danger" fullWidth onClick={handleCancel}>
           Yes
         </Button>

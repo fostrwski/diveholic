@@ -1,28 +1,28 @@
-import { listOfCountries } from "@franekostrowski/country-utils";
-import FlagRounded from "@mui/icons-material/FlagRounded";
-import PublicRounded from "@mui/icons-material/PublicRounded";
-import Autocomplete, { createFilterOptions } from "@mui/joy/Autocomplete";
-import FormControl from "@mui/joy/FormControl";
-import FormHelperText from "@mui/joy/FormHelperText";
-import FormLabel from "@mui/joy/FormLabel";
-import Grid from "@mui/joy/Grid";
-import TextField from "@mui/joy/TextField";
-import { debounce } from "debounce";
-import React from "react";
-import { Controller, useFormContext } from "react-hook-form";
+import { listOfCountries } from '@franekostrowski/country-utils';
+import FlagRounded from '@mui/icons-material/FlagRounded';
+import PublicRounded from '@mui/icons-material/PublicRounded';
+import Autocomplete, { createFilterOptions } from '@mui/joy/Autocomplete';
+import FormControl from '@mui/joy/FormControl';
+import FormHelperText from '@mui/joy/FormHelperText';
+import FormLabel from '@mui/joy/FormLabel';
+import Grid from '@mui/joy/Grid';
+import TextField from '@mui/joy/TextField';
+import { debounce } from 'debounce';
+import React from 'react';
+import { Controller, useFormContext } from 'react-hook-form';
 
-import type { FormFields } from "../../types";
-import PreviousDiveLocationButton from "./PreviousDiveLocationButton";
+import type { FormFields } from '../../types';
+import PreviousDiveLocationButton from './PreviousDiveLocationButton';
 
 const Location: React.FC = () => {
   const {
     register,
     watch,
-    formState: { errors }
+    formState: { errors },
   } = useFormContext<FormFields>();
 
   const filterOptions = createFilterOptions({ limit: 20 });
-  const watchLocationCountryFlagEmoji = watch("location.country.flagEmoji");
+  const watchLocationCountryFlagEmoji = watch('location.country.flagEmoji');
 
   return (
     <>
@@ -39,7 +39,7 @@ const Location: React.FC = () => {
                   onChange={debounce(
                     (_: React.BaseSyntheticEvent, data: string) =>
                       field.onChange(data),
-                    500
+                    500,
                   )}
                   placeholder="Croatia"
                   startDecorator={
@@ -61,7 +61,7 @@ const Location: React.FC = () => {
         </Grid>
         <Grid xs={6}>
           <TextField
-            {...register("location.city")}
+            {...register('location.city')}
             type="text"
             label="City"
             placeholder="Trogir"
@@ -72,7 +72,7 @@ const Location: React.FC = () => {
         </Grid>
         <Grid xs={12}>
           <TextField
-            {...register("location.diveSpot")}
+            {...register('location.diveSpot')}
             type="text"
             label="Dive spot"
             startDecorator={<FlagRounded />}

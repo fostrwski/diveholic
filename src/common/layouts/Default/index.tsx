@@ -1,19 +1,19 @@
-import PersonRounded from "@mui/icons-material/PersonRounded";
-import Box from "@mui/joy/Box";
-import Container from "@mui/joy/Container";
-import IconButton from "@mui/joy/IconButton";
-import Typography from "@mui/joy/Typography";
-import { useUser } from "@supabase/auth-helpers-react";
-import generateInitials from "common/utils/generateInitials";
-import Cookies from "js-cookie";
-import dynamic from "next/dynamic";
-import Image from "next/image";
-import NextLink from "next/link";
-import React, { useEffect, useState } from "react";
+import PersonRounded from '@mui/icons-material/PersonRounded';
+import Box from '@mui/joy/Box';
+import Container from '@mui/joy/Container';
+import IconButton from '@mui/joy/IconButton';
+import Typography from '@mui/joy/Typography';
+import { useUser } from '@supabase/auth-helpers-react';
+import generateInitials from 'common/utils/generateInitials';
+import Cookies from 'js-cookie';
+import dynamic from 'next/dynamic';
+import Image from 'next/image';
+import NextLink from 'next/link';
+import React, { useEffect, useState } from 'react';
 
-const Menu = dynamic(() => import("./Menu"));
+const Menu = dynamic(() => import('./Menu'));
 const LearnHowToInstallButton = dynamic(
-  () => import("./LearnHowToInstall/Button")
+  () => import('./LearnHowToInstall/Button'),
 );
 
 interface DefaultLayoutProps {
@@ -23,7 +23,7 @@ interface DefaultLayoutProps {
 const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
   const { user } = useUser();
 
-  const [initials, setInitials] = useState<string>("");
+  const [initials, setInitials] = useState<string>('');
 
   useEffect(() => {
     if (user) {
@@ -48,8 +48,8 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
 
   useEffect(() => {
     if (
-      !window.matchMedia("(display-mode: standalone)").matches &&
-      !Cookies.get("LearnedHowToInstall")
+      !window.matchMedia('(display-mode: standalone)').matches &&
+      !Cookies.get('LearnedHowToInstall')
     ) {
       setShowLearnHowToInstall(true);
     }
@@ -78,7 +78,7 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
               justifyContent="center"
               alignItems="center"
               gap={1.2}
-              sx={{ textDecoration: "none" }}
+              sx={{ textDecoration: 'none' }}
             >
               <Image
                 src="/logo.svg"
@@ -95,7 +95,7 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
 
           <IconButton
             onClick={handleOpenMenu}
-            sx={{ fontWeight: "lg", fontSize: "xl" }}
+            sx={{ fontWeight: 'lg', fontSize: 'xl' }}
             color="neutral"
             aria-label="Toggle menu"
           >
@@ -105,7 +105,7 @@ const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
           <Menu open={open} anchorEl={anchorEl} onClose={handleCloseMenu} />
         </Box>
 
-        <Box component="main" sx={{ minHeight: "100vh" }}>
+        <Box component="main" sx={{ minHeight: '100vh' }}>
           {children}
         </Box>
 

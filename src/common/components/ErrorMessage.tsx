@@ -1,7 +1,7 @@
-import Chip from "@mui/joy/Chip";
-import Typography from "@mui/joy/Typography";
-import type { SxProps } from "@mui/system";
-import React from "react";
+import Chip from '@mui/joy/Chip';
+import Typography from '@mui/joy/Typography';
+import type { SxProps } from '@mui/system';
+import React from 'react';
 
 interface ErrorMessageProps {
   children: React.ReactNode;
@@ -18,8 +18,8 @@ const ErrorMessage: React.FC<ErrorMessageProps> = ({ children, sx }) => (
       </Chip>
     }
     sx={{
-      alignItems: "start",
-      ...sx
+      alignItems: 'start',
+      ...sx,
     }}
   >
     {children}

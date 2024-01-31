@@ -1,20 +1,20 @@
-import LineWeightRounded from "@mui/icons-material/LineWeightRounded";
-import NumbersRounded from "@mui/icons-material/NumbersRounded";
-import Button from "@mui/joy/Button";
-import Grid from "@mui/joy/Grid";
-import TextField from "@mui/joy/TextField";
-import Typography from "@mui/joy/Typography";
-import TextSeparator from "common/components/TextSeparator";
-import React, { useState } from "react";
-import { useFormContext } from "react-hook-form";
+import LineWeightRounded from '@mui/icons-material/LineWeightRounded';
+import NumbersRounded from '@mui/icons-material/NumbersRounded';
+import Button from '@mui/joy/Button';
+import Grid from '@mui/joy/Grid';
+import TextField from '@mui/joy/TextField';
+import Typography from '@mui/joy/Typography';
+import TextSeparator from 'common/components/TextSeparator';
+import React, { useState } from 'react';
+import { useFormContext } from 'react-hook-form';
 
-import type { FormFields } from "../types";
-import setNullOrNumber from "../utils/setNullOrNumber";
+import type { FormFields } from '../types';
+import setNullOrNumber from '../utils/setNullOrNumber';
 
 const Gear: React.FC = () => {
   const {
     register,
-    formState: { errors }
+    formState: { errors },
   } = useFormContext<FormFields>();
   const [showMore, setShowMore] = useState<boolean>(false);
 
@@ -44,15 +44,15 @@ const Gear: React.FC = () => {
       >
         <Grid xs={6}>
           <TextField
-            {...register("gear.exposureProtection.type")}
+            {...register('gear.exposureProtection.type')}
             type="text"
             label="Type"
           />
         </Grid>
         <Grid xs={6}>
           <TextField
-            {...register("gear.exposureProtection.thickness", {
-              setValueAs: setNullOrNumber
+            {...register('gear.exposureProtection.thickness', {
+              setValueAs: setNullOrNumber,
             })}
             error={!!errors.gear?.exposureProtection?.thickness}
             helperText={errors.gear?.exposureProtection?.thickness?.message?.toString()}
@@ -75,7 +75,7 @@ const Gear: React.FC = () => {
       >
         <Grid xs={6}>
           <TextField
-            {...register("gear.tanks.count", { setValueAs: setNullOrNumber })}
+            {...register('gear.tanks.count', { setValueAs: setNullOrNumber })}
             error={!!errors.gear?.tanks?.count}
             helperText={errors.gear?.tanks?.count?.message?.toString()}
             type="number"
@@ -85,7 +85,7 @@ const Gear: React.FC = () => {
         </Grid>
         <Grid xs={6}>
           <TextField
-            {...register("gear.tanks.type")}
+            {...register('gear.tanks.type')}
             type="text"
             label="Type"
           />
@@ -111,14 +111,14 @@ const Gear: React.FC = () => {
             aria-labelledby="otherGearLabel"
           >
             <Grid xs={6}>
-              <TextField {...register("gear.bcd")} type="text" label="BCD" />
+              <TextField {...register('gear.bcd')} type="text" label="BCD" />
             </Grid>
             <Grid xs={6}>
-              <TextField {...register("gear.fins")} type="text" label="Fins" />
+              <TextField {...register('gear.fins')} type="text" label="Fins" />
             </Grid>
             <Grid xs={6}>
               <TextField
-                {...register("gear.regulator")}
+                {...register('gear.regulator')}
                 type="text"
                 label="Regulator"
               />
@@ -134,7 +134,7 @@ const Gear: React.FC = () => {
         fullWidth
         onClick={handleClick}
       >
-        {showMore ? "Show less" : "Show more"}
+        {showMore ? 'Show less' : 'Show more'}
       </Button>
     </>
   );

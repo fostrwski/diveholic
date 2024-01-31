@@ -1,4 +1,4 @@
-import type defaultValues from "./defaultValues";
+import type defaultValues from './defaultValues';
 
 type FormFields = typeof defaultValues;
 

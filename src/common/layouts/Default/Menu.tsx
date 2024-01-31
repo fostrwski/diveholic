@@ -1,14 +1,14 @@
-import DashboardRounded from "@mui/icons-material/DashboardRounded";
-import DownloadRounded from "@mui/icons-material/DownloadRounded";
-import LogoutRounded from "@mui/icons-material/LogoutRounded";
-import PersonRounded from "@mui/icons-material/PersonRounded";
-import ListItemDecorator from "@mui/joy/ListItemDecorator";
-import MuiMenu, { type MenuProps } from "@mui/joy/Menu";
-import MenuItem from "@mui/joy/MenuItem";
-import NextLink from "next/link";
-import React, { useState } from "react";
+import DashboardRounded from '@mui/icons-material/DashboardRounded';
+import DownloadRounded from '@mui/icons-material/DownloadRounded';
+import LogoutRounded from '@mui/icons-material/LogoutRounded';
+import PersonRounded from '@mui/icons-material/PersonRounded';
+import ListItemDecorator from '@mui/joy/ListItemDecorator';
+import MuiMenu, { type MenuProps } from '@mui/joy/Menu';
+import MenuItem from '@mui/joy/MenuItem';
+import NextLink from 'next/link';
+import React, { useState } from 'react';
 
-import LearnHowToInstallModal from "./LearnHowToInstall/Modal";
+import LearnHowToInstallModal from './LearnHowToInstall/Modal';
 
 const Menu: React.FC<MenuProps> = ({ anchorEl, open, onClose }) => {
   const [openLearnHowToInstall, setOpenLearnHowToInstall] =

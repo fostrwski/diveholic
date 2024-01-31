@@ -1,23 +1,23 @@
-import { getCountryCode, getCountryFlag } from "@franekostrowski/country-utils";
-import DoneRounded from "@mui/icons-material/DoneRounded";
-import ErrorOutlineRounded from "@mui/icons-material/ErrorOutlineRounded";
-import SaveRounded from "@mui/icons-material/SaveRounded";
-import Box from "@mui/joy/Box";
-import Button from "@mui/joy/Button";
-import Chip from "@mui/joy/Chip";
-import FormControl from "@mui/joy/FormControl";
-import FormLabel from "@mui/joy/FormLabel";
-import Grid from "@mui/joy/Grid";
-import TextField from "@mui/joy/TextField";
-import Textarea from "@mui/joy/Textarea";
-import Typography from "@mui/joy/Typography";
-import React, { useEffect } from "react";
-import { useFormContext } from "react-hook-form";
+import { getCountryCode, getCountryFlag } from '@franekostrowski/country-utils';
+import DoneRounded from '@mui/icons-material/DoneRounded';
+import ErrorOutlineRounded from '@mui/icons-material/ErrorOutlineRounded';
+import SaveRounded from '@mui/icons-material/SaveRounded';
+import Box from '@mui/joy/Box';
+import Button from '@mui/joy/Button';
+import Chip from '@mui/joy/Chip';
+import FormControl from '@mui/joy/FormControl';
+import FormLabel from '@mui/joy/FormLabel';
+import Grid from '@mui/joy/Grid';
+import TextField from '@mui/joy/TextField';
+import Textarea from '@mui/joy/Textarea';
+import Typography from '@mui/joy/Typography';
+import React, { useEffect } from 'react';
+import { useFormContext } from 'react-hook-form';
 
-import Gear from "./Gear";
-import Tabs from "./Tabs";
-import Temperature from "./Temperature";
-import type { FormFields } from "./types";
+import Gear from './Gear';
+import Tabs from './Tabs';
+import Temperature from './Temperature';
+import type { FormFields } from './types';
 
 interface FormProps {
   onSubmit: () => void;
@@ -30,21 +30,21 @@ const Form: React.FC<FormProps> = ({ onSubmit, submitted }) => {
     watch,
     getValues,
     register,
-    formState: { errors }
+    formState: { errors },
   } = useFormContext<FormFields>();
-  const watchLocationCountryName = watch("location.country.name");
+  const watchLocationCountryName = watch('location.country.name');
 
   useEffect(() => {
     // Try to assign country code and flag emoji on every location.country.name change
     const countryCode = getCountryCode(watchLocationCountryName);
-    let flagEmoji = "";
+    let flagEmoji = '';
     if (countryCode) {
       flagEmoji = getCountryFlag(countryCode);
-      setValue("location.country.code", countryCode);
-      setValue("location.country.flagEmoji", flagEmoji);
+      setValue('location.country.code', countryCode);
+      setValue('location.country.flagEmoji', flagEmoji);
     } else {
-      flagEmoji = "";
-      setValue("location.country.flagEmoji", flagEmoji);
+      flagEmoji = '';
+      setValue('location.country.flagEmoji', flagEmoji);
     }
   }, [getValues, setValue, watchLocationCountryName]);
 
@@ -69,7 +69,7 @@ const Form: React.FC<FormProps> = ({ onSubmit, submitted }) => {
 
         <Grid xs={12} sm={6}>
           <TextField
-            {...register("diveBuddy")}
+            {...register('diveBuddy')}
             type="text"
             label="Dive buddy"
             placeholder="Joe Doe"
@@ -78,7 +78,7 @@ const Form: React.FC<FormProps> = ({ onSubmit, submitted }) => {
           <FormControl sx={{ mt: 4 }}>
             <FormLabel>Notes</FormLabel>
             <Textarea
-              {...register("notes")}
+              {...register('notes')}
               minRows={4}
               variant="soft"
               placeholder="Describe what you saw, share your experience"
@@ -88,21 +88,20 @@ const Form: React.FC<FormProps> = ({ onSubmit, submitted }) => {
         </Grid>
       </Grid>
 
-        <Box sx={{textAlign: {sm: "right"}}}> 
-
-      <Button
-        type="submit"
-        color="success"
-        size="lg"
-        startDecorator={submitted ? <DoneRounded /> : <SaveRounded />}
-        sx={{
-          mt: 6,
-          width: { xs: "100%", sm: "initial" },
-        }}
-        onSubmit={onSubmit}
-      >
-        Save
-      </Button>
+      <Box sx={{ textAlign: { sm: 'right' } }}>
+        <Button
+          type="submit"
+          color="success"
+          size="lg"
+          startDecorator={submitted ? <DoneRounded /> : <SaveRounded />}
+          sx={{
+            mt: 6,
+            width: { xs: '100%', sm: 'initial' },
+          }}
+          onSubmit={onSubmit}
+        >
+          Save
+        </Button>
       </Box>
 
       {/* Show error message when errors object is non-empty */}
@@ -110,11 +109,11 @@ const Form: React.FC<FormProps> = ({ onSubmit, submitted }) => {
         <Box
           sx={{
             mt: 6,
-            display: "flex",
-            alignItems: "center",
-            flexDirection: "column",
+            display: 'flex',
+            alignItems: 'center',
+            flexDirection: 'column',
             gap: 1.2,
-            textAlign: "center"
+            textAlign: 'center',
           }}
         >
           <Chip

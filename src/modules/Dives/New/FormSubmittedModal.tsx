@@ -1,13 +1,13 @@
-import AddRounded from "@mui/icons-material/AddRounded";
-import Button from "@mui/joy/Button";
-import Modal from "@mui/joy/Modal";
-import ModalDialog from "@mui/joy/ModalDialog";
-import Typography from "@mui/joy/Typography";
-import { useRouter } from "next/router";
-import React, { type Dispatch, type SetStateAction } from "react";
-import { useFormContext } from "react-hook-form";
+import AddRounded from '@mui/icons-material/AddRounded';
+import Button from '@mui/joy/Button';
+import Modal from '@mui/joy/Modal';
+import ModalDialog from '@mui/joy/ModalDialog';
+import Typography from '@mui/joy/Typography';
+import { useRouter } from 'next/router';
+import React, { type Dispatch, type SetStateAction } from 'react';
+import { useFormContext } from 'react-hook-form';
 
-import type { FormFields } from "../components/Form/types";
+import type { FormFields } from '../components/Form/types';
 
 interface FormSubmittedModalProps {
   open: boolean;
@@ -16,7 +16,7 @@ interface FormSubmittedModalProps {
 
 const FormSubmittedModal: React.FC<FormSubmittedModalProps> = ({
   open,
-  setOpen
+  setOpen,
 }) => {
   const { reset } = useFormContext<FormFields>();
   const router = useRouter();
@@ -26,7 +26,7 @@ const FormSubmittedModal: React.FC<FormSubmittedModalProps> = ({
   };
 
   const handleContinue = () => {
-    router.push("/");
+    router.push('/');
   };
 
   const handleAddAnotherDive = () => {

@@ -1,16 +1,16 @@
-import BarChartRounded from "@mui/icons-material/BarChartRounded";
-import TimelapseRounded from "@mui/icons-material/TimelapseRounded";
-import Grid from "@mui/joy/Grid";
-import Typography from "@mui/joy/Typography";
-import InfoCard from "common/components/InfoCard";
-import type { Dive } from "common/types";
-import getDiveEmoji from "modules/Dives/components/Form/utils/getDiveEmoji";
-import React from "react";
+import BarChartRounded from '@mui/icons-material/BarChartRounded';
+import TimelapseRounded from '@mui/icons-material/TimelapseRounded';
+import Grid from '@mui/joy/Grid';
+import Typography from '@mui/joy/Typography';
+import InfoCard from 'common/components/InfoCard';
+import type { Dive } from 'common/types';
+import getDiveEmoji from 'modules/Dives/components/Form/utils/getDiveEmoji';
+import React from 'react';
 
-import getNumberOfBoatDives from "./getNumberOfBoatDives";
-import getNumberOfPoolDives from "./getNumberOfPoolDives";
-import getNumberOfShoreDives from "./getNumberOfShoreDives";
-import getTotalDivesLength from "./getTotalDivesLength";
+import getNumberOfBoatDives from './getNumberOfBoatDives';
+import getNumberOfPoolDives from './getNumberOfPoolDives';
+import getNumberOfShoreDives from './getNumberOfShoreDives';
+import getTotalDivesLength from './getTotalDivesLength';
 
 interface StatisticsProps {
   dives: Array<Dive>;
@@ -35,7 +35,7 @@ const Statistics: React.FC<StatisticsProps> = ({ dives }) => (
       <Grid xs={6}>
         <InfoCard
           title="Boat dives"
-          icon={getDiveEmoji("Boat")}
+          icon={getDiveEmoji('Boat')}
           content={getNumberOfBoatDives(dives)}
         />
       </Grid>
@@ -43,7 +43,7 @@ const Statistics: React.FC<StatisticsProps> = ({ dives }) => (
       <Grid xs={6}>
         <InfoCard
           title="Shore dives"
-          icon={getDiveEmoji("Shore")}
+          icon={getDiveEmoji('Shore')}
           content={getNumberOfShoreDives(dives)}
         />
       </Grid>
@@ -51,7 +51,7 @@ const Statistics: React.FC<StatisticsProps> = ({ dives }) => (
       <Grid xs={6}>
         <InfoCard
           title="Pool dives"
-          icon={getDiveEmoji("Pool")}
+          icon={getDiveEmoji('Pool')}
           content={getNumberOfPoolDives(dives)}
         />
       </Grid>

@@ -1,4 +1,4 @@
-import type { Dive } from "common/types";
+import type { Dive } from 'common/types';
 
 export default function getDiveLocationCountryCodes(dives: Array<Dive>) {
   type DiveLocation = {

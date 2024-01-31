@@ -1,16 +1,16 @@
-import DownloadDoneRounded from "@mui/icons-material/DownloadDoneRounded";
-import DownloadRounded from "@mui/icons-material/DownloadRounded";
-import ScaleRounded from "@mui/icons-material/ScaleRounded";
-import TimelapseRounded from "@mui/icons-material/TimelapseRounded";
-import TitleRounded from "@mui/icons-material/TitleRounded";
-import WavesRounded from "@mui/icons-material/WavesRounded";
-import Grid from "@mui/joy/Grid";
-import Typography from "@mui/joy/Typography";
-import InfoCard from "common/components/InfoCard";
-import type { Dive } from "common/types";
-import React from "react";
+import DownloadDoneRounded from '@mui/icons-material/DownloadDoneRounded';
+import DownloadRounded from '@mui/icons-material/DownloadRounded';
+import ScaleRounded from '@mui/icons-material/ScaleRounded';
+import TimelapseRounded from '@mui/icons-material/TimelapseRounded';
+import TitleRounded from '@mui/icons-material/TitleRounded';
+import WavesRounded from '@mui/icons-material/WavesRounded';
+import Grid from '@mui/joy/Grid';
+import Typography from '@mui/joy/Typography';
+import InfoCard from 'common/components/InfoCard';
+import type { Dive } from 'common/types';
+import React from 'react';
 
-import AmmountInformation from "./AmmountInformation";
+import AmmountInformation from './AmmountInformation';
 
 interface BasicInformationProps {
   dive: Dive;
@@ -19,27 +19,27 @@ interface BasicInformationProps {
 const Basics: React.FC<BasicInformationProps> = ({ dive }) => {
   const basics = [
     {
-      title: "Type",
+      title: 'Type',
       value: dive.type,
-      icon: <TitleRounded />
+      icon: <TitleRounded />,
     },
     {
-      title: "Length",
+      title: 'Length',
       value: dive.length,
       icon: <TimelapseRounded />,
-      unit: "min"
+      unit: 'min',
     },
     {
-      title: "Water",
+      title: 'Water',
       value: dive.water,
-      icon: <WavesRounded />
+      icon: <WavesRounded />,
     },
     {
-      title: "Weights",
+      title: 'Weights',
       value: dive.weights.taken,
       icon: <ScaleRounded />,
-      unit: dive.units === "metric" ? "kg" : "lbs"
-    }
+      unit: dive.units === 'metric' ? 'kg' : 'lbs',
+    },
   ];
 
   return (
@@ -72,7 +72,7 @@ const Basics: React.FC<BasicInformationProps> = ({ dive }) => {
             <InfoCard
               title="Depth avg."
               content={dive.depth.average}
-              unit={dive.units === "metric" ? "m" : "ft"}
+              unit={dive.units === 'metric' ? 'm' : 'ft'}
               icon={<DownloadDoneRounded />}
             />
           </Grid>
@@ -83,7 +83,7 @@ const Basics: React.FC<BasicInformationProps> = ({ dive }) => {
             <InfoCard
               title="Depth max"
               content={dive.depth.max}
-              unit={dive.units === "metric" ? "m" : "ft"}
+              unit={dive.units === 'metric' ? 'm' : 'ft'}
               icon={<DownloadRounded />}
             />
           </Grid>

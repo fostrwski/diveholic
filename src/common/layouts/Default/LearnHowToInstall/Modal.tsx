@@ -1,15 +1,15 @@
-import AndroidRounded from "@mui/icons-material/AndroidRounded";
-import Apple from "@mui/icons-material/Apple";
-import DesktopMacRounded from "@mui/icons-material/DesktopMacRounded";
-import Button from "@mui/joy/Button";
-import MuiModal from "@mui/joy/Modal";
-import ModalDialog from "@mui/joy/ModalDialog";
-import React, { type Dispatch, type SetStateAction } from "react";
+import AndroidRounded from '@mui/icons-material/AndroidRounded';
+import Apple from '@mui/icons-material/Apple';
+import DesktopMacRounded from '@mui/icons-material/DesktopMacRounded';
+import Button from '@mui/joy/Button';
+import MuiModal from '@mui/joy/Modal';
+import ModalDialog from '@mui/joy/ModalDialog';
+import React, { type Dispatch, type SetStateAction } from 'react';
 
-import Steps from "./Steps";
-import androidSteps from "./androidSteps";
-import desktopSteps from "./desktopSteps";
-import iOSSteps from "./iOSSteps";
+import Steps from './Steps';
+import androidSteps from './androidSteps';
+import desktopSteps from './desktopSteps';
+import iOSSteps from './iOSSteps';
 
 interface ModalProps {
   open: boolean;
@@ -25,14 +25,14 @@ const Modal: React.FC<ModalProps> = ({ open, setOpen }) => {
     <MuiModal open={open} onClose={handleClose}>
       <ModalDialog
         sx={{
-          display: "flex",
-          justifyContent: "space-between",
-          flexDirection: "column",
-          overflowY: "auto",
+          display: 'flex',
+          justifyContent: 'space-between',
+          flexDirection: 'column',
+          overflowY: 'auto',
           height: {
-            xs: "80%",
-            sm: "auto"
-          }
+            xs: '80%',
+            sm: 'auto',
+          },
         }}
         aria-label="Learn how to install Diveholic"
       >

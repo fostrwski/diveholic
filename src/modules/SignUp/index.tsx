@@ -1,34 +1,34 @@
-import AlternateEmailRounded from "@mui/icons-material/AlternateEmailRounded";
-import DoneRounded from "@mui/icons-material/DoneRounded";
-import ErrorOutlineRounded from "@mui/icons-material/ErrorOutlineRounded";
-import KeyRounded from "@mui/icons-material/KeyRounded";
-import PersonAddRounded from "@mui/icons-material/PersonAddRounded";
-import PersonRounded from "@mui/icons-material/PersonRounded";
-import SendRounded from "@mui/icons-material/SendRounded";
-import VisibilityOffRounded from "@mui/icons-material/VisibilityOffRounded";
-import VisibilityRounded from "@mui/icons-material/VisibilityRounded";
-import Box from "@mui/joy/Box";
-import Button from "@mui/joy/Button";
-import Checkbox from "@mui/joy/Checkbox";
-import FormControl from "@mui/joy/FormControl";
-import FormHelperText from "@mui/joy/FormHelperText";
-import IconButton from "@mui/joy/IconButton";
-import Link from "@mui/joy/Link";
-import TextField from "@mui/joy/TextField";
-import Typography from "@mui/joy/Typography";
-import { useUser } from "@supabase/auth-helpers-react";
-import Separator from "common/components/Separator";
-import AuthLayout from "common/layouts/Auth";
-import { supabase } from "common/utils/supabaseClient";
-import { NextSeo } from "next-seo";
-import NextLink from "next/link";
-import { useRouter } from "next/router";
-import React, { useState } from "react";
+import AlternateEmailRounded from '@mui/icons-material/AlternateEmailRounded';
+import DoneRounded from '@mui/icons-material/DoneRounded';
+import ErrorOutlineRounded from '@mui/icons-material/ErrorOutlineRounded';
+import KeyRounded from '@mui/icons-material/KeyRounded';
+import PersonAddRounded from '@mui/icons-material/PersonAddRounded';
+import PersonRounded from '@mui/icons-material/PersonRounded';
+import SendRounded from '@mui/icons-material/SendRounded';
+import VisibilityOffRounded from '@mui/icons-material/VisibilityOffRounded';
+import VisibilityRounded from '@mui/icons-material/VisibilityRounded';
+import Box from '@mui/joy/Box';
+import Button from '@mui/joy/Button';
+import Checkbox from '@mui/joy/Checkbox';
+import FormControl from '@mui/joy/FormControl';
+import FormHelperText from '@mui/joy/FormHelperText';
+import IconButton from '@mui/joy/IconButton';
+import Link from '@mui/joy/Link';
+import TextField from '@mui/joy/TextField';
+import Typography from '@mui/joy/Typography';
+import { useUser } from '@supabase/auth-helpers-react';
+import Separator from 'common/components/Separator';
+import AuthLayout from 'common/layouts/Auth';
+import { supabase } from 'common/utils/supabaseClient';
+import { NextSeo } from 'next-seo';
+import NextLink from 'next/link';
+import { useRouter } from 'next/router';
+import React, { useState } from 'react';
 
 const SignUp: React.FC = () => {
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
-  const [firstName, setFirstName] = useState<string>("");
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  const [firstName, setFirstName] = useState<string>('');
 
   const onEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
@@ -46,12 +46,12 @@ const SignUp: React.FC = () => {
   const { user } = useUser();
 
   if (user) {
-    router.push("/");
+    router.push('/');
   }
 
   const [loading, setLoading] = useState<boolean>(false);
   const [success, setSuccess] = useState<boolean>(false);
-  const [error, setError] = useState<string>("");
+  const [error, setError] = useState<string>('');
 
   const [agreeToPrivacyPolicy, setAgreeToPrivacyPolicy] =
     useState<boolean>(false);
@@ -60,7 +60,7 @@ const SignUp: React.FC = () => {
     try {
       setLoading(true);
       setSuccess(false);
-      setError("");
+      setError('');
       if (!email || !password || !firstName || !agreeToPrivacyPolicy) {
         setLoading(false);
         return;
@@ -70,9 +70,9 @@ const SignUp: React.FC = () => {
         { email, password },
         {
           data: {
-            first_name: firstName
-          }
-        }
+            first_name: firstName,
+          },
+        },
       );
       if (error) {
         console.error(error);
@@ -124,7 +124,7 @@ const SignUp: React.FC = () => {
               label="Email"
             />
             <TextField
-              type={showPassword ? "text" : "password"}
+              type={showPassword ? 'text' : 'password'}
               startDecorator={<KeyRounded />}
               onChange={onPasswordChange}
               value={password}
@@ -180,7 +180,7 @@ const SignUp: React.FC = () => {
                 color="danger"
                 textAlign="left"
                 startDecorator={<ErrorOutlineRounded />}
-                sx={{ alignItems: "flex-start" }}
+                sx={{ alignItems: 'flex-start' }}
               >
                 {error}
               </Typography>
@@ -191,7 +191,7 @@ const SignUp: React.FC = () => {
                 color="success"
                 textAlign="left"
                 startDecorator={<SendRounded />}
-                sx={{ alignItems: "flex-start" }}
+                sx={{ alignItems: 'flex-start' }}
               >
                 Confirmation link was sent to your email
               </Typography>
@@ -199,10 +199,10 @@ const SignUp: React.FC = () => {
           </Box>
 
           <Box
-            sx={{ mt: 4, display: "flex", flexDirection: "column", gap: 2.8 }}
+            sx={{ mt: 4, display: 'flex', flexDirection: 'column', gap: 2.8 }}
           >
             <Button
-              color={success ? "success" : "primary"}
+              color={success ? 'success' : 'primary'}
               type="submit"
               size="lg"
               fullWidth
@@ -212,12 +212,12 @@ const SignUp: React.FC = () => {
               Create account
             </Button>
 
-            <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
               <Separator />
               <Typography
                 level="subtitle1"
                 fontSize="xs"
-                sx={{ whiteSpace: "nowrap", textTransform: "uppercase" }}
+                sx={{ whiteSpace: 'nowrap', textTransform: 'uppercase' }}
               >
                 Already have an account?
               </Typography>

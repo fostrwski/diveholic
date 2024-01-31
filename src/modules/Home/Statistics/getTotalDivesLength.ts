@@ -1,4 +1,4 @@
-import type { Dive } from "common/types";
+import type { Dive } from 'common/types';
 
 export default function getTotalDivesLength(dives: Array<Dive>) {
   let totalDivesLength = 0;

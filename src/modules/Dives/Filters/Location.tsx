@@ -1,14 +1,14 @@
-import { getCountryData } from "@franekostrowski/country-utils";
-import Box from "@mui/joy/Box";
-import Checkbox from "@mui/joy/Checkbox";
-import Chip from "@mui/joy/Chip";
-import Grid from "@mui/joy/Grid";
-import Typography from "@mui/joy/Typography";
-import type { Dive } from "common/types";
-import React, { type Dispatch, type SetStateAction } from "react";
+import { getCountryData } from '@franekostrowski/country-utils';
+import Box from '@mui/joy/Box';
+import Checkbox from '@mui/joy/Checkbox';
+import Chip from '@mui/joy/Chip';
+import Grid from '@mui/joy/Grid';
+import Typography from '@mui/joy/Typography';
+import type { Dive } from 'common/types';
+import React, { type Dispatch, type SetStateAction } from 'react';
 
-import type { FiltersState } from "../index";
-import getDiveLocationCountryCodes from "./getDiveLocationCountryCodes";
+import type { FiltersState } from '../index';
+import getDiveLocationCountryCodes from './getDiveLocationCountryCodes';
 
 interface LocationProps {
   dives: Array<Dive>;
@@ -21,8 +21,8 @@ const Location: React.FC<LocationProps> = ({ dives, filters, setFilters }) => {
   const diveLocations = Object.keys(diveLocationCountryCodes).map(
     (diveLocationCountryCode) => ({
       ...getCountryData(diveLocationCountryCode),
-      diveCount: diveLocationCountryCodes[diveLocationCountryCode]
-    })
+      diveCount: diveLocationCountryCodes[diveLocationCountryCode],
+    }),
   );
 
   const onCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -32,15 +32,15 @@ const Location: React.FC<LocationProps> = ({ dives, filters, setFilters }) => {
       setFilters((previousFilters) => ({
         ...previousFilters,
         countryCodes: previousFilters.countryCodes.filter(
-          (item) => item !== countryCode
-        )
+          (item) => item !== countryCode,
+        ),
       }));
       return;
     }
 
     setFilters((previousFilters) => ({
       ...previousFilters,
-      countryCodes: [...previousFilters.countryCodes, countryCode]
+      countryCodes: [...previousFilters.countryCodes, countryCode],
     }));
   };
 
@@ -54,13 +54,13 @@ const Location: React.FC<LocationProps> = ({ dives, filters, setFilters }) => {
           role="group"
           aria-label="Dive location"
           sx={{
-            display: "flex",
+            display: 'flex',
             gap: 0.8,
-            overflowX: "auto",
-            scrollBehavior: "smooth",
-            "&::-webkit-scrollbar": {
-              display: "none"
-            }
+            overflowX: 'auto',
+            scrollBehavior: 'smooth',
+            '&::-webkit-scrollbar': {
+              display: 'none',
+            },
           }}
         >
           {diveLocations.map((diveLocationCountry) => (
@@ -71,10 +71,10 @@ const Location: React.FC<LocationProps> = ({ dives, filters, setFilters }) => {
               endDecorator={`(${diveLocationCountry.diveCount})`}
               color={
                 filters.countryCodes.includes(
-                  diveLocationCountry.code as string
+                  diveLocationCountry.code as string,
                 )
-                  ? "info"
-                  : "neutral"
+                  ? 'info'
+                  : 'neutral'
               }
             >
               <Checkbox

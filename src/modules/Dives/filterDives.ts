@@ -1,6 +1,6 @@
-import type { Dive } from "common/types";
+import type { Dive } from 'common/types';
 
-import type { FiltersState } from "./index";
+import type { FiltersState } from './index';
 
 export default function filterDives(dives: Array<Dive>, filters: FiltersState) {
   if (filters.countryCodes.length === 0) return dives;
@@ -8,7 +8,7 @@ export default function filterDives(dives: Array<Dive>, filters: FiltersState) {
   const { countryCodes } = filters;
 
   const filteredDives = dives.filter((dive) =>
-    countryCodes.includes(dive.location.country.code)
+    countryCodes.includes(dive.location.country.code),
   );
 
   return filteredDives;

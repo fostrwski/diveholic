@@ -1,14 +1,14 @@
-import LineWeightRounded from "@mui/icons-material/LineWeightRounded";
-import NumbersRounded from "@mui/icons-material/NumbersRounded";
-import ScubaDivingRounded from "@mui/icons-material/ScubaDivingRounded";
-import TitleRounded from "@mui/icons-material/TitleRounded";
-import Grid from "@mui/joy/Grid";
-import TextSeparator from "common/components/TextSeparator";
-import type { Dive } from "common/types";
-import React from "react";
+import LineWeightRounded from '@mui/icons-material/LineWeightRounded';
+import NumbersRounded from '@mui/icons-material/NumbersRounded';
+import ScubaDivingRounded from '@mui/icons-material/ScubaDivingRounded';
+import TitleRounded from '@mui/icons-material/TitleRounded';
+import Grid from '@mui/joy/Grid';
+import TextSeparator from 'common/components/TextSeparator';
+import type { Dive } from 'common/types';
+import React from 'react';
 
-import Section from "./Section";
-import getValidInfoCards from "./getValidInfoCards";
+import Section from './Section';
+import getValidInfoCards from './getValidInfoCards';
 
 interface DetailsProps {
   dive: Dive;
@@ -17,47 +17,47 @@ interface DetailsProps {
 const Gear: React.FC<DetailsProps> = ({ dive }) => {
   const exposureProtectionInfoCards = getValidInfoCards([
     {
-      title: "Type",
+      title: 'Type',
       icon: <TitleRounded />,
-      content: dive.gear.exposureProtection.type
+      content: dive.gear.exposureProtection.type,
     },
     {
-      title: "Thickness",
-      content: dive.gear.exposureProtection.thickness || "",
-      icon: <LineWeightRounded />
-    }
+      title: 'Thickness',
+      content: dive.gear.exposureProtection.thickness || '',
+      icon: <LineWeightRounded />,
+    },
   ]);
 
   const tanksInfoCards = getValidInfoCards([
     {
-      title: "Count",
-      content: dive.gear.tanks.count || "",
-      icon: <NumbersRounded />
+      title: 'Count',
+      content: dive.gear.tanks.count || '',
+      icon: <NumbersRounded />,
     },
 
     {
-      title: "Type",
+      title: 'Type',
       icon: <TitleRounded />,
-      content: dive.gear.tanks.type || ""
-    }
+      content: dive.gear.tanks.type || '',
+    },
   ]);
 
   const otherGearInfoCards = getValidInfoCards([
     {
-      title: "BCD",
+      title: 'BCD',
       content: dive.gear.bcd,
-      icon: <ScubaDivingRounded />
+      icon: <ScubaDivingRounded />,
     },
     {
-      title: "Regulator",
+      title: 'Regulator',
       content: dive.gear.regulator,
-      icon: <ScubaDivingRounded />
+      icon: <ScubaDivingRounded />,
     },
     {
-      title: "Fins",
+      title: 'Fins',
       content: dive.gear.fins,
-      icon: <ScubaDivingRounded />
-    }
+      icon: <ScubaDivingRounded />,
+    },
   ]);
 
   if (

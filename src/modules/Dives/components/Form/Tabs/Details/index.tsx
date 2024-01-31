@@ -1,35 +1,35 @@
-import Box from "@mui/joy/Box";
-import FormControl from "@mui/joy/FormControl";
-import FormHelperText from "@mui/joy/FormHelperText";
-import FormLabel from "@mui/joy/FormLabel";
-import Radio from "@mui/joy/Radio";
-import RadioGroup from "@mui/joy/RadioGroup";
-import Slider from "@mui/joy/Slider";
-import Typography from "@mui/joy/Typography";
-import React from "react";
-import { Controller, useFormContext } from "react-hook-form";
+import Box from '@mui/joy/Box';
+import FormControl from '@mui/joy/FormControl';
+import FormHelperText from '@mui/joy/FormHelperText';
+import FormLabel from '@mui/joy/FormLabel';
+import Radio from '@mui/joy/Radio';
+import RadioGroup from '@mui/joy/RadioGroup';
+import Slider from '@mui/joy/Slider';
+import Typography from '@mui/joy/Typography';
+import React from 'react';
+import { Controller, useFormContext } from 'react-hook-form';
 
-import type { FormFields } from "../../types";
-import getSliderAriaValueText from "./getSliderAriaValueText";
-import sliderMarks from "./sliderMarks";
-import waterTypes from "./waterTypes";
-import weightsAmmount from "./weightsAmmount";
+import type { FormFields } from '../../types';
+import getSliderAriaValueText from './getSliderAriaValueText';
+import sliderMarks from './sliderMarks';
+import waterTypes from './waterTypes';
+import weightsAmmount from './weightsAmmount';
 
 const Details: React.FC = () => {
   const { setValue, getValues, watch, control } = useFormContext<FormFields>();
 
-  const watchWeightsTaken = watch("weights.taken");
+  const watchWeightsTaken = watch('weights.taken');
 
   const onRadioChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     switch (e.target.value) {
-      case "tooLittle":
-        setValue("weights.ammount", "tooLittle");
+      case 'tooLittle':
+        setValue('weights.ammount', 'tooLittle');
         break;
-      case "tooMuch":
-        setValue("weights.ammount", "tooMuch");
+      case 'tooMuch':
+        setValue('weights.ammount', 'tooMuch');
         break;
       default:
-        setValue("weights.ammount", "perfect");
+        setValue('weights.ammount', 'perfect');
     }
   };
 
@@ -44,19 +44,19 @@ const Details: React.FC = () => {
             row
             sx={{
               gap: 2,
-              width: "100%"
+              width: '100%',
             }}
             aria-label="Water type"
           >
             {waterTypes.map((waterType) => (
               <FormControl
-                sx={{ width: "100%", flexDirection: "row", gap: 2 }}
+                sx={{ width: '100%', flexDirection: 'row', gap: 2 }}
                 key={waterType.title}
               >
                 <Radio
                   value={waterType.title}
                   componentsProps={{
-                    input: { "aria-label": `${waterType.title} water` }
+                    input: { 'aria-label': `${waterType.title} water` },
                   }}
                   overlay
                   size="lg"
@@ -81,7 +81,7 @@ const Details: React.FC = () => {
       <div role="group" aria-labelledby="weightsLabel">
         <FormControl sx={{ mt: 4, px: 2 }}>
           <FormLabel id="weightsLabel">Weights</FormLabel>
-          <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
             <Controller
               name="weights.taken"
               control={control}
@@ -92,16 +92,16 @@ const Details: React.FC = () => {
                   max={20}
                   valueLabelDisplay="auto"
                   marks={sliderMarks}
-                  getAriaLabel={() => "Weights ammount during the dive"}
+                  getAriaLabel={() => 'Weights ammount during the dive'}
                   getAriaValueText={(value) =>
-                    getSliderAriaValueText(value, getValues("units"))
+                    getSliderAriaValueText(value, getValues('units'))
                   }
                 />
               )}
             />
-            <Typography sx={{ whiteSpace: "nowrap" }}>
-              {watchWeightsTaken}{" "}
-              {getValues("units") === "metric" ? "kg" : "lbs"}
+            <Typography sx={{ whiteSpace: 'nowrap' }}>
+              {watchWeightsTaken}{' '}
+              {getValues('units') === 'metric' ? 'kg' : 'lbs'}
             </Typography>
           </Box>
         </FormControl>
@@ -125,14 +125,14 @@ const Details: React.FC = () => {
                 }) => (
                   <FormControl
                     key={ammount.value}
-                    sx={{ width: "100%", flexDirection: "row", gap: 2 }}
+                    sx={{ width: '100%', flexDirection: 'row', gap: 2 }}
                   >
                     <Radio
                       overlay
                       size="lg"
                       value={ammount.value}
                       componentsProps={{
-                        input: { "aria-label": `${ammount.title}` }
+                        input: { 'aria-label': `${ammount.title}` },
                       }}
                     />
                     <div>
@@ -146,7 +146,7 @@ const Details: React.FC = () => {
                       </FormHelperText>
                     </div>
                   </FormControl>
-                )
+                ),
               )}
             </RadioGroup>
           )}

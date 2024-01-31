@@ -1,6 +1,6 @@
-import Box from "@mui/joy/Box";
-import Typography from "@mui/joy/Typography";
-import React from "react";
+import Box from '@mui/joy/Box';
+import Typography from '@mui/joy/Typography';
+import React from 'react';
 
 interface StepsProps {
   title: string;
@@ -19,15 +19,15 @@ const Steps: React.FC<StepsProps> = ({ title, icon, steps }) => (
       {title}
     </Typography>
 
-    <Box component="ul" p={0} m={0} sx={{ listStylePosition: "inside" }}>
+    <Box component="ul" p={0} m={0} sx={{ listStylePosition: 'inside' }}>
       {steps.map((step) => (
         <Typography
           key={step.content}
           component="li"
           sx={{
-            alignItems: "flex-start",
-            display: "inline-flex",
-            width: "100%"
+            alignItems: 'flex-start',
+            display: 'inline-flex',
+            width: '100%',
           }}
           endDecorator={step?.icon}
           mb={0.8}

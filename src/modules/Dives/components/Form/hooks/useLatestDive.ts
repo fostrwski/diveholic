@@ -1,6 +1,6 @@
-import type { Dive as DiveType } from "common/types";
-import { supabase } from "common/utils/supabaseClient";
-import { useEffect, useState } from "react";
+import type { Dive as DiveType } from 'common/types';
+import { supabase } from 'common/utils/supabaseClient';
+import { useEffect, useState } from 'react';
 
 export default function useLatestDive() {
   const [data, setData] = useState<DiveType | null>(null);
@@ -8,9 +8,9 @@ export default function useLatestDive() {
   useEffect(() => {
     const getData = async () => {
       const { data, error } = await supabase
-        .from<DiveType>("dives")
-        .select("*")
-        .order("date", { ascending: false })
+        .from<DiveType>('dives')
+        .select('*')
+        .order('date', { ascending: false })
         .limit(1);
 
       if (error) return console.error(error);
