@@ -2,7 +2,6 @@ import { Grid } from "@mui/joy";
 import Box from "@mui/joy/Box";
 import Button from "@mui/joy/Button";
 import DiveCard from "common/components/DiveCard";
-import DiveCardSkeletonLoader from "common/components/DiveCard/SkeletonLoader";
 import type { Dive } from "common/types";
 import NextLink from "next/link";
 import React from "react";

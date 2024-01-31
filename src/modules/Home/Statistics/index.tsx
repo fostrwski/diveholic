@@ -1,5 +1,4 @@
 import BarChartRounded from "@mui/icons-material/BarChartRounded";
-import PublicRounded from "@mui/icons-material/PublicRounded";
 import TimelapseRounded from "@mui/icons-material/TimelapseRounded";
 import Grid from "@mui/joy/Grid";
 import Typography from "@mui/joy/Typography";
@@ -32,14 +31,6 @@ const Statistics: React.FC<StatisticsProps> = ({ dives }) => (
           content={getTotalDivesLength(dives)}
         />
       </Grid>
-
-      {/* <Grid xs={6}> */}
-      {/*   <InfoCard */}
-      {/*     title="Countries visited" */}
-      {/*     icon={<PublicRounded />} */}
-      {/*     content={18} */}
-      {/*   /> */}
-      {/* </Grid> */}
 
       <Grid xs={6}>
         <InfoCard

@@ -10,5 +10,6 @@ declare global {
     }
   }
 }
+/* eslint-enable no-unused-vars */
 
 Cypress.Commands.add("mount", mount);

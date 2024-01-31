@@ -14,11 +14,7 @@ import { useFormContext } from "react-hook-form";
 
 const Modal = dynamic(() => import("./Modal"));
 
-interface DateTimePickerProps {
-  initialDate?: Date;
-}
-
-const DateTimePicker: React.FC<DateTimePickerProps> = ({ initialDate }) => {
+const DateTimePicker: React.FC = () => {
   const [open, setOpen] = useState<boolean>(false);
   const {
     getValues,

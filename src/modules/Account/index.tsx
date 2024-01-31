@@ -1,6 +1,5 @@
 import AlternateEmailRounded from "@mui/icons-material/AlternateEmailRounded";
 import CheckCircleOutlineRounded from "@mui/icons-material/CheckCircleOutlineRounded";
-import EditRounded from "@mui/icons-material/EditRounded";
 import EmailRounded from "@mui/icons-material/EmailRounded";
 import GitHub from "@mui/icons-material/GitHub";
 import PersonRounded from "@mui/icons-material/PersonRounded";
@@ -99,7 +98,7 @@ const Account: React.FC = () => {
       return;
     }
 
-    const { data, error } = await supabase.auth.update({
+    const { error } = await supabase.auth.update({
       data: { first_name: newFirstName }
     });
 

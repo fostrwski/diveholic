@@ -14,7 +14,6 @@ const Dive: React.FC = () => {
   const router = useRouter();
 
   const [dive, setDive] = useState<DiveType | null>(null);
-  const [loading, setLoading] = useState<boolean>(false);
 
   const [error, setError] = useState<any>(null);
 
@@ -25,7 +24,6 @@ const Dive: React.FC = () => {
   useEffect(() => {
     const getDive = async () => {
       setError(null);
-      setLoading(true);
       const { data, error } = await supabase
         .from<DiveType>("dives")
         .select("*")
@@ -34,18 +32,15 @@ const Dive: React.FC = () => {
       if (error) {
         setError(error);
         console.error(error);
-        setLoading(false);
         return;
       }
 
       if (data && data.length > 0) {
         setDive(data[0]);
-        setLoading(false);
         return;
       }
 
       setDiveNotFound(true);
-      setLoading(false);
     };
 
     if (user) getDive();

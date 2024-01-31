@@ -48,5 +48,6 @@ declare global {
     }
   }
 }
+/* eslint-enable no-unused-vars */
 
 export {};

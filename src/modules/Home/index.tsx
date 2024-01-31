@@ -1,12 +1,10 @@
 import AddRounded from "@mui/icons-material/AddRounded";
-import RefreshRounded from "@mui/icons-material/RefreshRounded";
 import { CircularProgress } from "@mui/joy";
 import Box from "@mui/joy/Box";
 import Button from "@mui/joy/Button";
 import Grid from "@mui/joy/Grid";
 import Typography from "@mui/joy/Typography";
 import { useUser } from "@supabase/auth-helpers-react";
-import type { User } from "@supabase/supabase-js";
 import NoDivesFound from "common/components/NoDivesFound";
 import type { Dive } from "common/types";
 import { supabase } from "common/utils/supabaseClient";

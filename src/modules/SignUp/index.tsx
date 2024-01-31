@@ -99,7 +99,7 @@ const SignUp: React.FC = () => {
     setShowPassword(!showPassword);
   };
 
-  const onCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onCheckboxChange = () => {
     setAgreeToPrivacyPolicy(!agreeToPrivacyPolicy);
   };
 

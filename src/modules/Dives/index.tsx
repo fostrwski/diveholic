@@ -20,7 +20,7 @@ export type FiltersState = {
 const Dives: React.FC = () => {
   const { user } = useUser();
   const [dives, setDives] = useState<Array<Dive>>([]);
-  const [error, setError] = useState<boolean>();
+  const [, setError] = useState<boolean>();
   const [loading, setLoading] = useState<boolean>(false);
 
   const [sortBy, setSortBy] = useState<string>("dateDescending");

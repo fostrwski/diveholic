@@ -1,10 +1,7 @@
-import AutoAwesomeRounded from "@mui/icons-material/AutoAwesomeRounded";
 import LineWeightRounded from "@mui/icons-material/LineWeightRounded";
 import NumbersRounded from "@mui/icons-material/NumbersRounded";
-import Box from "@mui/joy/Box";
 import Button from "@mui/joy/Button";
 import Grid from "@mui/joy/Grid";
-import MuiLink from "@mui/joy/Link";
 import TextField from "@mui/joy/TextField";
 import Typography from "@mui/joy/Typography";
 import TextSeparator from "common/components/TextSeparator";
@@ -139,12 +136,6 @@ const Gear: React.FC = () => {
       >
         {showMore ? "Show less" : "Show more"}
       </Button>
-
-      {/* <Box sx={{ textAlign: "right", mt: 4 }}> */}
-      {/*   <MuiLink color="info" startDecorator={<AutoAwesomeRounded />} disabled> */}
-      {/*     Use preset */}
-      {/*   </MuiLink> */}
-      {/* </Box> */}
     </>
   );
 };

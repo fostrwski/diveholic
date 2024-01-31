@@ -192,6 +192,7 @@ const theme = extendTheme({
 });
 
 declare module "@mui/joy/styles" {
+  // eslint-disable-next-line no-unused-vars
   interface TypographySystemOverrides {
     subtitle1: true;
     subtitle2: true;

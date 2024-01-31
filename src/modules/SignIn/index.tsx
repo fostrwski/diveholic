@@ -2,14 +2,12 @@ import AlternateEmailRounded from "@mui/icons-material/AlternateEmailRounded";
 import DoneRounded from "@mui/icons-material/DoneRounded";
 import ErrorOutlineRounded from "@mui/icons-material/ErrorOutlineRounded";
 import KeyRounded from "@mui/icons-material/KeyRounded";
-import LockResetRounded from "@mui/icons-material/LockResetRounded";
 import LoginRounded from "@mui/icons-material/LoginRounded";
 import VisibilityOffRounded from "@mui/icons-material/VisibilityOffRounded";
 import VisibilityRounded from "@mui/icons-material/VisibilityRounded";
 import Box from "@mui/joy/Box";
 import Button from "@mui/joy/Button";
 import IconButton from "@mui/joy/IconButton";
-import MuiLink from "@mui/joy/Link";
 import TextField from "@mui/joy/TextField";
 import Typography from "@mui/joy/Typography";
 import { useUser } from "@supabase/auth-helpers-react";
@@ -132,17 +130,6 @@ const SignIn: React.FC = () => {
               {error}
             </Typography>
           )}
-
-          {/* <div> */}
-          {/*   <MuiLink */}
-          {/*     sx={{ float: "right" }} */}
-          {/*     endDecorator={<LockResetRounded />} */}
-          {/*     component="button" */}
-          {/*     type="button" */}
-          {/*   > */}
-          {/*     Restore password */}
-          {/*   </MuiLink> */}
-          {/* </div> */}
 
           <Box sx={{ mt: 4, display: "flex", flexDirection: "column", gap: 2 }}>
             <Button
