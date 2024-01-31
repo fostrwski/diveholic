@@ -1,3 +1,4 @@
+/* global JQuery */
 import "cypress-real-events";
 
 Cypress.Commands.add("signIn", (testUserId) => {
@@ -22,6 +23,7 @@ Cypress.Commands.add("getInputByName", (name) =>
   cy.get(`input[name='${name}']`)
 );
 
+/* eslint-disable no-unused-vars */
 declare global {
   namespace Cypress {
     interface Chainable {

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 declare namespace Cypress {
   interface Cypress {
     env(key: "test_user_1_email"): string;
