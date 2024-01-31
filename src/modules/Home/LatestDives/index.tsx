@@ -1,7 +1,6 @@
 import { useTheme } from '@emotion/react';
 import HistoryRounded from '@mui/icons-material/HistoryRounded';
 import Typography from '@mui/joy/Typography';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import useMediaQuery from '@mui/material/useMediaQuery';
 import type { Dive } from 'common/types';
 import React from 'react';
