@@ -9,10 +9,10 @@
   "rules": {
     "react/no-unescaped-entities": "off",
     "no-shadow": "off",
-    "comma-dangle": "error",
     "class-methods-use-this": "off",
-    "no-unused-vars": "error",
     "consistent-return": "off",
+    "comma-dangle": "error",
+    "no-unused-vars": "error",
     "quotes": [2, "single", { "avoidEscape": true }],
     "import/extensions": [
       "error",
