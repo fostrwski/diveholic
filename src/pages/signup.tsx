@@ -1,4 +1,4 @@
-import SignUp from 'modules/SignUp';
+import { SignUp } from 'features/auth';
 import React from 'react';
 
 export default function SignUpPage() {

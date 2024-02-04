@@ -12,16 +12,18 @@ import TextField from '@mui/joy/TextField';
 import Typography from '@mui/joy/Typography';
 import { useUser } from '@supabase/auth-helpers-react';
 import Separator from 'common/components/Separator';
-import AuthLayout from 'common/layouts/Auth';
-import { supabase } from 'common/utils/supabaseClient';
 import { NextSeo } from 'next-seo';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 
-const SignIn: React.FC = () => {
+import useSignIn from '../api/signIn';
+import Layout from '../components/Layout';
+
+export default function SignIn() {
   const router = useRouter();
   const { user } = useUser();
+  const { loading, success, error, signIn } = useSignIn();
 
   useEffect(() => {
     if (user) {
@@ -40,31 +42,9 @@ const SignIn: React.FC = () => {
     setPassword(e.target.value);
   };
 
-  const [loading, setLoading] = useState<boolean>(false);
-  const [success, setSuccess] = useState<boolean>(false);
-  const [error, setError] = useState<string>('');
-
-  const handleSignIn = async (email: string, password: string) => {
-    try {
-      setLoading(true);
-      setSuccess(false);
-      setError('');
-      const { error } = await supabase.auth.signIn({ email, password });
-      if (error) {
-        setError(error.message);
-        return;
-      }
-      setSuccess(true);
-    } catch (error: any) {
-      console.error(error.error_description || error.message);
-    } finally {
-      setLoading(false);
-    }
-  };
-
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    handleSignIn(email, password);
+    signIn(email, password);
   };
 
   const [showPassword, setShowPassword] = useState<boolean>(false);
@@ -80,7 +60,7 @@ const SignIn: React.FC = () => {
         description="Sign in to your Diveholic account"
       />
 
-      <AuthLayout>
+      <Layout>
         <form onSubmit={handleSubmit}>
           <TextField
             placeholder="joe@example.com"
@@ -167,9 +147,7 @@ const SignIn: React.FC = () => {
             </NextLink>
           </Box>
         </form>
-      </AuthLayout>
+      </Layout>
     </>
   );
-};
-
-export default SignIn;
+}
