@@ -3,10 +3,9 @@ import { NextSeo } from 'next-seo';
 import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
 
-import Layout from '../components/Layout';
-import SignInForm from '../components/SignInForm';
+import { Layout, SignInForm } from '../components';
 
-export default function SignIn() {
+export function SignIn() {
   const router = useRouter();
   const { user } = useUser();
 

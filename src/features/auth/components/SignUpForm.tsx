@@ -24,9 +24,9 @@ import Separator from 'common/components/Separator';
 import NextLink from 'next/link';
 import React, { useState } from 'react';
 
-import useSignUp from '../api/signUp';
+import { useSignUp } from '../api';
 
-export default function SignUpForm() {
+export function SignUpForm() {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [firstName, setFirstName] = useState<string>('');

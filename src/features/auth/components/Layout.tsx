@@ -3,13 +3,13 @@ import CookieConsent from 'common/components/CookieConsent';
 import Image from 'next/image';
 import React from 'react';
 
-type AuthLayoutProps = {
+type LayoutProps = {
   children: React.ReactNode;
   title?: string;
   icon?: React.ReactElement;
 };
 
-export default function AuthLayout({ title, icon, children }: AuthLayoutProps) {
+export function Layout({ title, icon, children }: LayoutProps) {
   return (
     <Box height="100vh">
       <Container

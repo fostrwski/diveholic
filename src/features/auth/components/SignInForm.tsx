@@ -12,9 +12,9 @@ import Separator from 'common/components/Separator';
 import NextLink from 'next/link';
 import React, { useState } from 'react';
 
-import useSignIn from '../api/signIn';
+import { useSignIn } from '../api';
 
-export default function SignInForm() {
+export function SignInForm() {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const { loading, success, error, signIn } = useSignIn();

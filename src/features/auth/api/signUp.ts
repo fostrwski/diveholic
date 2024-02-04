@@ -1,7 +1,7 @@
 import { supabase } from 'common/utils/supabaseClient';
 import { useState } from 'react';
 
-export default function useSignUp() {
+export function useSignUp() {
   const [loading, setLoading] = useState<boolean>(false);
   const [success, setSuccess] = useState<boolean>(false);
   const [error, setError] = useState<string>('');
