@@ -32,6 +32,7 @@ export function SignUpForm() {
   const [firstName, setFirstName] = useState<string>('');
   const [agreeToPrivacyPolicy, setAgreeToPrivacyPolicy] =
     useState<boolean>(false);
+  const [showPassword, setShowPassword] = useState<boolean>(false);
   const { loading, success, error, signUp } = useSignUp();
 
   const onEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -50,8 +51,6 @@ export function SignUpForm() {
     e.preventDefault();
     signUp(email, password, firstName, agreeToPrivacyPolicy);
   };
-
-  const [showPassword, setShowPassword] = useState<boolean>(false);
 
   const handleShowPassword = () => {
     setShowPassword(!showPassword);
