@@ -1,15 +1,13 @@
-import Box from '@mui/joy/Box';
-import Container from '@mui/joy/Container';
-import Typography from '@mui/joy/Typography';
+import { Box, Container, Typography } from '@mui/joy';
 import CookieConsent from 'common/components/CookieConsent';
 import Image from 'next/image';
 import React from 'react';
 
-interface AuthLayoutProps {
+type AuthLayoutProps = {
   children: React.ReactNode;
   title?: string;
   icon?: React.ReactElement;
-}
+};
 
 export default function AuthLayout({ title, icon, children }: AuthLayoutProps) {
   return (
