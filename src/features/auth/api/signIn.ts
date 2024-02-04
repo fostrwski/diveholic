@@ -11,11 +11,14 @@ export function useSignIn() {
       setLoading(true);
       setSuccess(false);
       setError('');
+
       const { error } = await supabase.auth.signIn({ email, password });
+
       if (error) {
         setError(error.message);
         return;
       }
+
       setSuccess(true);
     } catch (error: any) {
       console.error(error.error_description || error.message);
