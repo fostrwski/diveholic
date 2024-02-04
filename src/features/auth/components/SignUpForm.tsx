@@ -49,7 +49,7 @@ export function SignUpForm() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    signUp(email, password, firstName, agreeToPrivacyPolicy);
+    await signUp(email, password, firstName, agreeToPrivacyPolicy);
   };
 
   const handleShowPassword = () => {

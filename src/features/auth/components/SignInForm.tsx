@@ -22,7 +22,7 @@ export function SignInForm() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    signIn(email, password);
+    await signIn(email, password);
   };
 
   const onEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
