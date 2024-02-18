@@ -35,14 +35,17 @@ export function SignUpForm() {
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const { loading, success, error, signUp } = useSignUp();
 
+  // TODO: Refactor name
   const onEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
   };
 
+  // TODO: Refactor name
   const onPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
   };
 
+  // TODO: Refactor name
   const onFirstNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFirstName(e.target.value);
   };

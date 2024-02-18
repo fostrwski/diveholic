@@ -25,10 +25,12 @@ export function SignInForm() {
     await signIn(email, password);
   };
 
+  // TODO: Refactor name
   const onEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
   };
 
+  // TODO: Refactor name
   const onPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
   };
