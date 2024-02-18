@@ -13,7 +13,6 @@ export default function useDate(initialDate?: Date) {
   );
 
   useEffect(() => {
-    // TODO: Sometimes works in a wrong way!
     const date = new Date();
     date.setDate(day);
     date.setMonth(month);
