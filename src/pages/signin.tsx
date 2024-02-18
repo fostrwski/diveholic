@@ -1,4 +1,4 @@
-import SignIn from 'modules/SignIn';
+import { SignIn } from 'features/auth';
 import React from 'react';
 
 export default function SignInPage() {
