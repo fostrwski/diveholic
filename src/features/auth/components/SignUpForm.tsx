@@ -27,6 +27,7 @@ import React, { useState } from 'react';
 import { useSignUp } from '../api';
 
 export function SignUpForm() {
+  // TODO: Remove primitives
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [firstName, setFirstName] = useState<string>('');
@@ -59,6 +60,7 @@ export function SignUpForm() {
     setShowPassword(!showPassword);
   };
 
+  // TODO: Refactor name
   const onCheckboxChange = () => {
     setAgreeToPrivacyPolicy(!agreeToPrivacyPolicy);
   };

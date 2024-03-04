@@ -2,6 +2,7 @@ import { supabase } from 'common/utils/supabaseClient';
 import { useState } from 'react';
 
 export function useSignIn() {
+  // TODO: Remove primitives
   const [loading, setLoading] = useState<boolean>(false);
   const [success, setSuccess] = useState<boolean>(false);
   const [error, setError] = useState<string>('');

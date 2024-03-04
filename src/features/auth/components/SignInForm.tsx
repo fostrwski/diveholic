@@ -15,6 +15,7 @@ import React, { useState } from 'react';
 import { useSignIn } from '../api';
 
 export function SignInForm() {
+  // TODO: Remove primitives
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [showPassword, setShowPassword] = useState<boolean>(false);
