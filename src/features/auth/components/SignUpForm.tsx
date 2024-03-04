@@ -27,6 +27,7 @@ import React, { useState } from 'react';
 import { useSignUp } from '../api';
 
 export function SignUpForm() {
+  // TODO: Use RHF
   // TODO: Remove primitives
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
