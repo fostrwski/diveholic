@@ -4,6 +4,8 @@
 
 Web based dive log - application to save your latest dives to help you track progress in your scuba diving career. Made with all the best practices regarding user experience, accessibility and usability kept in mind. Fully open source :)
 
+### NOTE: Currently, I'm doing significant code refactor to make it better and easier to work with. Stay tuned :)
+
 ⚠️ Diveholic is built mobile first, the desktop experience isn't quite polished yet!
 
 🔴 Live application: https://diveholic.netlify.app
