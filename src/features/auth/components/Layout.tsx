@@ -4,6 +4,8 @@ import Image from 'next/image';
 import React from 'react';
 
 type LayoutProps = {
+  // TODO: Import types from React
+  // TODO: PropsWithChildren
   children: React.ReactNode;
   title?: string;
   icon?: React.ReactElement;
